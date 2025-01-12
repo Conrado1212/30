@@ -31,6 +31,10 @@ img.active{
     width: 600px!important;
     height: 300px;
 }
+.slide:hover{
+    scale: 1.2;
+    transition-duration: 1s;
+}
 .slides button{
     position: absolute;
     top: 50%;
@@ -43,10 +47,10 @@ img.active{
     padding: 10px 15px;
 }
 .prev{
-    left: 600px;
+    left: 25%;
 }
 .next{
-    right: 600px;
+    right: 25%;
 }
 @keyframes fade {
     from{
