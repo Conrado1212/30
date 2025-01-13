@@ -53,13 +53,16 @@ let con = document.querySelector('.gallery');
 con.addEventListener("wheel", (e) =>{
     e.preventDefault();
     con.scrollLeft += e.deltaY;
+    con.style.scrollBehavior = "auto";
 })
 
 function nextBTN(){
-    console.log(con.scrollLeft);
+   // console.log(con.scrollLeft);
     if(con.scrollLeft >= 900){
+        con.style.scrollBehavior = "smooth";
         con.scrollLeft = 0;
     }else{
+        con.style.scrollBehavior = "smooth";
         con.scrollLeft += 900;
         console.log(con.scrollLeft);
     }
@@ -70,8 +73,10 @@ function prevBTN(){
     console.log(con.scrollLeft);
  //   con.scrollLeft -= 900;
      if(con.scrollLeft <= 0){
+        con.style.scrollBehavior = "smooth";
          con.scrollLeft = 900;
      }else{
+        con.style.scrollBehavior = "smooth";
          con.scrollLeft -= 900;
         console.log(con.scrollLeft);
      }
