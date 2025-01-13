@@ -3,6 +3,9 @@
     margin: 0;
     padding: 0;
 }
+body{
+    background: #191919;
+}
 .slider{
     width: 100%;
     position: relative;
@@ -14,13 +17,13 @@
     height: 100vh;
 }
 
-.slider img{
+.slider .slide{
     width: 100%;
    display: none;
    border-radius: 20px;
   box-shadow: 0 0 1rem #0c0c0c;
 }
-img.active{
+.slide.active{
    display: block;
    animation-name: fade;
    animation-duration: 1.5s;
@@ -30,12 +33,20 @@ img.active{
     object-fit: cover;
     width: 600px!important;
     height: 300px;
+    filter: grayscale(100%);
 }
 .slide:hover{
     scale: 1.2;
     transition-duration: 1s;
+    filter: grayscale(0%);
 }
-.slides button{
+.slides{
+    width: 900px;
+    justify-content: center;
+    display: flex;
+    position: relative;
+}
+.btn{
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -47,10 +58,10 @@ img.active{
     padding: 10px 15px;
 }
 .prev{
-    left: 25%;
+    left: 0;
 }
 .next{
-    right: 25%;
+    right: 0;
 }
 @keyframes fade {
     from{
@@ -59,4 +70,49 @@ img.active{
     to{
         opacity: 1;
     }
+}
+.gallery{
+    width: 900px;
+    display: flex;
+    overflow-y: scroll;
+}
+.gallery .gallery-slides{
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 20px;
+    padding: 10px;
+    flex: none;
+}
+.gallery .gallery-slides .gallery-slide{
+width: 100%;
+object-fit: cover;
+height: 300px;
+border-radius: 20px;
+box-shadow: 0 0 .3rem #9c9a9a;
+filter: grayscale(100%);
+transition: transform .5s;
+}
+.gallery::-webkit-scrollbar{
+    display: none;
+}
+.gallery-wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10% auto;
+}
+.Btn{
+    font-size: 2rem;
+    background: hsla(0, 0%, 0%, 0.514);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 20px;
+}
+.gallery .gallery-slides .gallery-slide:hover{
+    filter: grayscale(0);
+    cursor: pointer;
+    transform:scale(1.1);
 }
