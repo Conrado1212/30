@@ -1,0 +1,55 @@
+#f4f6fb
+
+
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: Mukta, sans-serif;
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    background: #f9fbff;
+}
+table{
+ border-collapse: collapse;
+ box-shadow: 0 5px 10px rgb(129, 43, 43);
+ background: white;
+ text-align: center;
+ overflow: hidden;
+
+ thead{
+    box-shadow: 0 5px 10px black;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+ th{
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    font-size: .8rem;
+    font-weight: 800;
+ }
+ td{
+    padding: 1rem 2rem;
+    color:crimson;
+ }
+tbody{
+  
+}
+
+}
+#button-tr{
+    text-align: left;
+}
+
+
+li::marker {
+    color: crimson;
+  }
