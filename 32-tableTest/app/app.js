@@ -6,35 +6,68 @@ function add(){
     const fRow = t1.rows[0];
 
     const cellCount = fRow.cells.length;
-    //const nr = t1.insertRow(buttonR.rowIndex);
-    const nr = document.createElement('tr');
+
+   
     const nr2 = document.createElement('tr');
     
     
-
+    const createRow = (tableId) =>{
+        const nr = document.createElement('tr');
     for(let i =0;i<cellCount;i++){
         const newCell = document.createElement('td');
-        const newCell2 = document.createElement('td');
         if(i===0){
             newCell.innerHTML = `<img src="" alt="" class="img-config">`;
-            newCell2.innerHTML = `<img src="" alt="" class="img-config">`;
         }else if(i===1){
-            newCell.innerHTML = `<input type="text">`;
-            newCell2.innerHTML = `<input type="text">`;
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.className = `input${tableId}-${t1.rows.length}`;
+           newCell.appendChild(input);
+            
         }else{
             newCell.innerHTML = `Nowa ddddd ${i+1}`;
-            newCell2.innerHTML = `Nowa ddddd ${i+1}`;
         }
        
         nr.appendChild(newCell);
-        nr2.appendChild(newCell2);
+        
         
     }
+    return nr;
+};
 
-      t1.insertBefore(nr, buttonR);
-      t2.appendChild(nr2);
+      t1.insertBefore(createRow('table1'), buttonR);
+      t2.appendChild(createRow('table2'));
      
-      
+      addData();
+    
 
 
 }
+function addData(){
+    const inputs1 = document.querySelectorAll('#table1 input[type="text"]');
+    const inputs2 = document.querySelectorAll('#table2 input[type="text"]');
+
+
+    inputs1.forEach((input, index)=>{
+        input.addEventListener('input', ()=>{
+            if(inputs2[index]){
+                console.log(`Synchro ${input.value}`);
+                inputs2[index].value = input.value;
+               
+            }
+            
+        })
+    });
+
+
+    inputs2.forEach((input, index)=>{
+        input.addEventListener('input', ()=>{
+            if(inputs2[index]){
+                console.log(`Synchro ${input.value}`);
+            inputs1[index].value = input.value;
+            }
+        })
+    });
+}
+
+addData();
+console.log(addData());
