@@ -7,10 +7,7 @@ function add(){
 
     const cellCount = fRow.cells.length;
 
-   
-    const nr2 = document.createElement('tr');
-    
-    
+ 
     const createRow = (tableId) =>{
         const nr = document.createElement('tr');
     for(let i =0;i<cellCount;i++){
