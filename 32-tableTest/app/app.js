@@ -40,9 +40,9 @@ function add(){
 
 }
 function addData(){
-    const inputs1 = document.querySelectorAll('#table1 td:nth-child(2) input[type="text"]');
+    // const inputs1 = document.querySelectorAll('#table1 td:nth-child(2) input[type="text"]');
    
-    const inputs2 = document.querySelectorAll('#table2 td:nth-child(2) input[type="text"]');
+    // const inputs2 = document.querySelectorAll('#table2 td:nth-child(2) input[type="text"]');
 
     
     const inputs2test = document.getElementById('table1').getElementsByTagName('td');
@@ -71,10 +71,6 @@ function addData(){
           
        }
     }
-
-   
-
-
 
 //     inputs1.forEach((input, index)=>{
 //         input.addEventListener('input', ()=>{
