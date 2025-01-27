@@ -1,6 +1,7 @@
 
 let slide = document.querySelectorAll(".slides img");
 let slide2 = document.querySelector(".slides");
+let slide3 = document.querySelectorAll(".sliders img");
 
 
 let index = 0;
@@ -16,7 +17,7 @@ slide2.addEventListener("wheel", (e) =>{
 
 function initialize(){
 
-    slide.length > 0  ? (slide[index].classList.add('active'), intervalId =  setInterval(next, 4000)) :  false;
+    slide.length > 0  ? (slide[index].classList.add('active'), intervalId =  setInterval(next, 4000),slide3[index].classList.add('active-test')) :  false;
     
    // console.log(intervalId);
 }
@@ -32,6 +33,11 @@ function show(indexS){
         slide.classList.remove('active');
     });
     slide[index].classList.add('active');
+
+    slide3.forEach(slide => {
+        slide.classList.remove('active-test');
+    });
+    slide3[index].classList.add('active-test');
 }
 
 
