@@ -61,6 +61,7 @@ body{
 }
 .prev{
     left: 0;
+    display: block;
 }
 .next{
     right: 0;
@@ -137,4 +138,7 @@ transition: transform .5s;
 .active-test{
     filter: grayscale(0);
     border: 2px solid #fff;
+}
+.activeBTN{
+    display: none;
 }
