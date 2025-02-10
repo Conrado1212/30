@@ -25,11 +25,13 @@ const inventors = [
   //1. Filter list of inventors for those who were born in the 1500;
 
 const yearCheck = inventors.filter(xd);
+const yearCheck2 = inventors.filter(xd1 => (xd1.year >= 1500 && xd1.year < 1600 ));
 function xd(age){
  return   age.year > 1500 && age.year < 1600;
 
 }
 console.table(yearCheck);
+console.table(yearCheck2);
 
 //2.Map() give us an array of the inventory first and last names
 
