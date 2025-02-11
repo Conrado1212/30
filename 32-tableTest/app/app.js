@@ -94,5 +94,88 @@ function addData(){
 //     });
  }
 
+
+
+ if(!document.getElementById('overlay')){
+    var overlay = document.createElement("div");
+    overlay.className = "overlay";
+    overlay.id = "overlay";
+  
+  
+  
+    const popup = document.createElement("div");
+    popup.className = "popup";
+  
+   
+    const message = document.createElement("h1");
+    message.textContent = "AttName";
+  
+    const iframe = document.createElement('iframe');
+    iframe.src = "";
+    iframe.id = "iframe";
+    const button = document.createElement("button");
+    button.textContent = "AttName";
+    button.onclick = closePopup;
+  
+   
+
+    popup.appendChild(message);
+    popup.appendChild(iframe);
+    popup.appendChild(button);
+  
+  
+    overlay.appendChild(popup);
+  
+
+    document.body.appendChild(overlay);
+  }
+  
+  function closePopup() {
+    const overlay = document.getElementById("overlay");
+    overlay ?  overlay.style.display = "none" : false;
+    
+  }
+
+
+
+
+
+
 addData();
 console.log(addData());
+
+function preview(value){
+ const idOver =  document.getElementById('overlay');
+
+ const ifremek = idOver.getElementsByTagName('iframe')[0];
+ 
+ idOver.style.display = "flex";
+
+ ifremek.src = value;
+
+
+
+
+
+ ifremek.onload = function(){
+
+    ifremek.contentWindow.postMessage('adadada', '*');
+
+    // const iframeDoc = ifremek.contentDocument || ifremek.contentWindow.document;
+    // ifremek.style.height = iframeDoc.body.scrollHeight + 'px';
+    // ifremek.style.width = iframeDoc.body.scrollWidth + 'px';
+ };
+
+
+ window.addEventListener('message', function(e){
+   if(e.data.type ==='adadada'){
+    const iframe = document.getElementById('iframe');
+    iframe.style.width = e.data.width + 'px';
+    iframe.style.height = e.data.height + 'px';
+   } 
+ })
+
+}
+
+
+

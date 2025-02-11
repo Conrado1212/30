@@ -40,6 +40,16 @@ table{
     padding: 1rem 2rem;
     color:crimson;
  }
+ td a{
+     text-decoration: none;
+     color: #000;
+     transition: all .5s ease;
+ }
+ td a:hover{
+    text-decoration: none;
+    color: rgb(68, 64, 64);
+    font-weight: bold;
+}
 tbody{
   
 }
@@ -53,3 +63,40 @@ tbody{
 li::marker {
     color: crimson;
   }
+
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.popup {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.popup button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    background: #000;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+iframe{
+    border: none;
+  
+}
