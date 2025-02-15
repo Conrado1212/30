@@ -63,11 +63,13 @@ function addData(){
    
     // const inputs2 = document.querySelectorAll('#table2 td:nth-child(2) input[type="text"]');
 
-    
+    //pobranie wszystkich td z pierwszej tabeli 
     const inputs2test = document.getElementById('table1').getElementsByTagName('td');
     
+    //pobranie wszystkich ta z drugiej tabeli 
     const inputs3test = document.getElementById('table2').getElementsByTagName('td');
 
+    //for po 1 tavbeli 
     for(let i=0;i<inputs2test.length;i++){
 
         //pobranie inputow z tabeli 1
