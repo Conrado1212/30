@@ -1,39 +1,58 @@
 function add(){
+
+    //pobranie tabeli e
     const t1 = document.getElementById('table1').getElementsByTagName('tbody')[0];
+
+    //pobranie przycisku 
     const buttonR = document.getElementById('button-tr');
+    //pobranie tabli drugiej 
     const t2 = document.getElementById('table2').getElementsByTagName('tbody')[0];;
 
+
+    //pobranie pierwszego wiersza tablicy
     const fRow = t1.rows[0];
 
+    //sprawdzenien dlugosci tablicy 
     const cellCount = fRow.cells.length;
 
- 
+    //tworzenie nowego wiersza w tabeli  poprze zparametr id tabeli 
     const createRow = (tableId) =>{
+        //stworzneie nowego wiersza 
         const nr = document.createElement('tr');
+        //for po wszystkich wiersach 
     for(let i =0;i<cellCount;i++){
+        //stworzneie nowego tabal data 
         const newCell = document.createElement('td');
         if(i===0){
+            //dla td rownego 0 ma byc img 
             newCell.innerHTML = `<img src="" alt="" class="img-config">`;
         }else if(i===1){
+            //dla td rownego 1 ma byc input 
             const input = document.createElement('input');
+            //typ unputu text 
             input.type = 'text';
+            //nazwa classy inputu input parametry tabeli plus dlugosc wiersza 
             input.className = `input${tableId}-${t1.rows.length}`;
+            //podpiecie pod nowy wiersz 
            newCell.appendChild(input);
             
         }else{
+            //dla innych td dodnaie inneHTM w nastepujacy spsoob 
             newCell.innerHTML = `Nowa ddddd ${i+1}`;
         }
-       
+       //dodanie nowego wiersza
         nr.appendChild(newCell);
         
         
     }
+    //zwrocenie nowego wierza 
     return nr;
 };
-
+    //insert wiersza przed przyciskiem 
       t1.insertBefore(createRow('table1'), buttonR);
+      //inset wiersza 
       t2.appendChild(createRow('table2'));
-     
+     //fubnkcja dodajac wartosci danych 
       addData();
     
 
@@ -50,20 +69,28 @@ function addData(){
     const inputs3test = document.getElementById('table2').getElementsByTagName('td');
 
     for(let i=0;i<inputs2test.length;i++){
+
+        //pobranie inputow z tabeli 1
       let xd = inputs2test[i].getElementsByTagName('input');
+
+      // przypisanie warotsic sprawdzam czy inputs3test[i] istnieje jesli tak pobierz inputa dla indeksu
       let xd2 = inputs3test[i] ? inputs3test[i].getElementsByTagName('input') : [];
-     //   console.log(xd);
+     //   console.log(xd2);
        for(let j=0;j<xd.length;j++){
+           //nasluchiwnaie n apinuta danmego inputa 
            xd[j].addEventListener('input', ()=>{
                console.log(`test ${xd[j].value}`);
                if(xd2[j]){
+                   //dodanie wartyosci danemu inputowi w drugiej tablicu 
                    xd2[j].value = xd[j].value;
                }
            });
            if(xd2[j]){
+               //nasluchiwanie w druga strone 
             xd2[j].addEventListener('input',()=>{
                 console.log(`test ${xd2[j].value}`);
                 if(xd[j]){
+                    //przypisanie wartosci 
                     xd[j].value = xd2[j].value;
                 }
                });
