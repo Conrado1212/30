@@ -66,7 +66,7 @@ function addData(){
     //pobranie wszystkich td z pierwszej tabeli 
     const inputs2test = document.getElementById('table1').getElementsByTagName('td');
     
-    //pobranie wszystkich ta z drugiej tabeli 
+    //pobranie wszystkich td z drugiej tabeli 
     const inputs3test = document.getElementById('table2').getElementsByTagName('td');
 
     //for po 1 tavbeli 
@@ -208,3 +208,64 @@ function preview(value){
 
 
 
+//nasluch pliku 
+
+
+const xd = document.getElementById('file');
+ function testxd(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                
+                reader.onload = (e) => {
+                    resolve(e.target.result);
+                };
+                
+                reader.onerror = (error) => {
+                    reject(error);
+                };
+                
+                reader.readAsText(file);
+            });
+        }
+//funkcje nasluchujaca 
+  xd.addEventListener('change', (e) => {
+            const testFile = e.target.files[0];
+            
+            if (testFile) {
+               setTimeout(()=>{
+                    testxd(testFile).then((data) => {
+                   console.log('test');
+
+                }).catch((error) => {
+                    console.error('Error: ', error);
+                });
+                },2000);
+}
+        });
+
+
+
+
+        // function loadData() {
+        //     const fileInput = document.getElementById('file');
+        //     const file = fileInput.files[0];
+        //     if (file) {
+        //         const reader = new FileReader();
+        //         reader.onload = function(e) {
+        //             const data = JSON.parse(e.target.result);
+        //             document.getElementById('name').value = data.name;
+        //             document.getElementById('email').value = data.email;
+        //         };
+        //         reader.readAsText(file);
+        //     } else {
+        //         alert('Please select a file.');
+        //     }
+        // }
+
+
+
+//nasluchinanie na zmiane na inpucie 
+        document.getElementById('file').addEventListener('change', function() {
+            const file = this.files[0] ? this.files[0].name : 'dddddd';
+            document.getElementById('fileName').textContent = file;
+        });
