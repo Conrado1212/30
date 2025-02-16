@@ -211,9 +211,9 @@ function preview(value){
 //nasluch pliku 
 
 
-document.getElementById('file').addEventListener('change', function(event) {
+document.getElementById('file').addEventListener('change', function(e) {
     console.log('filek');
-    const file = event.target.files[0];
+    const file = e.target.files[0];
     if (file) {
         const reader = new FileReader();
         reader.onload = function(e) {
@@ -243,37 +243,37 @@ document.getElementById('file').addEventListener('change', function(event) {
 
 
 
-// const xd = document.getElementById('file');
-//  function testxd(file) {
-//             return new Promise((resolve, reject) => {
-//                 const reader = new FileReader();
+const xd = document.getElementById('file');
+ function testxd(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
                 
-//                 reader.onload = (e) => {
-//                     resolve(e.target.result);
-//                 };
+                reader.onload = (e) => {
+                    resolve(e.target.result);
+                };
                 
-//                 reader.onerror = (error) => {
-//                     reject(error);
-//                 };
+                reader.onerror = (error) => {
+                    reject(error);
+                };
                 
-//                 reader.readAsText(file);
-//             });
-//         }
-// //funkcje nasluchujaca 
-//   xd.addEventListener('change', (e) => {
-//             const testFile = e.target.files[0];
+                reader.readAsText(file);
+            });
+        }
+//funkcje nasluchujaca 
+  xd.addEventListener('change', (e) => {
+            const testFile = e.target.files[0];
             
-//             if (testFile) {
-//                setTimeout(()=>{
-//                     testxd(testFile).then((data) => {
-//                    console.log('test');
+            if (testFile) {
+               setTimeout(()=>{
+                    testxd(testFile).then((data) => {
+                   console.log('testFFFFF');
 
-//                 }).catch((error) => {
-//                     console.error('Error: ', error);
-//                 });
-//                 },2000);
-// }
-//         });
+                }).catch((error) => {
+                    console.error('Error: ', error);
+                });
+                },2000);
+}
+        });
 
 
 
@@ -298,7 +298,7 @@ document.getElementById('file').addEventListener('change', function(event) {
 
 //nasluchinanie na zmiane na inpucie 
         document.getElementById('file').addEventListener('change', function() {
-            const file = this.files[0] ? this.files[0].name : 'dddddd';
+            const file = this.files[0] ? this.files[0].name : 'No file';
             document.getElementById('fileName').textContent = file;
         });
 
