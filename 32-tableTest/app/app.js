@@ -209,26 +209,37 @@ function preview(value){
 
 
 //nasluch pliku 
-
-
 document.getElementById('file').addEventListener('change', function(e) {
     console.log('filek');
+    //zmienna file 
     const file = e.target.files[0];
     if (file) {
+        //reader
         const reader = new FileReader();
+        //na ladowanie
         reader.onload = function(e) {
+            //contents pliku 
             const contents = e.target.result;
+            //wiersze
             const rows = contents.split('\n');
             rows.forEach(row => {
+                //kolumnna dla wiersza 
                 const cols = row.split(',');
+                //wiersz
                 const tr = document.createElement('tr');
+                //pobranie tabeli 
                 const t1 = document.getElementById('table1').getElementsByTagName('tbody')[0];
+                //pobranie przycisku 
                 const buttonR = document.getElementById('button-tr');
                 cols.forEach(col => {
+                    //stworzenie td
                     const td = document.createElement('td');
+                    //dodanie text kontent ldas stworznoego td 
                     td.textContent = col.trim();
+                    //wstawienie td do tr 
                     tr.appendChild(td);
                 });
+                //wstawienie przed przyciskiem wierszy z danymi 
                 t1.insertBefore(tr,buttonR);
             });
         };
