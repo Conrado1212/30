@@ -211,37 +211,69 @@ function preview(value){
 //nasluch pliku 
 
 
-const xd = document.getElementById('file');
- function testxd(file) {
-            return new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                
-                reader.onload = (e) => {
-                    resolve(e.target.result);
-                };
-                
-                reader.onerror = (error) => {
-                    reject(error);
-                };
-                
-                reader.readAsText(file);
-            });
-        }
-//funkcje nasluchujaca 
-  xd.addEventListener('change', (e) => {
-            const testFile = e.target.files[0];
-            
-            if (testFile) {
-               setTimeout(()=>{
-                    testxd(testFile).then((data) => {
-                   console.log('test');
-
-                }).catch((error) => {
-                    console.error('Error: ', error);
+document.getElementById('file').addEventListener('change', function(event) {
+    console.log('filek');
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const contents = e.target.result;
+            const rows = contents.split('\n');
+            rows.forEach(row => {
+                const cols = row.split(',');
+                const tr = document.createElement('tr');
+                const t1 = document.getElementById('table1').getElementsByTagName('tbody')[0];
+                const buttonR = document.getElementById('button-tr');
+                cols.forEach(col => {
+                    const td = document.createElement('td');
+                    td.textContent = col.trim();
+                    tr.appendChild(td);
                 });
-                },2000);
-}
-        });
+                t1.insertBefore(tr,buttonR);
+            });
+        };
+        reader.readAsText(file);
+    } else {
+        alert('Wybierz plik.');
+    }
+});
+
+
+
+
+
+
+// const xd = document.getElementById('file');
+//  function testxd(file) {
+//             return new Promise((resolve, reject) => {
+//                 const reader = new FileReader();
+                
+//                 reader.onload = (e) => {
+//                     resolve(e.target.result);
+//                 };
+                
+//                 reader.onerror = (error) => {
+//                     reject(error);
+//                 };
+                
+//                 reader.readAsText(file);
+//             });
+//         }
+// //funkcje nasluchujaca 
+//   xd.addEventListener('change', (e) => {
+//             const testFile = e.target.files[0];
+            
+//             if (testFile) {
+//                setTimeout(()=>{
+//                     testxd(testFile).then((data) => {
+//                    console.log('test');
+
+//                 }).catch((error) => {
+//                     console.error('Error: ', error);
+//                 });
+//                 },2000);
+// }
+//         });
 
 
 
@@ -269,3 +301,9 @@ const xd = document.getElementById('file');
             const file = this.files[0] ? this.files[0].name : 'dddddd';
             document.getElementById('fileName').textContent = file;
         });
+
+
+
+
+
+      

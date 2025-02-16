@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Importuj Dane do Tabeli</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <input type="file" id="fileInput">
+    <table id="dataTable">
+        <caption>Table 1</caption>
+        <thead>
+            <tr>
+                <th>Kolumna 1</th>
+                <th>Kolumna 2</th>
+                <th>Kolumna 3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Dane1</td>
+                <td>Dane2</td>
+                <td>Dane3</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const contents = e.target.result;
+                    const rows = contents.split('\n');
+                    const table = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+
+                    rows.forEach(row => {
+                        const cols = row.split(',');
+                        const tr = document.createElement('tr');
+                        cols.forEach(col => {
+                            const td = document.createElement('td');
+                            td.textContent = col.trim();
+                            tr.appendChild(td);
+                        });
+                        table.appendChild(tr);
+                    });
+                };
+                reader.readAsText(file);
+            } else {
+                alert('Wybierz plik.');
+            }
+        });
+    </script>
+</body>
+</html>
