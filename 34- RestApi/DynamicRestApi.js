@@ -8,8 +8,10 @@ const endpoints =[];
 
 let id = 0;
 
-app.post('new', (res,req)=>{
+app.post('/new', (res,req)=>{
 
+
+ 
 })
 
 
