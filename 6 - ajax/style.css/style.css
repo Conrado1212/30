@@ -14,10 +14,7 @@ body{
     margin: 50px auto;
 }
 
-input {
-    width: 100%;
-    padding: 20px;
-  }
+
 .search{
     width: 120%;
     text-align: center;
@@ -31,6 +28,8 @@ input {
     border-radius: 5px;
     font-size: 40px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.19);
+    padding: 20px;
+    font-size: 2rem;
 }
 .sug {
     margin: 0;
@@ -43,6 +42,13 @@ input {
 .sug li{
     display: flex;
     list-style: none;
+    background: white;
+    margin: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
+    padding: 20px;
+    transition: background .2s;
+    justify-content: space-between;
+    text-transform: capitalize;
 }
 
 .hl {
