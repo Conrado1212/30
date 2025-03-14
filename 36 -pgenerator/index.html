@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <title>Random</title>
+</head>
+<body>
+    <form id="password-form">
+        <input type="text" id="password"> 
+        <div class="check">
+        <label for="upperCase"><input type="checkbox" id="upperCase"><span>UpperCase[A-Z]</span></label>
+       <label for="lowerCase"><input type="checkbox" id="lowerCase"><span>LowerCase[a-z]</span></label>
+       <label for="symbols"><input type="checkbox" id="symbols"><span>symbols[!-?]</span></label>
+       <label for="space"><input type="checkbox" id="space"><span>Include space</span></label>
+       <label for="numbers"><input type="checkbox" id="numbers"><span>Numbers[0-9]</span></label>
+        </div>
+       
+       <button type="button" onclick="generatePassword()">Generate password</button>
+    </form>
+</body>
+<script src="app/app.js"></script>
+</html>
