@@ -12,33 +12,34 @@ function getRandomIntInRange(min, max) {
 
 
   function generatePassword() {
-    const lowerCharacters = 'abcdefghijklmnopqrstuvwxyz';
-    const upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const symbols = '!@#$%^&*()_+[]{}|;:,.<>?';
-    const space = ' ';
-    const numbers = '0123456789';
+      const options =[{
+          id: 'lowerCase', set: 'abcdefghijklmnopqrstuvwxyz' 
+      },
+      {
+        id: 'upperCase', set: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' 
+      },
+      {
+        id: 'symbols', set: '!@#$%^&*()_+[]{}|;:,.<>?' 
+      },
+      {
+        id: 'space', set: ' ' 
+      },
+      {
+          od:'numbers', set:'0123456789'
+      }
+      ];
+   
     const minLength = 10;
     const maxLength = 20;
 
     //zmienan dla dancyh znakow
     let characters = '';
 
-
-    if(document.getElementById('upperCase').checked){
-        characters +=upperCase;
-    }
-    if(document.getElementById('lowerCase').checked){
-        characters +=lowerCharacters;
-    }
-    if(document.getElementById('symbols').checked){
-        characters +=symbols;
-    }
-    if(document.getElementById('space').checked){
-        characters +=space;
-    }
-    if(document.getElementById('numbers').checked){
-        characters +=numbers;
-    }
+      options.forEach(option =>{
+          if(document.getElementById(option.id).checked){
+              characters+= option.set;
+          }
+      })
 
     if(characters === ''){
         document.getElementById('password').textContent = 'Check one of checkboxes bitches!';
@@ -51,8 +52,7 @@ function getRandomIntInRange(min, max) {
     for (let i = 0; i < passwordLength; i++) {
             const randomIndex = Math.floor(Math.random() * characters.length);
             password += characters[randomIndex];
-            
-   
+
     }
 
     document.getElementById('password]').textContent = `${password}`;
