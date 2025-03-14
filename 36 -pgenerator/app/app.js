@@ -20,83 +20,43 @@ function getRandomIntInRange(min, max) {
     const minLength = 10;
     const maxLength = 20;
 
+    //zmienan dla dancyh znakow
+    let characters = '';
+
+
+    if(document.getElementById('upperCase').checked){
+        characters +=upperCase;
+    }
+    if(document.getElementById('lowerCase').checked){
+        characters +=lowerCharacters;
+    }
+    if(document.getElementById('symbols').checked){
+        characters +=symbols;
+    }
+    if(document.getElementById('space').checked){
+        characters +=space;
+    }
+    if(document.getElementById('numbers').checked){
+        characters +=numbers;
+    }
+
+    if(characters === ''){
+        document.getElementById('password').textContent = 'Check one of checkboxes bitches!';
+         return;
+    }
+
     const passwordLength = Math.floor(Math.random() * (maxLength - minLength + 1)) + minLength;
     let password = '';
 
     for (let i = 0; i < passwordLength; i++) {
-        const type = Math.floor(Math.random()*4);
-        if(type === 0){
-            const randomIndex = Math.floor(Math.random() * lowerCharacters.length);
-            password += lowerCharacters[randomIndex];
+            const randomIndex = Math.floor(Math.random() * characters.length);
+            password += characters[randomIndex];
             
-        }else if(type === 1){
-            const randomIndex = Math.floor(Math.random() * upperCase.length);
-            password += upperCase[randomIndex];
-           
-        }else if(type === 2){
-            const randomIndex = Math.floor(Math.random() * symbols.length);
-            password += symbols[randomIndex];
-           
-        }else if(type ===3){
-            const randomIndex = Math.floor(Math.random() * numbers.length);
-            password += numbers[randomIndex];
-         
-        }else{
-            const randomIndex = Math.floor(Math.random() * space.length);
-            password += space[randomIndex];
-        }
+   
     }
 
-    return password;
+    document.getElementById('password]').textContent = `${password}`;
 }
 
 
 console.log(generatePassword());
-
-
-
-
-
-// function generatePassword() {
-//     const upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-//     const lowerCase = 'abcdefghijklmnopqrstuvwxyz';
-//     const numbers = '0123456789';
-//     const symbols = '!@#$%^&*()_+[]{}|;:,.<>?';
-
-//     const minLength = 10;
-//     const maxLength = 20;
-
-//     let selectedCharacters = '';
-
-//     // Sprawdź, które checkboxy są zaznaczone
-//     if (document.getElementById('uppercase').checked) {
-//         selectedCharacters += upperCase;
-//     }
-//     if (document.getElementById('lowercase').checked) {
-//         selectedCharacters += lowerCase;
-//     }
-//     if (document.getElementById('numbers').checked) {
-//         selectedCharacters += numbers;
-//     }
-//     if (document.getElementById('symbols').checked) {
-//         selectedCharacters += symbols;
-//     }
-
-//     // Upewnij się, że wybrano przynajmniej jeden typ znaków
-//     if (selectedCharacters === '') {
-//         document.getElementById('result').textContent = 'Wybierz przynajmniej jeden typ znaków!';
-//         return;
-//     }
-
-//     const passwordLength = Math.floor(Math.random() * (maxLength - minLength + 1)) + minLength;
-//     let password = '';
-
-//     // Generowanie hasła
-//     for (let i = 0; i < passwordLength; i++) {
-//         const randomIndex = Math.floor(Math.random() * selectedCharacters.length);
-//         password += selectedCharacters[randomIndex];
-//     }
-
-//     // Wyświetlenie wyniku
-//     document.getElementById('result').textContent = `Twoje hasło: ${password}`;
-// }
