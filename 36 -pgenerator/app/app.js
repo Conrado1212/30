@@ -2,9 +2,9 @@ function getRandomIntInRange(min, max) {
     console.log("Min:", min, "Max:", max);
     const random = Math.random();
     console.log("Random:", random);
-    const scaled = random * (max - min + 1);
-    console.log("Scaled:", scaled);
-    return Math.floor(scaled) + min;
+    const ddd = random * (max - min + 1);
+    console.log("Scaled:", ddd);
+    return Math.floor(ddd) + min;
   }
 // return Math.floor(Math.random() * (max - min + 1)) + min;
   console.log(getRandomIntInRange(10, 20)) ;
