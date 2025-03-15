@@ -42,7 +42,8 @@ function getRandomIntInRange(min, max) {
       })
 
     if(characters === ''){
-        document.getElementById('password').textContent = 'Check one of checkboxes bitches!';
+        document.getElementById('password').value = 'Check one of checkboxes!';
+        document.getElementById('password').classList.add('error');
          return;
     }
 
@@ -66,7 +67,7 @@ function getRandomIntInRange(min, max) {
 
     }
 
-    document.getElementById('password]').textContent = password;
+    document.getElementById('password').value = password;
 }
 
 function copy(){
@@ -81,7 +82,7 @@ function copy(){
     console.log('Copy succesfully');
   })
   .catch(e =>{
-    console.error('Wywrotka podczas kopiowania ')
+    console.error(e,'Wywrotka podczas kopiowania ')
   })
 }
-console.log(generatePassword());
+//console.log(generatePassword());
