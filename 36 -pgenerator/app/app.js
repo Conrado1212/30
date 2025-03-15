@@ -25,14 +25,14 @@ function getRandomIntInRange(min, max) {
         id: 'space', set: ' ' 
       },
       {
-          od:'numbers', set:'0123456789'
+          id:'numbers', set:'0123456789'
       }
       ];
    
     const minLength = 10;
     const maxLength = 20;
 
-    //zmienan dla dancyh znakow
+    //zmienna dla dancyh znakow
     let characters = '';
 
       options.forEach(option =>{
@@ -48,14 +48,25 @@ function getRandomIntInRange(min, max) {
 
     const passwordLength = Math.floor(Math.random() * (maxLength - minLength + 1)) + minLength;
     let password = '';
-
+    //tworzenie password
     for (let i = 0; i < passwordLength; i++) {
             const randomIndex = Math.floor(Math.random() * characters.length);
-            password += characters[randomIndex];
+            const char = characters[randomIndex];
+            if(document.getElementById('duplicates').checked){
+              if(!password.includes(char)){
+                password += char;
+              }else{
+                i--;  //jesli znak instieje 
+              }
+              
+            }else{
+              password +=char  //bez checboxa duplikatow 
+            }
+           
 
     }
 
-    document.getElementById('password]').textContent = `${password}`;
+    document.getElementById('password]').textContent = password;
 }
 
 
