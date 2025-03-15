@@ -69,5 +69,19 @@ function getRandomIntInRange(min, max) {
     document.getElementById('password]').textContent = password;
 }
 
-
+function copy(){
+ const password = document.getElementById('password');
+ if(!password){
+   console.error('Nie ma elemetnu password');
+   return
+ }
+ const passwordText = password.textContent || password.value;
+  navigator.clipboard.writeText(passwordText)
+  .then(()=>{
+    console.log('Copy succesfully');
+  })
+  .catch(e =>{
+    console.error('Wywrotka podczas kopiowania ')
+  })
+}
 console.log(generatePassword());
