@@ -136,3 +136,24 @@ iframe{
     background: #434c50;
     color: bisque;
 }
+.filter-input{
+    position: absolute;
+    left: 88%;
+    transform: translateX(-100%);
+}
+.testTable{
+    position: relative;
+}
+.filter-input-label{
+    position: absolute;
+    left: 89%;
+   
+    padding: 8px 16px;
+    border-radius: 5px;
+    border: none;
+    background: #222425;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+   
+}

@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/style.css">
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href="css/fontello.css" rel="stylesheet" type="text/css" />
+    <script src="https://kit.fontawesome.com/236e28bd84.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <title>TableTest</title>
 </head>
 <body>
@@ -12,14 +17,16 @@
     <label for="file" class="customFilek">Choose file</label>
     <input type="file" id="file" class="file-input">
     <span id="fileName" class="fileName"></span>
+    <label for="filterInput" class="filter-input-label">Filter Value</label>
+    <input type="text" id="filterInput" class="filter-input">
     <table id="table1">
         <thead>
             <tr>
-                <th onclick="sortTable(0)">Konfiguracja</th>
-                <th onclick="sortTable(1)">Wspolne</th>
-                <th onclick="sortTable(2)">Dev</th>
-                <th onclick="sortTable(3)">Test</th>
-                <th onclick="sortTable(4)">Prod</th>
+                <th onclick="sortTable(0)">Konfiguracja <i class="fa-solid fa-arrow-up"></i></th>
+                <th onclick="sortTable(1)">Wspolne <i class="fa-solid fa-arrow-up"></i></th>
+                <th onclick="sortTable(2)">Dev <i class="fa-solid fa-arrow-up"></i></th>
+                <th onclick="sortTable(3)">Test <i class="fa-solid fa-arrow-up"></i></th>
+                <th onclick="sortTable(4)">Prod <i class="fa-solid fa-arrow-up"></i></th>
              </tr>
         </thead>
         <tbody>

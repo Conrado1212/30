@@ -354,4 +354,16 @@ const xd = document.getElementById('file');
 
        
         
-    
+    //filterek
+
+    document.getElementById("filterInput").addEventListener("keyup", function() {
+        const filterValue = this.value.toLowerCase();
+        const table = document.getElementById("table1");
+        const rows = Array.from(table.rows).slice(1,-1); 
+        
+        rows.forEach(row => {
+          const cells = row.querySelectorAll("td");
+          const rowText = Array.from(cells).map(cell => cell.textContent.toLowerCase()).join(" ");
+          row.style.display = rowText.includes(filterValue) ? "" : "none";
+        });
+      });
