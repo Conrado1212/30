@@ -316,5 +316,42 @@ const xd = document.getElementById('file');
 
 
 
+        //funckja sortuja p[rzekaznie id kolumny przykladowo 0 -> pierwsza kolumna
+        function sortTable(columnIndex) {
+            //pobranie tabeli
+            const table = document.getElementById("table1");
+            console.log(table);
+            // pobranie wierszy
+            const rows = Array.from(table.rows).slice(1,-1); 
+            console.log(rows);
+            //czy numer
+           const isNumeric = !isNaN(rows[0].cells[columnIndex].innerText.trim());
+           console.log(isNumeric);
 
-      
+           rows.sort((a,b)=>{
+               const aT = a.cells[columnIndex];
+               //console.log(aT);
+               const bT = b.cells[columnIndex];
+              // console.log(bT);
+
+              const aTT = aT.querySelector("input") ?  aT.querySelector("input").value.trim() : aT.innerText.trim();
+
+
+              const bTT = bT.querySelector("input") ?  bT.querySelector("input").value.trim() : bT.innerText.trim();
+
+               return isNumeric ? parseFloat(aTT) - parseFloat(bTT)  : aTT.localeCompare(bTT);
+           });
+           rows.forEach(row =>{
+            console.log('first', table.tBodies[0].firstChild);
+            console.log('Wiersze dddd', row);
+            //insert przed przucisk 
+            table.tBodies[0].insertBefore(row, table.tBodies[0].firstChild);
+              });
+           console.log(rows); 
+          }
+         
+         
+
+       
+        
+    
