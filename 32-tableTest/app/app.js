@@ -359,8 +359,10 @@ const xd = document.getElementById('file');
     document.getElementById("filterInput").addEventListener("keyup", function() {
         const filterValue = this.value.toLowerCase();
         const table = document.getElementById("table1");
+        console.log(table);
         const rows = Array.from(table.rows).slice(1,-1); 
-        
+        console.log(rows);
+
         rows.forEach(row => {
           const cells = row.querySelectorAll("td");
           const rowText = Array.from(cells).map(cell => cell.textContent.toLowerCase()).join(" ");
