@@ -364,8 +364,15 @@ const xd = document.getElementById('file');
         console.log(rows);
 
         rows.forEach(row => {
+            //pobranie wszystkich td z danego wiersza 
           const cells = row.querySelectorAll("td");
-          const rowText = Array.from(cells).map(cell => cell.textContent.toLowerCase()).join(" ");
+
+          const rowText = Array.from(cells).map(cell => {
+              const input = cell.querySelector("input");
+              return input ? input.value.toLowerCase() : cell.textContent.toLowerCase()
+            }).join(" ");
+          console.log('test', rowText);
+          //sprawdzamy cyz dany td w rowie ma tekst jesli tak to display " " jelsi nie top o row dispaly none 
           row.style.display = rowText.includes(filterValue) ? "" : "none";
         });
       });
