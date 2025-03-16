@@ -11,7 +11,8 @@ function getRandomIntInRange(min, max) {
 
 
 
-  function generatePassword() {
+  function generatePassword(event) {
+    event.preventDefault();
       const options =[{
           id: 'lowerCase', set: 'abcdefghijklmnopqrstuvwxyz' 
       },
