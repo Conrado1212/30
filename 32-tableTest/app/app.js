@@ -123,6 +123,39 @@ function addData(){
 //     });
  }
 
+/*
+function addDFata2(){
+    const table1r = document.querySelectorAll('#table1 tr');
+    const table2r = document.querySelectorAll('#table2 tr');
+
+    //szukanie inputow 
+
+    table1r.forEach((row, index) =>{
+        //lecimy po wszytkich trkach 
+        const inputs1 = row.querySelectorAll('input');
+        //indekx trki 
+        const inputs2 = table2r[index]?.querySelectorAll('input');
+        
+        //po wsyzskitch inputach 
+        inputs1.forEach((input1, input1index) =>{
+            const input2 = inputs2?.[input1index]
+
+            input1.addEventListener('input', ()=>{
+                if(input2){
+                    input2.value = input1.value;
+                }
+            });
+            if(input2){
+                input2.addEventListener('input', ()=>{
+                    input1.value = input2.value;
+                }) 
+            }
+
+        })
+
+    });
+}
+/*
 
 
  if(!document.getElementById('overlay')){
