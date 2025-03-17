@@ -65,6 +65,8 @@ function addData(){
 
     //pobranie wszystkich td z pierwszej tabeli 
     const inputs2test = document.getElementById('table1').getElementsByTagName('td');
+
+   
     
     //pobranie wszystkich td z drugiej tabeli 
     const inputs3test = document.getElementById('table2').getElementsByTagName('td');
@@ -123,6 +125,29 @@ function addData(){
 //     });
  }
 
+
+
+ function addData3(){
+    let input = document.querySelectorAll('#table1 tr input');
+    let input2 = document.querySelectorAll('#table1 tr input');
+
+    input.forEach((inp, index) => {
+        let inp2  = input2?.[index];
+
+        inp.addEventListener('input', ()=>{
+            if(inp2){
+                inp2.value = inp.value;
+            }
+        })
+        if(inp2){
+            inp2.addEventListener('inpu',()=>{
+                inp.value = inp2.value;
+            });
+           
+        }
+    });
+ }
+
 /*
 function addDFata2(){
     const table1r = document.querySelectorAll('#table1 tr');
@@ -155,7 +180,7 @@ function addDFata2(){
 
     });
 }
-/*
+*/
 
 
  if(!document.getElementById('overlay')){
