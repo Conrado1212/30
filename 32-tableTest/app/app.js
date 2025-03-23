@@ -443,6 +443,7 @@ const xd = document.getElementById('file');
           const cells = row.querySelectorAll("td");
 
           const rowText = Array.from(cells).map(cell => {
+              //pobranie inputow
               const input = cell.querySelector("input");
               //w zaleznosci czy value czy tekst 
               return input ? input.value.toLowerCase() : cell.textContent.toLowerCase()
