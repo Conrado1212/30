@@ -12,11 +12,12 @@ function add(){
     //pobranie pierwszego wiersza tablicy
     const fRow = t1.rows[0];
 
-    //sprawdzenien dlugosci tablicy 
+    //sprawdzenien dlugosci komorek w wierszutablicy 
     const cellCount = fRow.cells.length;
 
     //tworzenie nowego wiersza w tabeli  poprze zparametr id tabeli 
     const createRow = (tableId) =>{
+        console.log(tableId, 'teableID');
         //stworzneie nowego wiersza 
         const nr = document.createElement('tr');
         //for po wszystkich wiersach 
@@ -148,6 +149,21 @@ function addData(){
     });
  }
 
+
+
+//  document.getElementById('table1').addEventListener('input', (event) => {
+//     const target = event.target;
+
+//     if (target.tagName === 'INPUT') {
+//         // Znajdź odpowiadający element docelowy
+//         const rowIndex = Array.from(target.closest('tr').parentNode.children).indexOf(target.closest('tr'));
+//         const table2Input = document.querySelector(`#table2 tr:nth-child(${rowIndex + 1}) input`);
+
+//         if (table2Input) {
+//             table2Input.value = target.value;
+//         }
+//     }
+// });
 /*
 function addDFata2(){
     const table1r = document.querySelectorAll('#table1 tr');
@@ -418,6 +434,7 @@ const xd = document.getElementById('file');
         const filterValue = this.value.toLowerCase();
         const table = document.getElementById("table1");
         console.log(table);
+        //nie pobiermay pierwszej kolumny i ostaniej bo button
         const rows = Array.from(table.rows).slice(1,-1); 
         console.log(rows);
 
@@ -427,6 +444,7 @@ const xd = document.getElementById('file');
 
           const rowText = Array.from(cells).map(cell => {
               const input = cell.querySelector("input");
+              //w zaleznosci czy value czy tekst 
               return input ? input.value.toLowerCase() : cell.textContent.toLowerCase()
             }).join(" ");
           console.log('test', rowText);
@@ -434,3 +452,6 @@ const xd = document.getElementById('file');
           row.style.display = rowText.includes(filterValue) ? "" : "none";
         });
       });
+
+
+
