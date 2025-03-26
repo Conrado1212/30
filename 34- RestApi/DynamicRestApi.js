@@ -42,20 +42,20 @@ app.post('/new', (req,res)=>{
     dynamic[endpoint].push(newID);
 
 
-
-    const checkDynamic = Object.entries(dynamic);
-    if(checkDynamic.length>0){
-        checkDynamic.forEach(([endpoint,data]) => {
+    //dynamiczne logowanie endpointow 
+     if(Object.keys(dynamic).length >0){
+        Object.entries(dynamic).forEach(([endpoint, data])=>{
             console.log(`Endpoint :${endpoint}, data:`, data )
-    })
-    }else{
-            console.log('Empty dynamic');
-    }
-    
+        });
+     }else{
+        console.log('Empty dynamic');
+     }
     //zwrotka co stworzone 
     res.json({ 
         endpointName: `${endpoint}`,
-        message: `Endpoint post /${endpoint}, get /${endpoint} , get /${endpoint}/:id został utworzony.` });
+        message: `Endpoint post /${endpoint}, get /${endpoint} , get /${endpoint}/:id został utworzony.`,
+    data: dynamic[endpoint]
+ });
 });
 
 //zwrotka wszystkiego z danego endpointu
@@ -140,7 +140,20 @@ app.delete(`/${endpoint}/:id`,(req,res)=>{
        return res.json({message: `Item withid :${id} in endpoint ${endpoint} has been updated`, updatedItem: dynamic[endpoint][dynamicEnd]});
 
     });
-
+//wszystkie endpointy
+app.get(`/dynamic`,(req,res)=>{
+     //dynamiczne logowanie endpointow 
+     if(Object.keys(dynamic).length >0){
+      const allEndpoints =   Object.entries(dynamic).map(([endpoint, data]) =>({
+          endpoint,
+          data  
+        }))
+        res.json({message: "Avaliable dynamic endpoints:",
+         endpoints: allEndpoints})
+     }else{
+        res.status(404).json({error: "Dynamic is empty"})
+     }
+})
 app.listen(port, ()=>{
     console.log(`App working at http://localhost:${port}`);
 })
