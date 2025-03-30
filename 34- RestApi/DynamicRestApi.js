@@ -27,7 +27,7 @@ app.use((req,res, next)=>{
 const dynamic ={};
 
 //endpointy, tablica przechowującą nazwy endpointów.
-const endpoints =[];
+//const endpoints =[];
 //id
 let id = 0;
 //tworzenie nowego endpointu 
@@ -36,10 +36,14 @@ app.post('/new', (req,res)=>{
     const { endpoint, data } = req.body;
     //dodanie nowego endpointu 
 
-    (!endpoint || !data) ? res.status(400).json({ error: "Missing 'endpoint' or 'data' in request body." }) : false;
+    if(!endpoint || !data){
+       return res.status(400).json({ error: "Missing 'endpoint' or 'data' in request body." })
+    }
 
-    !dynamic[endpoint] ? (dynamic[endpoint] = [], endpoints.push(endpoint)) : false;
-
+    if(!dynamic[endpoint]){
+        dynamic[endpoint] = [];
+       // endpoints.push(endpoint);
+    }
 
     //id ++
     id++;
@@ -66,6 +70,7 @@ app.post('/new', (req,res)=>{
         message: `Endpoint post /${endpoint}, get /${endpoint} , get /${endpoint}/:id został utworzony.`,
     data: dynamic[endpoint]
  });
+ console.log('Endpoints name', endpoints);
 });
 //wszystkie endpointy
 app.get(`/dynamic`,(req,res)=>{
@@ -182,6 +187,7 @@ app.delete(`/:endpoint/:id`,(req,res)=>{
 
     });
 
+    
 app.listen(port, ()=>{
     console.log(`App working at http://localhost:${port}`);
 })
