@@ -58,8 +58,26 @@ app.post('/new', (req,res)=>{
  });
 });
 
+//post danych do danego endpointu 
+app.post('/:endpoint',(req,res)=>{
+    const {endpoint} = req.params;
+    if(!dynamic[endpoint]){
+     return   res.status(404).json({ error: `Endpoint: ${endpoint} not exist`})
+    }
+       id++;
+       const newData = {
+           id: id,
+           ...req.body
+       };
+       dynamic[endpoint].push(newData);
+        console.log(`Request Method: ${req.method} ${req.url}`);
+        res.status(201).json(newData);
+   
+   
+});
+
 //zwrotka wszystkiego z danego endpointu
-app.get(`/${endpoint}`,(req,res)=>{
+app.get(`/:endpoint`,(req,res)=>{
     const {endpoint} = req.params;
     if(dynamic[endpoint]){
         res.json(dynamic[endpoint]);
@@ -72,7 +90,7 @@ app.get(`/${endpoint}`,(req,res)=>{
 
 
 //zwrotka po id z danego endpointu 
-app.get(`/${endpoint}/:id`, (req,res)=>{
+app.get(`/:endpoint/:id`, (req,res)=>{
     const {endpoint} = req.params;
     if(dynamic[endpoint]){
         const data = dynamic[endpoint].find(d=>d.id === parseInt(req.params.id));
@@ -86,7 +104,7 @@ app.get(`/${endpoint}/:id`, (req,res)=>{
     }
 });
 
-app.delete(`/${endpoint}/:id`,(req,res)=>{
+app.delete(`/:endpoint/:id`,(req,res)=>{
     const {endpoint} = req.params;
     if(dynamic[endpoint]){
         //parsowanie id na liczbe
@@ -111,7 +129,7 @@ app.delete(`/${endpoint}/:id`,(req,res)=>{
 });
 
 
-    app.put(`/${endpoint}/:id`, (req,res)=>{
+    app.put(`/:endpoint//:id`, (req,res)=>{
         const {endpoint} = req.params;
         //parsowanie
         const parsedID = parseInt(id);
@@ -151,7 +169,7 @@ app.get(`/dynamic`,(req,res)=>{
         res.json({message: "Avaliable dynamic endpoints:",
          endpoints: allEndpoints})
      }else{
-        res.status(404).json({error: "Dynamic is empty"})
+        res.status(404).json({error: "Dynamic is empty"});
      }
 })
 app.listen(port, ()=>{
