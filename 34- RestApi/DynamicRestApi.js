@@ -3,6 +3,16 @@ const port = 3000;
 const app = express();
 
 app.use(express.json());
+
+app.use((req,res, next)=>{
+    console.log('Request Headers:', req.headers);
+    const resSend = res.send;
+    res.send = function(body){
+        console.log('Res Body:', body);
+        resSend.call(this, body);
+    }
+    next();
+});
 //obiekt, w którym przechowuje dane dynamicznie powiązane z nazwą endpointu
 // {
 //     "users": [
@@ -57,7 +67,20 @@ app.post('/new', (req,res)=>{
     data: dynamic[endpoint]
  });
 });
-
+//wszystkie endpointy
+app.get(`/dynamic`,(req,res)=>{
+    //dynamiczne logowanie endpointow 
+    if(Object.keys(dynamic).length >0){
+     const allEndpoints =   Object.entries(dynamic).map(([endpoint, data]) =>({
+         endpoint,
+         data  
+       }))
+       res.json({message: "Avaliable dynamic endpoints:",
+        endpoints: allEndpoints})
+    }else{
+       res.status(404).json({error: "Dynamic is empty"});
+    }
+});
 //post danych do danego endpointu 
 app.post('/:endpoint',(req,res)=>{
     const {endpoint} = req.params;
@@ -158,20 +181,7 @@ app.delete(`/:endpoint/:id`,(req,res)=>{
        return res.json({message: `Item withid :${id} in endpoint ${endpoint} has been updated`, updatedItem: dynamic[endpoint][dynamicEnd]});
 
     });
-//wszystkie endpointy
-app.get(`/dynamic`,(req,res)=>{
-     //dynamiczne logowanie endpointow 
-     if(Object.keys(dynamic).length >0){
-      const allEndpoints =   Object.entries(dynamic).map(([endpoint, data]) =>({
-          endpoint,
-          data  
-        }))
-        res.json({message: "Avaliable dynamic endpoints:",
-         endpoints: allEndpoints})
-     }else{
-        res.status(404).json({error: "Dynamic is empty"});
-     }
-})
+
 app.listen(port, ()=>{
     console.log(`App working at http://localhost:${port}`);
 })
