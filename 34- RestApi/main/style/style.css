@@ -1,0 +1,48 @@
+:root{
+/*Colors*/
+--hue-color:206;
+--black-color: ;
+--body-color: hsl(var(--hue-color),4%,6%);;
+
+/*fonts*/
+
+
+
+
+ /*font-weight*/
+
+
+
+  /*letter spaciong*/
+
+
+
+   /*z-index*/
+    --z-index: 1000;
+
+
+    /*tansition*/
+    --tran-03:  0.3s ease all;
+}
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    box-sizing: border-box;
+   font-family: var(--body-font);
+   font-size: var(--body-font-size);
+   line-height: var(--body-line-height);
+  
+}
+#header{
+    width: 100%;
+    display: flex;
+    background: var(--black-color);
+    margin: auto;
+    align-items: center;
+}
