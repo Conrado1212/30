@@ -22,7 +22,8 @@
 
 
     /*tansition*/
-    --tran-03:  0.3s ease all;
+    --tran-03-all:  0.3s ease all;
+    --tran-03:  0.3s ease ;
 }
 *{
     box-sizing: border-box;
@@ -45,4 +46,27 @@ body{
     background: var(--black-color);
     margin: auto;
     align-items: center;
+}
+.bars{
+    position: relative;
+    height: 50px;
+    width: 50px;
+    margin: 10px;
+    text-align: center;
+}
+.bars span{
+    height: 5px;
+    background: #6f86ff;
+    width: 100%;
+    border-radius: 25%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    transition: var(--tran-03);
+    top: 50%;
+}
+.bars span:nth-child(1){
+    top: 25%;
+}
+.bars span:nth-child(3){
+    top: 75%;
 }
