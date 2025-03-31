@@ -1,9 +1,9 @@
 const express = require("express");
 const port = 3000;
 const app = express();
-
+const path = require('path');
 app.use(express.json());
-
+app.use(express.static(path.join(__dirname, 'public')));
 app.use((req,res, next)=>{
     console.log('Request Headers:', req.headers);
     const resSend = res.send;
@@ -29,7 +29,7 @@ const dynamic ={};
 //endpointy, tablica przechowującą nazwy endpointów.
 //const endpoints =[];
 //id
-let id = 0;
+let id = 1;
 //tworzenie nowego endpointu 
 app.post('/new', (req,res)=>{
     
@@ -46,7 +46,7 @@ app.post('/new', (req,res)=>{
     }
 
     //id ++
-    id++;
+    //id++;
 
     //dodanie id oraz danych do stworzonego endpointu
     const newID = {
@@ -70,7 +70,23 @@ app.post('/new', (req,res)=>{
         message: `Endpoint post /${endpoint}, get /${endpoint} , get /${endpoint}/:id został utworzony.`,
     data: dynamic[endpoint]
  });
- console.log('Endpoints name', endpoints);
+ //console.log('Endpoints name', endpoints);
+ console.log(`${endpoint}`, dynamic[endpoint]);
+
+//modyfikacja danego endpointu
+ Object.entries(dynamic).forEach(([endpoint, data])=>{
+     if(endpoint === 'test'){
+        console.log(`Before update - Endpoint :${endpoint}, data:`, data )
+
+        dynamic[endpoint] = data.map(item =>{
+            return{
+                ...item,
+                updated: true //zmiana struktury
+            };
+        });
+        console.log(`After update  - Endpoint :${endpoint}, data:`, data )
+     }
+});
 });
 //wszystkie endpointy
 app.get(`/dynamic`,(req,res)=>{
@@ -85,6 +101,7 @@ app.get(`/dynamic`,(req,res)=>{
     }else{
        res.status(404).json({error: "Dynamic is empty"});
     }
+    
 });
 //post danych do danego endpointu 
 app.post('/:endpoint',(req,res)=>{
