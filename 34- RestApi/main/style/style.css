@@ -68,11 +68,14 @@ body{
     font-size: 1.75rem;
     font-weight: 700;
 }
-.bars{
-    position: relative;
-    height: 50px;
-    width: 50px;
-    margin: 10px;
+#sidebar .bars{
+    position: absolute;
+    height: 40px;
+    width: 30px;
+    left: 90%;
+    text-align: center;
+    top: 12px;
+    transform: translateX(-50%);
     text-align: center;
 }
 .bars span{
