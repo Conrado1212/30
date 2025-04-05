@@ -1,5 +1,5 @@
 const searchMenu = document.querySelector('#sidebar ul li input');
-
+const bars = document.querySelector('.bars');
 const iconSearch = document.querySelector('#sidebar ul li .fa-magnifying-glass');
 
 
@@ -9,4 +9,9 @@ searchMenu.addEventListener('focus', ()=>{
 
 searchMenu.addEventListener('blur', ()=>{
     iconSearch.style.color = 'var(--white-color)';
-})
+});
+
+
+bars.addEventListener('click', ()=>{
+    bars.classList.toggle('active');
+});

@@ -24,6 +24,8 @@
     /*tansition*/
     --tran-03-all:  0.3s ease all;
     --tran-03:  0.3s ease ;
+    --tran-015:  0.15s ease;
+
 }
 *{
     box-sizing: border-box;
@@ -103,14 +105,14 @@ line-height: 50px;
     border-radius: 6px;
     line-height: 35px;;
     text-align: center;
-    transition: .1s;
+    transition: 0.1s;
     opacity: 0;
     pointer-events: none;
 }
 #sidebar ul li:hover .tooltip{
     top: 50%;
     transition: .5s ease;
-
+    opacity: 1;
 }
 #sidebar ul li input{
     position: absolute;
@@ -173,7 +175,7 @@ border-radius: 12px;
     border-radius: 25%;
     position: absolute;
     transform: translate(-50%, -50%);
-    transition: var(--tran-03);
+    transition: var(--tran-015);
     top: 50%;
 }
 .bars span:nth-child(1){
@@ -197,3 +199,14 @@ border-radius: 12px;
      color: var(--body-color);
      margin: 10px;
  }
+ .bars.active span:nth-child(1){
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+.bars.active span:nth-child(2){
+   opacity: 0;
+}
+.bars.active span:nth-child(3){
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
