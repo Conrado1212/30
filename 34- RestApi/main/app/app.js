@@ -1,6 +1,7 @@
 const searchMenu = document.querySelector('#sidebar ul li input');
 const bars = document.querySelector('.bars');
 const iconSearch = document.querySelector('#sidebar ul li .fa-magnifying-glass');
+const sidebar = document.getElementById('sidebar');
 
 
 searchMenu.addEventListener('focus', ()=>{
@@ -14,4 +15,5 @@ searchMenu.addEventListener('blur', ()=>{
 
 bars.addEventListener('click', ()=>{
     bars.classList.toggle('active');
+    sidebar.classList.toggle('active');
 });
