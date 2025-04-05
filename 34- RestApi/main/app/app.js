@@ -1,0 +1,12 @@
+const searchMenu = document.querySelector('#sidebar ul li input');
+
+const iconSearch = document.querySelector('#sidebar ul li .fa-magnifying-glass');
+
+
+searchMenu.addEventListener('focus', ()=>{
+    iconSearch.style.cssText = 'color: rgb(0,255,255);  transition: color .1s;';
+});
+
+searchMenu.addEventListener('blur', ()=>{
+    iconSearch.style.color = 'var(--white-color)';
+})

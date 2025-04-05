@@ -105,6 +105,21 @@ line-height: 50px;
     color: var(--white-color);
     font-size: 1rem;
 }
+#sidebar ul li input:focus{
+    color: rgb(0, 255, 255);
+    outline-color:rgb(0, 255, 255);
+    box-shadow: -3px -3px 15px rgb(0, 255, 255);
+    transition: .1s;
+    transition-property: box-shadow;
+}
+#sidebar ul li input:focus::placeholder{
+    color: rgb(0, 255, 255);
+    transition: color.1s;
+}
+#sidebar ul li input:focus + .fa-magnifying-glass {
+    color: rgb(0, 255, 255);
+    transition: color .1s;
+}
 #sidebar ul li .fa-magnifying-glass{
     position: absolute;
     color: var(--white-color);
