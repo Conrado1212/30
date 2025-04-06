@@ -17,3 +17,6 @@ bars.addEventListener('click', ()=>{
     bars.classList.toggle('active');
     sidebar.classList.toggle('active');
 });
+iconSearch.addEventListener('click', ()=>{
+    sidebar.classList.toggle('active');
+});
