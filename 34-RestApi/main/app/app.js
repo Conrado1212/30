@@ -9,18 +9,29 @@ searchMenu.addEventListener('focus', ()=>{
 });
 
 searchMenu.addEventListener('blur', (e)=>{
-    console.log(e.target);
-    if(!iconSearch.matches(':hover')&& !iconSearch.matches(':hover')){
-        console.log(e.target);
+    console.log('BLur is active:', e.target);
+    if(!searchMenu.matches(':hover')&& !iconSearch.matches(':hover')){
+        console.log('hovver not detected');
         iconSearch.style.color = 'var(--white-color)';
     }
 });
 
+iconSearch.addEventListener('mouseenter', (e)=>{
+    console.log('Hover added:', e.target);
+    iconSearch.style.cssText = 'color: rgb(0,255,255);';
+});
+iconSearch.addEventListener('mouseleave', (e)=>{
+    console.log('Hover leave:', e.target);
+    iconSearch.style.cssText = 'color: var(--white-color);';
+});
+
 bars.addEventListener('click', ()=>{
+    console.log('Bars clicked');
     bars.classList.toggle('active');
     sidebar.classList.toggle('active');
 });
 iconSearch.addEventListener('click', ()=>{
+    console.log('Icon search clicked');
     sidebar.classList.toggle('active');
     bars.classList.toggle('active');
 });
