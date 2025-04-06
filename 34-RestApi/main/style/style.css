@@ -97,6 +97,14 @@ body{
 #sidebar.active .bars{
     left: 90%;
 }
+#sidebar .link_name{
+    opacity: 0;
+    pointer-events: none;
+}
+#sidebar.active .link_name{
+    opacity: 1;
+    pointer-events: auto;
+}
 #sidebar ul{
     margin-top: 20px;
 }
@@ -111,9 +119,9 @@ line-height: 50px;
 #sidebar ul li .tooltip{
     position: absolute;
     height: 35px;
-    left: 122px;
+    left: 132px;
     top: 0;
-    transform:  translateY(-50%);
+    transform:  translate(-50%, -50%);
     width: 122px;
     background: #fff;
     box-shadow: 0 5px 10px rgba(0, 0, 0 , 0.2);
@@ -123,6 +131,10 @@ line-height: 50px;
     transition: 0.1s;
     opacity: 0;
     pointer-events: none;
+    display: block;
+}
+#sidebar.active ul li .tooltip{
+    display: none;
 }
 #sidebar ul li:hover .tooltip{
     top: 50%;
@@ -139,10 +151,11 @@ line-height: 50px;
     outline: none;
     border: none;
     background: var(--search-color);
-    padding-left: 45px;
+    padding-left: 50px;
     color: var(--white-color);
     font-size: 1rem;
 }
+
 #sidebar ul li input:focus{
     color: rgb(0, 255, 255);
     outline-color:rgb(0, 255, 255);
@@ -168,6 +181,8 @@ line-height: 50px;
 }
 #sidebar ul li .fa-magnifying-glass:hover{
     cursor: pointer;
+    color: rgb(0, 255, 255);
+    background: var(--white-color);
 }
 #sidebar ul li a{
 text-decoration: none;
@@ -176,6 +191,7 @@ display: flex;
 align-items: center;
 transition: all .4s ease;
 border-radius: 12px;
+white-space: nowrap;
 }
 #sidebar ul li a:hover{
     color: var(--black-color);

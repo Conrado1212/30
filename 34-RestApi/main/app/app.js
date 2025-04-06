@@ -8,10 +8,13 @@ searchMenu.addEventListener('focus', ()=>{
     iconSearch.style.cssText = 'color: rgb(0,255,255);  transition: color .1s;';
 });
 
-searchMenu.addEventListener('blur', ()=>{
-    iconSearch.style.color = 'var(--white-color)';
+searchMenu.addEventListener('blur', (e)=>{
+    console.log(e.target);
+    if(!iconSearch.matches(':hover')&& !iconSearch.matches(':hover')){
+        console.log(e.target);
+        iconSearch.style.color = 'var(--white-color)';
+    }
 });
-
 
 bars.addEventListener('click', ()=>{
     bars.classList.toggle('active');
@@ -19,4 +22,5 @@ bars.addEventListener('click', ()=>{
 });
 iconSearch.addEventListener('click', ()=>{
     sidebar.classList.toggle('active');
+    bars.classList.toggle('active');
 });
