@@ -9,27 +9,22 @@
 --body-color: hsl(var(--hue-color),4%,6%);
 --search-color: hsl(var(--hue-color),4%,10%);
 --white-color:#fff;
+--text-color: hsl(var(--hue-color),4%,75%);
+--text-gradient: linear-gradient(hsl(var(--hue-color),4%,24%),hsl(var(--hue-color),4%,8%));
 /*fonts*/
 --body-font:'digital-clock-font';
 --font-size: 1.25rem;
 --line-height: 1.5;
  /*font-weight*/
-
-
-
+ --font-m: 700;
   /*letter spacing*/
-
-
-
+  --letter-1:1px;
    /*z-index*/
     --z-index: 1000;
-
-
     /*tansition*/
     --tran-03-all:  0.3s ease all;
     --tran-03:  0.3s ease ;
     --tran-015:  0.15s ease;
-
 }
 *{
     box-sizing: border-box;
@@ -77,11 +72,20 @@ body{
 .logo_content .logo i{
     font-size: 2rem;
     text-shadow: 0px 5px 10px rgb(189, 190, 201);
+    text-shadow: 1px 4px 8px rgb(0, 255, 255);
 }
 .logo_content .logo .logo_name{
     font-size: 1.75rem;
     font-weight: 700;
     font-family: 'digital-clock-font';
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: var(--font-m);
+    letter-spacing: var(--letter-1);
+    background: var(--text-gradient);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
 }
 #sidebar .bars{
     position: absolute;
@@ -217,6 +221,7 @@ white-space: nowrap;
 }
 .bars span:nth-child(1){
     top: 25%;
+   
 }
 .bars span:nth-child(3){
     top: 75%;
