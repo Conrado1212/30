@@ -64,6 +64,7 @@ body{
     gap: 10px;
     opacity: 0;
     pointer-events: none;
+    transition: var(--tran-03-all);
 }
 #sidebar.active .logo_content .logo{
     opacity: 1;
@@ -104,6 +105,7 @@ body{
 #sidebar .link_name{
     opacity: 0;
     pointer-events: none;
+    transition: var(--tran-03-all);
 }
 #sidebar.active .link_name{
     opacity: 1;
@@ -230,11 +232,17 @@ white-space: nowrap;
     opacity: 0;
  }
  .main{
-     position: absolute;
-     height: 100%;
-     width: calc(100% - 240px);
-     left: 240px;
+    position: absolute;
+    height: 100%;
+   left:78px;
+   width: calc(100% - 78px);
+   transition: var(--tran-03-all);
+}
+ #sidebar.active ~ .main{
+    width: calc(100% - 240px);
+    left: 240px;
  }
+
  .main .text{
      font-size: 2rem;
      font-weight: 800;
@@ -244,14 +252,16 @@ white-space: nowrap;
  .bars.active span:nth-child(1){
     top: 50%;
     transform: translate(-50%, -50%) rotate(45deg);
-    color: rgb(0, 255, 255);
-}
+    background: rgb(0, 255, 255);
+    box-shadow: -3px -3px 15px rgb(0, 255, 255);
+ }
 .bars.active span:nth-child(2){
    opacity: 0;
 }
 .bars.active span:nth-child(3){
     top: 50%;
-    color: rgb(0, 255, 255);
+    background: rgb(0, 255, 255);
     transform: translate(-50%, -50%) rotate(-45deg);
+    box-shadow: -3px -3px 15px rgb(0, 255, 255);
     
 }

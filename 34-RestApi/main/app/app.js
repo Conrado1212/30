@@ -28,6 +28,7 @@ iconSearch.addEventListener('mouseleave', (e)=>{
 bars.addEventListener('click', ()=>{
     console.log('Bars clicked');
     bars.classList.toggle('active');
+   // bars.children[0].style.color = "rgb(0, 255, 255)"
     sidebar.classList.toggle('active');
 });
 iconSearch.addEventListener('click', ()=>{
