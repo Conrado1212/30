@@ -41,12 +41,18 @@ body{
    line-height: var(--line-height);
   
 }
+#header{
+    height: 50px;
+    width: 100%;
+    background: var(--black-color);
+    position: fixed;
+}
 #sidebar{
     height: 100%;
     width: 78px;
     background: var(--black-color);
     position:fixed;
-    top: 0;
+    top: 50px;
     left: 0;
     padding: 7px 14px;
     transition: .3s ease;
@@ -55,7 +61,7 @@ body{
     width: 240px;
     transition: .3s ease;
 }
-#sidebar .logo_content .logo{
+#header .logo_content .logo{
     color: var(--white-color);
     display: flex;
     align-items: center;
@@ -88,11 +94,11 @@ body{
     -webkit-background-clip: text;
     background-clip: text;
 }
-#sidebar .bars{
+#header .bars{
     position: absolute;
     height: 40px;
     width: 30px;
-    left: 50%;
+    left: 10px;
     text-align: center;
     top: 12px;
     transform: translateX(-50%);
