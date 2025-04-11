@@ -49,6 +49,8 @@ body{
     position: fixed;
     transition:  var(--tran-05);
     opacity: 1;
+    padding: 7px 14px;
+    outline: 1px solid red;
 }
 #sidebar{
     height: 100%;
@@ -104,9 +106,10 @@ body{
     left: 10px;
     text-align: center;
     top: 12px;
-    transform: translateX(-50%);
+   /* transform: translateX(-50%); */
     text-align: center;
     cursor: pointer;
+    /* outline: 1px solid blue; */
 }
 #sidebar.active .bars{
     left: 90%;

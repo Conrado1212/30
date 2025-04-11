@@ -62,6 +62,18 @@ window.addEventListener('scroll', () => {
   console.log('Aktualna pozycja scrolla:', currentScrollPos);
 });
 
+const users = [
+    { username: "test1", password: "test1"},
+    { username: "test2", password: "test2"}
+];
 
-
+function singIn(username, password){
+    const user = user.find(user=> user.username === username && user.password === password);
+    if(user){
+        console.log('Login successfully');
+    }else{
+        console.log('login failed');
+    }
+}
+singIn('test1', 'test1');
 
