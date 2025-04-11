@@ -25,6 +25,7 @@
     --tran-03-all:  0.3s ease all;
     --tran-03:  0.3s ease ;
     --tran-015:  0.15s ease;
+    --tran-05:  0.5s  ease-in-out ;
 }
 *{
     box-sizing: border-box;
@@ -46,6 +47,8 @@ body{
     width: 100%;
     background: var(--black-color);
     position: fixed;
+    transition:  var(--tran-05);
+    opacity: 1;
 }
 #sidebar{
     height: 100%;
@@ -241,8 +244,10 @@ white-space: nowrap;
     position: absolute;
     height: 100%;
    left:78px;
+   top: 50px;
    width: calc(100% - 78px);
-   transition: var(--tran-03-all);
+  height: 1600px;
+    transition: var(--tran-03-all);
 }
  #sidebar.active ~ .main{
     width: calc(100% - 240px);

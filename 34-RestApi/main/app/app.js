@@ -4,6 +4,7 @@ const iconSearch = document.querySelector('#sidebar ul li .fa-magnifying-glass')
 const sidebar = document.getElementById('sidebar');
 
 
+
 searchMenu.addEventListener('focus', ()=>{
     iconSearch.style.cssText = 'color: rgb(0,255,255);  transition: color .1s;';
 });
@@ -36,3 +37,31 @@ iconSearch.addEventListener('click', ()=>{
     sidebar.classList.toggle('active');
     bars.classList.toggle('active');
 });
+
+
+
+const header = document.getElementById('header');
+
+
+//zmienna pozycji scrolla
+let prevScrollPos = document.documentElement.scrollTop || window.pageYOffset;
+
+window.addEventListener('scroll', () => {
+    //aktualna pozycja skrolla
+  let currentScrollPos = document.documentElement.scrollTop || window.pageYOffset;
+//check pozycji srcoplla
+  if (prevScrollPos > currentScrollPos) {
+   
+    header.style.opacity = '1';
+  } else {
+   
+    header.style.opacity = '0';
+  }
+  //akutalizacja pozycji scrolla
+  prevScrollPos = currentScrollPos; 
+  console.log('Aktualna pozycja scrolla:', currentScrollPos);
+});
+
+
+
+
