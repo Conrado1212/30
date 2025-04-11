@@ -44,11 +44,11 @@ const header = document.getElementById('header');
 
 
 //zmienna pozycji scrolla
-let prevScrollPos = document.documentElement.scrollTop || window.pageYOffset;
+let prevScrollPos = document.documentElement.scrollTop || window.scrollY;
 
 window.addEventListener('scroll', () => {
     //aktualna pozycja skrolla
-  let currentScrollPos = document.documentElement.scrollTop || window.pageYOffset;
+  let currentScrollPos = document.documentElement.scrollTop || window.scrollY;
 //check pozycji srcoplla
   if (prevScrollPos > currentScrollPos) {
    
