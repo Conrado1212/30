@@ -49,8 +49,8 @@ body{
     position: fixed;
     transition:  var(--tran-05);
     opacity: 1;
-    padding: 7px 14px;
-    outline: 1px solid red;
+    /* padding: 7px 14px; */
+    /* outline: 1px solid red; */
 }
 #sidebar{
     height: 100%;
@@ -77,7 +77,7 @@ body{
     pointer-events: none;
     transition: var(--tran-03-all);
 }
-#sidebar.active .logo_content .logo{
+#header.active .logo_content .logo{
     opacity: 1;
     pointer-events: none;
 }
@@ -103,16 +103,13 @@ body{
     position: absolute;
     height: 40px;
     width: 30px;
-    left: 10px;
+    left: 25px;
     text-align: center;
-    top: 12px;
+    top: 8px;
    /* transform: translateX(-50%); */
     text-align: center;
     cursor: pointer;
     /* outline: 1px solid blue; */
-}
-#sidebar.active .bars{
-    left: 90%;
 }
 #sidebar .link_name{
     opacity: 0;

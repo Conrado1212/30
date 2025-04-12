@@ -68,7 +68,7 @@ const users = [
 ];
 
 function singIn(username, password){
-    const user = user.find(user=> user.username === username && user.password === password);
+    const user = users.find(user=> user.username === username && user.password === password);
     if(user){
         console.log('Login successfully');
     }else{
