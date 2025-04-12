@@ -13,6 +13,7 @@
 --text-gradient: linear-gradient(hsl(var(--hue-color),4%,24%),hsl(var(--hue-color),4%,8%));
 /*fonts*/
 --body-font:'digital-clock-font';
+--body-font-s:'sans-serif';
 --font-size: 1.25rem;
 --line-height: 1.5;
  /*font-weight*/
@@ -49,6 +50,9 @@ body{
     position: fixed;
     transition:  var(--tran-05);
     opacity: 1;
+    display: flex;
+    align-items: center;
+  
     /* padding: 7px 14px; */
     /* outline: 1px solid red; */
 }
@@ -66,6 +70,10 @@ body{
     width: 240px;
     transition: .3s ease;
 }
+#header .logo_content{
+   position: relative;
+   margin-left: 80px;
+}
 #header .logo_content .logo{
     color: var(--white-color);
     display: flex;
@@ -73,14 +81,14 @@ body{
     width: 100%;
     height: 50px;
     gap: 10px;
-    opacity: 0;
+    opacity: 1;
     pointer-events: none;
     transition: var(--tran-03-all);
 }
-#header.active .logo_content .logo{
+/* #header.active .logo_content .logo{
     opacity: 1;
     pointer-events: none;
-}
+} */
 .logo_content .logo i{
     font-size: 2rem;
     text-shadow: 0px 5px 10px rgb(189, 190, 201);
@@ -88,16 +96,16 @@ body{
 }
 .logo_content .logo .logo_name{
     font-size: 1.75rem;
-    font-weight: 700;
-    font-family: 'digital-clock-font';
+    font-weight: 800;
     text-decoration: none;
     color: var(--text-color);
     font-weight: var(--font-m);
     letter-spacing: var(--letter-1);
-    background: var(--text-gradient);
+    font-family: var(--body-font-s);
+    /* background: var(--text-gradient);
     color: transparent;
     -webkit-background-clip: text;
-    background-clip: text;
+    background-clip: text; */
 }
 #header .bars{
     position: absolute;
@@ -105,7 +113,7 @@ body{
     width: 30px;
     left: 25px;
     text-align: center;
-    top: 8px;
+    /* top: 8px; */
    /* transform: translateX(-50%); */
     text-align: center;
     cursor: pointer;
