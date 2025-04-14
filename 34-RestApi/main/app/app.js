@@ -77,3 +77,31 @@ function singIn(username, password){
 }
 singIn('test1', 'test1');
 
+document.addEventListener('DOMContentLoaded', ()=>{
+    //pobieramy wszystki i z sidebara 
+    const menuLinks = document.querySelectorAll('#sidebar li a i');
+    //dla kazdego i dodajemy nasluch
+    menuLinks.forEach(menuLink => {
+        menuLink.addEventListener('click',(e)=>{
+            e.preventDefault();
+            // console.log('clicked', this);
+            //najpier dla kazdego usuniecie klasy aktywnej 
+            menuLinks.forEach(el=>{
+                console.log('before', el);
+                if(el.classList.contains('activeMenu')){
+                    el.classList.remove('activeMenu');
+                }
+                console.log('after', el);
+            });
+            //po kliknieciu dodanie klasy
+            e.target.classList.add('activeMenu');
+        });
+       
+    });
+});
+
+// menuLinks.addEventListener('click', ()=>{
+//     console.log('testadadadad');
+// })
+
+
