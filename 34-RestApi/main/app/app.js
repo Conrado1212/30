@@ -2,7 +2,8 @@ const searchMenu = document.querySelector('#sidebar ul li input');
 const bars = document.querySelector('.bars');
 const iconSearch = document.querySelector('#sidebar ul li .fa-magnifying-glass');
 const sidebar = document.getElementById('sidebar');
-
+ //pobieramy wszystki i z sidebara 
+ const menuLinks = document.querySelectorAll('#sidebar li a i');
 
 
 searchMenu.addEventListener('focus', ()=>{
@@ -31,6 +32,16 @@ bars.addEventListener('click', ()=>{
     bars.classList.toggle('active');
    // bars.children[0].style.color = "rgb(0, 255, 255)"
     sidebar.classList.toggle('active');
+    if(sidebar.classList.contains('active')){
+        menuLinks.forEach(el=>{
+            console.log('before', el);
+            if(el.classList.contains('activeMenu')){
+                el.classList.remove('activeMenu');
+            }
+            console.log('after', el);
+        });
+    }
+   
 });
 iconSearch.addEventListener('click', ()=>{
     console.log('Icon search clicked');
@@ -78,8 +89,6 @@ function singIn(username, password){
 singIn('test1', 'test1');
 
 document.addEventListener('DOMContentLoaded', ()=>{
-    //pobieramy wszystki i z sidebara 
-    const menuLinks = document.querySelectorAll('#sidebar li a i');
     //dla kazdego i dodajemy nasluch
     menuLinks.forEach(menuLink => {
         menuLink.addEventListener('click',(e)=>{
