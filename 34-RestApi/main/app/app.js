@@ -95,15 +95,17 @@ document.addEventListener('DOMContentLoaded', ()=>{
             e.preventDefault();
             // console.log('clicked', this);
             //najpier dla kazdego usuniecie klasy aktywnej 
-            menuLinks.forEach(el=>{
-                console.log('before', el);
-                if(el.classList.contains('activeMenu')){
-                    el.classList.remove('activeMenu');
-                }
-                console.log('after', el);
-            });
-            //po kliknieciu dodanie klasy
+            if(!sidebar.classList.contains('active')){
+                menuLinks.forEach(el=>{
+                    console.log('before', el);
+                    if(el.classList.contains('activeMenu')){
+                        el.classList.remove('activeMenu');
+                    }
+                    console.log('after', el);
+                });
+                 //po kliknieciu dodanie klasy
             e.target.classList.add('activeMenu');
+            }
         });
        
     });
