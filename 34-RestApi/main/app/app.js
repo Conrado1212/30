@@ -1,10 +1,17 @@
+//search menu
 const searchMenu = document.querySelector('#sidebar ul li input');
+//barsy x =
 const bars = document.querySelector('.bars');
+//szukajka 
 const iconSearch = document.querySelector('#sidebar ul li .fa-magnifying-glass');
+//sidebar
 const sidebar = document.getElementById('sidebar');
  //pobieramy wszystki i z sidebara 
  const menuLinks = document.querySelectorAll('#sidebar li a i');
-
+//sciezak url
+ const path = location.pathname;
+ //linki
+const links = document.querySelectorAll('#sidebar li a');
 
 searchMenu.addEventListener('focus', ()=>{
     iconSearch.style.cssText = 'color: rgb(0,255,255);  transition: color .1s;';
@@ -111,8 +118,14 @@ document.addEventListener('DOMContentLoaded', ()=>{
     });
 });
 
-// menuLinks.addEventListener('click', ()=>{
-//     console.log('testadadadad');
-// })
+
+
+links.forEach(link => {
+     const href = link.getAttribute('href');
+     console.log(href);
+     if('/' + href === path){
+         link.classList.add('activeMenu')
+     }
+ });
 
 
