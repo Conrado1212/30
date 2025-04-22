@@ -322,8 +322,8 @@ white-space: nowrap;
 /*mode-content*/
 .mode-content{
     margin-right: 10px;
+    min-width: 50px;
     position: relative;
-    
 }
 .mode-content li{
     list-style: none;
@@ -334,8 +334,11 @@ white-space: nowrap;
     gap: 5px;
     background: #fff;
     width: 100%;
-    min-height: 30px;
+    min-height: 25px;
     min-width: 50px;
+    padding-left: 4px;
+    border-radius: 20px;
+    border: 2px solid var(--text-color);
 }
 .mode-content .mode .moon-sun{
     color: var(--text-color);
@@ -348,6 +351,7 @@ white-space: nowrap;
     position: absolute;
     transition: var(--tran-03); 
     font-size: 1rem;
+    cursor: pointer;
 }
 .mode-content .mode i.sun{
     opacity: 0;
