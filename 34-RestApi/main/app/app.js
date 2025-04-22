@@ -98,8 +98,15 @@ function singIn(username, password){
 singIn('test1', 'test1');
 
 document.addEventListener('DOMContentLoaded', ()=>{
+    //dodanie zmiennej do localStorage
+    const savedLi = localStorage.getItem("activeLi");
+    //sprawdzenie zmiennej czy isteniej po przeladowaniu strony
+    if(savedLi !== null && menuLinks[savedLi]){
+        //jesli tak ddoanie klasy activeMenu
+        menuLinks[savedLi].classList.add("activeMenu");
+    }
     //dla kazdego i dodajemy nasluch
-    menuLinks.forEach(menuLink => {
+    menuLinks.forEach((menuLink, index) => {
         menuLink.addEventListener('click',(e)=>{
             e.preventDefault();
             // console.log('clicked', this);
@@ -114,11 +121,23 @@ document.addEventListener('DOMContentLoaded', ()=>{
                 });
                  //po kliknieciu dodanie klasy
             e.target.classList.add('activeMenu');
+            //dodanie do localstorage index i ktore element
+            localStorage.setItem("activeLi", index)
+            console.log('saveStoraege',  localStorage.setItem("activeLi", index));
             }
         });
        
     });
 });
+
+
+
+
+
+
+
+
+
 
 
 
