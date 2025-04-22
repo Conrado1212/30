@@ -124,6 +124,7 @@ links.forEach(link => {
      const href = link.getAttribute('href');
      console.log(href);
      if('/' + href === path){
+         console.log('Path:', path);
          link.classList.add('activeMenu')
      }
  });

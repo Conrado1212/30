@@ -91,7 +91,7 @@ body{
     pointer-events: none;
 } */
 .logo_content .logo i{
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-shadow: 0px 5px 10px rgb(189, 190, 201);
     text-shadow: 1px 4px 8px rgb(0, 255, 255);
 }
@@ -133,7 +133,7 @@ body{
     border-radius: 12px;
     outline: none;
     border: none;
-    height: 40px;
+    height: 70%;
     background: #fff;
     font-size: 1rem;
     padding-left: 50px;
@@ -318,3 +318,50 @@ white-space: nowrap;
     border: 1px solid rgb(0,255, 255);
 }
 
+/*mode-content*/
+.mode-content{
+    background: #fff;
+    margin-right: 10px;
+    position: relative;
+  
+}
+.mode-content li{
+    list-style: none;
+}
+.mode{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.mode-content .mode .moon-sun{
+    color: var(--text-color);
+    height: 100%;
+    display: flex;
+    align-items: center;
+   /* width: 10%;*/
+ }
+ .mode-content .mode i{
+    position: absolute;
+    transition: var(--tran-03); 
+    font-size: 1rem;
+}
+.mode-content .mode i.sun{
+    opacity: 0;
+}
+/*white mode*/
+body.white .mode-content .mode i.sun{
+    opacity:1;
+}
+body.white .mode-content .mode i.moon{
+    opacity: 0;
+}
+
+.mode .toggle-sw{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    transition: var(--tran-03);
+    min-width: 60px;
+    width: 40%;
+}
