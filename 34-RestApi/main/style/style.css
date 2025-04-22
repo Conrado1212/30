@@ -320,11 +320,41 @@ white-space: nowrap;
 }
 
 /*mode-content*/
+.mode-content2{
+    position: relative;
+    margin-right: 10px;
+}
+.mode-content2 li{
+    list-style: none;
+}
+.mode2{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    transition: var(--tran-03);
+    min-width: 60px;
+    width: 40%;
+    background-color: red!important;
+    
+}
+.mode-content2 .mode2 .moon-sun2{
+    color: var(--text-color);
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.mode-content2 .mode2 i{
+    position: absolute;
+    transition: var(--tran-03);
+    font-size: 1rem;
+   
+}
+.mode-content2 .mode2 i.sun{
+    opacity: 0;
+}
 .mode-content{
-    background: #fff;
     margin-right: 10px;
     position: relative;
-  
 }
 .mode-content li{
     list-style: none;
@@ -333,6 +363,9 @@ white-space: nowrap;
     display: flex;
     align-items: center;
     gap: 5px;
+    background: #fff;
+    width: 100%;
+    min-height: 30px;
 }
 .mode-content .mode .moon-sun{
     color: var(--text-color);
@@ -350,6 +383,12 @@ white-space: nowrap;
     opacity: 0;
 }
 /*white mode*/
+body.white .mode-conten2 .mod2 i.moon{
+    opacity: 0;
+}
+body.white .mode-conten2 .mod2 i.sun{
+    opacity: 1;
+}
 body.white .mode-content .mode i.sun{
     opacity:1;
 }
@@ -371,7 +410,7 @@ body.white .mode-content .mode i.moon{
     border-radius: 25px;
     cursor: pointer;
     transition: var(--tran-03);
-    background: var(--black-color);
+    background: var(--text-color);
     height: 22px;
     width: 40px;
     border: 1px solid var(--text-color-light);

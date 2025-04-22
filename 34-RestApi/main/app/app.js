@@ -12,6 +12,8 @@ const sidebar = document.getElementById('sidebar');
  const path = location.pathname;
  //linki
 const links = document.querySelectorAll('#sidebar li a');
+//mode
+const mode = document.querySelector('.moon-sun2 i');
 
 searchMenu.addEventListener('focus', ()=>{
     iconSearch.style.cssText = 'color: rgb(0,255,255);  transition: color .1s;';
@@ -128,5 +130,7 @@ links.forEach(link => {
          link.classList.add('activeMenu')
      }
  });
+
+
 
 
