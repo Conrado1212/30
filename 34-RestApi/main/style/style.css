@@ -11,6 +11,7 @@
 --white-color:#fff;
 --text-color: hsl(var(--hue-color),4%,75%);
 --text-gradient: linear-gradient(hsl(var(--hue-color),4%,24%),hsl(var(--hue-color),4%,8%));
+--text-color-light: hsl(var(--hue-color),4%,65%);
 /*fonts*/
 --body-font:'digital-clock-font';
 --body-font-s:'sans-serif';
@@ -364,4 +365,29 @@ body.white .mode-content .mode i.moon{
     transition: var(--tran-03);
     min-width: 60px;
     width: 40%;
+}
+.toggle-sw .sw{
+    position: relative;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: var(--tran-03);
+    background: var(--black-color);
+    height: 22px;
+    width: 40px;
+    border: 1px solid var(--text-color-light);
+}
+.sw::before{
+    content: '';
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    background: var(--white-color);
+    border-radius: 50%;
+    transform: translateY(50%);
+    top: -5px;
+    left: 3px;
+    transition: var(--tran-03);
+}
+body.white .sw::before{
+    left: 24px;
 }
