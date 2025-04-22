@@ -44,6 +44,15 @@ body{
    line-height: var(--line-height);
   
 }
+body.white{
+    --text-color:hsl(var(--hue-color),4%,8%);;
+    --text-color-light:hsl(var(--hue-color),4%,16%);;
+    --body-color: #fff;
+    --text-gradient: linear-gradient(hsl(var(--hue-color),100%,100%),hsl(var(--hue-color),4%,4%));
+    --conteiner-color: hsl(var(--hue-color),10%,95%);
+    --black-color:hsl(var(--hue-color),10%,85%);
+    --white-color: #000;
+}
 #header{
     height: 50px;
     width: 100%;
@@ -357,6 +366,9 @@ white-space: nowrap;
     opacity: 0;
 }
 /*white mode*/
+body.white  .mode-content .mode i{
+    left: 24px;
+}
 body.white .mode-content .mode i.sun{
     opacity:1;
 }
@@ -364,7 +376,7 @@ body.white .mode-content .mode i.moon{
     opacity: 0;
 }
 
-.mode .toggle-sw{
+/* .mode .toggle-sw{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -372,8 +384,8 @@ body.white .mode-content .mode i.moon{
     transition: var(--tran-03);
     min-width: 60px;
     width: 40%;
-}
-.toggle-sw .sw{
+} */
+/* .toggle-sw .sw{
     position: relative;
     border-radius: 25px;
     cursor: pointer;
@@ -394,7 +406,7 @@ body.white .mode-content .mode i.moon{
     top: -5px;
     left: 3px;
     transition: var(--tran-03);
-}
+} */
 body.white .sw::before{
     left: 24px;
 }

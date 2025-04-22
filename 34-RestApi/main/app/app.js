@@ -1,3 +1,5 @@
+//body
+const body = document.querySelector('body');
 //search menu
 const searchMenu = document.querySelector('#sidebar ul li input');
 //barsy x =
@@ -13,7 +15,7 @@ const sidebar = document.getElementById('sidebar');
  //linki
 const links = document.querySelectorAll('#sidebar li a');
 //mode
-const mode = document.querySelector('.moon-sun2 i');
+const mode = document.querySelectorAll('.moon-sun i');
 
 searchMenu.addEventListener('focus', ()=>{
     iconSearch.style.cssText = 'color: rgb(0,255,255);  transition: color .1s;';
@@ -133,6 +135,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
 
 
+    mode.forEach(icon =>{
+        icon.addEventListener('click', (e)=>{
+        console.log('clik', e.target);
+            body.classList.toggle("white");
+        })
+    })
 
 
 
