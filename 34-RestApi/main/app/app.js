@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
 
 
-
+//zmiana trybu po kliknieciu na slonce badz ksiezyc w lewym gornym rogu
     mode.forEach(icon =>{
         icon.addEventListener('click', (e)=>{
         console.log('clik', e.target);
@@ -159,5 +159,11 @@ links.forEach(link => {
  });
 
 
+//search bar nasluch
 
-
+document.querySelector(".search input").addEventListener("focus",()=>{
+    document.querySelector(".search i").style.cssText = 'color: rgb(0,255,255); transition: .3s ease all;'
+});
+document.querySelector(".search input").addEventListener("blur",()=>{
+    document.querySelector(".search i").style.cssText = '';
+});
