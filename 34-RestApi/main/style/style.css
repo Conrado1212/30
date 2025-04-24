@@ -130,12 +130,13 @@ body.white{
     cursor: pointer;
     /* outline: 1px solid blue; */
 }
+/* search bar*/
 #header .search{
   height: 100%;
     display: flex;
     align-items: center;
   margin: 0 auto;
-  /* position: relative; */
+  position: relative; 
   width: 100%; 
   max-width: 500px;
 }
@@ -149,6 +150,25 @@ body.white{
     padding-left: 50px;
     width: 100%;
     max-width: 500px;
+}
+/* #header .search input:focus~label{
+    top: 10%;
+     background: var(--black-color); 
+    font-size: 1rem;
+    z-index: var(--z-index);
+    color: var(--white-color);
+    padding: 0 5px;
+} */
+#header .search label{
+    position: absolute;
+    color: #000;
+    left: 50px;
+    transform: translateY(-50%);
+    top: 50%;
+    pointer-events: none;
+    font-size: 1.2rem;
+    transition: var(--tran-03-all);
+    /* padding: 0 5px; */
 }
 #header .search i{
     color: #000;
@@ -358,7 +378,7 @@ white-space: nowrap;
  }
  .mode-content .mode i{
     position: absolute;
-    transition: var(--tran-03); 
+    transition: var(--tran-03-all); 
     font-size: 1rem;
     cursor: pointer;
 }
