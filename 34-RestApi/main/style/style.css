@@ -151,6 +151,24 @@ body.white{
     width: 100%;
     max-width: 500px;
 }
+#header .search input:focus::placeholder{
+    opacity: 0;
+}
+.search input:focus ~ i {
+    color: rgb(0, 255, 255);
+    transition: color .1s;
+}
+#header .search input:focus + .fa-magnifying-glass{
+    color: rgb(0, 255, 255);
+    
+}
+#header .search input:focus{
+    color: rgb(0, 255, 255);
+    outline-color:rgb(0, 255, 255);
+    box-shadow: -3px -3px 25px rgb(0, 255, 255);
+    transition: .1s;
+    transition-property: box-shadow;
+}
 /* #header .search input:focus~label{
     top: 10%;
      background: var(--black-color); 
@@ -170,7 +188,7 @@ body.white{
     transition: var(--tran-03-all);
     /* padding: 0 5px; */
 }
-#header .search i{
+#header .search .fa-magnifying-glass{
     color: #000;
     position: absolute;
     cursor: pointer;
@@ -249,6 +267,7 @@ line-height: 50px;
 #sidebar ul li input:focus::placeholder{
     color: rgb(0, 255, 255);
     transition: color.1s;
+    opacity: 0;
 }
 #sidebar ul li input:focus + .fa-magnifying-glass {
     color: rgb(0, 255, 255);
