@@ -101,7 +101,7 @@ singIn('test1', 'test1');
 
 document.addEventListener('DOMContentLoaded', ()=>{
     //dodanie zmiennej do localStorage
-    const savedLi = localStorage.getItem("activeLi");
+    const savedLi = sessionStorage.getItem("activeLi");
     //sprawdzenie zmiennej czy isteniej po przeladowaniu strony
     if(savedLi !== null && menuLinks[savedLi]){
         //jesli tak ddoanie klasy activeMenu
@@ -124,14 +124,22 @@ document.addEventListener('DOMContentLoaded', ()=>{
                  //po kliknieciu dodanie klasy
             e.target.classList.add('activeMenu');
             //dodanie do localstorage index i ktore element
-            localStorage.setItem("activeLi", index)
-            console.log('saveStoraege',  localStorage.setItem("activeLi", index));
+            sessionStorage.setItem("activeLi", index)
+            console.log('saveStoraege',  sessionStorage.setItem("activeLi", index));
             }
         });
        
     });
 });
-
+//dodanie aktive taba na wesjciue do home 
+window.addEventListener('DOMContentLoaded', ()=>{
+    console.log('sciezke', path);
+    if(path.includes('index.html')){
+            menuLinks[0].classList.add('activeMenu');
+    }
+   
+}
+)
 
 
 //zmiana trybu po kliknieciu na slonce badz ksiezyc w lewym gornym rogu
