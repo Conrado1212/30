@@ -107,13 +107,16 @@ singIn('test1', 'test1');
 document.addEventListener('DOMContentLoaded', ()=>{
     //dodanie zmiennej do sessionstorage
     const savedLi = sessionStorage.getItem("activeLi");
-    //sprawdzenie zmiennej czy isteniej po przeladowaniu strony
+   
 
     menuLinks.forEach(el =>el.classList.remove('activeMenu'));
+     //sprawdzenie zmiennej czy isteniej po przeladowaniu strony
     if(savedLi !== null && menuLinks[savedLi]){
         //jesli tak ddoanie klasy activeMenu
         menuLinks[savedLi].classList.add("activeMenu");
         console.log('po zaladowniu ',menuLinks[savedLi]);
+
+        //jhesli zmienna nie istenije sprawdzam czy glowna storna aby dodac active do home 
     }else if(window.location.pathname.includes('index.html')){
         menuLinks.forEach(el => el.classList.remove('activeMenu'));
         menuLinks[0].classList.add('activeMenu');
