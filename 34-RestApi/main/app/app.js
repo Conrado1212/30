@@ -10,6 +10,8 @@ const iconSearch = document.querySelector('#sidebar ul li .fa-magnifying-glass')
 const sidebar = document.getElementById('sidebar');
  //pobieramy wszystki i z sidebara 
  const menuLinks = document.querySelectorAll('#sidebar li a i');
+//wysztkie li 
+ const sidebarLi = document.querySelectorAll('#sidebar li');
 //sciezak url
  const path = location.pathname;
  //linki
@@ -45,11 +47,14 @@ bars.addEventListener('click', ()=>{
     sidebar.classList.toggle('active');
     if(sidebar.classList.contains('active')){
         menuLinks.forEach(el=>{
-            console.log('before', el);
+         //   console.log('before', el);
+         const parentLi = el.closest('li a');
             if(el.classList.contains('activeMenu')){
                 el.classList.remove('activeMenu');
+                //dodanie do li od dziecka do parenta 
+               parentLi.classList.add('activeMenu');
             }
-            console.log('after', el);
+         //   console.log('after', el);
         });
     }
    
@@ -100,7 +105,7 @@ function singIn(username, password){
 singIn('test1', 'test1');
 
 document.addEventListener('DOMContentLoaded', ()=>{
-    //dodanie zmiennej do localStorage
+    //dodanie zmiennej do sessionstorage
     const savedLi = sessionStorage.getItem("activeLi");
     //sprawdzenie zmiennej czy isteniej po przeladowaniu strony
     if(savedLi !== null && menuLinks[savedLi]){
@@ -115,15 +120,15 @@ document.addEventListener('DOMContentLoaded', ()=>{
             //najpier dla kazdego usuniecie klasy aktywnej 
             if(!sidebar.classList.contains('active')){
                 menuLinks.forEach(el=>{
-                    console.log('before', el);
+                  //  console.log('before', el);
                     if(el.classList.contains('activeMenu')){
                         el.classList.remove('activeMenu');
                     }
-                    console.log('after', el);
+                //    console.log('after', el);
                 });
                  //po kliknieciu dodanie klasy
             e.target.classList.add('activeMenu');
-            //dodanie do localstorage index i ktore element
+            //dodanie do sessionstorage index i ktore element
             sessionStorage.setItem("activeLi", index)
             console.log('saveStoraege',  sessionStorage.setItem("activeLi", index));
             }

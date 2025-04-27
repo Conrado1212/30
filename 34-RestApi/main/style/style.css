@@ -365,6 +365,8 @@ white-space: nowrap;
 }
 .activeMenu{
     border: 1px solid rgb(0,255, 255);
+    background: var(--white-color);
+    color: var(--black-color)!important;
 }
 
 /*mode-content*/
