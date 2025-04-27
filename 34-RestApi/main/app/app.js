@@ -114,17 +114,17 @@ document.addEventListener('DOMContentLoaded', ()=>{
         //jesli tak ddoanie klasy activeMenu
         menuLinks[savedLi].classList.add("activeMenu");
         console.log('po zaladowniu ',menuLinks[savedLi]);
-    }
-
-
-    if(window.location.pathname.includes('index.html')){
+    }else if(window.location.pathname.includes('index.html')){
         menuLinks.forEach(el => el.classList.remove('activeMenu'));
         menuLinks[0].classList.add('activeMenu');
         sessionStorage.setItem('activeLi', 0);
     }
+
+ 
+    
     //dla kazdego i dodajemy nasluch
     menuLinks.forEach((menuLink, index) => {
-        menuLink.addEventListener('click',(e)=>{
+        menuLink.addEventListener('click',function(e){
             e.preventDefault();
             // console.log('clicked', this);
             //najpier dla kazdego usuniecie klasy aktywnej 
@@ -134,9 +134,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
                       console.log('remve', el );
                        });
                  //po kliknieciu dodanie klasy
-            e.target.classList.add('activeMenu');
-            console.log('active',e.target.classList.add('activeMenu'); );
+            this.classList.add('activeMenu');
+            console.log('active',this);
             //dodanie do sessionstorage index i ktore element
+         //   sessionStorage.removeItem("activeLi"); 
             sessionStorage.setItem("activeLi", index);
             console.log('saveStoraege',  sessionStorage.getItem("activeLi"));
       //      }
