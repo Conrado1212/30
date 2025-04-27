@@ -9,9 +9,8 @@ const iconSearch = document.querySelector('#sidebar ul li .fa-magnifying-glass')
 //sidebar
 const sidebar = document.getElementById('sidebar');
  //pobieramy wszystki i z sidebara 
- const menuLinks = document.querySelectorAll('#sidebar li a i');
+ const menuLinks = document.querySelectorAll('#sidebar li a');
 //wysztkie li 
- const sidebarLi = document.querySelectorAll('#sidebar li');
 //sciezak url
  const path = location.pathname;
  //linki
@@ -45,18 +44,19 @@ bars.addEventListener('click', ()=>{
     bars.classList.toggle('active');
    // bars.children[0].style.color = "rgb(0, 255, 255)"
     sidebar.classList.toggle('active');
-    if(sidebar.classList.contains('active')){
-        menuLinks.forEach(el=>{
+  //  if(sidebar.classList.contains('active')){
+   //     menuLinks.forEach(el=>{
          //   console.log('before', el);
-         const parentLi = el.closest('li a');
-            if(el.classList.contains('activeMenu')){
-                el.classList.remove('activeMenu');
+      //   const parentLi = el.closest('li a');
+         //   if(el.classList.contains('activeMenu')){
+         //       el.classList.remove('activeMenu');
+              
                 //dodanie do li od dziecka do parenta 
-               parentLi.classList.add('activeMenu');
-            }
+             //  parentLi.classList.add('activeMenu');
+        //    }
          //   console.log('after', el);
-        });
-    }
+     //   });
+  //  }
    
 });
 iconSearch.addEventListener('click', ()=>{
@@ -123,6 +123,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
                   //  console.log('before', el);
                     if(el.classList.contains('activeMenu')){
                         el.classList.remove('activeMenu');
+                        console.log('remve', el );
                     }
                 //    console.log('after', el);
                 });
