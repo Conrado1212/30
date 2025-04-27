@@ -108,10 +108,19 @@ document.addEventListener('DOMContentLoaded', ()=>{
     //dodanie zmiennej do sessionstorage
     const savedLi = sessionStorage.getItem("activeLi");
     //sprawdzenie zmiennej czy isteniej po przeladowaniu strony
+
+    menuLinks.forEach(el =>el.classList.remove('activeMenu'));
     if(savedLi !== null && menuLinks[savedLi]){
         //jesli tak ddoanie klasy activeMenu
         menuLinks[savedLi].classList.add("activeMenu");
-        console.log('po zaladowniu ',menuLinks[savedLi].classList.add("activeMenu"));
+        console.log('po zaladowniu ',menuLinks[savedLi]);
+    }
+
+
+    if(window.location.pathname.includes('index.html')){
+        menuLinks.forEach(el => el.classList.remove('activeMenu'));
+        menuLinks[0].classList.add('activeMenu');
+        sessionStorage.setItem('activeLi', 0);
     }
     //dla kazdego i dodajemy nasluch
     menuLinks.forEach((menuLink, index) => {
@@ -119,34 +128,31 @@ document.addEventListener('DOMContentLoaded', ()=>{
             e.preventDefault();
             // console.log('clicked', this);
             //najpier dla kazdego usuniecie klasy aktywnej 
-            if(!sidebar.classList.contains('active')){
+          //  if(!sidebar.classList.contains('active')){
                 menuLinks.forEach(el=>{
-                  //  console.log('before', el);
-                    if(el.classList.contains('activeMenu')){
-                        el.classList.remove('activeMenu');
-                        console.log('remve', el );
-                    }
-                //    console.log('after', el);
-                });
+                     el.classList.remove('activeMenu'); 
+                      console.log('remve', el );
+                       });
                  //po kliknieciu dodanie klasy
             e.target.classList.add('activeMenu');
+            console.log('active',e.target.classList.add('activeMenu'); );
             //dodanie do sessionstorage index i ktore element
-            sessionStorage.setItem("activeLi", index)
+            sessionStorage.setItem("activeLi", index);
             console.log('saveStoraege',  sessionStorage.getItem("activeLi"));
-            }
+      //      }
         });
        
     });
 });
 //dodanie aktive taba na wesjciue do home 
-window.addEventListener('DOMContentLoaded', ()=>{
-    console.log('sciezke', path);
-    if(path.includes('index.html')){
-            menuLinks[0].classList.add('activeMenu');
-    }
+// window.addEventListener('DOMContentLoaded', ()=>{
+//     console.log('sciezke', path);
+//     if(path.includes('index.html')){
+//             menuLinks[0].classList.add('activeMenu');
+//     }
    
-}
-)
+// }
+// )
 
 
 //zmiana trybu po kliknieciu na slonce badz ksiezyc w lewym gornym rogu
