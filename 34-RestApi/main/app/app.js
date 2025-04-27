@@ -111,6 +111,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     if(savedLi !== null && menuLinks[savedLi]){
         //jesli tak ddoanie klasy activeMenu
         menuLinks[savedLi].classList.add("activeMenu");
+        console.log('po zaladowniu ',menuLinks[savedLi].classList.add("activeMenu"));
     }
     //dla kazdego i dodajemy nasluch
     menuLinks.forEach((menuLink, index) => {
@@ -131,7 +132,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
             e.target.classList.add('activeMenu');
             //dodanie do sessionstorage index i ktore element
             sessionStorage.setItem("activeLi", index)
-            console.log('saveStoraege',  sessionStorage.setItem("activeLi", index));
+            console.log('saveStoraege',  sessionStorage.getItem("activeLi"));
             }
         });
        
