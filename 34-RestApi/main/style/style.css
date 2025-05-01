@@ -63,7 +63,7 @@ body.white{
     display: flex;
     align-items: center;
  justify-content: space-between;
- 
+ z-index: var(--z-index);
     /* padding: 7px 14px; */
     /* outline: 1px solid red; */
 }
@@ -358,7 +358,7 @@ white-space: nowrap;
     justify-content: center;
     font-size: 1rem;
     font-family: Mukta, sans-serif;
-    height: 50%;
+   
 }
 
  .bars.active span:nth-child(1){
