@@ -350,6 +350,16 @@ white-space: nowrap;
      color: var(--body-color);
      margin: 10px;
  }
+ .container{
+    /*position: relative;*/
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    background: #f9fbff;
+    font-family: Mukta, sans-serif;
+}
+
  .bars.active span:nth-child(1){
     top: 50%;
     transform: translate(-50%, -50%) rotate(45deg);
@@ -453,12 +463,4 @@ body.white .mode-content .mode i.moon{
 } */
 body.white .sw::before{
     left: 24px;
-}
-.container{
-    /*position: relative;*/
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    background: #dbdce4;
 }
