@@ -338,6 +338,7 @@ white-space: nowrap;
    width: calc(100% - 78px);
   height: 1600px;
     transition: var(--tran-03-all);
+    background: #f9fbff;
 }
  #sidebar.active ~ .main{
     width: calc(100% - 240px);
@@ -351,12 +352,11 @@ white-space: nowrap;
      margin: 10px;
  }
  .container{
-    /*position: relative;*/
+    position: relative;
     display: grid;
     align-items: center;
     justify-content: center;
     font-size: 1rem;
-    background: #f9fbff;
     font-family: Mukta, sans-serif;
 }
 
@@ -463,4 +463,39 @@ body.white .mode-content .mode i.moon{
 } */
 body.white .sw::before{
     left: 24px;
+}
+/*table*/
+#endpoints-table{
+    border-collapse: collapse;
+    box-shadow: 0 5px 10px rgb(129, 43, 43);
+    text-align: center;
+    overflow: hidden;
+    background: var(--white-color);
+
+
+    thead{
+        box-shadow: 0 5px 10px var(--black-color);
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+    th{
+        padding: 1rem 2rem;
+        text-transform: uppercase;
+        letter-spacing: .1rem;
+        font-size: var(--font-size);
+        font-weight: var(--font-m);
+    }
+    td{
+        padding: 1rem 2rem;
+      /* color: rgb(0, 255, 255);*/
+       
+    }
+    td a{
+        text-decoration: none;
+        color: var(--black-color);
+        font-weight: var(--font-m);
+    }
+    td a:hover{
+        color: rgb(68, 64, 64);
+    }
 }
