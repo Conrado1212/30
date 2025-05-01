@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     //dla kazdego i dodajemy nasluch
     menuLinks.forEach((menuLink, index) => {
         menuLink.addEventListener('click',function(e){
-            e.preventDefault();
+           // e.preventDefault();
             // console.log('clicked', this);
             //najpier dla kazdego usuniecie klasy aktywnej 
           //  if(!sidebar.classList.contains('active')){

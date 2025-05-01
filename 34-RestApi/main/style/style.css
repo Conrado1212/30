@@ -338,7 +338,8 @@ white-space: nowrap;
    width: calc(100% - 78px);
   height: 1600px;
     transition: var(--tran-03-all);
-    background: #f9fbff;
+    background: var(--search-color);
+  /*  #f9fbff;*/
 }
  #sidebar.active ~ .main{
     width: calc(100% - 240px);
@@ -358,7 +359,11 @@ white-space: nowrap;
     justify-content: center;
     font-size: 1rem;
     font-family: Mukta, sans-serif;
-   
+   height: calc(100vh - 50px);
+   /*position: absolute;  byc moze od zmiany i 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);*/
 }
 
  .bars.active span:nth-child(1){
@@ -468,16 +473,18 @@ body.white .sw::before{
 /*table*/
 #endpoints-table{
     border-collapse: collapse;
-    box-shadow: 0 5px 10px rgb(129, 43, 43);
+    box-shadow: 0 5px 10px rgb(0, 255, 255);
     text-align: center;
     overflow: hidden;
     background: var(--white-color);
-
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 
     thead{
         box-shadow: 0 5px 10px var(--black-color);
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
+        /* border-top-left-radius: 10px;
+        border-top-right-radius: 10px; */
+       
     }
     th{
         padding: 1rem 2rem;
