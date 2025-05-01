@@ -197,6 +197,7 @@ body.white{
     text-align: center;
     min-width: 50px;
 }
+/*sidebar*/
 #sidebar .link_name{
     opacity: 0;
     pointer-events: none;
@@ -307,6 +308,7 @@ white-space: nowrap;
     font-size: 1rem;
     text-align: center;
 }
+/*bars clicked*/
 .bars span{
     height: 3px;
     background: #dbdce4;
@@ -327,6 +329,7 @@ white-space: nowrap;
 .bars.active span:nth-child(2){
     opacity: 0;
  }
+ /*main conteinaer*/
  .main{
     position: absolute;
     height: 100%;
@@ -450,4 +453,7 @@ body.white .mode-content .mode i.moon{
 } */
 body.white .sw::before{
     left: 24px;
+}
+.container{
+    position: relative;
 }
