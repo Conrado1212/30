@@ -219,3 +219,18 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }
 
 });
+
+
+
+//wyswietlanie scrolla po njajechaniu na tabelke jesli jes zbyt mala
+
+document.querySelector('#endpoints-table').addEventListener('mouseover', ()=>{
+    document.querySelector('#endpoints-table').style.overflowY  = 'auto';
+});
+document.querySelector('#endpoints-table').addEventListener('mouseout', ()=>{
+    document.querySelector('#endpoints-table').style.overflowY = 'hidden';
+});
+
+
+
+///filtorwanie tabeli 

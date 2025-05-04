@@ -16,6 +16,7 @@
 --body-font:'digital-clock-font';
 --body-font-s:'sans-serif';
 --font-size: 1.25rem;
+--font-size-m: 1rem;
 --line-height: 1.5;
  /*font-weight*/
  --font-m: 700;
@@ -353,7 +354,7 @@ white-space: nowrap;
      margin: 10px;
  }
  .container{
-    position: relative;
+    /* position: relative; */
     display: grid;
     align-items: center;
     justify-content: center;
@@ -480,15 +481,21 @@ body.white .sw::before{
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     max-height: 80vh;
+    overflow-y: hidden; 
+    display: block;
+    transition: overflow-y var(--tran-03-all);
  /* position: absolute;  
     top: 25%;
     left: 50%;
     transform: translate(-50%, -50%); */
     thead{
         box-shadow: 0 5px 10px var(--black-color);
+        position: sticky;
+        top: 0;
+        z-index: var(--z-index);
         /* border-top-left-radius: 10px;
         border-top-right-radius: 10px; */
-       
+       background: #f9fbff;
     }
     th{
         padding: 1rem 2rem;
@@ -510,4 +517,31 @@ body.white .sw::before{
     td a:hover{
         color: rgb(68, 64, 64);
     }
+}
+
+
+/*filter table style */
+.filter{
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.table-container{
+    position: relative;
+}
+.filter-value-label{
+    padding: 8px 16px;
+    border-radius: 5px;
+    border: none;
+    background: #222425;
+    color: var(--white-color);
+    font-size: var(--font-size-m);
+    cursor: pointer;
+}
+.filter-input{
+   
 }
