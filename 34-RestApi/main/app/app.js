@@ -192,3 +192,30 @@ document.querySelector(".search input").addEventListener("focus",()=>{
 document.querySelector(".search input").addEventListener("blur",()=>{
     document.querySelector(".search i").style.cssText = '';
 });
+
+
+//ladownaie raportu z rest api
+
+
+
+document.addEventListener('DOMContentLoaded', ()=>{
+    if(window.location.pathname.includes('report.html')){
+        axios.get("https://jsonplaceholder.typicode.com/users")
+        .then(response => {
+          const data = response.data;
+          console.log('Check data', data);
+          const tbody = document.querySelector("#endpoints-table tbody");
+    
+          data.forEach(endpoint => {
+              console.log('Endpoint log', endpoint);
+            const row = document.createElement("tr");
+            row.innerHTML = `<td>${endpoint.id}</td><td>${endpoint.name}</td><td>${endpoint.data}</td>`;
+            tbody.appendChild(row);
+          });
+        })
+        .catch(error => {
+          console.error("Error:", error);
+        });
+    }
+
+});
