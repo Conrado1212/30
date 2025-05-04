@@ -479,10 +479,11 @@ body.white .sw::before{
     background: var(--white-color);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
- position: absolute;  
+    max-height: 80vh;
+ /* position: absolute;  
     top: 25%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
     thead{
         box-shadow: 0 5px 10px var(--black-color);
         /* border-top-left-radius: 10px;

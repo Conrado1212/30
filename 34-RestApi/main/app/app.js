@@ -206,10 +206,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
           console.log('Check data', data);
           const tbody = document.querySelector("#endpoints-table tbody");
     
-          data.forEach(endpoint => {
-              console.log('Endpoint log', endpoint);
+          data.forEach(user => {
+              console.log('Endpoint log', user);
             const row = document.createElement("tr");
-            row.innerHTML = `<td>${endpoint.id}</td><td>${endpoint.name}</td><td>${endpoint.data}</td>`;
+            row.innerHTML = `<td>${user.id}</td><td>${user.name}</td><td>${user.username}</td>`;
             tbody.appendChild(row);
           });
         })
