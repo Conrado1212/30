@@ -24,6 +24,7 @@
   --letter-1:1px;
    /*z-index*/
     --z-index: 1000;
+    --z-index2: 2000;
     /*tansition*/
     --tran-03-all:  0.3s ease all;
     --tran-03:  0.3s ease ;
@@ -526,13 +527,19 @@ body.white .sw::before{
 
 /*filter table style */
 .filter{
-    position: relative;
+    position: absolute;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    width: 100%;
+  background: var(--black-color);
     gap: 10px;
     margin-bottom: 10px;
+    flex-direction: column;
+    z-index: var(--z-index2);
+    padding: 8px 16px;
+    border-radius: 8px;
+    top: 62px;
+    right:0;
 }
 .table-container{
     position: relative;
