@@ -504,6 +504,10 @@ body.white .sw::before{
         font-size: var(--font-size);
         font-weight: var(--font-m);
     }
+    th i:hover{
+        color: rgb(0, 255, 255);
+        cursor: pointer;
+    }
     td{
         padding: 1rem 2rem;
       /* color: rgb(0, 255, 255);*/

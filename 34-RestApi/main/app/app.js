@@ -209,7 +209,16 @@ document.addEventListener('DOMContentLoaded', ()=>{
           data.forEach(user => {
               console.log('Endpoint log', user);
             const row = document.createElement("tr");
-            row.innerHTML = `<td>${user.id}</td><td>${user.name}</td><td>${user.username}</td>`;
+            row.innerHTML = `<td>${user.id}</td><td>${user.name}</td><td>${user.username}</td><td>
+            <div class="buttons-container">
+                 <button class="action-btn">
+                     <i class="fa-solid fa-trash"></i>
+                 </button>
+                 <button class="action-btn">
+                     <i class="fa-regular fa-pen-to-square"></i>
+                 </button>
+            </div>
+         </td>`;
             tbody.appendChild(row);
           });
         })
