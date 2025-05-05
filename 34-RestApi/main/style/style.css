@@ -497,6 +497,7 @@ body.white .sw::before{
         /* border-top-left-radius: 10px;
         border-top-right-radius: 10px; */
        background: #f9fbff;
+      position: relative;
     }
     th{
         padding: 1rem 2rem;
@@ -504,6 +505,14 @@ body.white .sw::before{
         letter-spacing: .1rem;
         font-size: var(--font-size);
         font-weight: var(--font-m);
+    }
+    th:last-child{
+       padding:  0 0;
+        font-size: var(--font-size-m);
+       position: absolute;
+       right: 10px;
+       top: 50%;
+       transform: translateY(-50%);
     }
     th i:hover{
         color: rgb(0, 255, 255);
@@ -540,6 +549,8 @@ body.white .sw::before{
     border-radius: 8px;
     top: 62px;
     right:0;
+    opacity: 0;
+    transition: var(--tran-03);
 }
 .table-container{
     position: relative;
@@ -571,7 +582,7 @@ body.white .sw::before{
     padding: 8px 14px;
 }
 .buttons-container button i{
-font-size: var(--font-size);
+font-size: var(--font-size-m);
 }
 .buttons-container button:hover{
     color: rgb(0, 255, 255);

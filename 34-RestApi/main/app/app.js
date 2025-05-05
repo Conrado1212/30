@@ -217,6 +217,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
                  <button class="action-btn">
                      <i class="fa-regular fa-pen-to-square"></i>
                  </button>
+                 <button class="action-btn">
+                                <i class="fa-regular fa-window-restore"></i>
+                            </button>
             </div>
          </td>`;
             tbody.appendChild(row);
