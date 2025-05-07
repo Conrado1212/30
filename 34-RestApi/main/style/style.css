@@ -537,12 +537,12 @@ body.white .sw::before{
 /*filter table style */
 .filter{
     position: absolute;
-    display: flex;
+    /* display: flex; */
     justify-content: flex-end;
     align-items: center;
-  background: var(--black-color);
+  /* background: var(--black-color); */
     gap: 10px;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
     flex-direction: column;
     z-index: var(--z-index2);
     padding: 8px 16px;
@@ -550,7 +550,12 @@ body.white .sw::before{
     top: 62px;
     right:0;
     opacity: 0;
-    transition: var(--tran-03);
+    transition: var(--tran-03-all);
+    backdrop-filter: blur(10px);
+    margin-top: 10px;
+    border: 1px;
+    box-shadow: -3px -3px 10px rgb(194, 206, 206);
+    display: none;
 }
 .table-container{
     position: relative;
@@ -565,7 +570,13 @@ body.white .sw::before{
     cursor: pointer;
 }
 .filter-input{
-   
+   border: none;
+   border-radius: 10px;
+    text-align: center;
+   height: 25px;
+   outline: none;
+   background: #222425;
+   color: var(--white-color);
 }
 
 /* przyciski tabelka  */

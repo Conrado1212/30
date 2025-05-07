@@ -246,3 +246,12 @@ document.querySelector('#endpoints-table').addEventListener('mouseout', ()=>{
 
 
 ///filtorwanie tabeli 
+document.querySelector('#endpoints-table i').addEventListener('click',()=>{
+    console.log('clicked');
+    const filter = document.querySelector('.filter');
+   if(filter.style.opacity ==="1"){
+   filter.style.cssText='opacity:0;display: none;'
+   } else{
+    filter.style.cssText='opacity:1;display:flex;'
+   }
+})
