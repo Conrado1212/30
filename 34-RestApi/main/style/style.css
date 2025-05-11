@@ -497,7 +497,7 @@ body.white .sw::before{
         /* border-top-left-radius: 10px;
         border-top-right-radius: 10px; */
        background: #f9fbff;
-      position: relative;
+      /* position: relative; */
     }
     th{
         padding: 1rem 2rem;
@@ -598,3 +598,34 @@ font-size: var(--font-size-m);
 .buttons-container button:hover{
     color: rgb(0, 255, 255);
 }
+
+/*scrollbar */
+
+
+::-webkit-scrollbar{
+    width: 10px;
+  
+}
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px rgb(0, 255, 255);
+  }
+
+  /* Handle */
+ ::-webkit-scrollbar-thumb {
+    background: rgb(0,255,255); 
+    border-radius: 10px;
+    height: 10px;
+  } 
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(136, 139, 139, 0.733); 
+    
+  }
+  ::-webkit-scrollbar-track:hover {
+    background: #f1f1f1; 
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px rgba(136, 139, 139, 0.733); 
+  } 
