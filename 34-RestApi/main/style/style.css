@@ -24,6 +24,7 @@
   /*letter spacing*/
   --letter-1:1px;
    /*z-index*/
+    --z-index5: 500;
     --z-index: 1000;
     --z-index2: 2000;
     --z-index3: 3000;
@@ -541,7 +542,7 @@ body.white .sw::before{
         box-shadow: 0 5px 10px var(--black-color);
         position: sticky;
         top: 0;
-        z-index: var(--z-index);
+        z-index: var(--z-index5);
         /* border-top-left-radius: 10px;
         border-top-right-radius: 10px; */
        background: #f9fbff;
