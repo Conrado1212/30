@@ -12,6 +12,7 @@
 --text-color: hsl(var(--hue-color),4%,75%);
 --text-gradient: linear-gradient(hsl(var(--hue-color),4%,24%),hsl(var(--hue-color),4%,8%));
 --text-color-light: hsl(var(--hue-color),4%,65%);
+--search-result-shadow-color: rgba(0, 0, 0, 0.14);
 /*fonts*/
 --body-font:'digital-clock-font';
 --body-font-s:'sans-serif';
@@ -25,6 +26,7 @@
    /*z-index*/
     --z-index: 1000;
     --z-index2: 2000;
+    --z-index3: 3000;
     /*tansition*/
     --tran-03-all:  0.3s ease all;
     --tran-03:  0.3s ease ;
@@ -172,16 +174,28 @@ body.white{
     border: 1px solid var(--text-color);
     border-radius: 8px;
     box-shadow: 0px 4px 6px var(--white-color);
+    z-index: var(--z-index3);
 }
 .search-result{
 list-style: none;
 }
+.search-result li{
+    list-style: none;
+    display: flex;
+    margin: 0;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 0 10px var(--search-result-shadow-color);
+    padding: 10px;
+  
+}
+/*input header */
 #header .search input{
     border-radius: 12px;
     outline: none;
     border: none;
     height: 60%;
-    background: #fff;
+    background: var(--white-color);
     font-size: 1rem;
     padding-left: 50px;
     width: 100%;
