@@ -316,3 +316,21 @@ const sug = document.querySelector('.search-result');
 //nasluchiwanie
 search.addEventListener('change', ()=>(resultSearch(),display()));
 search.addEventListener('keyup', ()=>(resultSearch(),display()));
+
+
+
+
+/*mail wysylka */
+
+
+function sendMail(){
+    const name = document.getElementById('name-message').value;
+    const message = document.getElementById('body-message').value;
+
+    const email = 'conrado1214@gmail.com';
+    const subject = encodeURIComponent("Question from " + name + 'about api')
+
+    const body = encodeURIComponent(message);
+
+    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+}

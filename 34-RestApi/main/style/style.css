@@ -8,9 +8,10 @@
 --black-color: hsl(var(--hue-color),4%,4%);
 --body-color: hsl(var(--hue-color),4%,6%);
 --search-color: hsl(var(--hue-color),4%,10%);
+--search-color2: hsl(var(--hue-color),4%,8%);
 --white-color:#fff;
 --text-color: hsl(var(--hue-color),4%,75%);
---text-gradient: linear-gradient(hsl(var(--hue-color),4%,34%),hsl(var(--hue-color),4%,16%));
+--text-gradient: linear-gradient(hsl(var(--hue-color),4%,24%),hsl(var(--hue-color),4%,8%));
 --text-color-light: hsl(var(--hue-color),4%,65%);
 --search-result-shadow-color: rgba(0, 0, 0, 0.14);
 /*fonts*/
@@ -388,9 +389,9 @@ white-space: nowrap;
    left:78px;
    top: 50px;
    width: calc(100% - 78px);
-  height: 1600px;
+  /* height: 1600px; */
     transition: var(--tran-03-all);
-    background: var(--search-color);
+    background: var(--body-color);
      /* background: var(--black-color);  */
   /*  #f9fbff;*/
 }
@@ -702,5 +703,22 @@ font-size: var(--font-size-m);
     align-items: stretch; 
    text-align: center;
     display: grid;
-    padding-top: 10rem;
+    padding-top: 4rem;
+  }
+
+  .grid{
+      display: grid;
+  }
+  .message_container{
+    max-width: 986px;
+    margin: auto;
+  }
+
+  #message-form{
+      display: flex;
+      gap: 1rem;
+      background: var(--conteiner-color);
+      padding: 1rem 5rem;
+      border-radius: .5rem;
+      flex-direction: column;
   }

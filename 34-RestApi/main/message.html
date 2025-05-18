@@ -93,7 +93,20 @@
     </nav>
   <main class="main">
     <div class="container message">
-        <h2 class="section_title section_title_gradient">Send a message or ask a question</h2>
+        <h2 class="section_title section_title_gradient">Send a message
+or
+Ask a question</h2>
+        <div class="message_container grid">
+            <div class="message_content">
+                <form  id="message-form">
+                    <input type="text" id="name-message" placeholder="UserName" required>
+                    <textarea name="message" placeholder="Your message" id="body-message" required></textarea>
+                    <button class="button button-flex" id="submit" onclick="sendMail()"> 
+                        <i class="fa-solid fa-paper-plane button_icon"></i>Submit
+                    </button>
+                </form>
+            </div>
+        </div>
     </div>
   </main>
    <!--Footer-->
