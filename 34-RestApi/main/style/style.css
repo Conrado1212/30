@@ -162,7 +162,7 @@ body.white{
 }
 /* rezultat*/
 .search-result{
-    display: block;
+    display: none;
     position: absolute;
     background: var(--white-color);
     max-width: 500px;

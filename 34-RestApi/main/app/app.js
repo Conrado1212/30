@@ -73,21 +73,21 @@ const header = document.getElementById('header');
 //zmienna pozycji scrolla
 let prevScrollPos = document.documentElement.scrollTop || window.scrollY;
 
-window.addEventListener('scroll', () => {
-    //aktualna pozycja skrolla
-  let currentScrollPos = document.documentElement.scrollTop || window.scrollY;
-//check pozycji srcoplla
-  if (prevScrollPos > currentScrollPos) {
+// window.addEventListener('scroll', () => {
+//     //aktualna pozycja skrolla
+//   let currentScrollPos = document.documentElement.scrollTop || window.scrollY;
+// //check pozycji srcoplla
+//   if (prevScrollPos > currentScrollPos) {
    
-    header.style.opacity = '1';
-  } else {
+//     header.style.opacity = '1';
+//   } else {
    
-    header.style.opacity = '0';
-  }
-  //akutalizacja pozycji scrolla
-  prevScrollPos = currentScrollPos; 
-  console.log('Aktualna pozycja scrolla:', currentScrollPos);
-});
+//     header.style.opacity = '0';
+//   }
+//   //akutalizacja pozycji scrolla
+//   prevScrollPos = currentScrollPos; 
+//   console.log('Aktualna pozycja scrolla:', currentScrollPos);
+// });
 
 const users = [
     { username: "test1", password: "test1"},
@@ -306,11 +306,13 @@ function display(){
     
     sug.innerHTML = html;
 }
-
+function resultSearch(){
+    sug.style.display = "block";
+}
 //zmienie 
 const search = document.querySelector('.search-input');
 const sug = document.querySelector('.search-result');
 
 //nasluchiwanie
-search.addEventListener('change', display);
-search.addEventListener('keyup', display);
+search.addEventListener('change', ()=>(resultSearch(),display()));
+search.addEventListener('keyup', ()=>(resultSearch(),display()));
