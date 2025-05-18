@@ -235,17 +235,21 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
 
 //wyswietlanie scrolla po njajechaniu na tabelke jesli jes zbyt mala
+const table = document.getElementById('endpoints-table')
+if(table){
+    document.querySelector('#endpoints-table').addEventListener('mouseover', ()=>{
+        document.querySelector('#endpoints-table').style.overflowY  = 'auto';
+    });
+    document.querySelector('#endpoints-table').addEventListener('mouseout', ()=>{
+        document.querySelector('#endpoints-table').style.overflowY = 'hidden';
+    });
+}
 
-document.querySelector('#endpoints-table').addEventListener('mouseover', ()=>{
-    document.querySelector('#endpoints-table').style.overflowY  = 'auto';
-});
-document.querySelector('#endpoints-table').addEventListener('mouseout', ()=>{
-    document.querySelector('#endpoints-table').style.overflowY = 'hidden';
-});
 
 
 
 ///filtorwanie tabeli 
+if(table){
 document.querySelector('#endpoints-table i').addEventListener('click',()=>{
     console.log('clicked');
     const filter = document.querySelector('.filter');
@@ -255,3 +259,58 @@ document.querySelector('#endpoints-table i').addEventListener('click',()=>{
     filter.style.cssText='opacity:1;display:flex;'
    }
 })
+}
+
+
+///szukanie search 
+const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+//endpoint
+const cities = [];
+//array
+
+
+const prom = fetch(endpoint)
+.then(blob => blob.json())
+.then(data => cities.push(...data));
+
+console.log('test citeis ',cities);
+
+
+function find(word, cities){
+    return cities.filter(place =>{
+        const regex = new RegExp(word, 'gi');
+        return place.city.match(regex) || place.state.match(regex);
+    });
+}
+
+//number to comma\
+
+function numberTo(x){
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+}
+
+//wyswietlanie danych w szukajce
+
+function display(){
+    const matchArray = find(this.value, cities);
+    const html = matchArray.map(place =>{
+        const regex = new RegExp(this.value, 'gi');
+        const name = place.city.replace(regex, `<span class="hl">${this.value}</span>`)
+        const state = place.state.replace(regex, `<span class="hl">${this.value}</span>`)
+     return `
+     <li><i class="fa-solid fa-clock-rotate-left"></i>
+     <span class="name">${name}, ${state}</span>
+     <span class="pop">${numberTo(place.population)}</span>
+     </li>`
+    }).join('');
+    
+    sug.innerHTML = html;
+}
+
+//zmienie 
+const search = document.querySelector('.search-input');
+const sug = document.querySelector('.search-result');
+
+//nasluchiwanie
+search.addEventListener('change', display);
+search.addEventListener('keyup', display);
