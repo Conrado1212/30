@@ -10,7 +10,7 @@
 --search-color: hsl(var(--hue-color),4%,10%);
 --white-color:#fff;
 --text-color: hsl(var(--hue-color),4%,75%);
---text-gradient: linear-gradient(hsl(var(--hue-color),4%,24%),hsl(var(--hue-color),4%,8%));
+--text-gradient: linear-gradient(hsl(var(--hue-color),4%,34%),hsl(var(--hue-color),4%,16%));
 --text-color-light: hsl(var(--hue-color),4%,65%);
 --search-result-shadow-color: rgba(0, 0, 0, 0.14);
 /*fonts*/
@@ -19,6 +19,7 @@
 --font-size: 1.25rem;
 --font-size-m: 1rem;
 --line-height: 1.5;
+--title-home: 3rem;
  /*font-weight*/
  --font-m: 700;
   /*letter spacing*/
@@ -390,6 +391,7 @@ white-space: nowrap;
   height: 1600px;
     transition: var(--tran-03-all);
     background: var(--search-color);
+     /* background: var(--black-color);  */
   /*  #f9fbff;*/
 }
  #sidebar.active ~ .main{
@@ -685,4 +687,20 @@ font-size: var(--font-size-m);
       text-align: center;
       margin-bottom: .5rem;
       white-space: pre;
+      width: 100%;
+  }
+  .section_title_gradient{
+      color: transparent;
+      background: var(--text-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+  }
+
+  /*section message*/
+
+  .message{
+    align-items: stretch; 
+   text-align: center;
+    display: grid;
+    padding-top: 10rem;
   }
