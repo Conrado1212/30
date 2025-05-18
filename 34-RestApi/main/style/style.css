@@ -751,3 +751,10 @@ font-size: var(--font-size-m);
       width: 30%;
      
   }
+  #name-message{
+      color: var(--white-color);
+      background: var(--black-color);
+      border: none;
+     padding: 1rem 1rem;
+     border-radius: .5rem;
+  }
