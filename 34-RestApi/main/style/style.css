@@ -758,3 +758,10 @@ font-size: var(--font-size-m);
      padding: 1rem 1rem;
      border-radius: .5rem;
   }
+  #body-message{
+    color: var(--white-color);
+    background: var(--black-color);
+    border-radius: .5rem;
+    padding: 1rem 1rem;
+  
+  }
