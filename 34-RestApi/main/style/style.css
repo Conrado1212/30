@@ -783,7 +783,7 @@ font-size: var(--font-size-m);
         padding-top: 4rem;
       
   }
-  .endpoint-form{
+  #endpoint-form{
     display: flex;
     gap: 1rem;
     background: var(--container-color);
