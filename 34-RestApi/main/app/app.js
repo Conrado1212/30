@@ -334,3 +334,30 @@ function sendMail(){
 
     window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
 }
+
+
+
+
+/*hover test */
+
+
+
+// document.querySelectorAll("#sidebar ul li").forEach(item => {
+//     item.addEventListener("mouseenter", () => {
+//         console.log('test', item);
+//         const tooltip = item.querySelector(".tooltip");
+//         console.log(tooltip);
+//         if (tooltip) {
+//             tooltip.style.setProperty("opacity", "1", "important");
+//             tooltip.style.top = "50%";
+//         }
+//     });
+
+//     item.addEventListener("mouseleave", () => {
+//         const tooltip = item.querySelector(".tooltip");
+//         if (tooltip) {
+//             tooltip.style.opacity = "0";
+//             tooltip.style.top = "0";
+//         }
+//     });
+// });
