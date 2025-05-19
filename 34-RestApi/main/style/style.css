@@ -47,7 +47,7 @@ html{
     scroll-behavior: smooth;
 }
 body{
-    font-family:'digital-clock-font';
+    font-family: Mukta, sans-serif;
    font-size: var(--font-size);
    line-height: var(--line-height);
   
@@ -816,4 +816,13 @@ font-size: var(--font-size-m);
   }
   .endpoint_content{
       width: 100%;
+  }
+
+  /*home */
+
+  .home{
+    align-items: stretch; 
+   text-align: center;
+    display: grid;
+    padding-top: 4rem;
   }
