@@ -392,6 +392,7 @@ white-space: nowrap;
    left:78px;
    top: 50px;
    width: calc(100% - 78px);
+   height: calc(100% - 50px);
   /* height: 1600px; */
     transition: var(--tran-03-all);
     background: var(--body-color);
