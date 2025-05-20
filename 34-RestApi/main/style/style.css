@@ -19,6 +19,7 @@
 --body-font:'digital-clock-font';
 --body-font-s:'sans-serif';
 --font-size: 1.25rem;
+--font-size-i: 2.5rem;
 --font-size-m: 1rem;
 --line-height: 1.5;
 --title-home: 3rem;
@@ -36,6 +37,8 @@
     --tran-03:  0.3s ease ;
     --tran-015:  0.15s ease;
     --tran-05:  0.5s  ease-in-out ;
+    /*rotate*/
+    /* --r: 10; */
 }
 *{
     box-sizing: border-box;
@@ -825,4 +828,51 @@ font-size: var(--font-size-m);
    text-align: center;
     display: grid;
     padding-top: 4rem;
+  }
+
+  .glass{
+      position: relative;
+      width: 320px;
+      height: 400px;
+      background: linear-gradient(#fff2, transparent);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 25px 25px rgba(0, 0, 0, 0.25);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: var(--tran-05);
+      border-radius: 10px;
+      margin: 0 -40px;
+      backdrop-filter: blur(10px);
+      transform: rotate(calc(var(--r) * 1deg));
+  }
+  .cont{
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 8rem;
+  }
+
+  .cont:hover .glass{
+    transform: rotate(0deg);
+    margin: 0 20px;
+    cursor: pointer;
+  }
+
+  .cont .glass::before{
+      content: attr(data-text);
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 50px;
+      background: rgba(255, 255, 255, 0.05);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--white-color);
+  }
+  .cont .glass i{
+      color: var(--white-color);
+      font-size: var(--font-size-i)
   }
