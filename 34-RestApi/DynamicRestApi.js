@@ -1,7 +1,11 @@
 const express = require("express");
+const cors = require("cors"); 
 const port = 3000;
 const app = express();
 const path = require('path');
+
+
+app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'main')));
 app.use((req,res, next)=>{
@@ -73,8 +77,8 @@ app.post('/new', (req,res)=>{
  //console.log('Endpoints name', endpoints);
  console.log(`${endpoint}`, dynamic[endpoint]);
 
-//modyfikacja danego endpointu
- Object.entries(dynamic).forEach(([endpoint, data])=>{
+    //modyfikacja danego endpointu
+    Object.entries(dynamic).forEach(([endpoint, data])=>{
      if(endpoint === 'test'){
         console.log(`Before update - Endpoint :${endpoint}, data:`, data )
 
@@ -86,7 +90,7 @@ app.post('/new', (req,res)=>{
         });
         console.log(`After update  - Endpoint :${endpoint}, data:`, data )
      }
-});
+    });
 });
 //wszystkie endpointy
 app.get(`/dynamic`,(req,res)=>{

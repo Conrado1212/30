@@ -105,6 +105,9 @@ function singIn(username, password){
 singIn('test1', 'test1');
 
 document.addEventListener('DOMContentLoaded', ()=>{
+    if(sessionStorage.getItem("theme") === 'white'){
+        document.body.classList.add('white');
+    }
     //dodanie zmiennej do sessionstorage
     const savedLi = sessionStorage.getItem("activeLi");
    
@@ -160,12 +163,21 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
 
 //zmiana trybu po kliknieciu na slonce badz ksiezyc w lewym gornym rogu
-    mode.forEach(icon =>{
-        icon.addEventListener('click', (e)=>{
-        console.log('clik', e.target);
-            body.classList.toggle("white");
-        })
-    })
+        mode.forEach(icon =>{
+            icon.addEventListener('click', (e)=>{
+            console.log('clik', e.target);
+                body.classList.toggle("white");
+                    //dodanie do session storage infomracji o theme jesli storna biala 
+                if(document.body.classList.contains("white")){
+                    sessionStorage.setItem("theme", "white");
+                }else{
+                    sessionStorage.removeItem("theme");
+                }
+            });
+        });
+
+
+   
 
 
 
@@ -361,3 +373,47 @@ function sendMail(){
 //         }
 //     });
 // });
+
+
+/*przeslanei request z formularza stworznie nowego endpointa */
+
+
+if(document.getElementById("submit")){
+document.getElementById("submit").addEventListener("click", async function(event) {
+    event.preventDefault();
+    const endpointName = document.getElementById("endpoint-name").value;
+    const endpointData = document.getElementById("endpoint-data").value;
+
+    let jsonData;
+
+    // walidacja danych przesylanych
+    try {
+        jsonData = JSON.parse(endpointData);
+    } catch (error) {
+        alert("Error: Invalid format!");
+        return;
+    }
+
+    const payload = {
+        endpoint: endpointName,
+        data: jsonData
+    };
+
+    try {
+        const response = await axios.post("http://localhost:3000/new", payload, {
+            headers: { "Content-Type": "application/json" }
+        });
+        console.log("Response data:", response.data);
+        alert("Data has been sent successfully!");
+        // setTimeout(() => {
+            document.getElementById("endpoint-name").value = '';
+         document.getElementById("endpoint-data").value = '';
+        // }, 500);
+       
+        console.log("Po resecie:", endpointName.value, endpointData.value);
+    } catch (error) {
+        console.error("Error:", error);
+        alert("An error occurred while sending data.");
+    }
+});
+}
