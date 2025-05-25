@@ -66,9 +66,10 @@ app.post('/new', (req,res)=>{
      }
     //zwrotka co stworzone 
     res.json({ 
-        endpointName: `${endpoint}`,
-        message: `Endpoint wiht name ${endpoint} has been successfully created with method post /${endpoint}, get /${endpoint} , get /${endpoint}/:id został utworzony.`,
-    data: dynamic[endpoint]
+        endpointName: `Endpoint ${endpoint}`,
+        message: `Endpoint has been successfully created`,
+      //  method: `The method post /${endpoint}, get /${endpoint} , get /${endpoint}/:id , del /${endpoint}/:id `,
+        data: dynamic[endpoint]
  });
 
  //console.log('Endpoints name', endpoints);

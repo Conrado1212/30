@@ -405,7 +405,11 @@ document.getElementById("submit").addEventListener("click", async function(event
         });
         console.log("Response data:", response.data.message);
       //  alert("Endpoint has been created successfully!", + response.data.message);
-        alert(response.data.message);
+       // alert(response.data.message);
+        document.querySelector('.overlay').style.display = 'flex';
+        document.querySelector('.endpoint-cname').textContent = response.data.endpointName;
+        document.querySelector('.info-endpoint').textContent = response.data.message;
+        //document.querySelector('.method-endpoint').textContent = response.data.method;
         // setTimeout(() => {
             document.getElementById("endpoint-name").value = '';
          document.getElementById("endpoint-data").value = '';
@@ -417,4 +421,8 @@ document.getElementById("submit").addEventListener("click", async function(event
         alert("An error occurred while sending data.");
     }
 });
+}   
+function closeInfo(){
+    document.querySelector('.overlay').style.display = 'none';
+  
 }
