@@ -403,8 +403,9 @@ document.getElementById("submit").addEventListener("click", async function(event
         const response = await axios.post("http://localhost:3000/new", payload, {
             headers: { "Content-Type": "application/json" }
         });
-        console.log("Response data:", response.data);
-        alert("Data has been sent successfully!");
+        console.log("Response data:", response.data.message);
+      //  alert("Endpoint has been created successfully!", + response.data.message);
+        alert(response.data.message);
         // setTimeout(() => {
             document.getElementById("endpoint-name").value = '';
          document.getElementById("endpoint-data").value = '';

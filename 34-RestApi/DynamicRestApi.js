@@ -48,18 +48,14 @@ app.post('/new', (req,res)=>{
         dynamic[endpoint] = [];
        // endpoints.push(endpoint);
     }
-
     //id ++
     //id++;
-
     //dodanie id oraz danych do stworzonego endpointu
     const newID = {
         id:id,
         ...data
     }
     dynamic[endpoint].push(newID);
-
-
     //dynamiczne logowanie endpointow 
      if(Object.keys(dynamic).length >0){
         Object.entries(dynamic).forEach(([endpoint, data])=>{
@@ -71,9 +67,10 @@ app.post('/new', (req,res)=>{
     //zwrotka co stworzone 
     res.json({ 
         endpointName: `${endpoint}`,
-        message: `Endpoint post /${endpoint}, get /${endpoint} , get /${endpoint}/:id został utworzony.`,
+        message: `Endpoint wiht name ${endpoint} has been successfully created with method post /${endpoint}, get /${endpoint} , get /${endpoint}/:id został utworzony.`,
     data: dynamic[endpoint]
  });
+
  //console.log('Endpoints name', endpoints);
  console.log(`${endpoint}`, dynamic[endpoint]);
 
