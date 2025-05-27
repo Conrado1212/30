@@ -90,6 +90,21 @@ app.post('/new', (req,res)=>{
      }
     });
 });
+
+
+app.delete(`/del/:endpointName`, (req,res)=>{
+    const {endpointName} = req.params;
+    if(dynamic[endpointName]){
+        delete dynamic[endpointName];
+        res.json({message: `Successfully del endpoint ${endpointName}`})
+    }else{
+        res.status(404).json({
+            error: `Endpoint ${endpointName} not found`
+        });
+    }
+  
+});
+
 //wszystkie endpointy
 app.get(`/dynamic`,(req,res)=>{
     //dynamiczne logowanie endpointow 

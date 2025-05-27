@@ -164,8 +164,16 @@ document.addEventListener('DOMContentLoaded', ()=>{
                 const endpointName = row.querySelector('td:nth-child(1)').textContent;
                 console.log('namamamama', endpointName);
                 document.querySelector('.endpoint-cname').textContent = endpointName;
-                document.querySelector('.delete-btn').addEventListener('click', () => {
+               
+                document.querySelector('#del-endpoint').addEventListener('click', () => {
+                    const input_value = document.querySelector('#del-input').value.trim()
+                   if(input_value === 'confirm'){
                     deleteEndpoint(endpointName);
+                   } else{
+                    document.querySelector('.info-endpoint').textContent = 'Incorrect value bye 😂😂😂';
+                    setTimeout(closeInfo,700);
+                   
+                   }
                 });
                });
             }
