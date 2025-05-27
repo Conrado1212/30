@@ -164,6 +164,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
                 const endpointName = row.querySelector('td:nth-child(1)').textContent;
                 console.log('namamamama', endpointName);
                 document.querySelector('.endpoint-cname').textContent = endpointName;
+                document.querySelector('.delete-btn').addEventListener('click', () => {
+                    deleteEndpoint(endpointName);
+                });
                });
             }
             });
@@ -171,7 +174,19 @@ document.addEventListener('DOMContentLoaded', ()=>{
        
     },1000);
    
+function deleteEndpoint(endpointName){
+    axios.delete(`http://localhost:3000/del/${endpointName}`)
+    .then(response =>{
+        console.log(`Endpoint ${endpointName} has been deleted`);
 
+        document.querySelector('.overlay').style.display = 'none';
+
+        location.reload();
+    })
+    .catch(e =>{
+        console.error('Error', e);
+    })
+}
     
   
 
