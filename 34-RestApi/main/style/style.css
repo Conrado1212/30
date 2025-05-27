@@ -542,6 +542,7 @@ body.white .sw::before{
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     max-height: 80vh;
+    max-width: 80vh;
     overflow-y: hidden; 
     display: block;
     transition: overflow-y var(--tran-03-all);

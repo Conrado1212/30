@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors"); 
-const port = 3000;
+const port = process.env.PORT || 3000;
 const app = express();
 const path = require('path');
 
@@ -66,7 +66,7 @@ app.post('/new', (req,res)=>{
      }
     //zwrotka co stworzone 
     res.json({ 
-        endpointName: `Endpoint ${endpoint}`,
+        endpointName: `${endpoint}`,
         message: `Endpoint has been successfully created`,
       //  method: `The method post /${endpoint}, get /${endpoint} , get /${endpoint}/:id , del /${endpoint}/:id `,
         data: dynamic[endpoint]
@@ -207,6 +207,6 @@ app.delete(`/:endpoint/:id`,(req,res)=>{
     });
 
     
-app.listen(port, ()=>{
-    console.log(`App working at http://localhost:${port}`);
-})
+    app.listen(port, "0.0.0.0", () => {
+        console.log(`App working at http://localhost:${port} and http://192.168.0.50:${port}`);
+    });

@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         console.log('po zaladowniu ',menuLinks[savedLi]);
 
         //jhesli zmienna nie istenije sprawdzam czy glowna storna aby dodac active do home 
-    }else if(window.location.pathname.includes('index.html')){
+    }else if(window.location.pathname === '/' || window.location.pathname.includes('index.html')){
         menuLinks.forEach(el => el.classList.remove('activeMenu'));
         menuLinks[0].classList.add('activeMenu');
         sessionStorage.setItem('activeLi', 0);
@@ -208,20 +208,39 @@ document.querySelector(".search input").addEventListener("blur",()=>{
 
 //ladownaie raportu z rest api
 
-
+//Object.keys(endpoint.data[0])
+//analizda danego obiektu 
+function getStructure(obj) {
+    //sprawdzenie czy obj jest tablica
+    if (Array.isArray(obj)) {
+        //sprawdzenie pierwszego obiektu w tablicy
+        return obj.length ? [getStructure(obj[0])] : [];
+        //sprawdznie czy boiekt to obiekt 
+    } else if (typeof obj === "object" && obj !== null) {
+        return Object.keys(obj).reduce((acc, key) => { //pobranie kluczy obietku 
+            acc[key] = typeof obj[key] === "object" ? getStructure(obj[key]) : typeof obj[key]; //zwrca typ wartosci w obiekcie 
+            return acc;
+        }, {});
+    }
+    return typeof obj; //zwrocienie typu wartosci lda pojedynczych pol 
+}
 
 document.addEventListener('DOMContentLoaded', ()=>{
     if(window.location.pathname.includes('report.html')){
-        axios.get("https://jsonplaceholder.typicode.com/users")
+        // axios.get("https://jsonplaceholder.typicode.com/users")
+        axios.get("http://localhost:3000/dynamic")
         .then(response => {
-          const data = response.data;
+          const data = response.data.endpoints;
           console.log('Check data', data);
+        //   console.log('Check data endpoints', data.endpoints);
           const tbody = document.querySelector("#endpoints-table tbody");
     
-          data.forEach(user => {
-              console.log('Endpoint log', user);
+          data.forEach(endpoint => {
+              console.log('Endpoint log', endpoint);
             const row = document.createElement("tr");
-            row.innerHTML = `<td>${user.id}</td><td>${user.name}</td><td>${user.username}</td><td>
+
+
+            row.innerHTML = `<td>${endpoint.endpoint}</a></td><td>${JSON.stringify(getStructure(endpoint.data), null, 2)}</td><td>
             <div class="buttons-container">
                  <button class="action-btn">
                      <i class="fa-solid fa-trash"></i>
@@ -230,8 +249,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
                      <i class="fa-regular fa-pen-to-square"></i>
                  </button>
                  <button class="action-btn">
-                                <i class="fa-regular fa-window-restore"></i>
-                            </button>
+                 <a href="http://localhost:3000/${endpoint.endpoint}" target="_blank"> <i class="fa-regular fa-window-restore"></i></a>
+             </button>
             </div>
          </td>`;
             tbody.appendChild(row);
@@ -426,3 +445,8 @@ function closeInfo(){
     document.querySelector('.overlay').style.display = 'none';
   
 }
+
+
+
+
+////
