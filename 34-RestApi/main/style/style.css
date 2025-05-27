@@ -590,7 +590,7 @@ body.white .sw::before{
         font-weight: var(--font-m);
     }
     td a:hover{
-        color: rgb(68, 64, 64);
+        color: rgb(0, 255, 255);
     }
 }
 
@@ -756,7 +756,7 @@ font-size: var(--font-size-m);
       /* margin-left: 15px; */
       transition: var(--tran-03-all);
       cursor: pointer;
-      width: 30%;
+      width: 9vh;
      
   }
   #name-message{

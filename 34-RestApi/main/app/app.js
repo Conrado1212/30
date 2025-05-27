@@ -148,8 +148,34 @@ document.addEventListener('DOMContentLoaded', ()=>{
             console.log('saveStoraege',  sessionStorage.getItem("activeLi"));
       //      }
         });
-       
+           
     });
+
+ 
+    setTimeout(function(){
+        const rowsTable = document.querySelectorAll("#endpoints-table tbody tr");
+        if(rowsTable){
+            rowsTable.forEach(row =>{
+             const actionBtn =    row.querySelector('td:nth-child(3) .action-btn:nth-child(1)');
+             console.log(actionBtn);
+             if(actionBtn){
+             actionBtn.addEventListener('click',()=>{
+                document.querySelector('.overlay').style.display = 'flex';
+                const endpointName = row.querySelector('td:nth-child(1)').textContent;
+                console.log('namamamama', endpointName);
+                document.querySelector('.endpoint-cname').textContent = endpointName;
+               });
+            }
+            });
+        }
+       
+    },1000);
+   
+
+    
+  
+
+
 });
 //dodanie aktive taba na wesjciue do home 
 // window.addEventListener('DOMContentLoaded', ()=>{
@@ -449,4 +475,4 @@ function closeInfo(){
 
 
 
-////
+
