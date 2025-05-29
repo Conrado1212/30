@@ -412,7 +412,7 @@ white-space: nowrap;
     background: var(--body-color);
      /* background: var(--black-color);  */
   /*  #f9fbff;*/
-  z-index: var(--z-index);
+  
 }
 /*tooltip jest niewidoczny przez absolute na main */
  #sidebar.active ~ .main{
