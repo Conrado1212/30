@@ -283,7 +283,14 @@ document.addEventListener('DOMContentLoaded', ()=>{
           console.log('Check data', data);
         //   console.log('Check data endpoints', data.endpoints);
           const tbody = document.querySelector("#endpoints-table tbody");
-    
+            if(!data || data.length === 0){
+                const noData = document.createElement("tr");
+                noData.innerHTML =`<td colspan=3 style="text-align:center;  color: transparent;
+                background: var(--text-gradient);
+                -webkit-background-clip: text;
+                background-clip: text; font-size: 2rem; font-weight: bold;">No Data Available</td>`;
+                tbody.appendChild(noData);
+            }
           data.forEach(endpoint => {
               console.log('Endpoint log', endpoint);
             const row = document.createElement("tr");

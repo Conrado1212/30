@@ -108,6 +108,7 @@ app.delete(`/del/:endpointName`, (req,res)=>{
 //wszystkie endpointy
 app.get(`/dynamic`,(req,res)=>{
     //dynamiczne logowanie endpointow 
+    console.log("curr", dynamic);
     if(Object.keys(dynamic).length >0){
      const allEndpoints =   Object.entries(dynamic).map(([endpoint, data]) =>({
          endpoint,
@@ -116,7 +117,11 @@ app.get(`/dynamic`,(req,res)=>{
        res.json({message: "Avaliable dynamic endpoints:",
         endpoints: allEndpoints})
     }else{
-       res.status(404).json({error: "Dynamic is empty"});
+    //    res.status(404).json({error: "Dynamic is empty"});
+    res.json({
+        message: "No dynamic endpoints available",
+        endpoints: []
+    })
     }
     
 });
