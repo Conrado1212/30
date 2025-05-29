@@ -301,7 +301,9 @@ line-height: 50px;
     background: var(--text-gradient);
     -webkit-background-clip: text;
     background-clip: text;
-    box-shadow:  -3px -3px 25px rgb(0, 255, 255);;
+    box-shadow:  -3px -3px 25px rgb(0, 255, 255);
+    white-space: nowrap;
+    
 }
 #sidebar.active ul li .tooltip{
     display: none;
