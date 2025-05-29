@@ -87,6 +87,7 @@ body.white{
     left: 0;
     padding: 7px 14px;
     transition: .3s ease;
+    z-index: 9999;
 }
 #sidebar.active{
     width: 240px;
@@ -284,7 +285,7 @@ line-height: 50px;
     /* transform: translateY(-50%); */
     width: 122px;
     background: #fff;
-    box-shadow: 0 5px 10px rgba(0, 0, 0 , 0.2);
+    /* box-shadow: 0 5px 10px rgba(0, 0, 0 , 0.2); */
     border-radius: 6px;
     line-height: 35px;;
     text-align: center;
@@ -293,6 +294,14 @@ line-height: 50px;
     pointer-events: none;
     display: block;
     z-index: 999999999;
+    /* border: 1px solid rgb(0, 255, 255); */
+    font-family: Mukta, sans-serif;
+    font-weight: var(--font-m);
+    color: transparent;
+    background: var(--text-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    box-shadow:  -3px -3px 25px rgb(0, 255, 255);;
 }
 #sidebar.active ul li .tooltip{
     display: none;
@@ -401,6 +410,7 @@ white-space: nowrap;
     background: var(--body-color);
      /* background: var(--black-color);  */
   /*  #f9fbff;*/
+  z-index: var(--z-index);
 }
 /*tooltip jest niewidoczny przez absolute na main */
  #sidebar.active ~ .main{
