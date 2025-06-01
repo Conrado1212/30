@@ -667,8 +667,9 @@ body.white .sw::before{
     text-align: center;
    height: 25px;
    outline: none;
-   background: #222425;
-   color: var(--white-color);
+   /* background: #222425; */
+   background: var(--bars-color);
+   color: var(--black-color);
 }
 
 /* przyciski tabelka  */

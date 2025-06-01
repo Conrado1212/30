@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
                 document.querySelector('.endpoint-cname').textContent = endpointName;
 
                const delBtn = document.querySelector("#del-endpoint");
-               delBtn.replaceWith(delBtn.cloneNode(true));
+            //    delBtn.replaceWith(delBtn.cloneNode(true));
                delBtn.addEventListener('click', () => {
                     const input_value = document.querySelector('#del-input').value.trim()
                    if(input_value === 'confirm'){
@@ -213,8 +213,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
                   
                    jsonData.textContent = endpointData;
 
-                   const updBtn = document.querySelector("#del-endpoint");
-                   updBtn.replaceWith(updBtn.cloneNode(true));
+                   const updBtn = document.querySelector("#upd-endpoint");
+                //    updBtn.replaceWith(updBtn.cloneNode(true));
 
                    updBtn.addEventListener('click', () => {
                        console.log('aszdadadad',updBtn);
