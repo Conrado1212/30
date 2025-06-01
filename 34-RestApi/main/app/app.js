@@ -199,6 +199,47 @@ function deleteEndpoint(endpointName){
     
   
 
+/*update endpoint strukture*/
+
+
+
+
+setTimeout(function upd(){
+    const rowsTable = document.querySelectorAll("#endpoints-table tbody tr");
+    if(rowsTable){
+        rowsTable.forEach(row =>{
+         const actionBtn =    row.querySelector('td:nth-child(3) .action-btn:nth-child(2)');
+         console.log(actionBtn);
+          if(actionBtn){
+         actionBtn.addEventListener('click',()=>{
+             document.querySelector('.overlay').style.display = 'flex';
+             const endpointName = row.querySelector('td:nth-child(1)').textContent;
+             const endpointData = row.querySelector('td:nth-child(2)').textContent;
+            console.log('update name', endpointName);
+             document.querySelector('.endpoint-cname').textContent = endpointName;
+            document.querySelector('.info-endpoint').textContent = 'Update your endpoint';
+            document.querySelector('.input-endpoint').style.display = 'none';
+            document.querySelector('#json-data').textContent = endpointData;
+             document.querySelector('#del-endpoint').addEventListener('click', () => {
+                  
+            });
+           });
+         }
+        });
+    }
+   
+},1000);
+   
+
+
+
+
+
+
+
+
+
+
 
 });
 //dodanie aktive taba na wesjciue do home 

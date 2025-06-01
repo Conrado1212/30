@@ -91,7 +91,7 @@ app.post('/new', (req,res)=>{
     });
 });
 
-
+//susuniecie dane endpointu przykladowo usawam caly endpoint test z raportow 
 app.delete(`/del/:endpointName`, (req,res)=>{
     const {endpointName} = req.params;
     if(dynamic[endpointName]){
@@ -103,6 +103,22 @@ app.delete(`/del/:endpointName`, (req,res)=>{
         });
     }
   
+});
+
+app.patch(`/upd/:endpointName`, (req,res)=>{
+    const {endpointName} = req.params;
+    const {updatedBody} = re.body;
+    if(dynamic[endpointName]){
+        dynamic[endpointName] = updatedBody;
+        res.json({
+            message: `Endpoint ${endpointName} updated successfully`,
+            data: dynamic[endpointName]
+        })
+    }else{
+        res.status(404).json({
+            error: `Endpoint ${endpointName} not found`
+        });
+    }
 });
 
 //wszystkie endpointy
