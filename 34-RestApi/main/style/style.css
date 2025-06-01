@@ -18,7 +18,9 @@
 --bars-color: #dbdce4;
 --card-before: rgba(255, 255, 255, 0.05);
 --table-color: #fff;
---input-endpoint-color: 
+--input-endpoint-color: ;
+--endpoint-form-color: hsl(206,4%,10%);
+--message-form-color: hsl(206,4%,10%);
 /*shadow*/
 --box-shadow: 0 5px 10px rgb(0, 255, 255);
 /*fonts*/
@@ -76,6 +78,8 @@ body.white{
     --box-shadow:;
     --container-color:rgb(51, 52, 53);
     --table-color: rgb(247, 247, 247);
+    --endpoint-form-color: rgb(247, 247, 247);
+    --message-form-color: rgb(247, 247, 247);
 }
 #header{
     height: 60px;
@@ -755,7 +759,7 @@ font-size: var(--font-size-m);
   #message-form{
       display: flex;
       gap: 1rem;
-      background: var(--container-color);
+      background: var(--message-form-color);
       padding: 1rem 5rem;
       border-radius: .5rem;
       flex-direction: column;
@@ -818,7 +822,7 @@ font-size: var(--font-size-m);
   #endpoint-form{
     display: flex;
     gap: 1rem;
-    background: var(--container-color);
+    background: var(--endpoint-form-color);
     padding: 1rem 5rem;
     border-radius: .5rem;
     flex-direction: column;
