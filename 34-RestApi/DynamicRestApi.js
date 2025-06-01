@@ -107,18 +107,25 @@ app.delete(`/del/:endpointName`, (req,res)=>{
 
 app.patch(`/upd/:endpointName`, (req,res)=>{
     const {endpointName} = req.params;
-    const {updatedBody} = re.body;
-    if(dynamic[endpointName]){
-        dynamic[endpointName] = updatedBody;
-        res.json({
-            message: `Endpoint ${endpointName} updated successfully`,
-            data: dynamic[endpointName]
-        })
-    }else{
-        res.status(404).json({
-            error: `Endpoint ${endpointName} not found`
+    const {updatedBody} = req.body;
+    if(!dynamic[endpointName]){
+return res.status(404).json({
+    error: `Endpoint ${endpointName} not found`
+})
+    }
+
+    if (typeof updatedBody !== "object" || updatedBody === null) {
+        return res.status(400).json({
+            error: "Invalid request body. Expected an object."
         });
     }
+
+    dynamic[endpointName] = {...dynamic[endpointName], ...updatedBody};
+
+    res.json({
+        message: `Endpoint ${endpointName} updated successfully`,
+        data: dynamic[endpointName]
+    })
 });
 
 //wszystkie endpointy

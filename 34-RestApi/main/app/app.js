@@ -171,11 +171,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
                 console.log('Del', endpointName);
 
-                const delInput = document.querySelector("#del-input");
-                if(delInput){
-                    document.querySelector('#json-data').style.display = 'none';
-                    delInput.style.display = 'block';
-                }
+                // const delInput = document.querySelector("#del-input");
+                // const jsonData = document.querySelector("#json-data");
+                // if(delInput && jsonData){
+                //     jsonData.style.display = 'none';
+                //     delInput.style.display = 'block';
+                // }
 
                 document.querySelector('.endpoint-cname').textContent = endpointName;
 
@@ -195,27 +196,30 @@ document.addEventListener('DOMContentLoaded', ()=>{
              }
              if(actionBtnUpd){
                 actionBtnUpd.addEventListener('click',()=>{
-                    document.querySelector('.overlay').style.display = 'flex';
+                    document.querySelector('.overlay2').style.display = 'flex';
                     const endpointName = row.querySelector('td:nth-child(1)').textContent;
                     const endpointData = row.querySelector('td:nth-child(2)').textContent;
 
                    console.log('update name', endpointName);
 
-                    document.querySelector('.endpoint-cname').textContent = endpointName;
-                   document.querySelector('.info-endpoint').textContent = 'Update your endpoint';
-                   const delInput = document.querySelector("#del-input");
+                    document.querySelector('.endpoint-cname2').textContent = endpointName;
+                   document.querySelector('.info-endpoint2').textContent = 'Update your endpoint';
+                //    const delInput = document.querySelector("#del-input");
                    const jsonData = document.querySelector("#json-data");
-                   if(jsonData && delInput){
-                    delInput.style.display = 'none';
-                    jsonData.style.display = 'block';
-                   }
+                //    if(jsonData && delInput){
+                //     delInput.style.display = 'none';
+                //     jsonData.style.display = 'block';
+                //    }
                   
-                   document.querySelector('#json-data').textContent = endpointData;
+                   jsonData.textContent = endpointData;
+
                    const updBtn = document.querySelector("#del-endpoint");
                    updBtn.replaceWith(updBtn.cloneNode(true));
+
                    updBtn.addEventListener('click', () => {
+                       console.log('aszdadadad',updBtn);
                        try{
-                        const updatedData = JSON.parse(document.querySelector("#json-data").innerText);
+                        const updatedData = JSON.parse(jsonData.textContent);
 
                         axios.patch(`http://localhost:3000/upd/${endpointName}`, updatedData)
                         .then(response =>{
@@ -602,5 +606,6 @@ document.getElementById("submit").addEventListener("click", async function(event
 }   
 function closeInfo(){
     document.querySelector('.overlay').style.display = 'none';
+    document.querySelector('.overlay2').style.display = 'none';
   
 }
