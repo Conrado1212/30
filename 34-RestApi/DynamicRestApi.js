@@ -76,19 +76,19 @@ app.post('/new', (req,res)=>{
  console.log(`${endpoint}`, dynamic[endpoint]);
 
     //modyfikacja danego endpointu
-    Object.entries(dynamic).forEach(([endpoint, data])=>{
-     if(endpoint === 'test'){
-        console.log(`Before update - Endpoint :${endpoint}, data:`, data )
+    // Object.entries(dynamic).forEach(([endpoint, data])=>{
+    //  if(endpoint === 'test'){
+    //     console.log(`Before update - Endpoint :${endpoint}, data:`, data )
 
-        dynamic[endpoint] = data.map(item =>{
-            return{
-                ...item,
-                updated: true //zmiana struktury
-            };
-        });
-        console.log(`After update  - Endpoint :${endpoint}, data:`, data )
-     }
-    });
+    //     dynamic[endpoint] = data.map(item =>{
+    //         return{
+    //             ...item,
+    //             updated: true //zmiana struktury
+    //         };
+    //     });
+    //     console.log(`After update  - Endpoint :${endpoint}, data:`, data )
+    //  }
+    // });
 });
 
 //susuniecie dane endpointu przykladowo usawam caly endpoint test z raportow 

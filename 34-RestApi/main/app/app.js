@@ -158,15 +158,30 @@ document.addEventListener('DOMContentLoaded', ()=>{
         if(rowsTable){
             rowsTable.forEach(row =>{
              const actionBtn =    row.querySelector('td:nth-child(3) .action-btn:nth-child(1)');
-             console.log(actionBtn);
+             const actionBtnUpd =    row.querySelector('td:nth-child(3) .action-btn:nth-child(2)');
+             console.log("Delete Btn:", actionBtn);
+             console.log("Update Btn:", actionBtnUpd);
+
+
+
              if(actionBtn){
              actionBtn.addEventListener('click',()=>{
                 document.querySelector('.overlay').style.display = 'flex';
                 const endpointName = row.querySelector('td:nth-child(1)').textContent;
-                console.log('namamamama', endpointName);
+
+                console.log('Del', endpointName);
+
+                const delInput = document.querySelector("#del-input");
+                if(delInput){
+                    document.querySelector('#json-data').style.display = 'none';
+                    delInput.style.display = 'block';
+                }
+
                 document.querySelector('.endpoint-cname').textContent = endpointName;
-               
-                document.querySelector('#del-endpoint').addEventListener('click', () => {
+
+               const delBtn = document.querySelector("#del-endpoint");
+               delBtn.replaceWith(delBtn.cloneNode(true));
+               delBtn.addEventListener('click', () => {
                     const input_value = document.querySelector('#del-input').value.trim()
                    if(input_value === 'confirm'){
                     deleteEndpoint(endpointName);
@@ -176,6 +191,42 @@ document.addEventListener('DOMContentLoaded', ()=>{
                    
                    }
                 });
+               });
+            }
+            if(actionBtnUpd){
+                actionBtnUpd.addEventListener('click',()=>{
+                    document.querySelector('.overlay').style.display = 'flex';
+                    const endpointName = row.querySelector('td:nth-child(1)').textContent;
+                    const endpointData = row.querySelector('td:nth-child(2)').textContent;
+
+                   console.log('update name', endpointName);
+
+                    document.querySelector('.endpoint-cname').textContent = endpointName;
+                   document.querySelector('.info-endpoint').textContent = 'Update your endpoint';
+                   if(jsonData && delInput){
+                    delInput.style.display = 'none';
+                    jsonData.style.display = 'block';
+                   }
+                  
+                   document.querySelector('#json-data').innerText = endpointData;
+                   const updBtn = document.querySelector("#del-endpoint");
+                   updBtn.replaceWith(updBtn.cloneNode(true));
+                   updBtn.addEventListener('click', () => {
+                    const updatedData = JSON.parse(document.querySelector("#json-data").innerText);
+
+                    axios.patch(`http://localhost:3000/upd/${endpointName}`, updatedData)
+                    .then(response =>{
+                        console.log("Upd", response.data);
+                        document.querySelector(".overlay").style.display = "none";
+                        location.reload();
+                    })
+                    .catch(e =>{
+                        console.error("Error upd:", e);
+                        
+                    })
+                   });
+                  });
+                }
                });
             }
             });
@@ -200,35 +251,39 @@ function deleteEndpoint(endpointName){
   
 
 /*update endpoint strukture*/
+// setTimeout(function upd(){
+//     const rowsTable = document.querySelectorAll("#endpoints-table tbody tr");
+//     if(rowsTable){
+//         rowsTable.forEach(row =>{
+//          const actionBtnUpd =    row.querySelector('td:nth-child(3) .action-btn:nth-child(2)');
+//          console.log(actionBtnUpd);
+
+//          const updData = document.querySelector("#json-data");
+//          const delInput = document.querySelector("#del-input");
+//          if (delInput) {
+//             delInput.style.display = "none";
+//         }
 
 
-
-
-setTimeout(function upd(){
-    const rowsTable = document.querySelectorAll("#endpoints-table tbody tr");
-    if(rowsTable){
-        rowsTable.forEach(row =>{
-         const actionBtn =    row.querySelector('td:nth-child(3) .action-btn:nth-child(2)');
-         console.log(actionBtn);
-          if(actionBtn){
-         actionBtn.addEventListener('click',()=>{
-             document.querySelector('.overlay').style.display = 'flex';
-             const endpointName = row.querySelector('td:nth-child(1)').textContent;
-             const endpointData = row.querySelector('td:nth-child(2)').textContent;
-            console.log('update name', endpointName);
-             document.querySelector('.endpoint-cname').textContent = endpointName;
-            document.querySelector('.info-endpoint').textContent = 'Update your endpoint';
-            document.querySelector('.input-endpoint').style.display = 'none';
-            document.querySelector('#json-data').textContent = endpointData;
-             document.querySelector('#del-endpoint').addEventListener('click', () => {
+//           if(actionBtnUpd){
+//             actionBtnUpd.addEventListener('click',()=>{
+//              document.querySelector('.overlay').style.display = 'flex';
+//              const endpointName = row.querySelector('td:nth-child(1)').textContent;
+//              const endpointData = row.querySelector('td:nth-child(2)').textContent;
+//             console.log('update name', endpointName);
+//              document.querySelector('.endpoint-cname').textContent = endpointName;
+//             document.querySelector('.info-endpoint').textContent = 'Update your endpoint';
+//             document.querySelector('.input-endpoint').style.display = 'none';
+//             document.querySelector('#json-data').innerText = endpointData;
+//              document.querySelector('#del-endpoint').addEventListener('click', () => {
                   
-            });
-           });
-         }
-        });
-    }
+//             });
+//            });
+//          }
+//         });
+//     }
    
-},1000);
+// },1000);
    
 
 
@@ -241,7 +296,7 @@ setTimeout(function upd(){
 
 
 
-});
+// });
 //dodanie aktive taba na wesjciue do home 
 // window.addEventListener('DOMContentLoaded', ()=>{
 //     console.log('sciezke', path);
