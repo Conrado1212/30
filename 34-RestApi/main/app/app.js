@@ -192,8 +192,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
                    }
                 });
                });
-            }
-            if(actionBtnUpd){
+             }
+             if(actionBtnUpd){
                 actionBtnUpd.addEventListener('click',()=>{
                     document.querySelector('.overlay').style.display = 'flex';
                     const endpointName = row.querySelector('td:nth-child(1)').textContent;
@@ -203,37 +203,43 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
                     document.querySelector('.endpoint-cname').textContent = endpointName;
                    document.querySelector('.info-endpoint').textContent = 'Update your endpoint';
+                   const delInput = document.querySelector("#del-input");
+                   const jsonData = document.querySelector("#json-data");
                    if(jsonData && delInput){
                     delInput.style.display = 'none';
                     jsonData.style.display = 'block';
                    }
                   
-                   document.querySelector('#json-data').innerText = endpointData;
+                   document.querySelector('#json-data').textContent = endpointData;
                    const updBtn = document.querySelector("#del-endpoint");
                    updBtn.replaceWith(updBtn.cloneNode(true));
                    updBtn.addEventListener('click', () => {
-                    const updatedData = JSON.parse(document.querySelector("#json-data").innerText);
+                       try{
+                        const updatedData = JSON.parse(document.querySelector("#json-data").innerText);
 
-                    axios.patch(`http://localhost:3000/upd/${endpointName}`, updatedData)
-                    .then(response =>{
-                        console.log("Upd", response.data);
-                        document.querySelector(".overlay").style.display = "none";
-                        location.reload();
-                    })
-                    .catch(e =>{
-                        console.error("Error upd:", e);
-                        
-                    })
+                        axios.patch(`http://localhost:3000/upd/${endpointName}`, updatedData)
+                        .then(response =>{
+                            console.log("Upd", response.data);
+                            document.querySelector(".overlay").style.display = "none";
+                            location.reload();
+                        })
+                        .catch(e =>{
+                            console.error("Error upd:", e);
+    
+                        });
+    
+                       }catch(e){
+                           console.error('Json parse error', e);
+                       }
+                 
                    });
                   });
                 }
                });
-            }
-            });
-        }
-       
+             }
+            
     },1000);
-   
+});
 function deleteEndpoint(endpointName){
     axios.delete(`http://localhost:3000/del/${endpointName}`)
     .then(response =>{
@@ -598,8 +604,3 @@ function closeInfo(){
     document.querySelector('.overlay').style.display = 'none';
   
 }
-
-
-
-
-
