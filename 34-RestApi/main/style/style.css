@@ -15,6 +15,12 @@
 --text-color-light: hsl(var(--hue-color),4%,65%);
 --search-result-shadow-color: rgba(0, 0, 0, 0.14);
 --container-color:hsl(206,4%,10%);
+--bars-color: #dbdce4;
+--card-before: rgba(255, 255, 255, 0.05);
+--table-color: #fff;
+--input-endpoint-color: 
+/*shadow*/
+--box-shadow: 0 5px 10px rgb(0, 255, 255);
 /*fonts*/
 --body-font:'digital-clock-font';
 --body-font-s:'sans-serif';
@@ -63,13 +69,20 @@ body.white{
     --conteiner-color: hsl(var(--hue-color),10%,95%);
     --black-color:hsl(var(--hue-color),10%,85%);
     --white-color: #000;
+    --bars-color: #000;
+    /* --card-before: rgba(0, 0, 0, 0.25); */
+    --border-top: 1px solid #dbdce4;
+    --search-color: #fff;
+    --box-shadow:;
+    --container-color:rgb(51, 52, 53);
+    --table-color: rgb(247, 247, 247);
 }
 #header{
     height: 60px;
     width: 100%;
     background: var(--black-color);
     position: fixed;
-    transition:  var(--tran-05);
+    transition:  var(--tran-03-all);
     opacity: 1;
     display: flex;
     align-items: center;
@@ -247,7 +260,7 @@ list-style: none;
     /* padding: 0 5px; */
 }
 #header .search .fa-magnifying-glass{
-    color: #000;
+    color: var(--black-color);
     position: absolute;
     cursor: pointer;
     font-size: var(--font-size);
@@ -357,6 +370,7 @@ line-height: 50px;
     color: rgb(0, 255, 255);
     background: var(--white-color);
 }
+
 #sidebar ul li a{
 text-decoration: none;
 color: var(--white-color);
@@ -368,7 +382,7 @@ white-space: nowrap;
 }
 #sidebar ul li a:hover{
     color: var(--black-color);
-    background: #fff;
+    background: var(--white-color);
 }
 #sidebar ul li  i{
     min-width: 50px;
@@ -381,7 +395,8 @@ white-space: nowrap;
 /*bars clicked*/
 .bars span{
     height: 3px;
-    background: #dbdce4;
+    /* background: #dbdce4; */
+    background: var(--bars-color);
     width: 100%;
     border-radius: 25%;
     position: absolute;
@@ -522,7 +537,7 @@ body.white .mode-content .mode i.moon{
 /* .toggle-sw .sw{
     position: relative;
     border-radius: 25px;
-    cursor: pointer;
+    cursor: pointer;ndpoints-table
     transition: var(--tran-03);
     background: var(--text-color);
     height: 22px;
@@ -547,10 +562,10 @@ body.white .sw::before{
 /*table*/
 #endpoints-table{
     border-collapse: collapse;
-    box-shadow: 0 5px 10px rgb(0, 255, 255);
+    box-shadow: var(--box-shadow);
     text-align: center;
     overflow: hidden;
-    background: var(--white-color);
+    background: var(--table-color);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     max-height: 80vh;
@@ -879,11 +894,12 @@ font-size: var(--font-size-m);
       bottom: 0;
       width: 100%;
       height: 50px;
-      background: rgba(255, 255, 255, 0.05);
+      background: var(--card-before);
       display: flex;
       justify-content: center;
       align-items: center;
       color: var(--white-color);
+      border-top: var(--border-top, none);
   }
   .cont .glass i{
       color: var(--white-color);
@@ -918,6 +934,7 @@ font-size: var(--font-size-m);
       justify-content: space-around;
       align-items: center;
       gap: 15px;
+      position: relative;
   }
   .endpoint-cname{
       font-size: var(--font-size-i);
@@ -936,4 +953,17 @@ font-size: var(--font-size-m);
     width: 100%;
     max-width: 500px;
     text-align: center;
+  }
+
+  .modal-close{
+      display: block;
+      color: var(--white-color);
+      font-size: var(--font-size);
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      right: 10px;
+  }
+  .modal-close:hover{
+color: rgb(0, 255, 255);
   }

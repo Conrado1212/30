@@ -107,6 +107,7 @@ singIn('test1', 'test1');
 document.addEventListener('DOMContentLoaded', ()=>{
     if(sessionStorage.getItem("theme") === 'white'){
         document.body.classList.add('white');
+        
     }
     //dodanie zmiennej do sessionstorage
     const savedLi = sessionStorage.getItem("activeLi");
