@@ -213,15 +213,27 @@ document.addEventListener('DOMContentLoaded', ()=>{
                   
                    jsonData.textContent = endpointData;
 
+                   console.log('jsondata', endpointData);
+
                    const updBtn = document.querySelector("#upd-endpoint");
                 //    updBtn.replaceWith(updBtn.cloneNode(true));
 
                    updBtn.addEventListener('click', () => {
+                      
+                       console.log('jsondata', endpointData);
                        console.log('aszdadadad',updBtn);
                        try{
-                        const updatedData = JSON.parse(jsonData.textContent);
+                        const updatedData = JSON.parse(jsonData.value);
+                        // updatedData.forEach(item => {
+                        //     delete item.email;
+                        // });
 
-                        axios.patch(`http://localhost:3000/upd/${endpointName}`, updatedData)
+                        console.log('updated', updatedData);
+                        axios.patch(`http://localhost:3000/upd/${endpointName}`, updatedData, {
+                            headers:{
+                                'Content-Type': 'application/json'
+                            }
+                        })
                         .then(response =>{
                             console.log("Upd", response.data);
                             document.querySelector(".overlay").style.display = "none";
@@ -229,11 +241,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
                         })
                         .catch(e =>{
                             console.error("Error upd:", e);
-    
+                            alert(e);
                         });
     
                        }catch(e){
                            console.error('Json parse error', e);
+                           alert(e)
                        }
                  
                    });
