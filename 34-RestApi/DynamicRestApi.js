@@ -110,7 +110,7 @@ app.delete(`/del/:endpointName`, (req,res)=>{
 
 
 function mergeWithBlueprint(data, blueprint) {
-    // Obsługa blueprinta będącego tablicą
+    
     if (Array.isArray(blueprint)) {
       const model = blueprint[0];
       if (Array.isArray(data)) {
@@ -120,12 +120,12 @@ function mergeWithBlueprint(data, blueprint) {
       }
     }
   
-    // Jeśli blueprint jest obiektem, budujemy nowy obiekt wyłącznie na podstawie jego kluczy
+  
     if (typeof blueprint === "object" && blueprint !== null) {
       let newData = {};
       for (const key in blueprint) {
         if (blueprint.hasOwnProperty(key)) {
-          // Pobierz oryginalną wartość, jeśli istnieje, lub undefined
+          
           const originalVal = data && data.hasOwnProperty(key) ? data[key] : undefined;
           newData[key] = mergeWithBlueprint(originalVal, blueprint[key]);
         }
@@ -133,8 +133,7 @@ function mergeWithBlueprint(data, blueprint) {
       return newData;
     }
   
-    // Dla kluczy, które nie są obiektami/tablicami, zwracamy wartość z danych,
-    // ale jeśli ona nie istnieje, przyjmujemy wartość wpisaną w blueprintie.
+   
     return data !== undefined ? data : blueprint;
   }
 
@@ -166,7 +165,7 @@ return res.status(404).json({
 
     console.log("Blueprint:", blueprint);
 
-  // Tworzymy nowy obiekt na podstawie blueprinta
+  
   const updatedData = Array.isArray(dynamic[endpointName])
     ? dynamic[endpointName].map(item => mergeWithBlueprint(item, blueprint))
     : mergeWithBlueprint(dynamic[endpointName], blueprint);
