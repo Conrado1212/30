@@ -456,18 +456,28 @@ if(table){
 
 
 ///filtorwanie tabeli 
-if(table){
-document.querySelector('#endpoints-table i').addEventListener('click',()=>{
-    console.log('clicked');
-    const filter = document.querySelector('.filter');
-   if(filter.style.opacity ==="1"){
-   filter.style.cssText='opacity:0;display: none;'
-   } else{
-    filter.style.cssText='opacity:1;display:flex;'
-   }
-})
-}
+// if(table){
+// document.querySelector('#endpoints-table .fa-gear').addEventListener('click',()=>{
+//     console.log('clicked');
+//     const filter = document.querySelector('.filter');
+//    if(filter.style.opacity ==="1"){
+//    filter.style.cssText='opacity:0;display: none;'
+//    } else{
+//     filter.style.cssText='opacity:1;display:flex;'
+//    }
+// })
+// }
 
+
+//reload 
+
+if(table){
+    document.querySelector('#endpoints-table .fa-rotate-right').addEventListener('click',()=>{
+        console.log('reload test');
+      location.reload();
+      
+    })
+    }
 
 ///szukanie search 
 const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
