@@ -6,6 +6,8 @@ const searchMenu = document.querySelector('#sidebar ul li input');
 const bars = document.querySelector('.bars');
 //szukajka 
 const iconSearch = document.querySelector('#sidebar ul li .fa-magnifying-glass');
+//szukajka glowna 
+const searchMain = document.querySelector('#header .search input');
 //sidebar
 const sidebar = document.getElementById('sidebar');
  //pobieramy wszystki i z sidebara 
@@ -481,14 +483,32 @@ if(table){
 
 ///szukanie search 
 const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
-//endpoint
 const cities = [];
-//array
+const endpoint2 = 'http://localhost:3000/dynamic';
+//endpoint
 
+const dynamic = [];
+//array
+axios.get(endpoint2)
+.then(response =>{
+    response.data.endpoints.forEach(e=>{
+        dynamic.push(e.endpoint)
+console.log('ttttt', e.endpoint);
+    })
+  
+   
+   console.log('Dane axios', dynamic);
+})
+.catch(e =>{
+    console.error('Blax axios', e);
+})
 
 const prom = fetch(endpoint)
 .then(blob => blob.json())
-.then(data => cities.push(...data));
+.then(data =>{
+    cities.push(...data);
+    console.log('test citeis ssss',cities);
+} );
 
 console.log('test citeis ',cities);
 
@@ -499,6 +519,14 @@ function find(word, cities){
         return place.city.match(regex) || place.state.match(regex);
     });
 }
+
+function find2(word, dynamicData){
+    return dynamicData.filter(endpoint =>{
+        const regex = new RegExp(word, 'gi');
+        return endpoint.match(regex);
+    })
+}
+
 
 //number to comma\
 
@@ -523,6 +551,25 @@ function display(){
     
     sug.innerHTML = html;
 }
+
+function display2(){
+    const word = search.value;
+    const matchArray = find2(word, dynamic);
+
+    const html = matchArray.map(endpoint => {
+        const regex = new RegExp(word, 'gi');
+        const high = endpoint.replace(regex,  `<span class="hl">${word}</span>`);
+        return `
+        <li><i class="fa-solid fa-clock-rotate-left"></i>
+        <a href="http://localhost:3000/${endpoint}" style="text-decoration:none; color:var(--black-color);" target="_blank" class="name">${high}</a>
+        </li>`;
+    }).join('');
+    sug.innerHTML = html;
+}
+
+
+
+
 function resultSearch(){
     sug.style.display = "block";
 }
@@ -531,10 +578,25 @@ const search = document.querySelector('.search-input');
 const sug = document.querySelector('.search-result');
 
 //nasluchiwanie
-search.addEventListener('change', ()=>(resultSearch(),display()));
-search.addEventListener('keyup', ()=>(resultSearch(),display()));
+search.addEventListener('change', function() {
+    resultSearch();
+    display2.call(this);
+});
+search.addEventListener('keyup', function() {
+    resultSearch();
+    display2.call(this);
+});
 
+search.addEventListener('blur', function(){
+    setTimeout(()=>{
+        sug.style.display = "none";
+        console.log('time chow');
+    }, 200)
+});
 
+sug.addEventListener('mousedown', function(event) {
+    event.preventDefault(); 
+});
 
 
 /*mail wysylka */
@@ -632,3 +694,22 @@ function closeInfo(){
     document.querySelector('.overlay2').style.display = 'none';
   
 }
+
+
+
+/*wyszukiwanie search 1 to 23*/
+
+
+searchMenu.addEventListener('input', function(){
+    console.log('test', this.value);
+    searchMain.value = this.value;
+    searchMain.dispatchEvent(new Event('change'));
+});
+
+searchMenu.addEventListener('blur', function() {
+    setTimeout(() => {
+        sug.style.display = "none"; 
+        searchMenu.value ='';
+        search.value = '';
+    }, 200); 
+});
