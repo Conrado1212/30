@@ -482,8 +482,8 @@ if(table){
     }
 
 ///szukanie search 
-const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
-const cities = [];
+// const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+// const cities = [];
 const endpoint2 = 'http://localhost:3000/dynamic';
 //endpoint
 
@@ -503,22 +503,22 @@ console.log('ttttt', e.endpoint);
     console.error('Blax axios', e);
 })
 
-const prom = fetch(endpoint)
-.then(blob => blob.json())
-.then(data =>{
-    cities.push(...data);
-    console.log('test citeis ssss',cities);
-} );
+// const prom = fetch(endpoint)
+// .then(blob => blob.json())
+// .then(data =>{
+//     cities.push(...data);
+//     console.log('test citeis ssss',cities);
+// } );
 
-console.log('test citeis ',cities);
+// console.log('test citeis ',cities);
 
 
-function find(word, cities){
-    return cities.filter(place =>{
-        const regex = new RegExp(word, 'gi');
-        return place.city.match(regex) || place.state.match(regex);
-    });
-}
+// function find(word, cities){
+//     return cities.filter(place =>{
+//         const regex = new RegExp(word, 'gi');
+//         return place.city.match(regex) || place.state.match(regex);
+//     });
+// }
 
 function find2(word, dynamicData){
     return dynamicData.filter(endpoint =>{
@@ -530,27 +530,27 @@ function find2(word, dynamicData){
 
 //number to comma\
 
-function numberTo(x){
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-}
+// function numberTo(x){
+//     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+// }
 
 //wyswietlanie danych w szukajce
 
-function display(){
-    const matchArray = find(this.value, cities);
-    const html = matchArray.map(place =>{
-        const regex = new RegExp(this.value, 'gi');
-        const name = place.city.replace(regex, `<span class="hl">${this.value}</span>`)
-        const state = place.state.replace(regex, `<span class="hl">${this.value}</span>`)
-     return `
-     <li><i class="fa-solid fa-clock-rotate-left"></i>
-     <span class="name">${name}, ${state}</span>
-     <span class="pop">${numberTo(place.population)}</span>
-     </li>`
-    }).join('');
+// function display(){
+//     const matchArray = find(this.value, cities);
+//     const html = matchArray.map(place =>{
+//         const regex = new RegExp(this.value, 'gi');
+//         const name = place.city.replace(regex, `<span class="hl">${this.value}</span>`)
+//         const state = place.state.replace(regex, `<span class="hl">${this.value}</span>`)
+//      return `
+//      <li><i class="fa-solid fa-clock-rotate-left"></i>
+//      <span class="name">${name}, ${state}</span>
+//      <span class="pop">${numberTo(place.population)}</span>
+//      </li>`
+//     }).join('');
     
-    sug.innerHTML = html;
-}
+//     sug.innerHTML = html;
+// }
 
 function display2(){
     const word = search.value;
