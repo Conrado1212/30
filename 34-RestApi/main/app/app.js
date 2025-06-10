@@ -19,7 +19,9 @@ const sidebar = document.getElementById('sidebar');
 const links = document.querySelectorAll('#sidebar li a');
 //mode
 const mode = document.querySelectorAll('.moon-sun i');
+//home links
 
+const homeLinks = document.querySelectorAll('.glass a');
 searchMenu.addEventListener('focus', ()=>{
     iconSearch.style.cssText = 'color: rgb(0,255,255);  transition: color .1s;';
 });
@@ -112,12 +114,14 @@ document.addEventListener('DOMContentLoaded', ()=>{
         
     }
     //dodanie zmiennej do sessionstorage
-    const savedLi = sessionStorage.getItem("activeLi");
-   
+  //  const savedLi = sessionStorage.getItem("activeLi");
+  const savedLi = parseInt(sessionStorage.getItem("activeLi"), 10);
+
 
     menuLinks.forEach(el =>el.classList.remove('activeMenu'));
      //sprawdzenie zmiennej czy isteniej po przeladowaniu strony
-    if(savedLi !== null && menuLinks[savedLi]){
+   // if(savedLi !== null && menuLinks[savedLi]){
+    if (!isNaN(savedLi) && savedLi >= 0 && savedLi < menuLinks.length) {
         //jesli tak ddoanie klasy activeMenu
         menuLinks[savedLi].classList.add("activeMenu");
         console.log('po zaladowniu ',menuLinks[savedLi]);
@@ -138,13 +142,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
             // console.log('clicked', this);
             //najpier dla kazdego usuniecie klasy aktywnej 
           //  if(!sidebar.classList.contains('active')){
-                menuLinks.forEach(el=>{
-                     el.classList.remove('activeMenu'); 
-                      console.log('remve', el );
+                menuLinks.forEach(el=>{ el.classList.remove('activeMenu'); 
+                     // console.log('remve', el );
                        });
                  //po kliknieciu dodanie klasy
             this.classList.add('activeMenu');
-            console.log('active',this);
+          //  console.log('active',this);
             //dodanie do sessionstorage index i ktore element
          //   sessionStorage.removeItem("activeLi"); 
             sessionStorage.setItem("activeLi", index);
@@ -153,6 +156,34 @@ document.addEventListener('DOMContentLoaded', ()=>{
         });
            
     });
+
+    if(homeLinks){
+        homeLinks.forEach((homeLink, index)=>{
+            homeLink.addEventListener('click', function(e){
+          //   e.preventDefault();
+                console.log('test home');
+                menuLinks.forEach(el=>{  el.classList.remove('activeMenu'); 
+                  //   console.log('remve', el );
+                      });
+                      
+               //    console.log('homelink', homeLink.href);
+                  const path = new URL(homeLink.href, window.location.origin).pathname;
+                //      console.log(path);
+                  menuLinks.forEach(menuLink =>{
+                      const menuPath = new URL(menuLink.href, window.location.origin).pathname;
+                   //   console.log(menuPath);
+                      if(menuPath === path){
+                          menuLink.classList.add('activeMenu');
+                        //  sessionStorage.setItem("activeLi", menuLinks.indexOf(menuLink));
+                        sessionStorage.setItem("activeLi", index+1);
+                      }
+                  })
+                //  console.log(path);
+                 
+                   console.log('saveStoraege',  sessionStorage.getItem("activeLi"));     
+            })
+        })
+    }
 
  
     setTimeout(function(){
