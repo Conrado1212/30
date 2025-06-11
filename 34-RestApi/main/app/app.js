@@ -109,6 +109,7 @@ function singIn(username, password){
 singIn('test1', 'test1');
 
 document.addEventListener('DOMContentLoaded', ()=>{
+  console.log('testttdadada');
     if(sessionStorage.getItem("theme") === 'white'){
         document.body.classList.add('white');
         
@@ -116,21 +117,35 @@ document.addEventListener('DOMContentLoaded', ()=>{
     //dodanie zmiennej do sessionstorage
   //  const savedLi = sessionStorage.getItem("activeLi");
   const savedLi = parseInt(sessionStorage.getItem("activeLi"), 10);
+  const currentPath = window.location.pathname;
 
-
-    menuLinks.forEach(el =>el.classList.remove('activeMenu'));
+    //menuLinks.forEach(el =>el.classList.remove('activeMenu'));
      //sprawdzenie zmiennej czy isteniej po przeladowaniu strony
    // if(savedLi !== null && menuLinks[savedLi]){
     if (!isNaN(savedLi) && savedLi >= 0 && savedLi < menuLinks.length) {
+        menuLinks.forEach(el =>el.classList.remove('activeMenu'));
         //jesli tak ddoanie klasy activeMenu
         menuLinks[savedLi].classList.add("activeMenu");
         console.log('po zaladowniu ',menuLinks[savedLi]);
 
         //jhesli zmienna nie istenije sprawdzam czy glowna storna aby dodac active do home 
-    }else if(window.location.pathname === '/' || window.location.pathname.includes('index.html')){
-        menuLinks.forEach(el => el.classList.remove('activeMenu'));
-        menuLinks[0].classList.add('activeMenu');
-        sessionStorage.setItem('activeLi', 0);
+    // }else if(window.location.pathname === '/' || window.location.pathname.includes('index.html')){
+    //     console.log('check hreffffff');
+    //     if(!sessionStorage.getItem("activeLi")){
+    //         menuLinks.forEach(el => el.classList.remove('activeMenu'));
+    //         menuLinks[0].classList.add('activeMenu');
+    //         sessionStorage.setItem('activeLi', 0);
+    //    }
+} else {
+   
+    menuLinks.forEach((menuLink, index) => {
+        const menuPath = new URL(menuLink.href, window.location.origin).pathname;
+        if (menuPath === currentPath) {
+            menuLinks.forEach(el => el.classList.remove('activeMenu'));
+            menuLink.classList.add('activeMenu');
+            sessionStorage.setItem("activeLi", index);
+        }
+    });  
     }
 
  
@@ -151,7 +166,11 @@ document.addEventListener('DOMContentLoaded', ()=>{
             //dodanie do sessionstorage index i ktore element
          //   sessionStorage.removeItem("activeLi"); 
             sessionStorage.setItem("activeLi", index);
-            console.log('saveStoraege',  sessionStorage.getItem("activeLi"));
+
+      
+          //  history.pushState({ activeLi: index }, "", this.getAttribute('href'));
+
+            // }
       //      }
         });
            
@@ -160,7 +179,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     if(homeLinks){
         homeLinks.forEach((homeLink, index)=>{
             homeLink.addEventListener('click', function(e){
-          //   e.preventDefault();
+          //  e.preventDefault();
                 console.log('test home');
                 menuLinks.forEach(el=>{  el.classList.remove('activeMenu'); 
                   //   console.log('remve', el );
@@ -171,11 +190,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
                 //      console.log(path);
                   menuLinks.forEach(menuLink =>{
                       const menuPath = new URL(menuLink.href, window.location.origin).pathname;
-                   //   console.log(menuPath);
+                      console.warn(menuPath);
                       if(menuPath === path){
                           menuLink.classList.add('activeMenu');
                         //  sessionStorage.setItem("activeLi", menuLinks.indexOf(menuLink));
                         sessionStorage.setItem("activeLi", index+1);
+                      //  history.pushState({ activeLi: index }, "", path);
                       }
                   })
                 //  console.log(path);
@@ -185,6 +205,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         })
     }
 
+  
  
     setTimeout(function(){
         const rowsTable = document.querySelectorAll("#endpoints-table tbody tr");
@@ -289,6 +310,20 @@ document.addEventListener('DOMContentLoaded', ()=>{
              }
             
     },1000);
+    // // Obsługa cofania strony w historii przeglądarki
+    // window.addEventListener('popstate', (event) => {
+    //     console.log('popstate event:', event.state);
+    //     const savedLi = event.state ? event.state.activeLi : parseInt(sessionStorage.getItem("activeLi"), 10);
+    
+    //     if (!isNaN(savedLi) && savedLi >= 0 && savedLi < menuLinks.length) {
+    //         sessionStorage.setItem("activeLi", savedLi);
+    //         menuLinks.forEach(el => el.classList.remove('activeMenu'));
+    //         menuLinks[savedLi].classList.add('activeMenu');
+    //     } else {
+    //         console.warn("Niepoprawny indeks activeLi:", savedLi);
+    //     }
+    // });
+   
 });
 function deleteEndpoint(endpointName){
     axios.delete(`http://localhost:3000/del/${endpointName}`)
@@ -428,7 +463,7 @@ function getStructure(obj) {
 }
 
 document.addEventListener('DOMContentLoaded', ()=>{
-    if(window.location.pathname.includes('report.html')){
+    if(window.location.pathname.includes('/report')){
         // axios.get("https://jsonplaceholder.typicode.com/users")
         axios.get("http://localhost:3000/dynamic")
         .then(response => {

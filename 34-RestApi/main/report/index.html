@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="../style/style.css">
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     <link href="css/fontello.css" rel="stylesheet" type="text/css" />
     <script src="https://kit.fontawesome.com/236e28bd84.js" crossorigin="anonymous"></script>
@@ -28,21 +28,15 @@
                <h2 class="logo_name">RestLinker</h2>
             </div>
         </div>
-       
-           <div class="search">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            
-             <input type="text" placeholder="Search..." class="search-input">
-                <ul class="search-result">
-                <!-- <li><i class="fa-solid fa-clock-rotate-left"></i>Filter</li>
-                <li><i class="fa-solid fa-clock-rotate-left"></i>Data</li> -->
-                </ul>
-           </div>
-          
-            
-           
-           
-      
+        <div class="search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        
+         <input type="text" placeholder="Search..." class="search-input">
+            <ul class="search-result">
+            <!-- <li><i class="fa-solid fa-clock-rotate-left"></i>Filter</li>
+            <li><i class="fa-solid fa-clock-rotate-left"></i>Data</li> -->
+            </ul>
+       </div>
         <div class="mode-content">
             <li class="mode">
                 <div class="moon-sun">
@@ -73,6 +67,7 @@
                 <a href="/34-RestApi/main/report/">
                     <i class="fa-solid fa-chart-pie"></i>
                     <span class="link_name">Report</span>
+                      
                 </a>
                 <span class="tooltip">Report</span>
             </li>
@@ -81,7 +76,7 @@
                     <i class="fa-solid fa-folder"></i>
                     <span class="link_name">New endpoint</span>
                 </a>
-                <span class="tooltip">New</span>
+                <span class="tooltip">New</span>   
             </li>
             <li>
                 <a href="/34-RestApi/main/message/">
@@ -93,20 +88,58 @@
         </ul>
     </nav>
   <main class="main">
-    <div class="container home">
-        <h2 class="section_title section_title_gradient">Welcome in RestLinker</h2>
-        <div class="cont">
-            <div class="glass" style="--r: -15" data-text="Create-endpoints"><a href="/34-RestApi/main/endpoint/"><i class="fa-brands fa-quinscape"></i></a></div>
-            <div class="glass" style="--r: 5" data-text="Data-endpoints"><a href="/34-RestApi/main/report/"><i class="fa-solid fa-magnifying-glass-chart"></i></a></div>
-            <div class="glass" style="--r: 15" data-text="Contact"><a href="/34-RestApi/main/message/"><i class="fa-solid fa-comment"></i></a></div>
-        </div>
-       
+    <div class="container report">
+        <div class="table-container">
+         <div class="filter">
+            <input type="text" id="filterValue" class="filter-input">
+            <label for="filter" class="filter-value-label">Filter Value</label>
+         </div>  
+            
+       <table id="endpoints-table">
+           <thead>
+            <tr>
+                <th>Name</th>
+                <th>json</th>
+                <th>Actions</th>
+               <th>
+                    <!-- <i class="fa-solid fa-gear"></i> -->
+                    <i class="fa-solid fa-rotate-right"></i></th>
+            </tr>
+           </thead>
+           <tbody>
+               
+           </tbody>
+       </table>
+        </div>  
+          
     </div>
   </main>
+  <div class="overlay">
+    <div class="modal">
+        <span class="modal-close" onclick="closeInfo()">x</span>
+        <h2 class="endpoint-cname"></h2>
+        <p class="info-endpoint">Do you really want to delete this endpoint?</p>
+        <!-- <p class="method-endpoint">sdfsdfsdfsdfsfsfs</p> -->
+        <input type="text" class="input-endpoint" value="yes" id="del-input">
+        <!-- <textarea name="json" id="json-data" cols="60" rows="25"></textarea> -->
+        <button class="button button-flex" id="del-endpoint"><i class="fa-solid fa-square-xmark"></i>Confirm</button>
+    </div>
+</div>
+<div class="overlay2">
+    <div class="modal-update">
+        <span class="modal-close" onclick="closeInfo()">x</span>
+        <h2 class="endpoint-cname2"></h2>
+        <p class="info-endpoint2">Do you really want to delete this endpoint?</p>
+        <!-- <p class="method-endpoint">sdfsdfsdfsdfsfsfs</p> -->
+        <!-- <input type="text" class="input-endpoint" value="yes" id="del-input"> -->
+        <textarea name="json" id="json-data" cols="60" rows="25"></textarea>
+        <button class="button button-flex" id="upd-endpoint"><i class="fa-solid fa-square-xmark"></i>Confirm</button>
+    </div>
+</div>
    <!--Footer-->
-   <footer class="footer">
+   <footer class="footer">  
 
    </footer>
 </body>
-<script src="app/app.js"></script>
+<script src="../app/app.js"></script>
 </html>
