@@ -19,9 +19,7 @@ const sidebar = document.getElementById('sidebar');
 const links = document.querySelectorAll('#sidebar li a');
 //mode
 const mode = document.querySelectorAll('.moon-sun i');
-//home links
 
-const homeLinks = document.querySelectorAll('.glass a');
 searchMenu.addEventListener('focus', ()=>{
     iconSearch.style.cssText = 'color: rgb(0,255,255);  transition: color .1s;';
 });
@@ -108,116 +106,53 @@ function singIn(username, password){
 }
 singIn('test1', 'test1');
 
-// document.addEventListener('DOMContentLoaded', () => {
-//     console.log('testttdadada');
-
-//     const currentPath = window.location.pathname;
-//     const menuLinks = document.querySelectorAll('.menuLink');
-
-//     // Sprawdzenie i ustawienie aktywnego menu na podstawie adresu URL
-//     menuLinks.forEach(menuLink => {
-//         const menuPath = new URL(menuLink.href, window.location.origin).pathname;
-
-//         if (menuPath === currentPath) {
-//             menuLinks.forEach(el => el.classList.remove('activeMenu'));
-//             menuLink.classList.add('activeMenu'); // Ustaw aktywne menu zgodnie z href
-//         }
-//     });
-
-//     // Obsługa kliknięcia w link
-//     menuLinks.forEach(menuLink => {
-//         menuLink.addEventListener('click', function(e) {
-//             e.preventDefault();
-//             menuLinks.forEach(el => el.classList.remove('activeMenu'));
-//             this.classList.add('activeMenu');
-//             window.location.href = this.href; // Przekierowanie na nową stronę
-//         });
-//     });
-// });
-//
 document.addEventListener('DOMContentLoaded', ()=>{
-  console.log('testttdadada');
     if(sessionStorage.getItem("theme") === 'white'){
         document.body.classList.add('white');
         
     }
     //dodanie zmiennej do sessionstorage
-  //  const savedLi = sessionStorage.getItem("activeLi");
-
-
-    
-  const savedLi = sessionStorage.getItem("activeLi");
+    const savedLi = sessionStorage.getItem("activeLi");
    
 
-  menuLinks.forEach(el =>el.classList.remove('activeMenu'));
-   //sprawdzenie zmiennej czy isteniej po przeladowaniu strony
-  if(savedLi !== null && menuLinks[savedLi]){
-      //jesli tak ddoanie klasy activeMenu
-      menuLinks[savedLi].classList.add("activeMenu");
-      console.log('po zaladowniu ',menuLinks[savedLi]);
+    menuLinks.forEach(el =>el.classList.remove('activeMenu'));
+     //sprawdzenie zmiennej czy isteniej po przeladowaniu strony
+    if(savedLi !== null && menuLinks[savedLi]){
+        //jesli tak ddoanie klasy activeMenu
+        menuLinks[savedLi].classList.add("activeMenu");
+        console.log('po zaladowniu ',menuLinks[savedLi]);
 
-      //jhesli zmienna nie istenije sprawdzam czy glowna storna aby dodac active do home 
-  }else if(window.location.pathname === '/' || window.location.pathname.includes('index.html')){
-      menuLinks.forEach(el => el.classList.remove('activeMenu'));
-      menuLinks[0].classList.add('activeMenu');
-      sessionStorage.setItem('activeLi', 0);
-  }
-
+        //jhesli zmienna nie istenije sprawdzam czy glowna storna aby dodac active do home 
+    }else if(window.location.pathname === '/' || window.location.pathname.includes('index.html')){
+        menuLinks.forEach(el => el.classList.remove('activeMenu'));
+        menuLinks[0].classList.add('activeMenu');
+        sessionStorage.setItem('activeLi', 0);
+    }
 
  
     
-  //dla kazdego i dodajemy nasluch
-  menuLinks.forEach((menuLink, index) => {
-    menuLink.addEventListener('click',function(e){
-       // e.preventDefault();
-        // console.log('clicked', this);
-        //najpier dla kazdego usuniecie klasy aktywnej 
-      //  if(!sidebar.classList.contains('active')){
-            menuLinks.forEach(el=>{
-                 el.classList.remove('activeMenu'); 
-                  console.log('remve', el );
-                   });
-             //po kliknieciu dodanie klasy
-        this.classList.add('activeMenu');
-        console.log('active',this);
-        //dodanie do sessionstorage index i ktore element
-     //   sessionStorage.removeItem("activeLi"); 
-        sessionStorage.setItem("activeLi", index);
-        console.log('saveStoraege',  sessionStorage.getItem("activeLi"));
-  //      }
-    });
+    //dla kazdego i dodajemy nasluch
+    menuLinks.forEach((menuLink, index) => {
+        menuLink.addEventListener('click',function(e){
+           // e.preventDefault();
+            // console.log('clicked', this);
+            //najpier dla kazdego usuniecie klasy aktywnej 
+          //  if(!sidebar.classList.contains('active')){
+                menuLinks.forEach(el=>{
+                     el.classList.remove('activeMenu'); 
+                      console.log('remve', el );
+                       });
+                 //po kliknieciu dodanie klasy
+            this.classList.add('activeMenu');
+            console.log('active',this);
+            //dodanie do sessionstorage index i ktore element
+         //   sessionStorage.removeItem("activeLi"); 
+            sessionStorage.setItem("activeLi", index);
+            console.log('saveStoraege',  sessionStorage.getItem("activeLi"));
+      //      }
+        });
            
     });
-
-    if(homeLinks){
-        homeLinks.forEach((homeLink, index)=>{
-            homeLink.addEventListener('click', function(e){
-          //  e.preventDefault();
-                console.log('test home');
-                menuLinks.forEach(el=>{  el.classList.remove('activeMenu'); 
-                  //   console.log('remve', el );
-                      });
-                      
-               //    console.log('homelink', homeLink.href);
-                  const path = new URL(homeLink.href, window.location.origin).pathname;
-                //      console.log(path);
-                  menuLinks.forEach(menuLink =>{
-                      const menuPath = new URL(menuLink.href, window.location.origin).pathname;
-                      console.warn(menuPath);
-                      if(menuPath === path){
-                          menuLink.classList.add('activeMenu');
-                        //  sessionStorage.setItem("activeLi", menuLinks.indexOf(menuLink));
-                        sessionStorage.setItem("activeLi", index+1);
-                      //  history.pushState({ activeLi: index }, "", path);
-                      }
-                  })
-                //  console.log(path);
-                 
-                   console.log('saveStoraege',  sessionStorage.getItem("activeLi"));     
-            })
-        })
-    }
-
 
  
     setTimeout(function(){
@@ -237,6 +172,13 @@ document.addEventListener('DOMContentLoaded', ()=>{
                 const endpointName = row.querySelector('td:nth-child(1)').textContent;
 
                 console.log('Del', endpointName);
+
+                // const delInput = document.querySelector("#del-input");
+                // const jsonData = document.querySelector("#json-data");
+                // if(delInput && jsonData){
+                //     jsonData.style.display = 'none';
+                //     delInput.style.display = 'block';
+                // }
 
                 document.querySelector('.endpoint-cname').textContent = endpointName;
 
@@ -316,23 +258,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
              }
             
     },1000);
-    // // Obsługa cofania strony w historii przeglądarki
-    // window.addEventListener('popstate', (event) => {
-    //     console.log('popstate event:', event.state);
-    //     const savedLi = event.state ? event.state.activeLi : parseInt(sessionStorage.getItem("activeLi"), 10);
-    
-    //     if (!isNaN(savedLi) && savedLi >= 0 && savedLi < menuLinks.length) {
-    //         sessionStorage.setItem("activeLi", savedLi);
-    //         menuLinks.forEach(el => el.classList.remove('activeMenu'));
-    //         menuLinks[savedLi].classList.add('activeMenu');
-    //     } else {
-    //         console.warn("Niepoprawny indeks activeLi:", savedLi);
-    //     }
-    // });
-   
 });
-
-
 function deleteEndpoint(endpointName){
     axios.delete(`http://localhost:3000/del/${endpointName}`)
     .then(response =>{
@@ -348,6 +274,51 @@ function deleteEndpoint(endpointName){
 }
     
   
+
+/*update endpoint strukture*/
+// setTimeout(function upd(){
+//     const rowsTable = document.querySelectorAll("#endpoints-table tbody tr");
+//     if(rowsTable){
+//         rowsTable.forEach(row =>{
+//          const actionBtnUpd =    row.querySelector('td:nth-child(3) .action-btn:nth-child(2)');
+//          console.log(actionBtnUpd);
+
+//          const updData = document.querySelector("#json-data");
+//          const delInput = document.querySelector("#del-input");
+//          if (delInput) {
+//             delInput.style.display = "none";
+//         }
+
+
+//           if(actionBtnUpd){
+//             actionBtnUpd.addEventListener('click',()=>{
+//              document.querySelector('.overlay').style.display = 'flex';
+//              const endpointName = row.querySelector('td:nth-child(1)').textContent;
+//              const endpointData = row.querySelector('td:nth-child(2)').textContent;
+//             console.log('update name', endpointName);
+//              document.querySelector('.endpoint-cname').textContent = endpointName;
+//             document.querySelector('.info-endpoint').textContent = 'Update your endpoint';
+//             document.querySelector('.input-endpoint').style.display = 'none';
+//             document.querySelector('#json-data').innerText = endpointData;
+//              document.querySelector('#del-endpoint').addEventListener('click', () => {
+                  
+//             });
+//            });
+//          }
+//         });
+//     }
+   
+// },1000);
+   
+
+
+
+
+
+
+
+
+
 
 
 // });
@@ -386,14 +357,14 @@ function deleteEndpoint(endpointName){
 
 
 
-// links.forEach(link => {
-//      const href = link.getAttribute('href');
-//      console.log(href);
-//      if('/' + href === path){
-//          console.log('Path:', path);
-//          link.classList.add('activeMenu')
-//      }
-//  });
+links.forEach(link => {
+     const href = link.getAttribute('href');
+     console.log(href);
+     if('/' + href === path){
+         console.log('Path:', path);
+         link.classList.add('activeMenu')
+     }
+ });
 
 
 //search bar nasluch
@@ -426,7 +397,7 @@ function getStructure(obj) {
 }
 
 document.addEventListener('DOMContentLoaded', ()=>{
-    if(window.location.pathname.includes('/report')){
+    if(window.location.pathname.includes('report.html')){
         // axios.get("https://jsonplaceholder.typicode.com/users")
         axios.get("http://localhost:3000/dynamic")
         .then(response => {
