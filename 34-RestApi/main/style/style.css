@@ -854,6 +854,7 @@ font-size: var(--font-size-m);
   }
   .endpoint_content{
       width: 100%;
+      position: relative;
   }
 
   /*home */
@@ -1017,4 +1018,16 @@ font-size: var(--font-size-m);
   }
   .modal-close:hover{
 color: rgb(0, 255, 255);
+  }
+
+
+  /*mode endponit */
+  .mode-endpoint{
+    position: absolute;
+    right: 0;
+    padding: 4px 8px;
+  }
+  .mode-endpoint .mode{
+      color: var(--text-color);
+      min-width: 55px;
   }

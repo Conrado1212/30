@@ -316,19 +316,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
              }
             
     },1000);
-    // // Obsługa cofania strony w historii przeglądarki
-    // window.addEventListener('popstate', (event) => {
-    //     console.log('popstate event:', event.state);
-    //     const savedLi = event.state ? event.state.activeLi : parseInt(sessionStorage.getItem("activeLi"), 10);
-    
-    //     if (!isNaN(savedLi) && savedLi >= 0 && savedLi < menuLinks.length) {
-    //         sessionStorage.setItem("activeLi", savedLi);
-    //         menuLinks.forEach(el => el.classList.remove('activeMenu'));
-    //         menuLinks[savedLi].classList.add('activeMenu');
-    //     } else {
-    //         console.warn("Niepoprawny indeks activeLi:", savedLi);
-    //     }
-    // });
+
    
 });
 
@@ -532,22 +520,6 @@ console.log('ttttt', e.endpoint);
     console.error('Blax axios', e);
 })
 
-// const prom = fetch(endpoint)
-// .then(blob => blob.json())
-// .then(data =>{
-//     cities.push(...data);
-//     console.log('test citeis ssss',cities);
-// } );
-
-// console.log('test citeis ',cities);
-
-
-// function find(word, cities){
-//     return cities.filter(place =>{
-//         const regex = new RegExp(word, 'gi');
-//         return place.city.match(regex) || place.state.match(regex);
-//     });
-// }
 
 function find2(word, dynamicData){
     return dynamicData.filter(endpoint =>{
@@ -557,29 +529,7 @@ function find2(word, dynamicData){
 }
 
 
-//number to comma\
 
-// function numberTo(x){
-//     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-// }
-
-//wyswietlanie danych w szukajce
-
-// function display(){
-//     const matchArray = find(this.value, cities);
-//     const html = matchArray.map(place =>{
-//         const regex = new RegExp(this.value, 'gi');
-//         const name = place.city.replace(regex, `<span class="hl">${this.value}</span>`)
-//         const state = place.state.replace(regex, `<span class="hl">${this.value}</span>`)
-//      return `
-//      <li><i class="fa-solid fa-clock-rotate-left"></i>
-//      <span class="name">${name}, ${state}</span>
-//      <span class="pop">${numberTo(place.population)}</span>
-//      </li>`
-//     }).join('');
-    
-//     sug.innerHTML = html;
-// }
 
 function display2(){
     const word = search.value;

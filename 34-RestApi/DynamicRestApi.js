@@ -42,8 +42,8 @@ app.post('/new', (req,res)=>{
     const { endpoint, data } = req.body;
     //dodanie nowego endpointu 
 
-    if(!endpoint || !data){
-       return res.status(400).json({ error: "Missing 'endpoint' or 'data' in request body." })
+    if(!endpoint || !data || typeof data !== 'object'){
+       return res.status(400).json({ error: "Missing 'endpoint' or 'data' in request body or 'data is not valid JSON" })
     }
 
     if(!dynamic[endpoint]){
@@ -178,6 +178,53 @@ return res.status(404).json({
         data: dynamic[endpointName]
     })
 });
+  //status 2xx
+  app.get('/200ok', (req, res) => {
+    res.status(200).json({ message: "OK" });
+});
+
+app.get('/201created', (req, res) => {
+    res.status(201).json({ message: "Created" });
+});
+
+app.get('/204noContent', (req, res) => {
+    res.status(204).json({ message: "No content" });
+});
+
+//4xx
+
+app.get('/400bad-request', (req, res) => {
+    res.status(400).json({ error: "Bad Request" });
+});
+
+app.get('/401unauthorized', (req, res) => {
+    res.status(401).json({ error: "Unauthorized " });
+});
+
+app.get('/403forbidden', (req, res) => {
+    res.status(403).json({ error: "Forbidden " });
+});
+
+app.get('/404not-found', (req, res) => {
+    res.status(404).json({ error: "Not Found " });
+});
+
+
+// 5xx
+
+
+app.get(`500internal-error`, (req, res)=>{
+    res.status(500).json({ error: "Internal error"});
+})
+
+app.get(`502bad-gateway`, (req, res)=>{
+    res.status(500).json({ error: "Bad-gateway"});
+})
+
+
+app.get(`503service-unavaliable`, (req, res)=>{
+    res.status(503).json({ error: "Service-unavaliable"});
+})
 
 //wszystkie endpointy
 app.get(`/dynamic`,(req,res)=>{
@@ -300,7 +347,19 @@ app.delete(`/:endpoint/:id`,(req,res)=>{
 
     });
 
-    
+  
+
     app.listen(port, "0.0.0.0", () => {
         console.log(`App working at http://localhost:${port} and http://192.168.0.50:${port}`);
     });
+
+
+
+
+  
+
+
+
+        
+        
+  

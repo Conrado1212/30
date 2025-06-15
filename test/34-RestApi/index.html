@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON z listy</title>
+</head>
+<body>
+    <ul id="lista" style="list-style:none ;">
+        <li><label for="test">Example</label> <input type="text" placeholder="Wpisz wartość"></li>
+    </ul>
+    <button onclick="dodajPole()">Dodaj pole</button>
+    <input type="text" id="name-field" required>
+    <select name="type" id="type-input">
+        <option value="text">Text</option>
+        <option value="checkbox">True/false</option>
+        <option value="date">Date</option>
+        <option value="number">Number</option>
+      </select>
+    <button onclick="wyslijJson()">Wyślij JSON</button>
+
+    <script>
+        function dodajPole() {
+            let ul = document.getElementById("lista");
+            let li = document.createElement("li");
+            const select  = document.querySelector('#type-input').value;
+            const labelName  = document.querySelector('#name-field').value;
+            li.innerHTML = `<label for"${select}">${labelName}</label> <input type="${select}" placeholder="Wpisz wartość">`;
+            ul.appendChild(li);
+        }
+
+        function wyslijJson() {
+            let elements = document.querySelectorAll("#lista input, #lista label");
+           console.log(elements);
+            let dane = [];
+            let pola = [];
+
+            // inputs.forEach(input => {
+            //     if (input.value.trim() !== "") {
+            //         dane.push(input.value);
+
+            //     }
+            // });
+
+            // labels.forEach(label =>{
+            //     if(label.textContent.trim() !== ""){
+            //         pola.push(label.textContent);
+            //     }
+            // })
+
+            elements.forEach(element =>{
+                let text  = element.textContent?.trim() || element.value?.trim();
+                if(text){
+                    element.tagName === "input" ? dane.push(text) : pola.push(text);
+                }
+            })
+
+
+            let jsonData = JSON.stringify({ pola: dane });
+                console.log(jsonData);
+            // fetch("https://example.com/api/endpoint", {
+            //     method: "POST",
+            //     headers: {
+            //         "Content-Type": "application/json"
+            //     },
+            //     body: jsonData
+            // }).then(response => response.json())
+            //   .then(data => console.log("Odpowiedź API:", data))
+            //   .catch(error => console.error("Błąd:", error));
+        }
+
+
+        let isListMode = false;
+
+function toggleMode() {
+    const container = document.getElementById("container");
+    container.innerHTML = ""; // Wyczyść zawartość
+
+    if (isListMode) {
+        const textarea = document.createElement("textarea");
+        textarea.id = "myTextarea";
+        container.appendChild(textarea);
+    } else {
+        const ul = document.createElement("ul");
+        ul.id = "myList";
+        
+        const addItemBtn = document.createElement("button");
+        addItemBtn.textContent = "Dodaj element";
+        addItemBtn.onclick = () => {
+            const li = document.createElement("li");
+            li.textContent = prompt("Wpisz element:");
+            if (li.textContent.trim()) {
+                ul.appendChild(li);
+            }
+        };
+
+        container.appendChild(ul);
+        container.appendChild(addItemBtn);
+    }
+    
+    isListMode = !isListMode; // Zmień tryb
+}
+    </script>
+</body>
+</html>
