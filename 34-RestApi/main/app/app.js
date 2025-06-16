@@ -20,6 +20,9 @@ const links = document.querySelectorAll('#sidebar li a');
 //mode
 const mode = document.querySelectorAll('.moon-sun i');
 //home links
+const endpoint_mode = document.querySelectorAll('.mode .json-li i');
+//fomr-endpoint
+const endpoint_form = document.getElementById('endpoint-form');
 
 const homeLinks = document.querySelectorAll('.glass a');
 searchMenu.addEventListener('focus', ()=>{
@@ -692,3 +695,31 @@ searchMenu.addEventListener('blur', function() {
         search.value = '';
     }, 200); 
 });
+
+
+
+/*code tryb */
+
+
+if(endpoint_mode){
+    console.log(endpoint_mode);
+    endpoint_mode.forEach(icon =>{
+        icon.addEventListener('click', (e)=>{
+        console.log('clik', e.target);
+        console.log(endpoint_form);
+            endpoint_form.classList.toggle("modeJson");
+            if(endpoint_form && endpoint_form.classList.contains('modeJson')){
+               // let ul = document.getElementById("lista");
+                let ul  = document.createElement('ul');
+                ul.id = 'list-endpoint';
+                ul.style.listStyle =  'none';
+                endpoint_form.insertBefore(ul, document.getElementById('endpoint-data'));
+                console.log(ul);
+            }
+        });
+    });
+}
+
+/*<ul id="lista" style="list-style:none ;">
+        <li><label for="test">Example</label> <input type="text" placeholder="Wpisz wartość"></li>
+    </ul>*/

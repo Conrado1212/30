@@ -830,6 +830,8 @@ font-size: var(--font-size-m);
     border-radius: .5rem;
     flex-direction: column;
     width: 100%;
+    min-width: 500px;
+    transition: var(--tran-03-all);
   }
 
   #endpoint-data{
@@ -1031,3 +1033,22 @@ color: rgb(0, 255, 255);
       color: var(--text-color);
       min-width: 55px;
   }
+  .mode-endpoint .mode i{
+      cursor: pointer;
+      font-size: 1rem;
+      transition: var(--tran-03-all);
+      position: relative;
+  }
+  .mode-endpoint .mode i.list{
+      opacity: 0;
+  }
+
+  #endpoint-form.modeJson #endpoint-data{
+      display: none;
+  }
+  #endpoint-form.modeJson .mode-endpoint .mode i.list{
+    opacity: 1;
+}
+#endpoint-form.modeJson .mode-endpoint .mode i.code{
+    opacity: 0;
+}
