@@ -715,6 +715,9 @@ if(endpoint_mode){
                 ul.style.listStyle =  'none';
                 endpoint_form.insertBefore(ul, document.getElementById('endpoint-data'));
                 console.log(ul);
+            }else{
+                document.getElementById('list-endpoint').remove();
+                console.log('remove',ul);
             }
         });
     });
