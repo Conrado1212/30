@@ -625,11 +625,66 @@ function sendMail(){
 
 
 /*przeslanei request z formularza stworznie nowego endpointa */
+let isListMode = false;
+function sendData() {
+    let elements = document.querySelectorAll("#list-endpoint input, #list-endpoint label");
+   console.log(elements);
+    let dane = [];
+    let pola = [];
+
+    elements.forEach(element =>{
+        let text  = element.textContent?.trim() || element.value?.trim();
+        if(text){
+            element.tagName === "input" ? dane.push(text) : pola.push(text);
+        }
+    })
 
 
+    let jsonData = JSON.stringify({ pola: dane });
+        console.log(jsonData);
+
+        try {
+            jsonData = JSON.parse(jsonData);
+        } catch (error) {
+            alert("Error: Invalid format!");
+            return;
+        }
+    
+        const payload = {
+            endpoint: endpointName,
+            data: jsonData
+        };
+    
+
+
+
+            try {
+                const response = await axios.post("http://localhost:3000/new", payload, {
+                    headers: { "Content-Type": "application/json" }
+                });
+                console.log("Response data:", response.data.message);
+                document.querySelector('.overlay').style.display = 'flex';
+                document.querySelector('.endpoint-cname').textContent = response.data.endpointName;
+                document.querySelector('.info-endpoint').textContent = response.data.message;
+                document.getElementById("endpoint-name").value = '';
+                console.log("Po resecie:", endpointName.value, endpointData.value);
+            } catch (error) {
+                console.error("Error:", error);
+                alert("An error occurred while sending data.");
+            }
+
+
+
+
+}
 if(document.getElementById("submit")){
 document.getElementById("submit").addEventListener("click", async function(event) {
     event.preventDefault();
+
+    if(document.getElementById('mode-endpoint').classList.includes('jsonMode')){
+        isListMode = true;
+        sendData();
+    }
     const endpointName = document.getElementById("endpoint-name").value;
     const endpointData = document.getElementById("endpoint-data").value;
 
@@ -653,17 +708,11 @@ document.getElementById("submit").addEventListener("click", async function(event
             headers: { "Content-Type": "application/json" }
         });
         console.log("Response data:", response.data.message);
-      //  alert("Endpoint has been created successfully!", + response.data.message);
-       // alert(response.data.message);
         document.querySelector('.overlay').style.display = 'flex';
         document.querySelector('.endpoint-cname').textContent = response.data.endpointName;
         document.querySelector('.info-endpoint').textContent = response.data.message;
-        //document.querySelector('.method-endpoint').textContent = response.data.method;
-        // setTimeout(() => {
             document.getElementById("endpoint-name").value = '';
          document.getElementById("endpoint-data").value = '';
-        // }, 500);
-       
         console.log("Po resecie:", endpointName.value, endpointData.value);
     } catch (error) {
         console.error("Error:", error);
@@ -671,11 +720,28 @@ document.getElementById("submit").addEventListener("click", async function(event
     }
 });
 }   
+
+
+
+
+
+
+
+
+
+
+
 function closeInfo(){
     document.querySelector('.overlay').style.display = 'none';
     document.querySelector('.overlay2').style.display = 'none';
   
 }
+
+
+
+
+
+
 
 
 
@@ -806,3 +872,10 @@ function addField() {
     //     return originalSend.apply(this, args);
     // };
             
+
+
+
+    
+
+
+    
