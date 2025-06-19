@@ -222,7 +222,8 @@ list-style: none;
     outline: none;
     border: none;
     height: 60%;
-    background: var(--white-color);
+    /* background: var(--white-color); */
+    background: var(--endpoint-form-color);
     font-size: 1rem;
     padding-left: 50px;
     width: 100%;
@@ -430,7 +431,8 @@ white-space: nowrap;
    height: calc(100% - 50px);
   /* height: 1600px; */
     transition: var(--tran-03-all);
-    background: var(--body-color);
+    /* background: var(--body-color); */
+    background: var(--black-color);
      /* background: var(--black-color);  */
   /*  #f9fbff;*/
   
@@ -502,6 +504,7 @@ white-space: nowrap;
     min-width: 50px;
     padding-left: 4px;
     border-radius: 20px;
+    border: 2px solid var(--text-color);
     border: 2px solid var(--text-color);
 }
 .mode-content .mode .moon-sun{
@@ -832,6 +835,7 @@ font-size: var(--font-size-m);
     width: 100%;
     min-width: 500px;
     transition: var(--tran-03-all);
+    position: relative;
   }
 
   #endpoint-data{
@@ -1032,6 +1036,7 @@ color: rgb(0, 255, 255);
   .mode-endpoint .mode{
       color: var(--text-color);
       min-width: 55px;
+      /* background: var(--endpoint-form-color); */
   }
   .mode-endpoint .mode i{
       cursor: pointer;
@@ -1051,4 +1056,77 @@ color: rgb(0, 255, 255);
 }
 #endpoint-form.modeJson .mode-endpoint .mode i.code{
     opacity: 0;
+}
+#endpoint-form.modeJson{
+    min-height: 50vh !important;
+}
+
+.btn-pos{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    bottom: 0;
+    transition: var(--tran-03-all);
+}
+
+#endpoint-desc{
+    color: var(--white-color);
+    background: var(--black-color);
+    border: none;
+   padding: 1rem 1rem;
+   border-radius: .5rem;
+}
+
+
+.input-cre{
+    color: var(--white-color);
+    background: var(--black-color);
+    border: none;
+   padding: 1rem 1rem;
+   border-radius: .5rem;
+}
+.flex{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+#type-input{
+    background: var(--black-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: .5rem;
+    text-decoration: none;
+    cursor: pointer;
+    padding: .5rem .5rem;
+}
+#type-input option{
+    padding: 10px;
+    
+}
+#list-endpoint li{
+    color: var(--white-color);
+    font-size: var(--font-size);
+    margin-bottom: 10px;
+}
+#list-endpoint li label{
+    margin: 10px;
+}
+#list-endpoint li input{
+    background: var(--black-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: .5rem;
+    text-decoration: none;
+    cursor: pointer;
+    padding: .5rem .5rem;
+}
+.button2{
+    text-decoration: none;
+    background: var(--black-color);
+    color: var(--white-color);
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+    /* margin-left: 15px; */
+    transition: var(--tran-03-all);
+    cursor: pointer;
+    width: 2vh;
 }

@@ -700,29 +700,109 @@ searchMenu.addEventListener('blur', function() {
 
 /*code tryb */
 
+function modeEndpoint(){
+    if(endpoint_mode){
+        console.log(endpoint_mode);
+        endpoint_mode.forEach(icon =>{
+            icon.addEventListener('click', (e)=>{
+            console.log('clik', e.target);
+            console.log(endpoint_form);
+                endpoint_form.classList.toggle("modeJson");
+                document.getElementById('submit').classList.toggle('btn-pos');
+                if(endpoint_form && endpoint_form.classList.contains('modeJson')){
+                   // let ul = document.getElementById("lista");
+                    let ul  = document.createElement('ul');
+                    ul.id = 'list-endpoint';
+                    ul.style.listStyle =  'none';
+                    const div = document.createElement('div');
+                    div.id = 'simple';
+                    div.classList.add('flex');
+                    const button = document.createElement('button');
+                    const input = document.createElement('input');
+                    input.placeholder = 'Field-name';
+                    const select = document.createElement('select');
+                    select.name = "type";
+                    select.id = "type-input";
+                    const option = [
+                        { value: 'text', label: 'Text' },
+                        { value: 'checkbox', label: 'True/false' },
+                        { value: 'date', label: 'Date' },
+                        { value: 'number', label: 'Number' },
+                        { value: 'Object', label: 'Object' }
+                      ];
+                    option.forEach(e=>{
+                        const option = document.createElement('option');
+                        option.value = e.value;
+                        option.textContent = e.label;
+                        select.appendChild(option)
+                    })
+                    input.classList.add('input-cre');   
+                    button.id = 'plus';
+                    button.type = 'button';
+                    button.classList.add('button', 'button-flex');
+                    button.style.width ='2vh';
+                    const i = document.createElement('i')
+                    i.classList.add('fa-solid', 'fa-plus')
 
-if(endpoint_mode){
-    console.log(endpoint_mode);
-    endpoint_mode.forEach(icon =>{
-        icon.addEventListener('click', (e)=>{
-        console.log('clik', e.target);
-        console.log(endpoint_form);
-            endpoint_form.classList.toggle("modeJson");
-            if(endpoint_form && endpoint_form.classList.contains('modeJson')){
-               // let ul = document.getElementById("lista");
-                let ul  = document.createElement('ul');
-                ul.id = 'list-endpoint';
-                ul.style.listStyle =  'none';
-                endpoint_form.insertBefore(ul, document.getElementById('endpoint-data'));
-                console.log(ul);
-            }else{
-                document.getElementById('list-endpoint').remove();
-                console.log('remove',ul);
-            }
+
+                    endpoint_form.insertBefore(ul, document.getElementById('endpoint-data'));
+                    endpoint_form.insertBefore(div, document.getElementById('endpoint-data'));
+                    div.appendChild(input);
+                    div.appendChild(select);
+                    div.appendChild(button);
+                    button.appendChild(i);
+                    button.onclick= addField;
+                   // document.getElementById('endpoint-data').remove();
+                    console.log(ul);
+                }else{
+                    document.getElementById('list-endpoint').remove();
+                    document.getElementById('simple').remove();
+                  
+                }
+            });
         });
-    });
+    }
 }
+modeEndpoint()
 
+
+function addField() {
+    let li = document.createElement("li");
+    let ul = document.getElementById("list-endpoint");
+    const select  = document.querySelector('#type-input').value;
+    const labelName  = document.querySelector('.input-cre');
+    if(labelName.value){
+        li.innerHTML = `<label for"${select}">${labelName.value}</label> <input type="${select}" placeholder="Your value"> <button type="button" class="button2 button-flex"><i class="fa-solid fa-x"></i></button>`;
+        ul.appendChild(li);
+
+        const deleteButton = li.querySelector('button');
+        deleteButton.addEventListener('click', () => {
+        li.remove();
+    });
+    }else{
+        alert('Field-name have no value')
+    }
+   
+    
+    labelName.value ='';
+}
 /*<ul id="lista" style="list-style:none ;">
         <li><label for="test">Example</label> <input type="text" placeholder="Wpisz wartość"></li>
     </ul>*/
+
+
+
+    /*nasluich */
+
+
+    // const originalSend = XMLHttpRequest.prototype.send;
+    // XMLHttpRequest.prototype.send = function (...args) {
+    //     this.addEventListener("load", function () {
+    //         if (this.responseURL.includes("/dynamic")) {
+    //             console.log("Endpoint dynamic został wywołany:", this.responseURL);
+    //             alert('elo')
+    //         }
+    //     });
+    //     return originalSend.apply(this, args);
+    // };
+            
