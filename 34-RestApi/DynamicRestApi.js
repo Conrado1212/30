@@ -19,17 +19,6 @@ app.use((req,res, next)=>{
     }
     next();
 });
-//obiekt, w którym przechowuje dane dynamicznie powiązane z nazwą endpointu
-// {
-//     "users": [
-//         { id: 1, name: "John Doe" },
-//         { id: 2, name: "Jane Smith" }
-//     ],
-//     "products": [
-//         { id: 3, name: "Laptop" },
-//         { id: 4, name: "Phone" }
-//     ]
-// }
 const dynamic ={};
 
 //endpointy, tablica przechowującą nazwy endpointów.
@@ -39,25 +28,42 @@ let id = 1;
 //tworzenie nowego endpointu 
 app.post('/new', (req,res)=>{
     
-    const { endpoint, data } = req.body;
+    const { endpoint,description, data } = req.body;
     //dodanie nowego endpointu 
 
     if(!endpoint || !data || typeof data !== 'object'){
        return res.status(400).json({ error: "Missing 'endpoint' or 'data' in request body or 'data is not valid JSON" })
     }
+//wczesniejsza opcja
+    // if(!dynamic[endpoint]){
+    //     dynamic[endpoint] = [];
+    //    // endpoints.push(endpoint);
+    // }
 
-    if(!dynamic[endpoint]){
-        dynamic[endpoint] = [];
+
+    if(dynamic[endpoint]){
+       return res.status(409).json({
+           error: `Endpoint ${endpoint} already exists`
+       });
        // endpoints.push(endpoint);
+    }else{
+        dynamic[endpoint] = {
+            description: description || "",
+            data: [] 
+        };
     }
+
+
+
     //id ++
     //id++;
     //dodanie id oraz danych do stworzonego endpointu
     const newID = {
         id:id,
+     //   description: description || "",
         ...data
     }
-    dynamic[endpoint].push(newID);
+    dynamic[endpoint].data.push(newID);
     //dynamiczne logowanie endpointow 
      if(Object.keys(dynamic).length >0){
         Object.entries(dynamic).forEach(([endpoint, data])=>{
@@ -69,6 +75,7 @@ app.post('/new', (req,res)=>{
     //zwrotka co stworzone 
     res.json({ 
         endpointName: `${endpoint}`,
+        description: description || "",
         message: `Endpoint has been successfully created`,
       //  method: `The method post /${endpoint}, get /${endpoint} , get /${endpoint}/:id , del /${endpoint}/:id `,
         data: dynamic[endpoint]
@@ -76,21 +83,6 @@ app.post('/new', (req,res)=>{
 
  //console.log('Endpoints name', endpoints);
  console.log(`${endpoint}`, dynamic[endpoint]);
-
-    //modyfikacja danego endpointu
-    // Object.entries(dynamic).forEach(([endpoint, data])=>{
-    //  if(endpoint === 'test'){
-    //     console.log(`Before update - Endpoint :${endpoint}, data:`, data )
-
-    //     dynamic[endpoint] = data.map(item =>{
-    //         return{
-    //             ...item,
-    //             updated: true //zmiana struktury
-    //         };
-    //     });
-    //     console.log(`After update  - Endpoint :${endpoint}, data:`, data )
-    //  }
-    // });
 });
 
 //susuniecie dane endpointu przykladowo usawam caly endpoint test z raportow 
@@ -231,9 +223,10 @@ app.get(`/dynamic`,(req,res)=>{
     //dynamiczne logowanie endpointow 
     console.log("curr", dynamic);
     if(Object.keys(dynamic).length >0){
-     const allEndpoints =   Object.entries(dynamic).map(([endpoint, data]) =>({
+     const allEndpoints =   Object.entries(dynamic).map(([endpoint, value]) =>({
          endpoint,
-         data  
+         description: value.description,
+         data: value.data 
        }))
        res.json({message: "Avaliable dynamic endpoints:",
         endpoints: allEndpoints})

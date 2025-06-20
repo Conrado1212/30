@@ -29,11 +29,12 @@
         }
 
         function wyslijJson() {
-            let elements = document.querySelectorAll("#lista input, #lista label");
+          //  let elements = document.querySelectorAll("#lista input, #lista label");
+          let elements = document.querySelectorAll("#lista li");
            console.log(elements);
-            let dane = [];
-            let pola = [];
-
+            // let dane = [];
+            // let pola = [];
+            let pola = {}
             // inputs.forEach(input => {
             //     if (input.value.trim() !== "") {
             //         dane.push(input.value);
@@ -47,15 +48,26 @@
             //     }
             // })
 
-            elements.forEach(element =>{
-                let text  = element.textContent?.trim() || element.value?.trim();
-                if(text){
-                    element.tagName === "input" ? dane.push(text) : pola.push(text);
-                }
-            })
+            // elements.forEach(element =>{
+            //     let text  = element.textContent?.trim() || element.value?.trim();
+            //     if(text){
+            //         element.tagName === "input" ? dane.push(text) : pola.push(text);
+            //     }
+            // })
 
+            elements.forEach(li => {
+        const label = li.querySelector("label");
+        const input = li.querySelector("input");
 
-            let jsonData = JSON.stringify({ pola: dane });
+        const key = label?.textContent?.trim();
+        const value = input?.value?.trim();
+
+        if (key && value) {
+            pola[key] = value;
+        }
+    });
+
+            let jsonData = JSON.stringify({ pola });
                 console.log(jsonData);
             // fetch("https://example.com/api/endpoint", {
             //     method: "POST",

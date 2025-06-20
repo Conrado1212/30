@@ -438,7 +438,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
             const row = document.createElement("tr");
 
 
-            row.innerHTML = `<td>${endpoint.endpoint}</a></td><td>${JSON.stringify(getStructure(endpoint.data), null, 2)}</td><td>
+            row.innerHTML = `<td>${endpoint.endpoint}</a></td><td>${endpoint.description}</td><td>${JSON.stringify(getStructure(endpoint.data), null, 2)}</td><td>
             <div class="buttons-container">
                  <button class="action-btn">
                      <i class="fa-solid fa-trash"></i>
@@ -625,10 +625,9 @@ function sendMail(){
 
 
 /*przeslanei request z formularza stworznie nowego endpointa */
-let isListMode = false;
+
 function sendData() {
-    let elements = document.querySelectorAll("#list-endpoint input, #list-endpoint label");
-   console.log(elements);
+   
     let dane = [];
     let pola = [];
 
@@ -650,45 +649,55 @@ function sendData() {
             return;
         }
     
-        const payload = {
-            endpoint: endpointName,
-            data: jsonData
-        };
-    
-
-
-
-            try {
-                const response = await axios.post("http://localhost:3000/new", payload, {
-                    headers: { "Content-Type": "application/json" }
-                });
-                console.log("Response data:", response.data.message);
-                document.querySelector('.overlay').style.display = 'flex';
-                document.querySelector('.endpoint-cname').textContent = response.data.endpointName;
-                document.querySelector('.info-endpoint').textContent = response.data.message;
-                document.getElementById("endpoint-name").value = '';
-                console.log("Po resecie:", endpointName.value, endpointData.value);
-            } catch (error) {
-                console.error("Error:", error);
-                alert("An error occurred while sending data.");
-            }
-
-
-
-
 }
 if(document.getElementById("submit")){
 document.getElementById("submit").addEventListener("click", async function(event) {
     event.preventDefault();
 
-    if(document.getElementById('mode-endpoint').classList.includes('jsonMode')){
-        isListMode = true;
-        sendData();
-    }
+    const isListMode = document.getElementById('endpoint-form').classList.contains('modeJson');
+    console.log(isListMode);
     const endpointName = document.getElementById("endpoint-name").value;
-    const endpointData = document.getElementById("endpoint-data").value;
+    const endpointDesc = document.getElementById("endpoint-desc").value;
+    let payload;
+    if(isListMode){
+        const elements = document.querySelectorAll("#list-endpoint li");
+        console.log(elements);
+        // const dane = [];
+        // const  pola = [];
+        let pola = {}
+        elements.forEach(li =>{
+            const label = li.querySelector("label");
+        const input = li.querySelector("input");
 
-    let jsonData;
+
+        const key = label?.textContent?.trim();
+        const value = input?.value?.trim();
+        if (key && value) {
+            pola[key] = value;
+        }
+        })
+        // elements.forEach(element =>{
+        //     let text  = element.textContent?.trim() || element.value?.trim();
+        //     if(text){
+        //         element.tagName === "input" ? dane.push(text) : pola.push(text);
+        //     }
+        // });
+       let jsonData = JSON.stringify( pola );
+      try {
+        jsonData = JSON.parse(jsonData);
+    } catch (error) {
+        alert("Error: Invalid format!", error);
+        return;
+    }
+       payload = {
+            endpoint: endpointName,
+            description: endpointDesc,
+            data: jsonData
+        }
+    
+    }else{
+        const endpointData = document.getElementById("endpoint-data").value;
+        let jsonData;
 
     // walidacja danych przesylanych
     try {
@@ -698,11 +707,12 @@ document.getElementById("submit").addEventListener("click", async function(event
         return;
     }
 
-    const payload = {
+     payload = {
         endpoint: endpointName,
+        description: endpointDesc,
         data: jsonData
     };
-
+    }
     try {
         const response = await axios.post("http://localhost:3000/new", payload, {
             headers: { "Content-Type": "application/json" }
@@ -712,37 +722,48 @@ document.getElementById("submit").addEventListener("click", async function(event
         document.querySelector('.endpoint-cname').textContent = response.data.endpointName;
         document.querySelector('.info-endpoint').textContent = response.data.message;
             document.getElementById("endpoint-name").value = '';
-         document.getElementById("endpoint-data").value = '';
-        console.log("Po resecie:", endpointName.value, endpointData.value);
-    } catch (error) {
-        console.error("Error:", error);
-        alert("An error occurred while sending data.");
+            document.getElementById("endpoint-desc").value = '';
+            if(!isListMode){
+                document.getElementById("endpoint-data").value = '';
+            }else{
+                document.getElementById("list-endpoint").innerHTML = '';
+            }
+        //console.log("Po resecie:", endpointName.value, endpointData.value);
+        } catch (error) {
+        let modal = false;
+        if(error.response?.status === 409){
+            document.querySelector('.duplikat').style.display = 'flex';
+           // console.log(error.response.status);
+            document.querySelector('#status').textContent = `Status ${error.response.status}`;
+            console.log(document.querySelector('.endpoint-cname').textContent = error.response.status);
+            document.querySelector('#info-status').textContent = error.response.data?.error;
+            console.log('test status', error.response);
+            modal = true;
+            document.getElementById("list-endpoint").innerHTML = '';
+        }else if(error.response?.status === 400){
+            modal = true
+        }
+        console.error("Error new:", error);
+        if(!modal){
+            alert("An error occurred while sending data.");
+        }
+       
     }
 });
 }   
-
-
-
-
-
-
-
-
-
+  
 
 
 function closeInfo(){
-    document.querySelector('.overlay').style.display = 'none';
-    document.querySelector('.overlay2').style.display = 'none';
+
+    ['.overlay','.overlay2','.duplikat'].forEach(e=>{
+        const modal = document.querySelector(e);
+        if(modal && modal.style.display !== 'none'){
+            modal.style.display = 'none';
+        }
+    });
   
 }
-
-
-
-
-
-
-
 
 
 /*wyszukiwanie search 1 to 23*/
