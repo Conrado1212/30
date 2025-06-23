@@ -170,53 +170,55 @@ return res.status(404).json({
         data: dynamic[endpointName]
     })
 });
-  //status 2xx
-  app.get('/200ok', (req, res) => {
-    res.status(200).json({ message: "OK" });
-});
-
-app.get('/201created', (req, res) => {
-    res.status(201).json({ message: "Created" });
-});
-
-app.get('/204noContent', (req, res) => {
-    res.status(204).json({ message: "No content" });
-});
-
-//4xx
-
-app.get('/400bad-request', (req, res) => {
-    res.status(400).json({ error: "Bad Request" });
-});
-
-app.get('/401unauthorized', (req, res) => {
-    res.status(401).json({ error: "Unauthorized " });
-});
-
-app.get('/403forbidden', (req, res) => {
-    res.status(403).json({ error: "Forbidden " });
-});
-
-app.get('/404not-found', (req, res) => {
-    res.status(404).json({ error: "Not Found " });
-});
+  //statusy
 
 
-// 5xx
+const statusy =[{
+    path: '/200ok', status: 200, body:{message: "OK"}
+},
+{
+    path: '/201created', status: 201, body:{message: "Created"}
+},
+{
+    path: '/204noContent', status: 204, body: null
+},
+{
+    path: '/400bad-request', status: 400, body:{error : "Bad Request"}
+},
+{
+    path: '/401unauthorized', status: 401, body:{error : "unauthorized"}
+},
+{
+    path: '/403forbidden', status: 403, body:{error : "forbidden"}
+},
+{
+    path: '/403forbidden', status: 403, body:{error : "forbidden"}
+},
+{ 
+    path: '/404not-found', status: 404, body: { error: "not Found" } 
+},
+{ 
+    path: '/500internal-error', status: 500, body: { error: "Internal error" } 
+},
+{
+     path: '/502bad-gateway', status: 502, body: { error: "Bad Gateway" } 
+    },
+{ 
+    path: '/503service-unavailable', status: 503, body: { error: "Service Unavailable" } 
+}
+];
 
-
-app.get(`500internal-error`, (req, res)=>{
-    res.status(500).json({ error: "Internal error"});
+statusy.forEach(({path, status, body})=>{
+    app.get(path, (req,res)=>{
+        if(body!==null){
+            res.status(status).json(body);
+    } else {
+      res.sendStatus(status);
+    }
+})
 })
 
-app.get(`502bad-gateway`, (req, res)=>{
-    res.status(500).json({ error: "Bad-gateway"});
-})
 
-
-app.get(`503service-unavaliable`, (req, res)=>{
-    res.status(503).json({ error: "Service-unavaliable"});
-})
 
 //wszystkie endpointy
 app.get(`/dynamic`,(req,res)=>{
@@ -226,7 +228,8 @@ app.get(`/dynamic`,(req,res)=>{
      const allEndpoints =   Object.entries(dynamic).map(([endpoint, value]) =>({
          endpoint,
          description: value.description,
-         data: value.data 
+         data: value.data,
+         count: value.data.length
        }))
        res.json({message: "Avaliable dynamic endpoints:",
         endpoints: allEndpoints})
@@ -250,8 +253,9 @@ app.post('/:endpoint',(req,res)=>{
            id: id,
            ...req.body
        };
-       dynamic[endpoint].push(newData);
+       dynamic[endpoint].data.push(newData);
         console.log(`Request Method: ${req.method} ${req.url}`);
+        console.log("body:", req.body);
         res.status(201).json(newData);
    
    
@@ -286,7 +290,7 @@ app.get(`/:endpoint/:id`, (req,res)=>{
 });
 
 app.delete(`/:endpoint/:id`,(req,res)=>{
-    const {endpoint} = req.params;
+    const {endpoint,id} = req.params;
     if(dynamic[endpoint]){
         //parsowanie id na liczbe
         const parsedID = parseInt(id);

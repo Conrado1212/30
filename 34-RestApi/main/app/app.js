@@ -427,16 +427,29 @@ document.addEventListener('DOMContentLoaded', ()=>{
           const tbody = document.querySelector("#endpoints-table tbody");
             if(!data || data.length === 0){
                 const noData = document.createElement("tr");
-                noData.innerHTML =`<td colspan=3 style="text-align:center;  color: transparent;
+                noData.innerHTML =`<td colspan=5 style="text-align:center;  color: transparent;
                 background: var(--text-gradient);
                 -webkit-background-clip: text;
                 background-clip: text; font-size: 2rem; font-weight: bold;">No Data Available</td>`;
                 tbody.appendChild(noData);
             }
+            function extractFullStructure(data) {
+                const full = {};
+                data.forEach(record => {
+                  for (const key in record) {
+                    if (key !== "id" && !(key in full)) {
+                      full[key] = record[key];
+                    }
+                  }
+                });
+                return full;
+              }
           data.forEach(endpoint => {
-              console.log('Endpoint log', endpoint);
             const row = document.createElement("tr");
+const struktura = extractFullStructure(endpoint.data || []);
+const strukturaJSON = JSON.stringify(struktura).replace(/'/g, "&apos;");
 
+row.setAttribute("data-structure", strukturaJSON);
 
             row.innerHTML = `<td>${endpoint.endpoint}</a></td><td>${endpoint.description}</td><td>${JSON.stringify(getStructure(endpoint.data), null, 2)}</td><td>
             <div class="buttons-container">
@@ -449,17 +462,110 @@ document.addEventListener('DOMContentLoaded', ()=>{
                  <button class="action-btn">
                  <a href="http://localhost:3000/${endpoint.endpoint}" target="_blank"> <i class="fa-regular fa-window-restore"></i></a>
              </button>
+             
             </div>
-         </td>`;
+         </td><td><input type="range" id="range" class="range-slider" min="1" max="100" value="${endpoint.count}"><span id="rangeValue">${endpoint.count}</span></td>`;
             tbody.appendChild(row);
           });
+          slider();
         })
         .catch(error => {
           console.error("Error:", error);
         });
     }
-
+    
 });
+
+/*slider */
+
+function data(structure){
+    const newData = {};
+    for(const key in structure){
+        if(key ==="id")continue; 
+       
+       const type = typeof structure[key];
+       if (type === "number") {
+        newData[key] = Math.floor(Math.random() * 100);
+      } else if (type === "string") {
+        newData[key] = `${key}_${Math.floor(Math.random() * 100)}`;
+      } else if (type === "boolean") {
+        newData[key] = Math.random() > 0.5;
+      } else {
+        newData[key] = null;
+      }
+    }
+    return newData;
+}
+
+
+
+function slider(){
+    document.querySelectorAll('.range-slider').forEach(slider=>{
+        const span = slider.nextElementSibling;
+        console.log('sss', span);
+    const row = slider.closest('tr');
+    console.log(row);
+    const endpointName = row.querySelector('td:nth-child(1)').textContent.trim();
+    console.log('ttt', endpointName);
+
+    //const structureCell = row.querySelector('td:nth-child(3)');
+
+    let struktura ={};
+    try{
+        struktura = JSON.parse(row.dataset.structure);
+    }catch (e) {
+        console.warn(`Nie udało się sparsować struktury z ${endpointName}:`, e);
+      }
+    let lastValue = Number(slider.value);
+    slider.addEventListener('input', ()=>{
+        const currentValue = Number(slider.value);
+        console.log(currentValue);
+        span.textContent = currentValue;
+      
+        if(currentValue > lastValue){
+            const add = currentValue - lastValue;
+            console.log("POST", endpointName);
+            for(let i = 0;i<add; i++){
+                const dane = data(struktura);
+            
+            axios.post(`http://localhost:3000/${endpointName}`, dane,{
+                headers: { "Content-Type": "application/json" }
+            })
+            .then(response =>{
+                console.log(`Dodane randomwe dane do ${endpointName}`, response.data);
+               
+            })
+            .catch(e =>{
+                console.error(`Error range`, e);
+            })
+        }
+        lastValue = currentValue;
+    }else if(lastValue < currentValue ){
+        const del  = lastValue - currentValue
+        console.log('del', endpointName);
+        axtios.get(`http://localhost:3000/${endpointName}`)
+        .then(response =>{
+            const dane  = response.data;
+            const lastID = dane.slice(-del).map(e => e.id);
+
+            lastID.forEach(id =>{
+                axios.delete(`http://localhost:3000/${endpointName}/${id}`)
+                .then(()=>
+                    console.log(`Del id = ${id} from ${endpointName}`)
+                )
+                .catch(err => console.error(`Error del id=${id}`, err))
+            })
+        })
+        .catch(err=>{
+            console.error(`No data from ${endpointName}`, err);
+        });
+        lastValue = currentValue;
+    }
+    });   
+    });
+    
+}
+
 
 
 
