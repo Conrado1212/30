@@ -451,7 +451,9 @@ const strukturaJSON = JSON.stringify(struktura).replace(/'/g, "&apos;");
 
 row.setAttribute("data-structure", strukturaJSON);
 
-            row.innerHTML = `<td>${endpoint.endpoint}</a></td><td>${endpoint.description}</td><td>${JSON.stringify(getStructure(endpoint.data), null, 2)}</td><td>
+            row.innerHTML = `<td>${endpoint.endpoint}</a></td><td>${endpoint.description}</td><td>${JSON.stringify(getStructure(endpoint.data), null, 2)}</td>
+            <td><span id="rangeValue">${endpoint.count}</span><input type="range" id="range" class="range-slider" min="1" max="100" value="${endpoint.count}"></td>
+            <td>
             <div class="buttons-container">
                  <button class="action-btn">
                      <i class="fa-solid fa-trash"></i>
@@ -464,7 +466,7 @@ row.setAttribute("data-structure", strukturaJSON);
              </button>
              
             </div>
-         </td><td><input type="range" id="range" class="range-slider" min="1" max="100" value="${endpoint.count}"><span id="rangeValue">${endpoint.count}</span></td>`;
+         </td>`;
             tbody.appendChild(row);
           });
           slider();
@@ -501,7 +503,7 @@ function data(structure){
 
 function slider(){
     document.querySelectorAll('.range-slider').forEach(slider=>{
-        const span = slider.nextElementSibling;
+        const span = slider.previousElementSibling;
         console.log('sss', span);
     const row = slider.closest('tr');
     console.log(row);

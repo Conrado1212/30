@@ -4,6 +4,26 @@
     <meta charset="UTF-8">
     <title>JSON z listy</title>
 </head>
+<style>
+    .slider-container {
+  position: relative;
+  width: 300px;
+}
+
+#range {
+  width: 100%;
+}
+
+#bubble {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #eee;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+</style>
 <body>
     <ul id="lista" style="list-style:none ;">
         <li><label for="test">Example</label> <input type="text" placeholder="Wpisz wartość"></li>
@@ -17,7 +37,11 @@
         <option value="number">Number</option>
       </select>
     <button onclick="wyslijJson()">Wyślij JSON</button>
-
+    <div class="slider-container">
+        <input type="range" id="range" min="0" max="100" value="50" oninput="updateValue(this.value)">
+        <div id="bubble">50</div>
+      </div>
+      
     <script>
         function dodajPole() {
             let ul = document.getElementById("lista");

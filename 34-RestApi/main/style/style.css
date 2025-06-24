@@ -1144,3 +1144,7 @@ color: rgb(0, 255, 255);
     cursor: pointer;
     width: 2vh;
 }
+/*slider*/
+.range-slider{
+   color: var(--text-gradient);
+}
