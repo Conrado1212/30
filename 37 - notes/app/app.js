@@ -1,5 +1,11 @@
 let note =[];
 
+function loadNotes(){
+    const saveNotes = localStorage.getItem('notes');
+    return saveNotes ? JSON.parse(saveNotes) : []
+}
+
+
 function openNote(){
     const dialog = document.getElementById('noteDialog');
     
@@ -37,22 +43,48 @@ function generateId(){
 }
 
 function saveNotes(){
-    localStorage.setItem('notes', JSON.stringify(notes))
+    localStorage.setItem('notes', JSON.stringify(note))
 }
 
 
 
 document.addEventListener('DOMContentLoaded', function(){
-
-
-    document.getElementById('noteForm').addEventListener('submit', save());
+    note = loadNotes()
+    render()
+    document.getElementById('noteForm').addEventListener('submit', save);
 
 
 
 
     document.getElementById('noteDialog').addEventListener('click', function(e){
         if(e.target === this){
-            closeDialog
+            console.log('test this', this);
+            closeDialog()
         }
     })
 })
+
+
+function render(){
+    const notes = document.getElementById('container');
+
+    if(note.length === 0){
+        notes.innerHTML = `
+        <div class="empty-state">
+        <h2>No notes yest</h2>
+        <p>Create your first note to get started</p>
+        <button class="add-note-btn" onclick="openNote()">+ Add your first Note</button>
+        </div>
+        `
+        return
+    }else{
+        notes.innerHTML = note.map(e=>
+            `<div class="note-card">
+            <h3 class="note-title">${e.title}</h3>
+            <p class="note-content">${e.area}</p>
+            </div>
+            `
+        ).join('')
+        
+    }
+}
