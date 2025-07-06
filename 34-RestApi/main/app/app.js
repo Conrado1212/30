@@ -150,20 +150,37 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     
   const savedLi = sessionStorage.getItem("activeLi");
-   
+   console.log('testli', savedLi);
+   const path = window.location.pathname;
 
   menuLinks.forEach(el =>el.classList.remove('activeMenu'));
    //sprawdzenie zmiennej czy isteniej po przeladowaniu strony
-  if(savedLi !== null && menuLinks[savedLi]){
-      //jesli tak ddoanie klasy activeMenu
-      menuLinks[savedLi].classList.add("activeMenu");
-      console.log('po zaladowniu ',menuLinks[savedLi]);
+
 
       //jhesli zmienna nie istenije sprawdzam czy glowna storna aby dodac active do home 
-  }else if(window.location.pathname === '/' || window.location.pathname.includes('index.html')){
+   if(path === '34-RestApi/main/' || path.includes('index.html')){
       menuLinks.forEach(el => el.classList.remove('activeMenu'));
       menuLinks[0].classList.add('activeMenu');
       sessionStorage.setItem('activeLi', 0);
+  }else if(path === '/34-RestApi/main/endpoint/'){
+      console.log('endpoint');
+    menuLinks.forEach(el => el.classList.remove('activeMenu'));
+    menuLinks[2].classList.add('activeMenu');
+    sessionStorage.setItem('activeLi', 2);
+  }else if(path === '/34-RestApi/main/message/'){
+    console.log('message');
+    menuLinks.forEach(el => el.classList.remove('activeMenu'));
+    menuLinks[3].classList.add('activeMenu');
+  }else if(path === '/34-RestApi/main/report/'){
+    console.log('report');
+    menuLinks.forEach(el => el.classList.remove('activeMenu'));
+    menuLinks[1].classList.add('activeMenu');
+  }else if(savedLi !== null && menuLinks[savedLi]){
+    //jesli tak ddoanie klasy activeMenu
+    menuLinks[savedLi].classList.add("activeMenu");
+    console.log('po zaladowniu ',menuLinks[savedLi]);
+  }else{
+      console.log("empty");
   }
 
 
