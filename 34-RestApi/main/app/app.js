@@ -891,6 +891,22 @@ function closeInfo(){
 }
 
 
+['.overlay','.overlay2','.duplikat'].forEach(e=>{
+    const modal = document.querySelector(e);
+modal.addEventListener('click', function(e){
+    if(e.target === this){
+        console.log('test this', this);
+        closeInfo()
+    }
+})
+})
+
+
+
+
+
+
+
 /*wyszukiwanie search 1 to 23*/
 
 
