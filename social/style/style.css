@@ -31,7 +31,7 @@ img{
 }
 .card .avatar img{
     border-radius: 50%;
-    width: 100px;
+    width: 80px;
 }
 .avatar{
     display: flex;
