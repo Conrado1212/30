@@ -39,9 +39,9 @@ body{
     font-weight: 400;
 }
 .card .desc{
-    font-size: .6rem;
+    font-size: .75rem;
     color: var(--Stone600);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     font-family: 'Outfit','sans-serif';
 }
 
@@ -83,6 +83,7 @@ body{
   .title{
       color: var(--Brown800);
       font-weight: 400;
+      margin-bottom: .5rem;
   }
   .ingredients{
     /* padding: 1rem; */
@@ -109,12 +110,29 @@ body{
       font-size: .75rem;
       margin-left: 1rem;
   }
+
   .instructions ol li{
     /* color: var(--Stone900); */
     margin-top: .5rem;
     font-family: 'Outfit','sans-serif';
-   
   }
   .instructions ol li span{
     color: var(--Stone900);
+    display: inline;
+    
   }
+  .instructions ol li p{
+    display: inline;
+    margin: .25rem;
+    
+  }
+  .nutrition{
+    margin-top: 1rem;
+  }
+  .nutrition p{
+      color: var();
+  }
+.table{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
