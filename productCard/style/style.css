@@ -1,0 +1,96 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --green500: hsl(158, 36%, 37%);
+    --green700: hsl(158, 42%, 18%);
+    --black:hsl(212, 21%, 14%);
+    --grey:hsl(228, 12%, 48%);
+    --cream: hsl(30, 38%, 92%);
+    --white: hsl(0, 0%, 100%);
+}
+body{
+    background: var(--cream);
+    font-family: 'Montserrat', 'sans-serif';
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+    color: var(--grey);
+}
+img, svg, picture{
+    max-width: 100%;
+    display: block;
+}
+.container{
+    display: grid;
+    background: var(--white);
+    max-width: 575px;
+    margin: 1rem;
+    grid-template-columns: 1fr 1fr;
+    border-radius: 1rem;
+    overflow: hidden;
+    @media (max-width: 540px) {
+        grid-template-columns: 1fr;
+    }
+    & img{
+        width: 100%;
+    }
+    & h1{
+        color: var(--black);
+        margin: 1rem 0 1.5rem;
+        font-family: 'Fraunces', 'sans-serif';
+        line-height: 1;
+    }
+    & button{
+        cursor: pointer;
+        background: var(--green500);
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--cream);
+        gap: .5rem;
+        border-radius: 1rem;
+        border: none;
+        transition: all 1s ease;
+        padding: .75rem;
+        &:hover{
+            background: var(--green700);
+        }
+        & img{
+            max-width: 15px;
+        }
+    }
+    & .information{
+        padding: 2rem;
+    }
+    & .perfume{
+        letter-spacing: .25rem;
+        font-weight: 500;
+    }
+    & .info{
+        font-weight: 500;
+        margin-bottom: 1rem;
+        font-size: .9rem;
+       
+    }
+    & .price{
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    & .price .new{
+        color: var(--green500);
+        font-size: 2rem;
+        font-weight: 700;
+        font-family: 'Fraunces', 'sans-serif';
+    }
+    & .price .old{ 
+        font-size: .75rem;
+        font-weight: 500;
+        text-decoration: line-through;
+    }
+}
