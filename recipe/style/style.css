@@ -22,7 +22,7 @@ body{
 }
 .card{
     background: var(--white);
-    max-width: 600px;
+    max-width: 800px;
     padding: 1.5rem;
     margin: 1rem;
     border-radius: 1rem;
@@ -30,8 +30,11 @@ body{
 .card img{
     display: block;
     object-fit: contain;
-    width: 100%;
+    max-width: 100%;
     border-radius: 1rem;
+}
+.img-info{
+  
 }
 .card .titlee{
     margin: 1rem 0;
@@ -44,19 +47,22 @@ body{
     margin-bottom: .75rem;
     font-family: 'Outfit','sans-serif';
 }
-
+.info{
+   
+}
 .prep h4{
     color: var(--Rose800);
     margin-bottom: .5rem;
     font-weight: 400;
 }
 .prep{
-     padding: 1rem;
+     padding: 1.5rem;
     /* margin: 1rem;  */
     border-radius: 1rem;
     background: var(--Rose50);
     margin-bottom: .5rem;
     font-family: 'Outfit','sans-serif';
+    /* padding: 1.5rem; 
 }
 .prep ul {
     list-style: disc;
@@ -157,4 +163,46 @@ font-size: .75rem;
 .table .value{
     color: var(--Brown800);
     font-weight: 800;
+    }
+
+    @media (max-width: 540px) {
+       h1{
+           margin-top: 2rem;
+       }
+       .card{
+           margin: 0;
+           padding: 0;
+           height:100vh;
+           width: 100%;
+       }
+       .card img{
+           padding: 0;
+           border-radius: 0;
+           width: 100%;
+       }
+       .ingredients{
+           padding: 1rem;
+           font-size: 1.5rem;
+       }
+       .instructions{
+        padding: 1rem;
+        font-size: 1.5rem;
+    }
+    .nutrition{
+        padding: 1rem;
+        font-size: 1.5rem;
+    }
+    .info{
+        padding: 1rem;
+    }
+    body{
+        
+        place-content: normal;
+      
+    }
+    .prep{
+       margin-left: 1rem;
+       margin-right: 1rem;
+    }
+
     }
