@@ -1,0 +1,171 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --Purple50: hsl(260, 100%, 95%);
+--Purple300: hsl(264, 82%, 80%);
+--Purple500: hsl(263, 55%, 52%);
+
+--White: hsl(0, 0%, 100%);
+--Grey100: hsl(214, 17%, 92%);
+--Grey200: hsl(0, 0%, 81%);
+--Grey400: hsl(224, 10%, 45%);
+--Grey500: hsl(217, 19%, 35%);
+--Darkblue: hsl(219, 29%, 14%);
+--Black: hsl(0, 0%, 7%);
+}
+img{
+    max-width: 100%;
+    display: block;
+}
+body{
+    background: var(--Grey100);
+    font-size: 13px;
+    display: grid;
+    place-content: center;
+    min-height: 100vh;
+    font-family: 'Barlow Semi Condensed', 'sans-serif';
+}
+.container{
+    display: grid;
+    grid-template-areas: "item1 item1 item2 item3"
+    "item4 item5 item5 item3";
+    grid-auto-columns: 1fr;
+    max-width: 1440px;
+    margin: 1rem;
+    gap: 2rem;
+}
+.container .card{
+    border-radius: .5rem;
+    padding: 2rem 2.65rem;
+    /* overflow: hidden; */
+    /* box-shadow: 0 2px 3px var(--Grey400), 0 4px 10px var(--Grey400); */
+    /* position: relative; */
+}
+.container .card .info{
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.container .card .info img{
+    border-radius: 50%;
+    width: 35px;
+}
+.container .card .info h1{
+    font-size: 1.15rem;
+}
+.container .card  .desc{
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+.container .card  .cyt{
+    font-size: 1.1rem;
+    line-height: 1.3;
+}
+.container .card:nth-child(1){
+    grid-area: item1;
+    background: var(--Purple500);
+    position: relative;
+}
+.container .card:nth-child(1) .info{
+    color: var(--White);
+    position: relative;
+    z-index: 10;
+}
+.container .card:nth-child(1) .desc{
+    color: var(--White);
+    position: relative;
+    z-index: 10;
+}
+.container .card:nth-child(1) .cyt{
+    color: var(--Grey200);
+    position: relative;
+    z-index: 10;
+}
+.container .card:nth-child(1) .img-quote{
+    position: absolute;
+    top: 0;
+    right: 100px;
+    width: 130px;
+}
+.container .card:nth-child(2){
+    grid-area: item2;
+    background: var(--Grey500);
+}
+.container .card:nth-child(2) .info{
+    color: var(--White);
+}
+.container .card:nth-child(2) .desc{
+    color: var(--White);
+}
+.container .card:nth-child(2) .cyt{
+    color: var(--Grey200);
+}
+
+.container .card:nth-child(3){
+    grid-area: item3;
+    background: var(--White);
+}
+
+.container .card:nth-child(3) .info{
+    color: var(--Grey500);
+}
+.container .card:nth-child(3) .desc{
+    color: var(--Grey500);
+}
+.container .card:nth-child(3) .cyt{
+    color: var(--Grey500);
+}
+.container .card:nth-child(4){
+    grid-area: item4;
+    background: var(--White);
+}
+.container .card:nth-child(4) .info{
+    color: var(--Grey500);
+}
+.container .card:nth-child(4) .desc{
+    color: var(--Grey500);
+}
+.container .card:nth-child(4) .cyt{
+    color: var(--Grey500);
+}
+
+.container .card:nth-child(5){
+    grid-area: item5;
+    background: var(--Darkblue);
+}
+.container .card:nth-child(5) .info{
+    color: var(--White);
+}
+.container .card:nth-child(5) .desc{
+    color: var(--White);
+}
+.container .card:nth-child(5) .cyt{
+    color: var(--Grey200);
+}
+@media (max-width:1024px){
+    .container{
+        grid-template-areas: 
+        "item1 item1 item2 item2"
+        "item4 item4 item3 item3"
+        "item5 item5 item5 item5";
+    }
+    .container .card:nth-child(1) .img-quote{
+        right: 40px;
+    }
+}
+@media (max-width:768px){
+    .container{
+        grid-template-areas: 
+        "item1"
+        "item2"
+        "item4"
+        "item5" 
+        "item3";
+    }
+}
