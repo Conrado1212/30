@@ -1,0 +1,129 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --Blue: hsl(217, 19%, 35%);
+--DarkBlue: hsl(214, 17%, 51%);
+--GrayishBlue: hsl(212, 23%, 69%);
+--LightGrayishBlue: hsl(210, 46%, 95%);
+}
+body{
+    background: var(--LightGrayishBlue);
+    display: grid;
+    place-content: center;
+    min-height: 100vh;
+    font-size: 13px;
+    font-family: 'Manrope', sans-serif;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    max-width: 900px;
+    background: var(--LightGrayishBlue);
+    border-radius: .5rem;
+    /* overflow: hidden; */
+    box-shadow: 5px 8px 30px 0 var(--GrayishBlue);
+    z-index: 1;
+}
+.left{
+    width: 100%;
+    height: 100%;
+}
+.left img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+  border-top-left-radius: .5rem;
+  border-bottom-left-radius: .5rem;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0
+}
+img{
+    max-width: 100%;
+    display: block;
+   
+}
+.right{
+    padding: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+.right h1{
+    color: var(--Blue);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+.right .desc{
+    color: var(--DarkBlue);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.info{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: space-between;
+    margin-right: 1rem;
+}
+.info img{
+    border-radius: 50%;
+    width: 45px;
+}
+.infor{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.sname{
+    font-size: .8rem;
+    color: var(--Blue);
+    font-weight: 700;
+}
+.date{
+    font-size: .8rem;
+    color: var(--GrayishBlue);
+    font-weight: 700;
+}
+.btn{
+    border: none;
+    background: var(--GrayishBlue);
+    border-radius: 50%;
+    padding: .5rem;
+}
+.btn img{
+    width: 20px;
+}
+.share{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: absolute;
+    background: var(--Blue);
+    padding: 1rem 2rem;
+    border-radius: .5rem;
+    right: -8.5%;
+    z-index: 5000;
+    top: 40%;
+}
+.share::after{
+    content: '';
+    position: absolute;
+  top: 100%; 
+  left: 50%;
+  transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px  solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 12px solid var(--Blue);
+} 
+.share h2{
+    letter-spacing: 1.5px;
+    font-size: .75rem;
+    color: var(--GrayishBlue);
+}
