@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+    <link rel="shortcut icon" href="assets/images/favicon-32x32.png" type="image/x-icon">
+    <link rel="stylesheet" href="style/style.css">
+    <title>Subscribe</title>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <div class="info">
+                <h1>Stay updated!</h1>
+                <p class="desc">Join 60,000+ product managers receiving monthly updates on:</p>
+                <ul>
+                    <li>Product discovery and building</li>
+                    <li>Measuring to ensure updates are a succes</li>
+                    <li>And much more!</li>
+                </ul>
+            </div>
+            <form action="" id="form">
+                <div class="items">   
+                    <label for="email">
+                        <p>Email address</p>
+                        <p class="invalid" id="valid">Valid email required</p>
+                    </label>
+                    <input type="email" placeholder="email@company.com" name="email" id="email">
+                    
+                </div>
+                <div class="items">
+                    <button class="submit-btn" type="submit" id="submit">Subscribe to monthly newsletter</button>
+                </div>
+            </form>
+        </div>
+        <div class="right">
+            <picture>
+                <source srcset="assets/images/illustration-sign-up-mobile.svg" media="(max-width:540px)">
+                <source srcset="assets/images/illustration-sign-up-mobile.svg" media="(min-width:541px) and (max-width:767px)">
+                <img src="assets/images/illustration-sign-up-desktop.svg" alt="desktop">
+            </picture>
+        </div>
+        <div id="confirm" class="message">
+            <img src="assets/images/icon-success.svg" alt="success">
+            <h2>Thanks for subscribing!</h2>
+            <p>A confirmation email has been sent to <span id="userEmail"></span>. Please open it and click the button inside to confirm your subscription.</p>
+            <button class="submit-btn" id="dismiss" type="submit">Dismiss message</button>
+        </div>
+    </div>
+</body>
+</html>
