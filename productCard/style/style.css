@@ -34,7 +34,7 @@ img, svg, picture{
     @media (max-width: 540px) {
         grid-template-columns: 1fr;
     }
-    & img{
+    & img{  
         width: 100%;
     }
     & h1{
