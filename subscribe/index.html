@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap">
     <link rel="shortcut icon" href="assets/images/favicon-32x32.png" type="image/x-icon">
     <link rel="stylesheet" href="style/style.css">
+    <script defer src="app/app.js"></script>
     <title>Subscribe</title>
 </head>
 <body>
-    <div class="container">
-        <div class="left">
+    <div class="container" id="container">
+        <div class="left" id="left">
             <div class="info">
                 <h1>Stay updated!</h1>
                 <p class="desc">Join 60,000+ product managers receiving monthly updates on:</p>
@@ -31,11 +32,11 @@
                     
                 </div>
                 <div class="items">
-                    <button class="submit-btn" type="submit" id="submit">Subscribe to monthly newsletter</button>
+                    <button class="submit-btn" type="submit" id="submit-btn">Subscribe to monthly newsletter</button>
                 </div>
             </form>
         </div>
-        <div class="right">
+        <div class="right" id="right">
             <picture>
                 <source srcset="assets/images/illustration-sign-up-mobile.svg" media="(max-width:540px)">
                 <source srcset="assets/images/illustration-sign-up-mobile.svg" media="(min-width:541px) and (max-width:767px)">

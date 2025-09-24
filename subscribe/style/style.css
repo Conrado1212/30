@@ -103,16 +103,11 @@ margin-right: .5rem;
     text-align: right;
 }
  .message{
-     position: absolute;
-     top: 50%;
-     left: 50%;
-     transform:translateX(-50%);
-     max-width: 500px;
-     max-height: 500px;
-     display: block;
+    
+     display: none;
      line-height: 1.2;
-     background: var(--White);
-     z-index: 1000;
+    
+    
  }
  .message.active{
      display: block;
@@ -138,6 +133,10 @@ margin-right: .5rem;
      border: none;
      outline: none;
  }
+ .success{
+     display: initial;
+     padding: 2.5rem
+ }
  .submit-btn:hover{
     background: linear-gradient(127deg, rgba(255,63,123,1)40%, rgba(255,154,34,1)70%);
     color: var(--Blue800);
@@ -159,9 +158,26 @@ margin-right: .5rem;
      }
      .left{
          padding: 1rem 2rem;
-         grid-row 2;
+         grid-row: 2;
      }
      .info ul li{
-         
+         margin-bottom: 1rem;
      }
+     .rigth img{
+         width: 100%;
+     }
+     .message.active{
+         height: 100vh;
+         padding: 14rem 2rem 2rem 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .message button{
+        margin-top: auto;
+    }
+    .success{
+        display: block;
+        padding: initial;
+    }
  }
