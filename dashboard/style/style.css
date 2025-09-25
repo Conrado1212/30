@@ -44,9 +44,19 @@ body{
     gap: 2rem;
 }
 
-
+.container .card .info img{
+   
+    width: 100px;
+}
 .container .card:nth-child(1){
     grid-area: item1;
-    /* background: var(--Purple600); */
+    background: var(--Navy900); 
     /* position: relative; */
+    border-radius: 1rem;
+    
+}
+.container .card:nth-child(1) .info:nth-child(1){
+    background: var(--Purple600); 
+    border-radius: 1rem;
+    padding: 1rem;
 }
