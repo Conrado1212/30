@@ -6,50 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,700;1,400;1,700&display=swap">
-    <!-- <script defer src="app/app.js"></script> -->
+    <script defer src="app/app.js"></script>
     <link rel="icon" href="images/favicon-32x32.png">
     <title>Dashboard</title>
 </head>
 <body>
-    <div class="container">
-        <div class="card">
+    <div class="container" id="container">
+        <div class="profile-card">
             <div class="info">
                 <img src="images/image-jeremy.png" alt="Jeremy">
-                <h3>Report for</h3>
-                <h1>Jeremy </h1>
-                <h1>Robson</h1>
+                <div class="name">
+                    <p class="text">Report for <br> <span class="surName">Jeremy Robson</span></p>
+                </div>
             </div>
             <div class="date">
-                <p>Daily</p>
-                <p>Weekky</p>
-                <p>Monthly</p>
+               <button id="daily">Daily</button>
+               <button id="weekly" class="active">Weekly</button>
+               <button id="monthly">Monthly</button>
             </div>
         </div>
-        <div class="card">
-            <div class="info">
-                <h2>Work</h2>
-            </div>
-            
-        </div>
-        <div class="card">
-            <h2>Play</h2>
-            
-        </div>
-        <div class="card">
-            <h2>Study</h2>
-            
-        </div>
-        <div class="card">
-            <h2>Exercise</h2>
-            
-        </div>
-        <div class="card">
-            <h2>Social</h2>
-            
-        </div>
-        <div class="card">
-            <h2>Self Care</h2>
-        </div>
+      
     </div>
 </body>
 </html>
