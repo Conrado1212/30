@@ -60,6 +60,16 @@ body{
               margin-bottom: 3rem;
               font-size: 2rem;
               font-weight: 300;
+              & .text{
+                  color: var(--Purple500);
+                  font-size:1rem;
+                  & .surName{
+                      font-size: 2rem;
+                      font-weight: 100;
+                      color: #fff;
+                      letter-spacing: 1.5px;
+                  }
+              }
             }
         }
 
@@ -75,7 +85,109 @@ body{
                 cursor: pointer;
                 color: var(--Purple500);
                 background: transparent;
+                font-size: 1rem;
+                &.active{
+                    color: #fff;
+                }
+                &:hover{
+                    color: var(--Purple700);
+                    font-weight: 700;
+                }
             }
+        }
+    }
+    & .card{
+        cursor: pointer;
+        display: grid;
+        border-radius: .75rem;
+        overflow:hidden;
+        color: #fff;
+        & :hover{
+            background: var(--Purple500);
+        }
+    }
+    & .card-top{
+        background-size: 60px;
+        background-repeat: no-repeat;
+        background-position:  right 15px top -5px;
+        min-height: 2.25rem;
+    }
+    & .card-bottom{
+        background: var(--Navy900);
+        padding: 1.5rem;
+        border-radius:  .75rem .75rem 0 0; 
+        transition: all 200ms ease;
+    }
+    & .card-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    & .time .current{
+        font-size: 2rem;
+    }
+    & .time .previous{
+        color: var(--Purple500);
+    }
+    @media (max-width: 1024px){
+        width: 90%;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        & .profile-card{
+            & .date{
+                flex-direction:row;
+                justify-content: space-around;
+            }
+        }
+        & .profile-card{
+            & .info{
+                & .name{
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+        & .card .card-bottom{
+            & .time{
+                display:flex;
+                align-items:center;
+                justify-content: space-between;
+            }
+        }
+    }
+    & .work-card{
+        background-color: var(--Orange300);
+        & .card-top{
+            background-image: url(../images/icon-work.svg);
+        }
+    }
+    & .play-card{
+        background-color: var(--Blue300);
+        & .card-top{
+            background-image: url(../images/icon-play.svg);
+        }
+    }
+    & .study-card{
+        background-color: var(--Pink400);
+        & .card-top{
+            background-image: url(../images/icon-study.svg);
+        }
+    }
+    & .exercise-card{
+        background-color: var(--Green400);
+        & .card-top{
+            background-image: url(../images/icon-exercise.svg);
+        }
+    }
+    & .social-card{
+        background-color: var(--Purple700);
+        & .card-top{
+            background-image: url(../images/icon-social.svg);
+        }
+    }
+    & .self-care-card{
+        background-color: var(--Yellow300);
+        & .card-top{
+            background-image: url(../images/icon-self-care.svg);
         }
     }
 }

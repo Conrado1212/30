@@ -26,11 +26,13 @@ function displayData(timeframe){
             <div class ="card-bottom">
                 <div class="card-header">
                     <p class="title">${stat.title}</p>
-                    <div class="menu"><i>***</i></div>
+                    <div class="menu"><span class="material-symbols-outlined">
+                    more_horiz
+                    </span></div>
                 </div>
                 <div class="time">
                 <p class="current">${timeframesData.current}hrs</p>
-                <p class="previous">${previous} <span class="previuos-hrs">${timeframesData.previous}</span>hrs</p>
+                <p class="previous">${previous} <span class="previous-hrs">${timeframesData.previous}</span>hrs</p>
                 </div>
             </div>
         `
