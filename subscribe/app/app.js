@@ -23,19 +23,21 @@ function validate(email){
 }
 
 submitBtn.addEventListener('click',(e)=>{
+    console.log('clicked', e.target);
     e.preventDefault()
     const emailVal = emailInput.value.trim();
     
     if(validate(emailVal)){
+        console.log(emailVal);
         succes();
         userEmail.innerText = emailVal;
         emailInput.value = '';
 
         valid.classList.remove('active');
-        email.classList.remove('active');
+        userEmail.classList.remove('active');
     }else{
         valid.classList.add('active');
-        email.classList.add('active');
+        userEmail.classList.add('active');
     }
 })
 
@@ -44,4 +46,5 @@ dismiss.addEventListener('click',()=>{
     right.style.display = "block";
     containerEl.classList.remove('success');
     confirmMes.classList.remove('active');
+    submitBtn.disabled = false;
 })
