@@ -42,4 +42,60 @@ body .title{
     background: var(--White);
     padding: 2rem;
     border-radius: 1rem;
+    box-shadow: 5px 8px 30px 0 var(--Grey200);
+}
+
+.container .right{
+    /* margin: auto 1rem; */
+    background: var(--Green900);
+    border-radius: 1rem;
+    padding: 2rem 1rem;
+    /* display: flex;
+    flex-direction: column;
+    gap: 1rem; */
+}
+
+.container .left{
+    /* margin: auto 1rem; */
+}
+.amount-section{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+.amount-section h2{
+    font-size: .75rem;
+    color: var(--Grey50);
+}
+.amount-section h2 span{
+    color: var(--Grey500);
+}
+
+.value-section{
+    display: flex;
+    align-items: center; 
+}
+.value-section h2{
+    font-size: 2rem;
+    color: var(--Green400);
+}
+.value-section .dollar{
+    color: var(--Green400);
+    height: 32px;
+    width: 17px;
+}
+
+.total-section{
+display: flex;
+align-items: center;
+justify-content: space-between;
+margin-top: 1rem;
+}
+.total-section h2{
+    font-size: .75rem;
+    color: var(--Grey50);
+}
+.total-section h2 span{
+    color: var(--Grey500);
 }
