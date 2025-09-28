@@ -208,10 +208,12 @@ font-weight: 700;
     padding: .5rem 0 .5rem 0;
 }
 
-
+.people .people-value svg{
+    margin-left: .5rem;
+}
 .people .people-value input{
     border: none;
-    padding-left: 1rem;
+    padding-left: 2rem;
     background: var(--Grey50);
     width: 100%;
     text-align: right;
