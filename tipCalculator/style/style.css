@@ -53,6 +53,7 @@ body .title{
     /* display: flex;
     flex-direction: column;
     gap: 1rem; */
+    position: relative;
 }
 
 .container .left{
@@ -91,6 +92,7 @@ display: flex;
 align-items: center;
 justify-content: space-between;
 margin-top: 1rem;
+
 }
 .total-section h2{
     font-size: .75rem;
@@ -98,4 +100,32 @@ margin-top: 1rem;
 }
 .total-section h2 span{
     color: var(--Grey500);
+}
+
+.value-section h2{
+    font-size: 2rem;
+    color: var(--Green400);
+}
+.value-section .dollar{
+    color: var(--Green400);
+    height: 32px;
+    width: 17px;
+}
+.btn{
+    width: 80%;
+    background: var(--Grey400);
+    border: none;
+    outline: none;
+    padding: .5rem 0 .5rem 0; 
+    border-radius: .25rem;
+    cursor: pointer;
+    font-weight: 700;
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+  transform: translateX(-50%);
+}
+.btn:hover{
+    background: linear-gradient(127deg, rgb(26, 32, 30)40%, rgb(40, 71, 50)70%);
+    color: var(--White);
 }
