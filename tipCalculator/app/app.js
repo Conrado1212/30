@@ -32,3 +32,13 @@ custom.addEventListener('click',()=>{
     custom.style.border = "2px solid var(--Green400)";
     custom.classList.add('active');
 });
+
+customValue.addEventListener('blur',()=>{
+    customValue.style.display ="none";
+    custom.style.border ="none";
+    custom.classList.remove('active');
+    const label = document.createElement("label")
+    label.textContent="Custom";
+    custom.appendChild(label);
+});
+
