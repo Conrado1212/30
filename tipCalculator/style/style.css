@@ -182,6 +182,9 @@ input::-webkit-inner-spin-button{
     gap: .5rem;
    
 }
+input:focus{
+    outline:none;
+}
 .tip .template button{
 border-radius: .25rem;
 background: var(--Green900);
