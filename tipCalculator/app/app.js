@@ -1,6 +1,9 @@
 const billValue = document.getElementById('billValue');
 const peopleValue = document.getElementById('peopbleInp');
 const custom = document.getElementById('customBtn');
+const tipValue = document.getElementById('tipValue');
+const totalValue = document.getElementById('totalValue');
+const reset = document.getElementById('reset');
 const customValue = document.getElementById('customValue');
 const focus = document.getElementsByClassName('bill-value')[0];
 const focusPeople = document.getElementsByClassName('people-value')[0];
@@ -9,10 +12,12 @@ const tip = document.querySelectorAll('.template button');
 
 billValue.addEventListener('focus',()=>{
     focus.style.border = "2px solid var(--Green400)"
+    billValue.placeholder ='';
 });
 
 billValue.addEventListener('blur',()=>{
     focus.style.border = "none"
+    billValue.placeholder ='0';
 });
 
 
@@ -42,3 +47,11 @@ customValue.addEventListener('blur',()=>{
     custom.appendChild(label);
 });
 
+reset.addEventListener('click',()=>{
+    console.log('clicked');
+    totalValue.textContent="0.00";
+    tipValue.textContent="0.00";
+    tipValue.textContent="0.00";
+    billValue.value="0";
+    peopleValue.value="0";
+})
