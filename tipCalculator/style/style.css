@@ -8,7 +8,7 @@
 
 --Green400: hsl(172, 67%, 45%);
 
-
+--Red: hsl(4, 100%, 67%);
 
 --Green900: hsl(183, 100%, 15%);
 --Grey500: hsl(186, 14%, 43%);
@@ -145,6 +145,7 @@ margin-top: 1rem;
     align-items: center;
     background: var(--Grey50);
     padding: .5rem 0 .5rem 0;
+    border-radius: .25rem;
 }
 .left .bill .bill-value input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button{
@@ -181,7 +182,7 @@ input::-webkit-inner-spin-button{
     gap: .5rem;
    
 }
-.tip .template p{
+.tip .template button{
 border-radius: .25rem;
 background: var(--Green900);
 text-align: center;
@@ -189,16 +190,42 @@ font-size: 1rem;
 color: var(--White);
 padding:  .25rem 0 .25rem 0;
 font-weight: 700;
+cursor: pointer;
 }
-.tip .template p:last-child{
+.tip .template button:hover{
     background: var(--Grey50);
     color: var(--Grey500);
-   
+    border: none;
+    outline: none;
+}
+.tip .template button:last-child{
+    background: var(--Grey50);
+    color: var(--Grey500);
+   border: none;
+   outline: none;
+}
+.tip .template button:last-child label{
+    cursor: pointer;
+}
+.tip .template button:last-child input{
+    background: var(--Grey50);
+    border: none;
+    display: none;
+}
+.tip .template button:last-child:hover{
+    background: var(--Green900);
 }
 .people label{
     color: var(--Grey500);
     font-size: .75rem;
     font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.people label span{
+    color: var(--Red);
+    display: none;
 }
 
 .people .people-value{
@@ -206,8 +233,11 @@ font-weight: 700;
     align-items: center;
     background: var(--Grey50);
     padding: .5rem 0 .5rem 0;
+    border-radius: .25rem;
 }
-
+.people .people-value.active{
+    border: 2px solid var(--Red);
+}
 .people .people-value svg{
     margin-left: .5rem;
 }
@@ -222,4 +252,24 @@ font-weight: 700;
     font-size: 1rem;
     font-family: 'Space Mono';
     font-weight: 500;
+}
+@media (max-width: 576px){
+    body{
+        place-content: start;
+        margin-top: 2rem;
+        w;
+    }
+    .container{
+        grid-template-columns: 1fr;
+        min-width: auto;
+        width: 100vw;       
+  max-width: 100%; 
+    }
+    .btn{
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        background: var(--Green400);
+        color: var(--Green900);
+    }
 }
