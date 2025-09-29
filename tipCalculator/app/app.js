@@ -23,10 +23,12 @@ billValue.addEventListener('blur',()=>{
 
 peopleValue.addEventListener('focus',()=>{
     focusPeople.style.border = "2px solid var(--Green400)"
+    peopleValue.placeholder ='';
 });
 
 peopleValue.addEventListener('blur',()=>{
     focusPeople.style.border = "none"
+    peopleValue.placeholder ='0';
 });
 
 custom.addEventListener('click',()=>{
