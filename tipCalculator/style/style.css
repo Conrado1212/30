@@ -238,7 +238,7 @@ cursor: pointer;
     background: inherit;
     cursor: default;
 }
-.people label{
+.people label,.bill label{
     color: var(--Grey500);
     font-size: .75rem;
     font-weight: 700;
@@ -246,7 +246,7 @@ cursor: pointer;
     align-items: center;
     justify-content: space-between;
 }
-.people label span{
+.people label span,.bill label span{
     color: var(--Red);
     display: none;
 }

@@ -5,6 +5,7 @@ const tipValue = document.getElementById('tipValue');
 const totalValue = document.getElementById('totalValue');
 const reset = document.getElementById('reset');
 const info = document.getElementById('info');
+const infoBill = document.getElementById('infoBill');
 const customValue = document.getElementById('customValue');
 const focus = document.getElementsByClassName('bill-value')[0];
 const focusPeople = document.getElementsByClassName('people-value')[0];
@@ -74,21 +75,26 @@ tip.forEach(item => {
                tipVal,
                 parseInt(peopleValue.value)
             )
+        }else if(billValue.value !=='' & peopleValue.value === ''){
+            info.style.display ="block";
         }else{
             info.style.display ="block";
+            infoBill.style.display ="block";
         }
        
     })
 });
 
 function calculate(billValue,tip,person){
-    if (isNaN(billValue) || isNaN(tip) || isNaN(personCount) || person <= 0) {
+    if (isNaN(billValue) || isNaN(tip) || isNaN(person) || person <= 0) {
         console.log("Incorrect Data");
         return;
     }
     const tipAmount = (billValue * (tip/100)) /person;
-    const totalPerPerson = (billValue / person) + tipAmount;
+    console.log(tipAmount);
+    console.log(billValue / person);
+    const totalPerPerson = ((billValue+ tipAmount) / person) ;
 
-    tipValue.textContent =  `$${tipAmount.toFixed(2)}`;
-    totalValue.textContent = `$${totalPerPerson.toFixed(2)}`;
+    tipValue.textContent =  `${tipAmount.toFixed(2)}`;
+    totalValue.textContent = `${totalPerPerson.toFixed(2)}`;
 }
