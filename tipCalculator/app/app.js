@@ -92,8 +92,7 @@ function calculate(billValue,tip,person){
     }
     const tipAmount = (billValue * (tip/100)) /person;
     console.log(tipAmount);
-    console.log(billValue / person);
-    const totalPerPerson = ((billValue+ tipAmount) / person) ;
+    const totalPerPerson = ((billValue + tipAmount) / person) ;
 
     tipValue.textContent =  `${tipAmount.toFixed(2)}`;
     totalValue.textContent = `${totalPerPerson.toFixed(2)}`;
