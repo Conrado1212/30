@@ -56,4 +56,14 @@ reset.addEventListener('click',()=>{
     tipValue.textContent="0.00";
     billValue.value="0";
     peopleValue.value="0";
+    tip.forEach(el=> el.classList.remove('activeBtn'));
 })
+
+
+tip.forEach(item => {
+    item.addEventListener('click',()=>{
+        tip.forEach(el=> el.classList.remove('activeBtn'));
+        item.classList.add('activeBtn');
+        
+    })
+});

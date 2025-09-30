@@ -207,6 +207,12 @@ cursor: pointer;
     border: none;
     outline: none;
 }
+.tip .template button.activeBtn{
+    background: var(--Green400);
+    color: var(--Green900);
+    border: none;
+    outline: none;
+}
 .tip .template button:last-child{
     background: var(--Grey50);
     color: var(--Grey500);
