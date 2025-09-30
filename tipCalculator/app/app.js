@@ -4,6 +4,7 @@ const custom = document.getElementById('customBtn');
 const tipValue = document.getElementById('tipValue');
 const totalValue = document.getElementById('totalValue');
 const reset = document.getElementById('reset');
+const info = document.getElementById('info');
 const customValue = document.getElementById('customValue');
 const focus = document.getElementsByClassName('bill-value')[0];
 const focusPeople = document.getElementsByClassName('people-value')[0];
@@ -50,13 +51,14 @@ customValue.addEventListener('blur',()=>{
 });
 
 reset.addEventListener('click',()=>{
-    console.log('clicked');
-    totalValue.textContent="0.00";
-    tipValue.textContent="0.00";
-    tipValue.textContent="0.00";
-    billValue.value="0";
-    peopleValue.value="0";
-    tip.forEach(el=> el.classList.remove('activeBtn'));
+    window.location.reload();
+    // console.log('clicked');
+    // totalValue.textContent="0.00";
+    // tipValue.textContent="0.00";
+    // tipValue.textContent="0.00";
+    // billValue.value="0";
+    // peopleValue.value="0";
+    // tip.forEach(el=> el.classList.remove('activeBtn'));
 })
 
 
@@ -64,6 +66,29 @@ tip.forEach(item => {
     item.addEventListener('click',()=>{
         tip.forEach(el=> el.classList.remove('activeBtn'));
         item.classList.add('activeBtn');
-        
+        const tipText = item.textContent;
+        const tipVal = parseInt(tipText.replace('%',''));
+        if(billValue.value !=='' & peopleValue.value !== ''){
+            calculate(
+                parseFloat(billValue.value),
+               tipVal,
+                parseInt(peopleValue.value)
+            )
+        }else{
+            info.style.display ="block";
+        }
+       
     })
 });
+
+function calculate(billValue,tip,person){
+    if (isNaN(billValue) || isNaN(tip) || isNaN(personCount) || person <= 0) {
+        console.log("Incorrect Data");
+        return;
+    }
+    const tipAmount = (billValue * (tip/100)) /person;
+    const totalPerPerson = (billValue / person) + tipAmount;
+
+    tipValue.textContent =  `$${tipAmount.toFixed(2)}`;
+    totalValue.textContent = `$${totalPerPerson.toFixed(2)}`;
+}
