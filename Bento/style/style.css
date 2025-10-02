@@ -18,7 +18,7 @@ img{
     max-width: 100%;
 }
 body{
-    background: var(--white);
+    background: #f2f2f2;
     font-size: 18px;
     font-family: 'DS Sans', sans-serif;
     display: grid;
@@ -51,17 +51,168 @@ body{
     /* box-shadow: 0 2px 3px var(--Grey400), 0 4px 10px var(--Grey400); */
     /* position: relative; */
 }
-.item1 { grid-area: item1; background: var(--Yellow100); }
-.item2 { grid-area: item2; background: var(--Purple500); }
-.item3 { grid-area: item3; background: var(--Purple100); }
-.item4 { grid-area: item4; background: var(--Yellow500); }
-.item5 { grid-area: item5; background: #43aa8b; }
-.item6 { grid-area: item6; background: var(--Yellow500); }
-.item7 { grid-area: item7; background: #277da1; }
-.item8 { grid-area: item8; background: var(--Purple500); }
+.item1 { 
+    grid-area: item1; background: var(--Yellow100); 
+    padding: 6rem 2rem 0 2.5rem;
+}
+.item1 h1{
+    font-weight: 400;
+}
+.item1 h1 span{
+    color: var(--Purple500);
+}
+.item1 img{
+    margin-top: 1rem;
+}
+.item2 {
+     grid-area: item2; 
+     background: var(--Purple500); 
+     color: var(--White);
+     padding: 2rem;
+     text-align: center;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     gap: 1rem;
+    }
+    .item2 h1{
+        font-size: 3.5rem;
+        font-weight: 600;
+    }
+    .item2 h1 span{
+        color: var(--Yellow500);
+    }
+    .item2 img{
+        width: 250px;
+        margin: 1rem 0 .5rem;
+    }
+    .item2 p{
+        letter-spacing: 1.5px;
+    }
+.item3 { 
+    grid-area: item3; 
+    background: var(--Purple100);
+    padding: 2.75rem 2rem 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+.item3 img { 
+    position: absolute;
+    height: 410px;
+    object-fit: cover;
+    object-position: left;
+    top: 150px;
+}
+.item4 { 
+    grid-area: item4;
+     background: var(--Yellow500);
+     padding: 1.75rem 2.25rem;
+     }
+     .item4 h1{
+         margin-bottom: 2rem;
+         font-size: 2.75rem;
+         font-weight: 500;
+     }
+.item5 {
+     grid-area: item5; 
+     background: var(--White); 
+    pad: 1rem 2rem 1rem 2rem;
+    position: relative;
+    }
+    .item5 h1{
+        margin-top: 5rem;
+        font-weight: 500;
+    }
+    .item5 img{
+        position: absolute;
+    }
+.item6 { 
+    grid-area: item6;
+     background: var(--Yellow500); 
+     position: relative;
+     padding: 1rem 1.75rem;
+    }
+    .item6 h1{
+           font-weight: 550;
+           font-size: 2rem;
+           margin-bottom: 1rem;
+    }
+.item7 {
+     grid-area: item7;
+      background: var(--White);
+     display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    }
+.item7 h1{
+   font-weight: 400;
+    font-size: 4rem;
+   
+}
+.item8 {
+     grid-area: item8; 
+     background: var(--Purple500); 
+     display: flex;
+    align-items: center;
+     justify-content: center;
+     color: var(--White);
+     font-size: 1.5rem;
+     gap: 1rem;
+    }
+    .item8 h2{
+        font-size: 3rem;
+    }
+    .item8 img{
+        width: 250px;
+    }
 
 
 
 
   
-  
+  @media (max-width: 1024px){
+    .container{
+        grid-auto-rows: initial;
+        grid-template-areas:
+        'item1 item1 item2 item2'
+        'item1 item1 item2 item2'
+        'item3 item3 item4 item4'
+        'item3 item3 item4 item4'
+        'item5 item5 item6 item6'
+        'item5 item5 item6 item6'
+        'item7 item7 item8 item8'
+        'item7 item7 item8 item8';
+    }
+  }
+
+  @media (max-width: 768px){
+    .container .card{
+        text-align: center;
+    }
+
+    .container{
+        grid-template-areas:
+        'item2'
+        'item5'
+        'item6'
+        'item3'
+        'item8'
+        'item7'
+        'item1'
+        'item4'
+    }
+    .container .item4, .item5,.item6,.item7{
+        text-align: left;
+  }
+  .container .item1{
+      padding: 2rem;
+      text-align: left;
+  }
+  .container .item3{
+    padding: 2.75rem 1rem 2.5rem 1rem;
+}
+}
