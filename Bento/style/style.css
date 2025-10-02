@@ -228,4 +228,11 @@ text-align: left;
 .container .item7 img{
    width: 300px;
 }
+.container .item8{
+    flex-direction: column;
+    justify-content: center;
+}
+.container .item8 img{
+    width: 350px;
+}
 }
