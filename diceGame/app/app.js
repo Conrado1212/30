@@ -7,7 +7,7 @@ const text = document.querySelector('h1');
 const p1text = document.getElementById('player1');
 const p2text = document.getElementById('player2');
 
-const dice =['dice1.png','dice2.png','dice3.png','dice4.png','dice5.png','dice6.png']
+
 
 // document.addEventListener("DOMContentLoaded", () => {
 //   game();
@@ -23,10 +23,10 @@ let value2;
     p2text.classList.remove('winner')
    }
    let inteval = setInterval(()=>{
-    value1 = dice[Math.floor(Math.random() *6)]
-     value2 = dice[Math.floor(Math.random() *6)]
-          p1.src="/images/"+value1
-          p2.src="/images/"+value2
+    value1 = [Math.floor(Math.random() *6)+1]
+     value2 = [Math.floor(Math.random() *6)+1]
+          p1.src="/images/dice"+value1+".png"
+          p2.src="/images/dice"+value2+".png"
           count++;
           if(count>=5){
             clearInterval(inteval)
@@ -46,5 +46,5 @@ let value2;
   }
   id.addEventListener("click",()=>{
     game();
-   // window.location.reload();
+   
   })
