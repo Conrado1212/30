@@ -12,8 +12,7 @@ const p2text = document.getElementById('player2');
 // document.addEventListener("DOMContentLoaded", () => {
 //   game();
 //   });
-let value1;
-let value2;
+
   function game(){
    let count = 0;
    if(p1text.classList.contains('winner')){
@@ -23,8 +22,8 @@ let value2;
     p2text.classList.remove('winner')
    }
    let inteval = setInterval(()=>{
-    value1 = [Math.floor(Math.random() *6)+1]
-     value2 = [Math.floor(Math.random() *6)+1]
+    let value1 = [Math.floor(Math.random() *6)+1]
+    let  value2 = [Math.floor(Math.random() *6)+1]
           p1.src="/images/dice"+value1+".png"
           p2.src="/images/dice"+value2+".png"
           count++;
