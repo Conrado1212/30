@@ -40,8 +40,12 @@ width: 100%;
   background: linear-gradient(rgb(255, 102, 0),rgb(168, 15, 15));
 }
 .red:hover {
-   
+   box-shadow: 0px 0px 5px #aaa,
+  0 0 10px rgba(255, 102, 0, 0.6),
+    0 0 15px rgba(255, 102, 0, 0.4);
   animation: shift 1s ease infinite;
+  transform: scale(1.1);
+  transition: 0.3s ease-in;
 }
 
 @keyframes shift {
@@ -59,17 +63,64 @@ width: 100%;
 
 
 .green {
-  background-color: green;
+  background: linear-gradient(rgb(12, 145, 56),rgb(13, 53, 5));;
+}
+.green:hover{
+  animation: shift2 1s ease infinite;
+  transform: scale(1.1);
+  transition: 0.3s ease-in;
+}
+@keyframes shift2 {
+  0% {
+    background: linear-gradient(rgb(12, 145, 56),rgb(13, 53, 5));
+  }
+  50% {
+    background: linear-gradient(rgb(13, 53, 5), rgb(12, 145, 56));
+  }
+  100% {
+    background: linear-gradient(rgb(12, 145, 56),rgb(13, 53, 5));
+  }
 }
 
 .blue {
   background: linear-gradient(rgb(75, 75, 228),rgb(10, 10, 99));;
 }
-
+.blue:hover{
+  animation: shift3 1s ease infinite;
+  transform: scale(1.1);
+  transition: 0.3s ease-in;
+}
+@keyframes shift3{
+  0% {
+    background: linear-gradient(rgb(75, 75, 228),rgb(10, 10, 99));
+  }
+  50% {
+    background: linear-gradient(rgb(10, 10, 99), rgb(75, 75, 228));
+  }
+  100% {
+    background: linear-gradient(rgb(75, 75, 228),rgb(10, 10, 99));
+  }
+}
 .yellow {
   background: linear-gradient(rgb(204, 204, 126),rgb(124, 124, 20));
 }
+.yellow:hover {
+  animation: shift4 1s ease infinite;
+  transform: scale(1.1);
+  transition: 0.3s ease-in;
+}
+@keyframes shift4{
+  0% {
+    background: linear-gradient(rgb(204, 204, 126),rgb(124, 124, 20));
+  }
+  50% {
+    background: linear-gradient(rgb(124, 124, 20), rgb(204, 204, 126));
+  }
+  100% {
+    background: linear-gradient(rgb(204, 204, 126),rgb(124, 124, 20));
 
+  }
+}
 .pressed {
   box-shadow: 0 0 20px white;
   background-color: grey;
