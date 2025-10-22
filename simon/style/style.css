@@ -45,7 +45,7 @@ width: 100%;
     0 0 15px rgba(255, 102, 0, 0.4);
   animation: shift 1s ease infinite;
   transform: scale(1.1);
-  transition: 0.3s ease-in;
+  transition: 0.1s ease-in;
 }
 
 @keyframes shift {
@@ -68,7 +68,7 @@ width: 100%;
 .green:hover{
   animation: shift2 1s ease infinite;
   transform: scale(1.1);
-  transition: 0.3s ease-in;
+  transition: 0.1s ease-in;
 }
 @keyframes shift2 {
   0% {
@@ -88,7 +88,7 @@ width: 100%;
 .blue:hover{
   animation: shift3 1s ease infinite;
   transform: scale(1.1);
-  transition: 0.3s ease-in;
+  transition: 0.1s ease-in;
 }
 @keyframes shift3{
   0% {
@@ -107,7 +107,7 @@ width: 100%;
 .yellow:hover {
   animation: shift4 1s ease infinite;
   transform: scale(1.1);
-  transition: 0.3s ease-in;
+  transition: 0.1s ease-in;
 }
 @keyframes shift4{
   0% {
