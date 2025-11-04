@@ -68,9 +68,9 @@ function win(currentPlayer){
         title.textContent = `${currentPlayer} wins!`;
         title.style.color = "green";
         pattern.forEach((index,i) =>{
-            setTimeout(()=>{
+           // setTimeout(()=>{
                 buttons[index].classList.add('win');
-            },i*100);
+          //  },i*100);
             
         })
         disableButton();
@@ -99,7 +99,8 @@ function reset(){
     buttons.forEach(button => {
         button.textContent = '';
         button.style.pointerEvents = "auto";
-        button.classList.remove('win'); 
+        button.classList.remove("win");
+
     });
 
     x.classList.remove('active');
