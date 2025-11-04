@@ -67,6 +67,12 @@ function win(currentPlayer){
        if(pattern.every(index => currentMove.includes(index))){
         title.textContent = `${currentPlayer} wins!`;
         title.style.color = "green";
+        pattern.forEach((index,i) =>{
+            setTimeout(()=>{
+                buttons[index].classList.add('win');
+            },i*100);
+            
+        })
         disableButton();
         resetBtn.style.display ="block";
         break;
@@ -93,11 +99,12 @@ function reset(){
     buttons.forEach(button => {
         button.textContent = '';
         button.style.pointerEvents = "auto";
+        button.classList.remove('win'); 
     });
 
     x.classList.remove('active');
     o.classList.remove('active');
-    
+    resetBtn.style.display = "none";
 }
 
 resetBtn.addEventListener('click',reset);

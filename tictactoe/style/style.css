@@ -55,6 +55,7 @@ body{
     }
 }
 .container{
+    position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     & div{
@@ -141,3 +142,25 @@ body{
  .reset:hover{
 color: var(--white);
  }
+ .container::before{
+    content: '';
+    position: absolute;
+ }
+ .win{
+    animation: winek 2s ease infinite;
+    will-change: transform;
+ }
+
+
+
+ @keyframes winek {
+    0% {
+        background-color: transparent;
+        transform: scale(1);
+    }
+    50% { transform: scale(1.2); }
+    100% {
+        transform: scale(1);
+        background-color: crimson;
+    }
+  }
