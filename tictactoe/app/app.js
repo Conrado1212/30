@@ -86,9 +86,10 @@ function disableButton(){
 }
 function checkdraw(){
     const totalMoves = tx.length + to.length
-    if(totalMoves === 9){
+    if(totalMoves === 9 && title.textContent.includes('Game on')){
         title.textContent = `Draw!`;
         title.style.color = "grey";
+        resetBtn.style.display ="block";
     }
 }
 function reset(){
