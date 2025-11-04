@@ -18,6 +18,9 @@ body{
     height: 100vh;
     background:linear-gradient(90deg,rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%);
 }
+.player{
+    min-width: 600px;
+}
 .players{
     font-size: 2rem;
     display: flex;
@@ -42,6 +45,8 @@ body{
 }
 
 .title{
+    margin-top: 2rem;
+    text-align: center;
     font-size: 3rem;
     text-shadow: 4px 4px 6px rgb(221, 221, 223);
     & span{
@@ -117,4 +122,19 @@ body{
     border-top: 2px solid var(--black)!important;
     border-bottom: 2px solid var(--white)!important;
     color: var(--white);
+ }
+ .reset{
+     margin-top: 2rem;
+     padding: 1rem ;
+     border-radius: 1rem;
+     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+     font-size: 1.5rem;
+     outline: none;
+   //  border-image:  linear-gradient(90deg,rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%);
+   border: 3px solid;
+     cursor: pointer;
+     display: none;
+   color: var(--green);
+   font-weight: 550;
+   text-shadow: 4px 4px 6px rgb(221, 221, 223);
  }

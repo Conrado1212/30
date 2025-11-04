@@ -1,10 +1,12 @@
 const buttons = document.querySelectorAll('.container div');
+const reset = document.getElementById('reset');
 const tx = [];
 const to = [];
 const x = document.getElementById('X');
 const o = document.getElementById('O');
+const title = document.getElementById('title');
 let player =''
-
+const originalTitle = 'Play game or <span>choose player</span>';
 x.addEventListener('click',()=>{
     playerTurn(x,o)
 })
@@ -16,13 +18,32 @@ o.addEventListener('click',()=>{
 
 buttons.forEach(button =>{
     button.addEventListener('click',(e)=>{
-        button.textContent = player
+        if(player ===''){
+            title.textContent = 'Choose player';
+            title.style.color = "red";
+        }else{
+            title.textContent = `Game on `;
+            title.style.color = "white";
+            button.textContent = player
+            button.style.pointerEvents = "none";
+    
+            const index  = Array.from(buttons).indexOf(button);
+    const currentPlayer = player
+            if(currentPlayer === 'X'){
+                tx.push(index)
+                playerTurn(o,x)
+            }else{
+                to.push(index)
+                playerTurn(x,o)
+            }
+            win(currentPlayer);
+            checkdraw();
+        }
+        
     })
 })
   
-function win(){
 
-}
 
 function playerTurn(x,d){
     x.classList.toggle('active');
@@ -30,5 +51,50 @@ function playerTurn(x,d){
         d.classList.remove('active')
     }
     player = x.textContent
-    //console.log(player);
+   
+}
+
+
+const patterns =[
+    [0,1,2],[3,4,5],[6,7,8],
+    [0,3,6],[1,4,7],[2,5,8],
+    [2,4,6],[0,4,8]
+
+]
+function win(currentPlayer){
+   const currentMove = (currentPlayer ==='X') ? tx: to;
+   for(let pattern of patterns){
+       if(pattern.every(index => currentMove.includes(index))){
+        title.textContent = `${currentPlayer} wins!`;
+        title.style.color = "green";
+        disableButton();
+        break;
+       }
+   }
+}
+function disableButton(){
+    buttons.forEach(button =>{
+        button.style.pointerEvents = "none"
+    })
+}
+function checkdraw(){
+    const totalMoves = tx.length + to.length
+    if(totalMoves === 9){
+        title.textContent = `Draw!`;
+        title.style.color = "grey";
+    }
+}
+function reset(){
+    tx.length = 0;
+    to.length = 0;
+    player = '';
+    title.innerText = originalTitle;
+    buttons.forEach(button => {
+        button.textContent = '';
+        button.style.pointerEvents = "auto";
+    });
+
+    x.classList.remove('active');
+    o.classList.remove('active');
+    
 }
