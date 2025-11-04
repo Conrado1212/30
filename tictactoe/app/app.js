@@ -1,5 +1,5 @@
 const buttons = document.querySelectorAll('.container div');
-const reset = document.getElementById('reset');
+const resetBtn = document.getElementById('reset');
 const tx = [];
 const to = [];
 const x = document.getElementById('X');
@@ -68,6 +68,7 @@ function win(currentPlayer){
         title.textContent = `${currentPlayer} wins!`;
         title.style.color = "green";
         disableButton();
+        resetBtn.style.display ="block";
         break;
        }
    }
@@ -88,7 +89,7 @@ function reset(){
     tx.length = 0;
     to.length = 0;
     player = '';
-    title.innerText = originalTitle;
+    title.innerHTML = originalTitle;
     buttons.forEach(button => {
         button.textContent = '';
         button.style.pointerEvents = "auto";
@@ -98,3 +99,5 @@ function reset(){
     o.classList.remove('active');
     
 }
+
+resetBtn.addEventListener('click',reset);

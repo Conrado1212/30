@@ -138,3 +138,6 @@ body{
    font-weight: 550;
    text-shadow: 4px 4px 6px rgb(221, 221, 223);
  }
+ .reset:hover{
+color: var(--white);
+ }
