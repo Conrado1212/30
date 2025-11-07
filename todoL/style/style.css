@@ -8,7 +8,7 @@
     --white: #fff;
     --text: #b0b0b0;
     --green: #4caf50;
-    --gray: #757575;
+    --gray: #2b313d;
     --task: #60c725;
 }
 body{
@@ -51,10 +51,43 @@ body{
     align-items: center;
     justify-content: space-around;
     gap: 2rem;
-    border: 1px solid var(--white);
+   /* // border: 1px solid var(--white); */
     padding: 2rem 2rem;
     border-radius: .5rem;
     width: 100%;
+    position: relative;
+    background: var(--bgColor);
+}
+@property --deg{
+syntax: "<angle>";
+initial-value: 0deg;
+inherits: false;
+}
+.task::after,.task::before{
+    position: absolute;
+    content: '';
+    height: 100%;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    translate: -50%-50%;
+    z-index: -1;
+    background-image: conic-gradient(from var(--deg), transparent 60%, var(--white));
+    padding: 3px;
+    border-radius: .5rem;
+    animation: 3s spin linear infinite;
+}
+@keyframes spin {
+    from {
+        --deg: 0deg;
+    }
+    to{
+        --deg: 360deg;
+    }
+}
+.task::before{
+    filter: blur(1.5rem);
+    opacity: 0.5;
 }
 .title{
     font-size: 3rem;
@@ -79,4 +112,23 @@ body{
 }
 .newTask{
     width: 100%;
+    display: flex;
+    gap: 1rem;
+}
+.newTask input{
+    background: var(--gray);
+    padding: .75rem .5rem;
+    outline: none;
+    border: none;
+    border-radius: .5rem;
+   flex-grow: 1;
+   font-size: 1rem;
+}
+.newTask button{
+    background: var(--task);
+    border: none;
+    font-size: 1.5rem;
+    font-weight: 100;
+    border-radius: .5rem;
+    padding: .75rem;
 }
