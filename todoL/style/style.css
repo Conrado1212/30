@@ -161,10 +161,11 @@ inherits: false;
     content: "";
     position: absolute;
     border-radius:50%;
-    width: 10px;
-    height: 10px;
+    width: 15px;
+    height: 15px;
+    top: 50%;
     left: 50%;
-    background: #fff;
+    background: var(--task);
     transform: translate(-50%, -50%);
   
 }
@@ -182,4 +183,5 @@ inherits: false;
   }
   .icon i:hover{
     color: var(--task);
+    scale: 1.1;
   }
