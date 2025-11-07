@@ -9,7 +9,7 @@
     --text: #b0b0b0;
     --green: #4caf50;
     --gray: #757575;
-    --task: #4caf50;
+    --task: #60c725;
 }
 body{
     font-size: 16px;
@@ -38,4 +38,45 @@ body{
   'wght' 400,
   'GRAD' 0,
   'opsz' 24
+}
+.container{
+    display: grid;
+    place-items: center;
+    max-width: 650px;
+    margin: 0 auto;
+    gap: 2rem;
+}
+.task{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 2rem;
+    border: 1px solid var(--white);
+    padding: 2rem 2rem;
+    border-radius: .5rem;
+    width: 100%;
+}
+.title{
+    font-size: 3rem;
+    color: var(--white);
+    font-weight: 400;
+}
+.sub-title{
+    font-size: 2rem;
+    color: var(--white);
+    font-weight: 400;
+}
+.circle{
+    border-radius: 50%;
+    background: var(--task);
+    padding:  2.5rem;
+    color: var(--white);
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+}
+.newTask{
+    width: 100%;
 }
