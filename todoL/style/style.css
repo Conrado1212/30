@@ -167,10 +167,14 @@ inherits: false;
     left: 50%;
     background: var(--task);
     transform: translate(-50%, -50%);
-  
+
 }
 .tasks span:hover {
     background-color: var(--task);
+  }
+  .info:has(input:checked) .desc {
+    text-decoration: line-through;
+    opacity: 0.6;
   }
   .info{
       display: flex;
