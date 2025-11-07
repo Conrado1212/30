@@ -72,7 +72,7 @@ inherits: false;
     left: 50%;
     translate: -50%-50%;
     z-index: -1;
-    background-image: conic-gradient(from var(--deg), transparent 60%, var(--white));
+    background-image: conic-gradient(from var(--deg), transparent 30%, var(--white));
     padding: 3px;
     border-radius: .5rem;
     animation: 3s spin linear infinite;
@@ -117,12 +117,13 @@ inherits: false;
 }
 .newTask input{
     background: var(--gray);
-    padding: .75rem .5rem;
+    padding: .75rem .75rem;
     outline: none;
     border: none;
     border-radius: .5rem;
    flex-grow: 1;
-   font-size: 1rem;
+   font-size: 1.25rem;
+   color: var(--white);
 }
 .newTask button{
     background: var(--task);
@@ -131,4 +132,39 @@ inherits: false;
     font-weight: 100;
     border-radius: .5rem;
     padding: .75rem;
+}
+.tasks{
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--text);
+    font-size: 1.5rem;
+    padding: .5rem;
+    color: var(--text);
+    position: relative;
+}
+.tasks input{
+    display: none;
+}
+.tasks  span{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    border: 2px solid var(--text);
+}
+.tasks input:checked + span::after{ 
+    content: "";
+    position: absolute;
+    border-radius:50%;
+    width: 10px;
+    height: 10px;
+    left: 50%;
+    background: #fff;
+    transform: translate(-50%, -50%);
+  
 }
