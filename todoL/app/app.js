@@ -1,6 +1,6 @@
 let todoL = [
     {   id: 1, text: "Zrobić zakupy", done: false },
-        { id: 2, text: "Napisać raport", done: true }  
+        { id: 2, text: "Napisać raport", done: false }  
 ];
 const add = document.getElementById("addTodo");
 const container = document.querySelector('.container');
@@ -9,6 +9,9 @@ const tasks = document.querySelectorAll('.tasks');
 const taskcount = document.getElementById('taskcount');
 const done = document.getElementById('done');
 const cancel = document.getElementById('cancel');
+const accept = document.getElementById('accept');
+const updTask = document.getElementById('updTask');
+const taskInfo = document.getElementById('task-info');
 add.addEventListener('click',(e)=>{
     e.preventDefault();
    
@@ -78,13 +81,27 @@ container.addEventListener('click',(e) =>{
         removeTasks(id);
         taskdiv.remove();
     }
+    if(e.target.classList.contains('fa-pen-to-square')){
+        const desc = taskdiv.querySelector('.info p').textContent;
+        document.querySelector(".overlay").style.display = "flex";
+        taskInfo.textContent = desc;
+        currentId = id;
+        
+    }
     if(e.target.tagName === 'SPAN'){      
         markAsComplete(id)
     }
 });
+if(accept){
+    accept.addEventListener('click',()=>{
+        document.querySelector(".overlay").style.display = "none";
+        if(updTask.value.trim() !==''){
+            editTask(currentId,updTask.value.trim())
+        }
+    })
+}
 
-
-function removeTasks(id){
+function removeTasks(id){   
     const nid = Number(id);
  const index = todoL.findIndex(task=>task.id ==nid)
  console.log('index',index);
@@ -96,10 +113,16 @@ function removeTasks(id){
 }
 function editTask(id,text){
     const nid = Number(id);
-    const task = todoL.find(task=>task.id ==nid);
+    const task = todoL.find(task=>task.id === nid);
     if(task){
         task.text = text
-    //    task.done = 'cos'
+        console.log("edited: ", task);
+
+        const taskDiv = document.querySelector(`.tasks input[id="${nid}"]`).closest('.tasks');
+        const element = taskDiv.querySelector('.info p')
+        if (element) {
+            element.textContent = text;
+        }
     }
 }
 function markAsComplete(id){
@@ -107,6 +130,7 @@ function markAsComplete(id){
     const task = todoL.find(task=>task.id ==nid);
     if(task){
         task.done = !task.done;
+        desc.classList.toggle('done', task.done);
         complete()
     }else{
        console.log("Id was not found: ", nid);
