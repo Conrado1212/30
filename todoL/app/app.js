@@ -1,19 +1,21 @@
-const todoL = [];
+const todoL = [
+    {   id: 1, text: "Zrobić zakupy", done: false },
+        { id: 2, text: "Napisać raport", done: true }  
+];
 const add = document.getElementById("addTodo");
-const data = document.getElementById("task");
 const container = document.querySelector('.container');
 const task = document.getElementById("task");
-
+const tasks = document.querySelectorAll('tasks');
 add.addEventListener('click',(e)=>{
     e.preventDefault();
     //console.log(e,"click");
     addTask();
     
 });
-
+const lastId = todoL.length >0 ? todoL[todoL.length-1].id+1 : 1;
 function addTask(){
     const div = document.createElement("div");
-    if(task.value.trim() === '')return;;
+    if(task.value.trim() === '')return;
 
     div.classList.add('tasks');
     container.appendChild(div);
@@ -23,12 +25,12 @@ function addTask(){
     div.appendChild(info);
 
     const check = document.createElement("label");
-    check.setAttribute("for", "check3");
+    check.setAttribute("for", `check${lastId}`);
     info.appendChild(check);
 
     const input = document.createElement("input");
     input.setAttribute("type", "checkbox");
-    input.setAttribute("id", "check3");
+    input.setAttribute("id", lastId);
     check.appendChild(input);
 
     const span = document.createElement("span");
@@ -36,7 +38,7 @@ function addTask(){
     const p = document.createElement("p");
 
     p.classList.add("desc")
-    p.textContent = "example";
+    p.textContent = task.value.trim();
     info.appendChild(p);
 
     const icon = document.createElement('div');
@@ -50,22 +52,19 @@ function addTask(){
     const del = document.createElement('i');
     del.classList.add('fa-solid', 'fa-trash');
     icon.appendChild(del);
+    addTodo(task.value.trim());
+    task.value =''
 }
-// //tworzyc cos takiego  
-// <div class="tasks">
-//             <div class="info">
-//             <label for="check1">
-//                 <input type="checkbox" id="check1">
-//                 <span></span>
-//             </label>
-//             <p class="desc">Build a todo app</p>
-//         </div>
-//         <div class="icon">
-//             <i class="fa-solid fa-pen-to-square"></i>
-//             <i class="fa-solid fa-trash"></i>
-//         </div>
-//     </div>
 
+function addTodo(text){
+    const lastId = todoL.length >0 ? todoL[todoL.length-1].id : 0;
+    const newTask = {
+        id: lastId+1,
+        text: task.value.trim(),
+        done: false
+    };
+    todoL.push(newTask);   
+}
 function removetask(){
 
 }
