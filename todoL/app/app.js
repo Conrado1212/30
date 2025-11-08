@@ -8,6 +8,7 @@ const task = document.getElementById("task");
 const tasks = document.querySelectorAll('.tasks');
 const taskcount = document.getElementById('taskcount');
 const done = document.getElementById('done');
+const cancel = document.getElementById('cancel');
 add.addEventListener('click',(e)=>{
     e.preventDefault();
    
@@ -127,3 +128,8 @@ function complete(){
    done.textContent = `${count}/`;
 }
 complete()
+if(cancel){
+    cancel.addEventListener('click',()=>{
+        document.querySelector(".overlay").style.display = "none";
+    })
+}
