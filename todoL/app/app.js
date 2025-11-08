@@ -10,7 +10,7 @@ const taskcount = document.getElementById('taskcount');
 const done = document.getElementById('done');
 add.addEventListener('click',(e)=>{
     e.preventDefault();
-    //console.log(e,"click");
+   
     addTask();
     
 });
@@ -93,8 +93,13 @@ function removeTasks(id){
  }
  
 }
-function editTask(){
-
+function editTask(id,text){
+    const nid = Number(id);
+    const task = todoL.find(task=>task.id ==nid);
+    if(task){
+        task.text = text
+    //    task.done = 'cos'
+    }
 }
 function markAsComplete(id){
     const nid = Number(id);
