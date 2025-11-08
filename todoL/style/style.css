@@ -132,6 +132,7 @@ inherits: false;
     font-weight: 100;
     border-radius: .5rem;
     padding: .75rem;
+    cursor: pointer;
 }
 .tasks{
     width: 100%;
