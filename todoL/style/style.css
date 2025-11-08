@@ -134,6 +134,10 @@ inherits: false;
     padding: .75rem;
     cursor: pointer;
 }
+.newTask button:hover{
+    color: var(--white);
+    scale: 1.1;
+}
 .tasks{
     width: 100%;
     display: flex;
@@ -182,6 +186,10 @@ inherits: false;
       gap: 1rem;
       justify-content: center;
       align-items: center;
+  }
+  .icon{
+    display: flex;
+    gap: .25rem;
   }
   .icon i{
    cursor: pointer;   
