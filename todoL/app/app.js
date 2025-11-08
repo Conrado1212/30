@@ -14,10 +14,26 @@ add.addEventListener('click',(e)=>{
 function addTask(){
     const div = document.createElement("div");
     if(task.value.trim() === '')return;;
-       
-    
+
     div.classList.add('tasks');
     container.appendChild(div);
+
+    const info = document.createElement("div");
+    info.classList.add('info');
+
+    const check = document.createElement("label");
+    check.setAttribute("for", "check3");
+
+    const input = document.createElement("input");
+    input.setAttribute("type", "checkbox");
+    input.setAttribute("id", "check3");
+
+    const span = document.createElement("span");
+
+    const p = document.createElement("p");
+
+    p.classList.add("desc")
+    p.textContent = "example";
 }
 // //tworzyc cos takiego  
 // <div class="tasks">
@@ -33,3 +49,12 @@ function addTask(){
 //             <i class="fa-solid fa-trash"></i>
 //         </div>
 //     </div>
+
+function removetask(){
+
+}
+
+
+function editTask(){
+    
+}
