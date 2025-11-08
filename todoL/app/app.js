@@ -6,6 +6,8 @@ const add = document.getElementById("addTodo");
 const container = document.querySelector('.container');
 const task = document.getElementById("task");
 const tasks = document.querySelectorAll('.tasks');
+const taskcount = document.getElementById('taskcount');
+const done = document.getElementById('done');
 add.addEventListener('click',(e)=>{
     e.preventDefault();
     //console.log(e,"click");
@@ -64,28 +66,59 @@ function addTodo(text){
         done: false
     };
     todoL.push(newTask);   
+    countTask();
 }
 container.addEventListener('click',(e) =>{
+    const taskdiv = e.target.closest('.tasks');  
+    if(!taskdiv)return;
+
+    const id = taskdiv.querySelector('.info input').getAttribute('id');
     if(e.target.classList.contains('fa-trash')){
-        console.log('click closet');
-        const taskdiv = e.target.closest('.tasks');  
-        const id = taskdiv.querySelector('.info input').getAttribute('id');
-      //  console.log(id);
-    //    console.log(todoL);
         removeTasks(id);
         taskdiv.remove();
     }
-})
+    if(e.target.tagName === 'SPAN'){      
+        markAsComplete(id)
+    }
+});
+
 
 function removeTasks(id){
     const nid = Number(id);
  const index = todoL.findIndex(task=>task.id ==nid)
  console.log('index',index);
  if(index !== -1){
-     todoL.splice(index,1)
+     todoL.splice(index,1);
+     countTask();
  }
  
 }
 function editTask(){
 
 }
+function markAsComplete(id){
+    const nid = Number(id);
+    const task = todoL.find(task=>task.id ==nid);
+    if(task){
+        task.done = !task.done;
+        complete()
+    }else{
+       console.log("Id was not found: ", nid);
+    }
+}
+function countTask(){
+    taskcount.textContent = todoL.length
+}
+countTask();
+
+
+function complete(){
+    count = 0;
+   todoL.forEach(el =>{
+       if(el.done === true){
+           count++;
+       }
+   })
+   done.textContent = `${count}/`;
+}
+complete()
