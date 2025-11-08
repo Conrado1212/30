@@ -89,7 +89,7 @@ container.addEventListener('click',(e) =>{
         
     }
     if(e.target.tagName === 'SPAN'){      
-        markAsComplete(id)
+    markAsComplete(id);
     }
 });
 if(accept){
@@ -125,12 +125,13 @@ function editTask(id,text){
         }
     }
 }
-function markAsComplete(id){
+function markAsComplete(id,desc){
     const nid = Number(id);
     const task = todoL.find(task=>task.id ==nid);
     if(task){
         task.done = !task.done;
-        desc.classList.toggle('done', task.done);
+        console.log(desc);
+        //desc.classList.toggle('doneTask');
         complete()
     }else{
        console.log("Id was not found: ", nid);

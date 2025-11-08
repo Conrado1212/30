@@ -15,9 +15,7 @@ body{
     font-size: 16px;
     background: var(--bgColor);
     height: 100vh;
-    font-family: "Montserrat", sans-serif;;
-  //  display: flex;
-   // justify-content: center;
+    font-family: "Montserrat", sans-serif;
 }
 .header{
    margin: 2rem auto;
@@ -177,7 +175,7 @@ inherits: false;
 .tasks span:hover {
     background-color: var(--task);
   }
-  .info:has(input:checked) .desc {
+  .info:has(input:checked) .desc{
     text-decoration: line-through;
     opacity: 0.6;
   }
@@ -273,4 +271,8 @@ inherits: false;
       gap: 1rem;
       justify-content: space-between;
       width: calc(100% - 48px);
+  }
+  .doneTask{
+    text-decoration: line-through;
+    opacity: 0.6;
   }
