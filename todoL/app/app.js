@@ -31,7 +31,7 @@ function addTask(){
     div.appendChild(info);
 
     const check = document.createElement("label");
-    check.setAttribute("for", `check${lastId}`);
+    check.setAttribute("for", `${lastId}`);
     info.appendChild(check);
 
     const input = document.createElement("input");
