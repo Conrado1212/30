@@ -27,8 +27,9 @@ file.addEventListener('change',function(){
         if(file){
             setTimeout(()=>{
                 testFile(file).then((data) => {
-                    const  buffer   = new Uint8Array(data)
-                    console.log(buffer,' adada');
+                    //const  buffer   = new Uint8Array(data)
+                   
+                    console.log(base64(data),' adada');
                 }).catch((e)=>{
                     console.error(e,' test');
                 })
@@ -36,7 +37,14 @@ file.addEventListener('change',function(){
             },2000)
         }
 })
-
+function base64(data){
+    let binary ='';
+    const bytes = new Uint8Array(data)
+    for(let i =0;i<bytes.length;i++){
+        binary+= String.fromCharCode(bytes[i])
+    }
+    return btoa(binary)
+}
 
 cont.addEventListener('dragenter',()=>{
     cont.classList.add('alt-border');
