@@ -1,0 +1,116 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+:root{
+    --bgColor: #1e1e1e;
+    --white: #fff;
+    --text: #b0b0b0;
+    --gray: #2b313d;
+   
+}
+body{
+    display: grid;
+    place-content: center;
+    font-size: 16px;
+    height: 100vh;
+    font-family: "Montserrat", sans-serif;
+    background: #2A7B9B;
+    background: linear-gradient(40deg, rgb(46, 75, 87) 0%, rgb(220, 226, 223) 50%, rgb(136, 134, 113) 100%);
+}
+
+
+.container{
+    min-height: 550px;
+    max-width: 570px;
+    max-height: 570px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: .5rem;
+    min-width: 500px;
+    padding: 3px;
+    background: var(--text);
+    gap: 1rem;
+  transition: 2s ease-in;
+}
+.test{
+    width: 600px;
+    height: 600px;
+}
+.container::after, .container::before{
+    position: absolute;
+    inset: 0;
+    content: '';
+    height: 100%;
+    width: 100%;
+    top:50%;
+    left: 50%;
+    translate: -50% -50%;
+    /* background-image: conic-gradient(from var(--deg), transparent 30%, var(--white)); */
+   background: repeating-linear-gradient( var(--deg), white 0 20px, transparent 10px 50px);
+    padding: 3px;
+    border-radius: .5rem;
+    animation: 10s spin linear infinite;
+    z-index: -1;
+   
+}
+.alt-border::before,
+.alt-border::after {
+  background: repeating-linear-gradient(var(--deg), rgb(38, 25, 109) 0 20px, transparent 10px 50px);
+}
+
+/* @keyframes move{
+    from{
+        background-position: 0 0;
+    }
+    to{
+        background-position: 100% 0;
+    }
+} */
+.container::before{
+    filter: blur(1.5rem);
+    opacity: 0.5;
+}
+
+@keyframes spin {
+    from {
+        --deg: 0deg;
+    }
+    to{
+        --deg: 360deg;
+    }
+}
+@property --deg{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+    }
+    .container input{
+        display: none;
+    }
+    .container label{
+        background: var(--bgColor);
+        border-radius: .25rem;
+        padding: .75rem;
+        color: var(--white);
+        font-weight: 600;
+        cursor: pointer;
+        transition: all .3s;
+        font-size: 1.25rem;
+    }
+    .container label:hover{
+        scale: 1.1;
+    }
+    .container i{
+        color: var(--white);
+        font-size: 3rem;
+    }
+    .fileName{
+        color: var(--white);
+        font-weight: 500;
+        font-size: 1.25rem;
+    }
