@@ -15,15 +15,26 @@ function testFile(file){
             reject(error);
         }
 
-        reader.readAsBinaryString(file);
+        reader.readAsArrayBuffer(file);
     });
 }
 
 
 file.addEventListener('change',function(){
-    const file = this.files[0] ? this.files[0].name : 'no file'
-    fileName.textContent = file;
-    
+    const file = this.files[0];
+
+    fileName.textContent = file ? this.files[0].name : 'no file';
+        if(file){
+            setTimeout(()=>{
+                testFile(file).then((data) => {
+                    const  buffer   = new Uint8Array(data)
+                    console.log(buffer,' adada');
+                }).catch((e)=>{
+                    console.error(e,' test');
+                })
+
+            },2000)
+        }
 })
 
 
