@@ -16,5 +16,8 @@
 
 body{
     background: var(--bg);
-    color: var(--fg);;
+    color: var(--fg);
+}
+header .logo{
+    color: var(--black)
 }
