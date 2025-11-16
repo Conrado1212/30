@@ -1,0 +1,20 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    --black: #070709;
+    --white: #fff;
+    --bg: light-dark(var(--white),var(--black));
+    --fg: light-dark(var(--black),var(--white));
+    --font-s: 12px;
+    --font-m: 16px;
+    --font-h: 20px;
+}
+
+body{
+    background: var(--bg);
+    color: var(--fg);;
+}
