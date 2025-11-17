@@ -7,17 +7,102 @@
 :root{
     --black: #070709;
     --white: #fff;
-    --bg: light-dark(var(--white),var(--black));
-    --fg: light-dark(var(--black),var(--white));
+    --bg: var(--white);
+    --fg: var(--black);
     --font-s: 12px;
     --font-m: 16px;
     --font-h: 20px;
 }
-
+@media (prefers-color-scheme: dark) {
+    :root {
+      --bg: var(--black);
+      --fg: var(--white);
+    }
+  }
 body{
-    background: var(--bg);
-    color: var(--fg);
+    background: linear-gradient(
+        135deg,
+        #ffffff 0%,        
+        #fafafa 15%,       
+        #f5f5f5 30%,      
+        #eee8f8 45%,       
+        #e8e0f5 60%,      
+        #f5f5f5 75%,     
+        #f0edf7 80%,  
+        #fafafa 90%,     
+        #ffffff 100%
+      );
+      background-size: 200% 200%;
+      animation: gradientMove 10s ease infinite;
+
+
+    font-family: "Outfit", sans-serif;
+    font-size: 16px;
 }
-header .logo{
-    color: var(--black)
+@keyframes gradientMove {
+    0%   { background-position: 0% 0%; }
+    50%  { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+  }
+.logo{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 2rem;
+    gap: 1rem;
+    margin-left: 3rem;
+}
+.logo i{
+    background: linear-gradient(90deg,#521ff7, #AE76F0, #8326F0); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+background-clip: text;
+    transform: rotate(180deg);
+    font-size: 2rem;
+    position: relative;
+}
+.logo i::after{
+    content: '';
+    position: absolute;
+    width: .2rem;
+    height: calc(100% + 1rem);
+    left: -10px;
+    top: -.5rem;
+    z-index: 1;
+    background: linear-gradient(90deg,var(--black), #AE76F0, var(--black)); 
+  
+}
+.title-logo{
+    position: relative;
+    font-size: 2rem;
+    text-transform: uppercase;
+    -webkit-text-stroke: 1.5px #787e96;
+    letter-spacing: .25rem;
+   overflow: hidden;
+   animation: load .75s steps(9) forwards;
+}
+.title-logo::before{
+content: 'QuickBlog';
+position: absolute;
+left: 0;
+top: 0;
+width: 0%;
+background: linear-gradient(90deg,#8326F0, #AE76F0, #521ff7); 
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+color: transparent;   
+white-space: nowrap;
+/* border-right: 2px solid #311144; */
+overflow: hidden;
+animation: load 1s steps(9) forwards;
+}
+
+@keyframes load {
+    from{
+        width: 0ch;
+    }
+   to{
+        width: 12ch;
+    }     
 }
