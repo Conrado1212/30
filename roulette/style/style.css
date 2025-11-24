@@ -129,8 +129,9 @@ i::after{
     #8326F0 180deg 270deg,/* trzeci sektor */
     #f0c000 270deg 360deg /* czwarty sektor */
         );
-        animation: spinCircle  10s  linear infinite;
-        z-index: 10;
+        /* animation: spinCircle  10s  linear infinite;  */
+        //transition: transform 10s ease-out;
+       cursor: pointer;
     }
     @keyframes spinCircle {
         from { transform: rotate(0deg); }
@@ -149,7 +150,7 @@ i::after{
             width: 100%;
             top: 50%;
             left: 50%;
-            translate: -50%-50%;
+            translate: -50% -50%;
             z-index: -10;
             background-image: conic-gradient(from var(--deg), transparent 20%, var(--white), var(--black));
             padding: .25rem;
