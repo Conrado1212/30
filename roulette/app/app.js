@@ -1,7 +1,16 @@
 const circle = document.getElementById('circle')
 
 let spin = 0;
+let animating = false;
 circle.addEventListener('click',()=>{
+    circle.classList.add('no-animation');
+    if(animating) return;
+     angle  = 0;
+   speed = 5;
+ max = 30;
+ phase = 'accelerate';
+ frame = 0;
+ animating = true;
     animate();
     const extra = 360 * 5;
     const randomDeg =  Math.floor(Math.random() * 360); 
@@ -31,6 +40,15 @@ let frame = 0;
         phase ='decelerate';
     }else if( phase ==='decelerate'){
         speed *= 0.99;
+        if(speed < 0.1){
+            animating = false
+            
+            return
+        }
     }
       requestAnimationFrame(animate);
   }
+
+
+
+ 
