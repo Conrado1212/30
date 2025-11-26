@@ -1,5 +1,6 @@
-const circle = document.getElementById('circle')
-
+const circle = document.getElementById('circle');
+const valueData = document.getElementById('data')
+let data =[''];
 let spin = 0;
 let animating = false;
 circle.addEventListener('click',()=>{
@@ -50,5 +51,11 @@ let frame = 0;
   }
 
 
+
+ let counter = 1;
+
+ valueData.addEventListener('change',(e)=>{
+     console.log(e.target.value);
+ })
 
  
