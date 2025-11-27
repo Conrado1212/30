@@ -1,5 +1,6 @@
 const circle = document.getElementById('circle');
-const valueData = document.getElementById('data')
+const valueData = document.getElementById('data');
+const add = document.getElementById('add');
 let data =[''];
 let spin = 0;
 let animating = false;
@@ -52,10 +53,27 @@ let frame = 0;
 
 
 
- let counter = 1;
+ //let counter = 1;
 
- valueData.addEventListener('change',(e)=>{
-     console.log(e.target.value);
+//  valueData.addEventListener('change',(e)=>{
+//      console.log(valueData.value);
+//  })
+
+
+
+ add.addEventListener('click',(e)=>{
+e.preventDefault()
+const value  = valueData.value;
+ const lines = value.split('\n').filter(l => l.trim() !== '');
+ console.log(lines);
+ circle.innerHTML ='';
+
+ lines.forEach((line, index)=>{
+     const div = document.createElement('div');
+     div.className ='text';
+     div.style.setProperty('--n',index+1);
+     div.style.setProperty('--count',lines.length);
+     div.innerHTML=`<p>${line}</p>`
+     circle.appendChild(div);
  })
-
- 
+ });
