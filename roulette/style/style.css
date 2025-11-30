@@ -124,10 +124,11 @@ i::after{
         display: flex;
         justify-content: center;
         background: conic-gradient(
-    #521ff7 0deg 90deg,   
-    #AE76F0 90deg 180deg, 
-    #8326F0 180deg 270deg,
-    #f0c000 270deg 360deg
+    #521ff7 0deg 72deg,   
+    #AE76F0 72deg 144deg, 
+    #8326F0 144deg 216deg,
+    #f0c000 216deg 288deg,
+    #121212 288deg 360deg
         );   
        cursor: pointer;
     }
@@ -180,7 +181,7 @@ i::after{
         position: absolute;
         text-align: center;
         color: #ffF;
-        inset: 30px;
+        inset: 50px;
         font-size: 1.5rem;
         transform: rotate(calc((360deg / var(--count)) * (var(--n) - 0.5)));
         text-shadow: 0 0 12px rgba(41, 53, 86, 1);

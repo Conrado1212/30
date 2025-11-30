@@ -76,4 +76,7 @@ const value  = valueData.value;
      div.innerHTML=`<p>${line}</p>`
      circle.appendChild(div);
  })
+    const div = document.createElement('div');
+    div.className ='dot';
+    circle.appendChild(div);
  });
