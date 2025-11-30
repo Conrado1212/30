@@ -1,6 +1,7 @@
 const circle = document.getElementById('circle');
 const valueData = document.getElementById('data');
 const add = document.getElementById('add');
+valueData.value ='test1' +'\n' + 'test2' + '\n'+ 'test3' + '\n'+ 'test4' + '\n'+ 'test5';
 let data =[''];
 let spin = 0;
 let animating = false;
