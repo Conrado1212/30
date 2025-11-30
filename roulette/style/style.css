@@ -79,7 +79,7 @@ header{
     margin-bottom: 2rem;
     margin-top: 2rem;
 }
-i::after{
+.fa-money-bill-1-wave::after{
     content: '';
     position: absolute;
     width: .2rem;
@@ -181,7 +181,7 @@ i::after{
         position: absolute;
         text-align: center;
         color: #ffF;
-        inset: 50px;
+        inset: 70px;
         font-size: 1.5rem;
         transform: rotate(calc((360deg / var(--count)) * (var(--n) - 0.5)));
         text-shadow: 0 0 12px rgba(41, 53, 86, 1);
@@ -247,11 +247,17 @@ i::after{
     0 0 12px rgba(207, 210, 218, 0.8);
     border-radius: .25rem;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    color: #AE76F0;
+    text-shadow: 0 0px 16px #fff;
 }
 .data button:hover{
     box-shadow: inset -2px -2px 5px rgba(255,255,255,0.2),
     inset 2px 2px 5px rgba(0,0,0,0.6),
     0 0 12px rgba(207, 210, 218, 0.8);
 color: var(--white);
-
+background: linear-gradient(to right, #8326F0, transparent);
 }

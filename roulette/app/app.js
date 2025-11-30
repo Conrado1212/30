@@ -79,4 +79,18 @@ const value  = valueData.value;
     const div = document.createElement('div');
     div.className ='dot';
     circle.appendChild(div);
+   let  counter = 360/lines.length
+    //console.log(counter);
+    const color =['#521ff7','#AE76F0','#8326F0','#f0c000','#121212','#787e96'];
+    let back ='';
+    for(let i=0,c=0;i<360;i+=counter,c++){
+        if(c < lines.length -1){
+            back+=color[c % color.length] +' '+ i + 'deg' + ' ' + (i+counter) + 'deg,';     
+        }else{
+            back+=color[c % color.length] +' '+ i + 'deg' + ' ' + (i+counter) + 'deg';   
+        }
+    }
+    console.log(back);
+    circle.style.setProperty("background",`conic-gradient(${back})`,"important");
  });
+
