@@ -131,6 +131,7 @@ header{
     #121212 288deg 360deg
         );   
        cursor: pointer;
+       /* transition: transform 3s cubic-bezier(.17,.67,.83,.67); */
     }
     @keyframes spinCircle {
         from { transform: rotate(0deg); }

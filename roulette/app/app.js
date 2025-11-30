@@ -2,7 +2,7 @@ const circle = document.getElementById('circle');
 const valueData = document.getElementById('data');
 const add = document.getElementById('add');
 valueData.value ='test1' +'\n' + 'test2' + '\n'+ 'test3' + '\n'+ 'test4' + '\n'+ 'test5';
-let data =[''];
+let data =[];
 let spin = 0;
 let animating = false;
 circle.addEventListener('click',()=>{
@@ -10,20 +10,23 @@ circle.addEventListener('click',()=>{
     if(animating) return;
      angle  = 0;
    speed = 5;
- max = 30;
+ max = Math.floor(10 + Math.random() * 60);
  phase = 'accelerate';
  frame = 0;
  animating = true;
     animate();
-    const extra = 360 * 5;
-    const randomDeg =  Math.floor(Math.random() * 360); 
-    spin += extra + randomDeg;
-    circle.style.transform =`rotate(${spin}deg)`;
+    // const extra = 360 * 5;
+    // const randomDeg =  Math.floor(Math.random() * 360); 
+    // spin += extra + randomDeg;
+    // circle.style.transform =`rotate(${spin}deg)`;
+    
 })
 
-circle.addEventListener('transitionend', () => {
-    console.log('done!');
-  });
+// circle.addEventListener('transitionend', () => {
+//     animating = false;
+//     console.log('done!');
+//     circle.style.transform =`none`;
+//   });
   let angle  = 0;
   let speed = 5;
 let max = 30;
@@ -32,6 +35,7 @@ let frame = 0;
   function animate(){
       angle+=speed;
       circle.style.transform =`rotate(${angle}deg)`;
+  //    console.log(angle);
     if(phase ==='accelerate'){
         speed+=0.5;
         if(speed >=max){
@@ -44,12 +48,15 @@ let frame = 0;
     }else if( phase ==='decelerate'){
         speed *= 0.99;
         if(speed < 0.1){
-            animating = false
-            
-            return
+            animating = false;
+            end();
+            data.push(angle);
+            console.log(data);
+            return 
         }
     }
       requestAnimationFrame(animate);
+      
   }
 
 
@@ -95,3 +102,10 @@ const value  = valueData.value;
     circle.style.setProperty("background",`conic-gradient(${back})`,"important");
  });
 
+function end(){
+    console.log('test end');
+    setTimeout(()=>{
+        circle.style.setProperty("transform",`none`,"important")
+    }, 3000)
+  
+}
