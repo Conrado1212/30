@@ -5,6 +5,11 @@ valueData.value ='test1' +'\n' + 'test2' + '\n'+ 'test3' + '\n'+ 'test4' + '\n'+
 let data =[];
 let spin = 0;
 let animating = false;
+let angle  = 0;
+let speed = 5;
+let max = 30;
+let phase = 'accelerate';
+let frame = 0;
 circle.addEventListener('click',()=>{
     circle.classList.add('no-animation');
     if(animating) return;
@@ -22,20 +27,10 @@ circle.addEventListener('click',()=>{
     
 })
 
-// circle.addEventListener('transitionend', () => {
-//     animating = false;
-//     console.log('done!');
-//     circle.style.transform =`none`;
-//   });
-  let angle  = 0;
-  let speed = 5;
-let max = 30;
-let phase = 'accelerate';
-let frame = 0;
   function animate(){
       angle+=speed;
       circle.style.transform =`rotate(${angle}deg)`;
-  //    console.log(angle);
+  
     if(phase ==='accelerate'){
         speed+=0.5;
         if(speed >=max){
@@ -52,6 +47,8 @@ let frame = 0;
             end();
             data.push(angle);
             console.log(data);
+            const len = document.querySelectorAll('.text').length;
+            getResult(angle, len)
             return 
         }
     }
@@ -109,3 +106,17 @@ function end(){
     }, 3000)
   
 }
+
+function getResult(angle, count){
+    const sector = 360 / count;
+    const normalized = angle   % 360;
+    console.log(normalized);
+
+    let index = Math.floor(normalized / sector);
+
+   // index = (index + shift  +  count ) % count;
+    console.log('sector ',index);
+    return index;
+}
+
+//getResult(1831.5024576058033, 5)
