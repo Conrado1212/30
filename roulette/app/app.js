@@ -48,7 +48,7 @@ circle.addEventListener('click',()=>{
             data.push(angle);
             console.log(data);
             const len = document.querySelectorAll('.text').length;
-            getResult(angle, len)
+            getResult(angle);
             return 
         }
     }
@@ -107,16 +107,24 @@ function end(){
   
 }
 
-function getResult(angle, count){
-    const sector = 360 / count;
-    const normalized = angle   % 360;
-    console.log(normalized);
+function getResult(angle){
+    console.log(valueData.value)
 
-    let index = Math.floor(normalized / sector);
+    const test  = angle /360 ;
+
+    console.log(test);
+    const value = 0+'.'+test.toString().split(".")[1]
+    console.log(value*360);
+
+  //  const sector = 360 / count;
+  //  const normalized = angle   % 360;
+  //  console.log(normalized);
+
+ //   let index = Math.floor(normalized / sector);
 
    // index = (index + shift  +  count ) % count;
-    console.log('sector ',index);
-    return index;
+  //  console.log('sector ',index);
+   // return index;
 }
 
 //getResult(1831.5024576058033, 5)

@@ -204,12 +204,12 @@ header{
     .wrapper{
         width: 0;
         height: 0;
-        border-left: 40px solid crimson;
-        border-bottom: 20px solid transparent;
-        border-top: 20px solid transparent;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-top: 40px solid crimson;
         z-index: 10;
         position: absolute;
-        transform: translate(-610%, 0);
+        transform: translate(0,-610%);
         
     }
 
