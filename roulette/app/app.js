@@ -1,4 +1,5 @@
 const circle = document.getElementById('circle');
+const winner = document.getElementById('winner');
 const valueData = document.getElementById('data');
 const add = document.getElementById('add');
 valueData.value ='test1' +'\n' + 'test2' + '\n'+ 'test3' + '\n'+ 'test4' + '\n'+ 'test5';
@@ -15,7 +16,7 @@ circle.addEventListener('click',()=>{
     if(animating) return;
      angle  = 0;
    speed = 5;
- max = Math.floor(10 + Math.random() * 60);
+ max = Math.floor(20 + Math.random() * 100);
  phase = 'accelerate';
  frame = 0;
  animating = true;
@@ -109,22 +110,18 @@ function end(){
 
 function getResult(angle){
     console.log(valueData.value)
-
+const arr = valueData.value.split('\n');
+console.log(arr.reverse());
     const test  = angle /360 ;
-
     console.log(test);
-    const value = 0+'.'+test.toString().split(".")[1]
-    console.log(value*360);
-
-  //  const sector = 360 / count;
-  //  const normalized = angle   % 360;
-  //  console.log(normalized);
-
- //   let index = Math.floor(normalized / sector);
-
-   // index = (index + shift  +  count ) % count;
-  //  console.log('sector ',index);
-   // return index;
+    const value = 0+'.'+test.toString().split(".")[1];
+    console.log(value);
+    let xd  = value*360 
+    console.log(xd);
+    const sector  = 360/ arr.length
+    let index = Math.floor(xd/sector);
+    console.log(arr[index]);
+  winner.textContent = arr[index];
 }
 
 //getResult(1831.5024576058033, 5)
