@@ -8,3 +8,4 @@
 33 - gallery  https://conrado1212.github.io/30/5%20-%20gallery/
 
 todoL https://conrado1212.github.io/30/todoL/
+simon game: https://conrado1212.github.io/30/simon/
