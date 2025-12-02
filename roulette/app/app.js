@@ -122,5 +122,5 @@ console.log(arr.reverse());
     const sector  = 360/ arr.length
     let index = Math.floor(xd/sector);
     console.log(arr[index]);
-  winner.textContent = arr[index];
+  winner.innerHTML = `<i class="fa-solid fa-trophy"></i> ${arr[index]} <i class="fa-solid fa-trophy"></i>`;
 }
