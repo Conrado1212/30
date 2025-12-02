@@ -103,7 +103,8 @@ const value  = valueData.value;
 function end(){
     console.log('test end');
     setTimeout(()=>{
-        circle.style.setProperty("transform",`none`,"important")
+        circle.style.setProperty("transform",`none`,"important");
+        winner.textContent ='';
     }, 3000)
   
 }
