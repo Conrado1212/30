@@ -87,7 +87,7 @@ const value  = valueData.value;
     circle.appendChild(div);
    let  counter = 360/lines.length
     //console.log(counter);
-    const color =['#521ff7','#AE76F0','#8326F0','#f0c000','#121212','#787e96'];
+    const color =['#521ff7','#AE76F0','#8326F0','#f0c000','#121212','#787e96','#F54927'];
     let back ='';
     for(let i=0,c=0;i<360;i+=counter,c++){
         if(c < lines.length -1){
@@ -124,5 +124,3 @@ console.log(arr.reverse());
     console.log(arr[index]);
   winner.textContent = arr[index];
 }
-
-//getResult(1831.5024576058033, 5)
