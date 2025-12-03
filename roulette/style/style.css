@@ -174,7 +174,7 @@ header{
         justify-content: center;
         align-items: center;
         /* margin-top: 2rem; */
-       height: calc(100vh - 114px);
+       height: calc(100vh - 164px);
        position: relative;
        gap: 10rem;
     }
@@ -292,6 +292,7 @@ color: var(--white);
 background: linear-gradient(to right, #8326F0, transparent);
 }
 .winner{
+    position: absolute;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -311,4 +312,5 @@ background: linear-gradient(to right, #8326F0, transparent);
 }
 .fa-trophy{
     color: #f0c000;
+    font-size: 2.5rem;
 }

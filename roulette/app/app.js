@@ -1,5 +1,6 @@
 const circle = document.getElementById('circle');
 const winner = document.getElementById('winner');
+const head = document.querySelector('header');
 const valueData = document.getElementById('data');
 const add = document.getElementById('add');
 valueData.value ='test1' +'\n' + 'test2' + '\n'+ 'test3' + '\n'+ 'test4' + '\n'+ 'test5';
@@ -104,7 +105,7 @@ function end(){
     console.log('test end');
     setTimeout(()=>{
         circle.style.setProperty("transform",`none`,"important");
-        winner.textContent ='';
+        head.innerHTML ='<i class="fa-solid fa-money-bill-1-wave"></i> <h1 class="title">W</h1>';
     }, 3000)
   
 }
@@ -122,5 +123,5 @@ console.log(arr.reverse());
     const sector  = 360/ arr.length
     let index = Math.floor(xd/sector);
     console.log(arr[index]);
-  winner.innerHTML = `<i class="fa-solid fa-trophy"></i> ${arr[index]} <i class="fa-solid fa-trophy"></i>`;
+  head.innerHTML = `<h1 class="winner"><i class="fa-solid fa-trophy"></i>${arr[index]}<i class="fa-solid fa-trophy"></i></h1>`;
 }
