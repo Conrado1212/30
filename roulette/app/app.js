@@ -152,5 +152,8 @@ hide.addEventListener('click',(e)=>{
     hide.style.display="none";
 });
 apply.addEventListener('click',(e)=>{
-    
+    area.style.display="none";
+    valueData.style.display ="block";
+    hide.style.display ="flex";
+    apply.style.display="none";
 })
