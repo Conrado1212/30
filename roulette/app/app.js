@@ -5,6 +5,7 @@ const head = document.querySelector('header');
 const valueData = document.getElementById('data');
 const add = document.getElementById('add');
 const hide = document.getElementById('hide');
+const apply = document.getElementById('apply');
 valueData.value ='test1' +'\n' + 'test2' + '\n'+ 'test3' + '\n'+ 'test4' + '\n'+ 'test5';
 let data =[];
 let spin = 0;
@@ -32,6 +33,8 @@ circle.addEventListener('click',()=>{
 })
 
   function animate(){
+  //  audio = new Audio('sounds/tom-1.mp3');
+  //  audio.play();
       angle+=speed;
       circle.style.transform =`rotate(${angle}deg)`;
   
@@ -144,4 +147,10 @@ function reset(){
 
 hide.addEventListener('click',(e)=>{
     area.style.display="inline-block";
+    valueData.style.display ="none";
+    apply.style.display ="flex";
+    hide.style.display="none";
 });
+apply.addEventListener('click',(e)=>{
+    
+})

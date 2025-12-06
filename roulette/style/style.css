@@ -340,9 +340,18 @@ background: linear-gradient(to right, #8326F0, transparent);
       cursor: text;
       line-height: 1.2rem;
       overflow-y: auto;
+      height: 722px;
+      width: 377px;
 }
 .text-value{
     display: flex;
     align-items: center;
     gap: .5rem;
 }
+
+input:checked + p {
+    text-decoration: line-through;
+  }
+  #apply{
+      display: none;
+  }
