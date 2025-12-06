@@ -1,8 +1,10 @@
 const circle = document.getElementById('circle');
+const area = document.getElementById('area');
 const winner = document.getElementById('winner');
 const head = document.querySelector('header');
 const valueData = document.getElementById('data');
 const add = document.getElementById('add');
+const hide = document.getElementById('hide');
 valueData.value ='test1' +'\n' + 'test2' + '\n'+ 'test3' + '\n'+ 'test4' + '\n'+ 'test5';
 let data =[];
 let spin = 0;
@@ -88,7 +90,7 @@ const value  = valueData.value;
     circle.appendChild(div);
    let  counter = 360/lines.length
     //console.log(counter);
-    const color =['#521ff7','#AE76F0','#8326F0','#f0c000','#121212','#787e96','#F54927'];
+    const color =['#521ff7','#AE76F0','#8326F0','#f0c000','#121212','#787e96','#F54927','#52312A','#2A5245'];
     let back ='';
     for(let i=0,c=0;i<360;i+=counter,c++){
         if(c < lines.length -1){
@@ -99,6 +101,16 @@ const value  = valueData.value;
     }
     console.log(back);
     circle.style.setProperty("background",`conic-gradient(${back})`,"important");
+
+    lines.forEach((line, index)=>{
+        const div = document.createElement('div');
+        div.className ='text-value';      
+        div.innerHTML=`<input type="checkbox" id="${index+1}"><p id="${index+1}">${line}</p>`
+        area.appendChild(div);
+    })
+
+    console.log(area);
+
  });
 
 function end(){
@@ -125,3 +137,11 @@ console.log(arr.reverse());
     console.log(arr[index]);
   head.innerHTML = `<h1 class="winner"><i class="fa-solid fa-trophy"></i>${arr[index]}<i class="fa-solid fa-trophy"></i></h1>`;
 }
+function reset(){
+    valueData.value ='test1' +'\n' + 'test2' + '\n'+ 'test3' + '\n'+ 'test4' + '\n'+ 'test5';
+}
+
+
+hide.addEventListener('click',(e)=>{
+    area.style.display="inline-block";
+});

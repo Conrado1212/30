@@ -320,3 +320,29 @@ background: linear-gradient(to right, #8326F0, transparent);
     justify-content: space-between;
     gap: 2rem;
 }
+.area{
+    display: none;
+    resize: vertical;
+    padding: 1rem;
+    font-size: 1.2rem;
+    border-radius: .5rem;
+    border: none;
+    background: linear-gradient(
+        135deg,
+        #ffffff 0%,        
+        #fafafa 15%,       
+        #f5f5f5 30%,      
+        #eee8f8 45%,       
+        #e8e0f5 60%,      
+        #f5f5f5 75%,       
+        #ffffff 100%
+      );
+      cursor: text;
+      line-height: 1.2rem;
+      overflow-y: auto;
+}
+.text-value{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}

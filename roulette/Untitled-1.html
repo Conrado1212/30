@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Checkbox + przekreślenie</title>
+  <style>
+    .item {
+      margin: 5px 0;
+    }
+    .checked {
+      text-decoration: line-through;
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+  <h3>Wpisz opcje (jedna linia = jeden element):</h3>
+  <textarea id="source" rows="6" cols="40"></textarea>
+  <br><br>
+  <button onclick="renderList()">Generuj listę</button>
+
+  <div id="list"></div>
+
+  <script>
+    function renderList() {
+      const text = document.getElementById("source").value;
+      const lines = text.split("\n").filter(line => line.trim() !== "");
+      const container = document.getElementById("list");
+      container.innerHTML = "";
+
+      lines.forEach((line, index) => {
+        const wrapper = document.createElement("div");
+        wrapper.className = "item";
+
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.id = "chk" + index;
+
+        const label = document.createElement("label");
+        label.htmlFor = checkbox.id;
+        label.textContent = line;
+
+        // Obsługa kliknięcia checkboxa
+        checkbox.addEventListener("change", () => {
+          if (checkbox.checked) {
+            label.classList.add("checked");
+          } else {
+            label.classList.remove("checked");
+          }
+        });
+
+        wrapper.appendChild(checkbox);
+        wrapper.appendChild(label);
+        container.appendChild(wrapper);
+      });
+    }
+  </script>
+</body>
+</html>
