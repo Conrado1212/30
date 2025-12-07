@@ -63,16 +63,6 @@ circle.addEventListener('click',()=>{
       
   }
 
-
-
- //let counter = 1;
-
-//  valueData.addEventListener('change',(e)=>{
-//      console.log(valueData.value);
-//  })
-
-
-
  add.addEventListener('click',(e)=>{
 e.preventDefault()
 const value  = valueData.value;
@@ -156,4 +146,11 @@ apply.addEventListener('click',(e)=>{
     valueData.style.display ="block";
     hide.style.display ="flex";
     apply.style.display="none";
+    const divs = document.querySelectorAll('.text-value');
+    const selected = Array.from(divs)
+    .filter(div => !div.querySelector('input[type="checkbox"]').checked)
+    .map(div => div.querySelector('p').textContent);
+    console.log(selected);
+   
 })
+
