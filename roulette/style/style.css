@@ -355,3 +355,6 @@ input:checked + p {
   #apply{
       display: none;
   }
+  #reset{
+    background: linear-gradient(to right, transparent, #d80d0d);
+  }

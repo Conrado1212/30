@@ -151,6 +151,32 @@ apply.addEventListener('click',(e)=>{
     .filter(div => !div.querySelector('input[type="checkbox"]').checked)
     .map(div => div.querySelector('p').textContent);
     console.log(selected);
+    circle.innerHTML ='';
+    selected.forEach((select,index)=>{
+        const div = document.createElement('div');
+     div.className ='text';
+     div.style.setProperty('--n',index+1);
+     div.style.setProperty('--count',selected.length);
+     div.innerHTML=`<p>${select}</p>`
+     circle.appendChild(div);
+    })
    
+    const div = document.createElement('div');
+    div.className ='dot';
+    circle.appendChild(div);
+    let  counter = 360/selected.length
+
+    const color =['#521ff7','#AE76F0','#8326F0','#f0c000','#121212','#787e96','#F54927','#52312A','#2A5245'];
+    let back ='';
+    for(let i=0,c=0;i<360;i+=counter,c++){
+        if(c < selected.length -1){
+            back+=color[c % color.length] +' '+ i + 'deg' + ' ' + (i+counter) + 'deg,';     
+        }else{
+            back+=color[c % color.length] +' '+ i + 'deg' + ' ' + (i+counter) + 'deg';   
+        }
+    }
+    console.log(back);
+    circle.style.setProperty("background",`conic-gradient(${back})`,"important");
+    
 })
 
