@@ -97,10 +97,15 @@ const value  = valueData.value;
     circle.style.setProperty("background",`conic-gradient(${back})`,"important");
 
     lines.forEach((line, index)=>{
-        const div = document.createElement('div');
-        div.className ='text-value';      
-        div.innerHTML=`<input type="checkbox" id="${index+1}"><p id="${index+1}">${line}</p>`
+        const id = index+1
+        if(!document.getElementById(id)){
+            const div = document.createElement('div');
+            div.className ='text-value';   
+            div.innerHTML=`<input type="checkbox" id="${id}"><p id="${id}">${line}</p>`;
         area.appendChild(div);
+        }
+           
+        
     })
 
     console.log(area);
