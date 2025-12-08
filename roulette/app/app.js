@@ -6,6 +6,7 @@ const valueData = document.getElementById('data');
 const add = document.getElementById('add');
 const hide = document.getElementById('hide');
 const apply = document.getElementById('apply');
+const resetBtn = document.getElementById('reset');
 valueData.value ='test1' +'\n' + 'test2' + '\n'+ 'test3' + '\n'+ 'test4' + '\n'+ 'test5';
 let data =[];
 let spin = 0;
@@ -132,7 +133,26 @@ console.log(arr.reverse());
 }
 function reset(){
     valueData.value ='test1' +'\n' + 'test2' + '\n'+ 'test3' + '\n'+ 'test4' + '\n'+ 'test5';
+    const value  = valueData.value;
+    const lines = value.split('\n').filter(l => l.trim() !== '');
+    circle.innerHTML ='';
+
+ lines.forEach((line, index)=>{
+     const div = document.createElement('div');
+     div.className ='text';
+     div.style.setProperty('--n',index+1);
+     div.style.setProperty('--count',lines.length);
+     div.innerHTML=`<p>${line}</p>`
+     circle.appendChild(div);
+ })
+    const div = document.createElement('div');
+    div.className ='dot';
+    circle.appendChild(div);
+    let  counter = 360/lines.length;
+    
 }
+
+resetBtn.addEventListener('click',reset)
 
 
 hide.addEventListener('click',(e)=>{
