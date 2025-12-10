@@ -7,6 +7,7 @@
 :root{
     --black: #070709;
     --white: #fff;
+    --title: #5044e5;
     --bg: var(--white);
     --fg: var(--black);
     --font-s: 12px;
@@ -108,6 +109,7 @@ header{
     align-items: center;
     margin-top: 2rem;
     justify-content: space-between;
+    margin-bottom: 2rem;
 }
 .login{
     margin-right: 2rem;
@@ -147,4 +149,29 @@ background: linear-gradient(to right, #8326F0, transparent);
 i{
     color: var(--black);
 }
+}
+.title{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-top: 5rem;
+    flex-direction: column;
+    gap: 2rem;
+    .title-value{
+        font-size: 3.5rem;
+        letter-spacing: 1.5px;
+        font-weight: 600;
+        color: #383838;
+    }
+    .title-value span{
+        background: linear-gradient(90deg,#8326F0, #AE76F0, var(--title)); 
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    p{
+        letter-spacing: 1px;
+        font-size: 1rem;
+        color: #696969;
+    }
 }
