@@ -49,6 +49,14 @@ body{
     justify-content: flex-start;
     gap: 1rem;
     margin-left: 5rem;
+    box-shadow:  -2px -2px 5px rgba(255,255,255,0.2),
+    2px 2px 5px rgba(0,0,0,0.6),
+   0 0 12px rgba(207, 210, 218, 0.8);
+   background: linear-gradient(to right, transparent 80%, #8326F0 100%);
+   transition: all .3s;
+   padding: 0 1rem;
+   letter-spacing: 1px;
+   border-radius: .5rem;
 }
 .logo i{
     background: linear-gradient(90deg,#521ff7, #AE76F0, #8326F0); 
