@@ -123,6 +123,9 @@ header{
     margin-right: 2rem;
 }
 .login button{
+    color: var(--black);
+}
+.btn{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -132,17 +135,13 @@ header{
     font-weight: 600;
     border: none;
     background: linear-gradient(to right, transparent, #8326F0);
-  transition: all .3s;
+    transition: all .3s;
     box-shadow:  -2px -2px 5px rgba(255,255,255,0.2),
      2px 2px 5px rgba(0,0,0,0.6),
     0 0 12px rgba(207, 210, 218, 0.8);
     border-radius: .5rem;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: .5rem;
-    color: var(--black);
+    color: var(--white);
     text-shadow: 0 0px 16px #fff;
 }
 .login button i{
@@ -196,29 +195,10 @@ i{
     padding: .5rem 1rem;
     line-height: 1.4px;
     width: 100%;
+    margin-bottom: 3rem;
 }
-.blogs  button{
-    display: flex;
-align-items: center;
-justify-content: center;
-gap: .5rem;
-padding: .75rem;
-font-size: 1rem;
-font-weight: 600;
-border: none;
-background: linear-gradient(to right, transparent, #8326F0);
-transition: all .3s;
-box-shadow:  -2px -2px 5px rgba(255,255,255,0.2),
- 2px 2px 5px rgba(0,0,0,0.6),
-0 0 12px rgba(207, 210, 218, 0.8);
-border-radius: .5rem;
-cursor: pointer;
-display: flex;
-align-items: center;
-justify-content: center;
-gap: .5rem;
-color: var(--white);
-text-shadow: 0 0px 16px #fff;
+.blogs  button:hover{
+scale: 1.1;
 }
 .blogs input{
     border: none;
@@ -234,4 +214,12 @@ text-shadow: 0 0px 16px #fff;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+}
+.category{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+.category .cat button{
+    border: none;
 }
