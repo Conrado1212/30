@@ -7,10 +7,14 @@ const port  = 3000;
 
 app.use(bodyParser.urlencoded({extended: true}));
 
+const items = ["All", "Technology", "Startup", "LifeStyle", "Finance"];
+
+
 app.use(express.static("style"));
 
 app.get('/',(req,res)=>{
-    res.render("index.ejs")
+    
+    res.render("index.ejs", {items})
 });
 
 app.listen(port,()=>{

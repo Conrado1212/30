@@ -33,21 +33,11 @@
        </section>
        <section class="container">
             <div class="category">
-                <div class="cat">
-                    <button class="btn active">All</button>
-                </div>
-                <div class="cat">
-                    <button class="btn">Technology</button>
-                </div>
-                <div class="cat">
-                    <button class="btn">Startup</button>
-                </div>
-                <div class="cat">
-                    <button class="btn">LifeStyle</button>
-                </div>
-                <div class="cat">
-                    <button class="btn">Finance</button>
-                </div>
+                <% for(let i=0;i<items.length;i++){%>
+                    <div class="cat">
+                        <button class="btn <%= i===0 ? 'active' : '' %>"><%=items[i]%></button>
+                    </div>
+                    <%  }%>
                 <div class="cat">
                     <button class="btn"><i class="fa-solid fa-plus"></i></button>
                 </div>
