@@ -7,14 +7,18 @@ const port  = 3000;
 
 app.use(bodyParser.urlencoded({extended: true}));
 
-const items = ["All", "Technology", "Startup", "LifeStyle", "Finance"];
+const data = {
+  logo: "QuickBlog",
+  items:  ["All", "Technology", "Startup", "LifeStyle", "Finance"],
+  titleContent: "A place to express, create, and let your voice be heard."
+}
 
 
 app.use(express.static("style"));
 
 app.get('/',(req,res)=>{
     
-    res.render("index.ejs", {items})
+    res.render("index.ejs",data)
 });
 
 app.listen(port,()=>{
