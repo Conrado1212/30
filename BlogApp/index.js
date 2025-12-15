@@ -13,12 +13,25 @@ const data = {
   titleContent: "A place to express, create, and let your voice be heard."
 }
 
-
+const blogArt = [{
+  id: 1,
+  title: "Step-by-step lifestyle management guide",
+  desc: "his is a practical, human-first roadmap. Keep it realistic, iterate weekly, and measure progress with simple, visible signals.",
+  img:"images/life1.jpg"
+},
+{
+  id: 2,
+  title: "Building a clear roadmap for your startup success",
+  desc: "Creating an effective startup roadmap is about turning vision into structured, actionable steps. This guide walks you through.",
+  img:"images/start.jpg"
+}
+]
+  
 app.use(express.static("style"));
 
 app.get('/',(req,res)=>{
     
-    res.render("index.ejs",data)
+    res.render("index.ejs",data, blogArt)
 });
 
 app.listen(port,()=>{
