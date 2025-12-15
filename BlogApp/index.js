@@ -24,6 +24,54 @@ const blogArt = [{
   title: "Building a clear roadmap for your startup success",
   desc: "Creating an effective startup roadmap is about turning vision into structured, actionable steps. This guide walks you through.",
   img:"images/start.jpg"
+},
+{
+  id: 3,
+  title: "Building a clear roadmap for your startup success",
+  desc: "Creating an effective startup roadmap is about turning vision into structured, actionable steps. This guide walks you through.",
+  img:"images/start.jpg"
+},
+{
+  id: 4,
+  title: "Building a clear roadmap for your startup success",
+  desc: "Creating an effective startup roadmap is about turning vision into structured, actionable steps. This guide walks you through.",
+  img:"images/start.jpg"
+},
+{
+  id: 5,
+  title: "Building a clear roadmap for your startup success",
+  desc: "Creating an effective startup roadmap is about turning vision into structured, actionable steps. This guide walks you through.",
+  img:"images/start.jpg"
+},
+{
+  id: 6,
+  title: "Building a clear roadmap for your startup success",
+  desc: "Creating an effective startup roadmap is about turning vision into structured, actionable steps. This guide walks you through.",
+  img:"images/start.jpg"
+},
+{
+  id: 7,
+  title: "Building a clear roadmap for your startup success",
+  desc: "Creating an effective startup roadmap is about turning vision into structured, actionable steps. This guide walks you through.",
+  img:"images/start.jpg"
+},
+{
+  id: 8,
+  title: "Building a clear roadmap for your startup success",
+  desc: "Creating an effective startup roadmap is about turning vision into structured, actionable steps. This guide walks you through.",
+  img:"images/start.jpg"
+},
+{
+  id: 9,
+  title: "Building a clear roadmap for your startup success",
+  desc: "Creating an effective startup roadmap is about turning vision into structured, actionable steps. This guide walks you through.",
+  img:"images/start.jpg"
+},
+{
+  id: 10,
+  title: "Building a clear roadmap for your startup success",
+  desc: "Creating an effective startup roadmap is about turning vision into structured, actionable steps. This guide walks you through.",
+  img:"images/start.jpg"
 }
 ]
   
