@@ -240,6 +240,7 @@ scale: 1.1;
     place-items: center;
     margin-bottom: 3rem;
     gap: 3rem;
+    max-width: 1200px;
 }
 .article{
     box-shadow:  -2px -2px 5px rgba(255,255,255,0.2),
@@ -247,4 +248,10 @@ scale: 1.1;
    0 0 12px rgba(207, 210, 218, 0.8);
    border-radius: .5rem;
    overflow: hidden;
+   cursor: pointer;
+ width: 100%;
+}
+.article span{
+    color: var(--white);
+    background: linear-gradient(90deg, #8326F0, #AE76F0, var(--title));
 }
