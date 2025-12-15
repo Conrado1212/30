@@ -219,6 +219,7 @@ scale: 1.1;
     display: flex;
     justify-content: center;
     gap: 1rem;
+    margin-bottom: 3rem;
 }
 .category .cat button{
     border: none;
@@ -232,4 +233,18 @@ scale: 1.1;
     0 0 12px rgba(207, 210, 218, 0.8)!important;
     background: linear-gradient(to right, transparent , #8326F0)!important;
     color: var(--white)!important;
+}
+.articles{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0,1fr));
+    place-items: center;
+    margin-bottom: 3rem;
+    gap: 3rem;
+}
+.article{
+    box-shadow:  -2px -2px 5px rgba(255,255,255,0.2),
+    2px 2px 5px rgba(0,0,0,0.6),
+   0 0 12px rgba(207, 210, 218, 0.8);
+   border-radius: .5rem;
+   overflow: hidden;
 }
