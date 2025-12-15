@@ -74,6 +74,10 @@ const blogArt = [{
   img:"images/start.jpg"
 }
 ]
+
+blogArt.forEach(el=>{
+  console.log(el.id);
+})
   
 app.use(express.static("style"));
 
