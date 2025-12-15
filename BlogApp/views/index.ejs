@@ -16,7 +16,7 @@
 <body>
    <header>
         <div class="logo">
-            <i class="fa-regular fa-note-sticky"></i><h1 class="title-logo"><%-  logo %></h1>
+            <i class="fa-regular fa-note-sticky"></i><h1 class="title-logo"><%-  data.logo %></h1>
         </div>
         <div class="login">
             <button class="btn login">Admin login<i class="fa-solid fa-arrow-right-to-bracket"></i></button>
@@ -25,7 +25,7 @@
    <main>
        <section class="title">
             <h1 class="title-value">Your own <span>blogging</span> <br>platform.</br></h1>
-            <p><%-  titleContent %></p>
+            <p><%-  data.titleContent %></p>
             <form class="blogs">
                 <input type="text" name="search" placeholder="Search for blogs" required>
                 <button type="submit" class="btn"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
@@ -33,9 +33,9 @@
        </section>
        <section class="container">
             <div class="category">
-                <% for(let i=0;i<items.length;i++){%>
+                <% for(let i=0;i<data.items.length;i++){%>
                     <div class="cat">
-                        <button class="btn <%= i===0 ? 'active' : '' %>"><%=items[i]%></button>
+                        <button class="btn <%= i===0 ? 'active' : '' %>"><%=data.items[i]%></button>
                     </div>
                     <%  }%>
                 <div class="cat">

@@ -83,7 +83,10 @@ app.use(express.static("style"));
 
 app.get('/',(req,res)=>{
     
-    res.render("index.ejs",data, blogArt)
+    res.render("index.ejs",{
+      data: data,
+      blogArt: blogArt
+    });
 });
 
 app.listen(port,()=>{
