@@ -43,86 +43,16 @@
                 </div>
             </div>
             <div class="articles">
-                <div class="article">
-                    <img src="images/lif1.jpg" alt="life1">
-                    <span>Lifestyle</span>
-                    <div class="desc">
-                        <h5></h5>
-                        <p class="info"></p>
+                <% for(let i=0;i<blogArt.length;i++){%>
+                    <div class="article" id="<%= blogArt[i].id %>">
+                        <img src="<%= blogArt[i].img %>" alt="life1">
+                        <span><%= blogArt[i].type %></span>
+                        <div class="desc">
+                            <h5><%= blogArt[i].title %></h5>
+                            <p class="info"><%= blogArt[i].desc %></p>
+                        </div>
                     </div>
-                </div>
-                <div class="article">
-                    <img src="images/start.jpg" alt="start">
-                    <span>Startup</span>
-                    <div class="desc">
-                        <h5></h5>
-                        <p class="info"></p>
-                    </div>
-                </div>
-                <div class="article">
-                    <img src="images/tech.jpg" alt="tech">
-                    <span>Technology</span>
-                    <div class="desc">
-                        <h5></h5>
-                        <p class="info"></p>
-                    </div>
-                </div>
-                <div class="article">
-                    <img src="images/tech1.jpg" alt="tech1">
-                    <span>Technology</span>
-                    <div class="desc">
-                        <h5></h5>
-                        <p class="info"></p>
-                    </div>
-                </div>
-                <div class="article">
-                    <img src="images/lif2.jpg" alt="life2">
-                    <span>Lifestyle</span>
-                    <div class="desc">
-                        <h5></h5>
-                        <p class="info"></p>
-                    </div>
-                </div>
-                <div class="article">
-                    <img src="images/start2.jpg" alt="start2">
-                    <span>Startup</span>
-                    <div class="desc">
-                        <h5></h5>
-                        <p class="info"></p>
-                    </div>
-                </div>
-                <div class="article">
-                    <img src="images/finance.jpg" alt="finance">
-                    <span>Finance</span>
-                    <div class="desc">
-                        <h5></h5>
-                        <p class="info"></p>
-                    </div>
-                </div>
-                <div class="article">
-                    <img src="images/start3.jpg" alt="start3">
-                    <span>Startup</span>
-                    <div class="desc">
-                        <h5></h5>
-                        <p class="info"></p>
-                    </div>
-                </div>
-                <div class="article">
-                    <img src="images/life3.jpg" alt="life3">
-                    <span>Lifestyle</span>
-                    <div class="desc">
-                        <h5></h5>
-                        <p class="info"></p>
-                    </div>
-                </div>
-                <div class="article">
-                    <img src="images/tech2.jpg" alt="tech2">
-                    <span>Technology</span>
-                    <div class="desc">
-                        <h5></h5>
-                        <p class="info"></p>
-                    </div>
-                </div>
+                    <%  }%>
             </div>
        </section>
        <section class="newsletter">

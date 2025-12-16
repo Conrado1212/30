@@ -17,7 +17,7 @@ const blogArt = [{
   id: 1,
   title: "Step-by-step lifestyle management guide",
   desc: "his is a practical, human-first roadmap. Keep it realistic, iterate weekly, and measure progress with simple, visible signals.",
-  img:"images/life1.jpg",
+  img:"images/lif1.jpg",
   type: "Lifestyle"
 },
 {
@@ -43,43 +43,43 @@ const blogArt = [{
 },
 {
   id: 5,
-  title: "Building a clear roadmap for your startup success",
-  desc: "Creating an effective startup roadmap is about turning vision into structured, actionable steps. This guide walks you through.",
+  title: "Skill Up & Capture Life",
+  desc: "Boost your abilities with smart tools while preserving the milestones that matter most.",
   img:"images/lif2.jpg",
   type: "Lifestyle"
 },
 {
   id: 6,
-  title: "Building a clear roadmap for your startup success",
-  desc: "Creating an effective startup roadmap is about turning vision into structured, actionable steps. This guide walks you through.",
+  title: "Efficiency First: Boosting Startup Returns",
+  desc: "A guide to building a high‑impact startup by focusing on efficiency, validation, and smart resource use.",
   img:"images/start2.jpg",
   type: "Startup"
 },
 {
   id: 7,
-  title: "Building a clear roadmap for your startup success",
-  desc: "Creating an effective startup roadmap is about turning vision into structured, actionable steps. This guide walks you through.",
+  title: "Luxury Home Taxes: Market Shifts Explained",
+  desc: "Explore how high‑value property taxation reshapes demand, investment strategies, and future housing trends.",
   img:"images/finance.jpg",
   type: "Finance"
 },
 {
   id: 8,
-  title: "Building a clear roadmap for your startup success",
-  desc: "Creating an effective startup roadmap is about turning vision into structured, actionable steps. This guide walks you through.",
+  title: "Learning Reinvented",
+  desc: "Forget rote memorization — embrace a smarter, personalized, and engaging way to study.",
   img:"images/start3.jpg",
   trype: "Startup"
 },
 {
   id: 9,
-  title: "Building a clear roadmap for your startup success",
-  desc: "Creating an effective startup roadmap is about turning vision into structured, actionable steps. This guide walks you through.",
+  title: "Tourism as a Global Game‑Changer",
+  desc: "Explore how tourism drives economies, fosters innovation, and reshapes international relations.",
   img:"images/life3.jpg",
   type: "Lifestyle"
 },
 {
   id: 10,
-  title: "Building a clear roadmap for your startup success",
-  desc: "Creating an effective startup roadmap is about turning vision into structured, actionable steps. This guide walks you through.",
+  title: "AI Everywhere",
+  desc: "From smart assistants to predictive analytics — AI is transforming industries and shaping the future.”",
   img:"images/tech2.jpg",
   Type: "Technology"
 }
@@ -88,7 +88,9 @@ const blogArt = [{
 blogArt.forEach(el=>{
   console.log(el.id);
 })
-  
+for(let i=0;i<blogArt.length;i++){
+  console.log('aadsadad',blogArt[i].id);
+}
 app.use(express.static("style"));
 
 app.get('/',(req,res)=>{
