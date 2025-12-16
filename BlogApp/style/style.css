@@ -254,7 +254,10 @@ scale: 1.1;
    cursor: pointer;
  width: 100%;
  height: 100%;
- 
+ transition: .3s ease-in;
+}
+.article:hover{
+    scale: 1.03;
 }
 .article img{
     display: block;
