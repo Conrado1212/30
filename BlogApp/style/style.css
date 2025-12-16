@@ -37,7 +37,9 @@ body{
       animation: gradientMove 10s ease infinite;
     font-family: "Outfit", sans-serif;
     font-size: 16px;
+    scrollbar-width: none;   
 }
+
 @keyframes gradientMove {
     0%   { background-position: 0% 0%; }
     50%  { background-position: 100% 100%; }
