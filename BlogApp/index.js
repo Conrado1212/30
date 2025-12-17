@@ -91,6 +91,8 @@ blogArt.forEach(el=>{
 for(let i=0;i<blogArt.length;i++){
   console.log('aadsadad',blogArt[i].id);
 }
+const index = blogArt.findIndex(e=>e.id ===1);
+console.log(blogArt[index]);
 app.use(express.static("style"));
 
 app.get('/',(req,res)=>{
@@ -99,6 +101,47 @@ app.get('/',(req,res)=>{
       data: data,
       blogArt: blogArt
     });
+});
+
+
+app.delete(`/blog/:id`,(req,res)=>{
+  const {id} = req.params;
+ 
+    const parseID = parseInt(id);
+    if(isNaN[parseID]){
+      return res.status(400).json({error: "Invalid ID fromat"})
+    }
+    const index = blogArt.findIndex(e=>e.id ===parseID);
+    console.log(index);
+    if (index === -1) {
+      return res.status(404).json({ error: `Item with ID: ${id} not found` });
+    }
+
+    blogArt.splice(index, 1);
+    console.log(`Request Method: ${req.method} ${req.url}`);
+    return res.json({message: `Item with id ${id} was successfully deleted`});
+  
+});
+
+
+app.put(`/blog/:id`,(req,res)=>{
+  const {id} =req.params;
+  const parseID = parseInt(id);
+
+  if(isNaN[parseID]){
+    return res.status(400).json({error: "Invalid ID fromat"})
+  }
+
+  const index = blogArt.findIndex(e=>e.id ===parseID);
+  console.log(index);
+  if (index === -1) {
+    return res.status(404).json({ error: `Item with ID: ${id} not found` });
+  }
+  blogArt[index] = {
+    ...req.body
+  }
+  console.log(`Request Method: ${req.method} ${req.url}`);
+  return res.json({message: `Item with id ${id} was successfully updated`});
 });
 
 app.listen(port,()=>{
