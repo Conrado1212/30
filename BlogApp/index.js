@@ -67,7 +67,7 @@ const blogArt = [{
   title: "Learning Reinvented",
   desc: "Forget rote memorization — embrace a smarter, personalized, and engaging way to study.",
   img:"images/start3.jpg",
-  trype: "Startup"
+  type: "Startup"
 },
 {
   id: 9,
@@ -81,7 +81,7 @@ const blogArt = [{
   title: "AI Everywhere",
   desc: "From smart assistants to predictive analytics — AI is transforming industries and shaping the future.”",
   img:"images/tech2.jpg",
-  Type: "Technology"
+  type: "Technology"
 }
 ]
 

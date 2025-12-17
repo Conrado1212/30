@@ -45,7 +45,7 @@
             <div class="articles">
                 <% for(let i=0;i<blogArt.length;i++){%>
                     <div class="article" id="<%= blogArt[i].id %>">
-                        <img src="<%= blogArt[i].img %>" alt="life1">
+                        <img src="<%= blogArt[i].img %>" alt="life1" loading="lazy">
                         <span><%= blogArt[i].type %></span>
                         <div class="desc">
                             <h5><%= blogArt[i].title %></h5>

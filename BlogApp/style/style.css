@@ -8,6 +8,7 @@
     --black: #070709;
     --white: #fff;
     --title: #5044e5;
+    --desc: #696969;
     --bg: var(--white);
     --fg: var(--black);
     --font-s: 12px;
@@ -242,7 +243,7 @@ scale: 1.1;
     place-items: center;
     margin-bottom: 3rem;
     gap: 3rem;
-    max-width: 1800px;
+    max-width: 2000px;
     margin: auto;
 }
 .article{
@@ -264,8 +265,20 @@ scale: 1.1;
     width: 100%;
     height: 70%;
     object-fit: cover;
+    margin-bottom: 1rem;
 } 
 .article span{
     color: var(--white);
     background: linear-gradient(90deg, #8326F0, #AE76F0, var(--title));
+    margin-left: 1rem;
+    padding: 0.2rem .25rem;
+    border-radius: .25rem;
+}
+.article h5{
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+.article p{
+    color: var(--desc);
+    font-size: .75rem;
 }
