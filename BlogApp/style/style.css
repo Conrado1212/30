@@ -255,9 +255,28 @@ scale: 1.1;
    cursor: pointer;
  width: 100%;
  height: 100%;
- transition: .3s ease-in;
+ transition: .2s ease-in;
+ anchor-name: --article;
+}
+.article::before{
+    content:'≡';
+    position: absolute;
+    position-anchor: --article;
+    position-area: top left;
+    translate: -50% 50%;
+    height: 2rem;
+    width: 2rem;
+    background: #521ff7;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    color: var(--white);
+    font-weight: bold;
+    font-size: 1.5rem;
 }
 .article:hover{
+    corner-top-right-shape: scoop;
+    border-top-right-radius: 3em;
     scale: 1.03;
 }
 .article img{
