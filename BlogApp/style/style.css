@@ -256,13 +256,17 @@ scale: 1.1;
  width: 100%;
  height: 100%;
  transition: .2s ease-in;
- anchor-name: --article;
+
+ position: relative;
 }
-.article::before{
+/* .article::before{
+    scale: 0;
+    top: -30px;
+    right: -30px;
     content:'≡';
     position: absolute;
-    position-anchor: --article;
-    position-area: top left;
+    position-anchor: --card;
+    position-area: top right;
     translate: -50% 50%;
     height: 2rem;
     width: 2rem;
@@ -273,12 +277,18 @@ scale: 1.1;
     color: var(--white);
     font-weight: bold;
     font-size: 1.5rem;
-}
+    align-items: center;
+    z-index:1;
+    transition: .2s;
+} */
 .article:hover{
-    corner-top-right-shape: scoop;
-    border-top-right-radius: 3em;
+   // corner-top-right-shape: scoop;
+   // border-top-right-radius: 3em;
     scale: 1.03;
 }
+/* .article:hover::before{
+    scale: 1;
+} */
 .article img{
     display: block;
     width: 100%;
