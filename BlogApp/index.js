@@ -16,7 +16,7 @@ const data = {
 const blogArt = [{
   id: 1,
   title: "Step-by-step lifestyle management guide",
-  desc: "his is a practical, human-first roadmap. Keep it realistic, iterate weekly, and measure progress with simple, visible signals.",
+  desc: "His is a practical, human-first roadmap. Keep it realistic, iterate weekly, and measure progress with simple, visible signals.",
   img:"images/lif1.jpg",
   type: "Lifestyle"
 },
