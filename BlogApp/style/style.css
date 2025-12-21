@@ -334,10 +334,12 @@ scale: 1.1;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
+    gap: 2rem;
+    padding:  4rem 0;
 }
 .newsletter h1{
 letter-spacing: 1px;
+font-size: 2.5rem;
 }
 
 .newsletter p{
@@ -378,4 +380,10 @@ padding: 1rem;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+}
+.newsletter h1 span{
+background: linear-gradient(90deg, #8326F0, #AE76F0, var(--title));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
 }
