@@ -23,19 +23,29 @@ btns2.forEach(btn =>{
     })
 })
 
+let ddd =[];
 
 searchBtn.addEventListener('click',(e)=>{
      e.preventDefault();
+     let value = searchBlog.value.trim().toLowerCase();
     fetch('/blogs')
     .then(res=>res.json())
     .then(data=>{
         if(Array.isArray(data)){
             console.log('Test', data);
+            ddd.push(data);
+            console.log('dane z back', ddd);
         }else{
             console.log(data.message);
         }
     });
     article.forEach(art=>{
-      console.log(art.querySelector('h5')); 
+        const title = art.querySelector('h5').textContent.toLowerCase();
+      if(title.includes(value)){
+        art.style.display ='block'
+      }else{
+        art.style.display ='none'
+      }
       })
 });
+
