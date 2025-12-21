@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 const data = {
   logo: "QuickBlog",
-  items:  ["All", "Technology", "Startup", "LifeStyle", "Finance"],
+  items:  ["All", "Technology", "Startup", "Lifestyle", "Finance"],
   titleContent: "A place to express, create, and let your voice be heard."
 }
 
