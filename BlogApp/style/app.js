@@ -1,6 +1,8 @@
 const btns = document.querySelectorAll('.cat button');
 const btns2 = [...btns].slice(0,-1);
 const article = document.querySelectorAll('.article-wrapper');
+const searchBlog = document.getElementById('searchBlog');
+const searchBtn = document.getElementById('searchBtn');
 console.log('article ',article);
 console.log(btns2);
 btns2.forEach(btn =>{
@@ -22,3 +24,18 @@ btns2.forEach(btn =>{
 })
 
 
+searchBtn.addEventListener('click',(e)=>{
+     e.preventDefault();
+    fetch('/blogs')
+    .then(res=>res.json())
+    .then(data=>{
+        if(Array.isArray(data)){
+            console.log('Test', data);
+        }else{
+            console.log(data.message);
+        }
+    });
+    article.forEach(art=>{
+      console.log(art.querySelector('h5')); 
+      })
+});

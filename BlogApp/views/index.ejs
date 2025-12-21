@@ -27,8 +27,8 @@
             <h1 class="title-value">Your own <span>blogging</span> <br>platform.</br></h1>
             <p><%-  data.titleContent %></p>
             <form class="blogs">
-                <input type="text" name="search" placeholder="Search for blogs" required>
-                <button type="submit" class="btn"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+                <input type="text" name="search" placeholder="Search for blogs" required id="searchBlog">
+                <button type="submit" class="btn" id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
             </form>
        </section>
        <section class="container">
@@ -59,7 +59,7 @@
        </section>
        <section class="newsletter">
             <h1>Never Miss a <span>Blog!</span></h1>
-            <p>Subscribe to get the latest blog, new tech, and exclusive news.</p>
+            <p><%-  data.newsContent %></p>
             <form>
                 <input type="text" name="newsletter" placeholder="Enter your valid email id" required>
                 <button type="submit" class="btn"><i class="fa-solid fa-magnifying-glass"></i>Subscribe</button>

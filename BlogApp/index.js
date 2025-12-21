@@ -10,7 +10,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 const data = {
   logo: "QuickBlog",
   items:  ["All", "Technology", "Startup", "Lifestyle", "Finance"],
-  titleContent: "A place to express, create, and let your voice be heard."
+  titleContent: "A place to express, create, and let your voice be heard.",
+  newsContent: "Subscribe to get the latest blog, new tech, and exclusive news."
 }
 
 const blogArt = [{
@@ -87,6 +88,10 @@ const blogArt = [{
 
 blogArt.forEach(el=>{
   console.log(el.id);
+  if(el.title.includes('Tour')){
+    console.log(el.title);
+  }
+
 })
 for(let i=0;i<blogArt.length;i++){
   console.log('aadsadad',blogArt[i].id);
@@ -95,7 +100,7 @@ const index = blogArt.findIndex(e=>e.id ===1);
 console.log(blogArt[index]);
 app.use(express.static("style"));
 
-app.get('/',(req,res)=>{
+app.get('/', (req,res)=>{
     
     res.render("index.ejs",{
       data: data,
@@ -103,6 +108,9 @@ app.get('/',(req,res)=>{
     });
 });
 
+app.get(`/blogs`, (req,res)=>{
+    res.json(blogArt.length > 0 ? blogArt :{message: "No data available"})
+});
 
 app.delete(`/blog/:id`,(req,res)=>{
   const {id} = req.params;
