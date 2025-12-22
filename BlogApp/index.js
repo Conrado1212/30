@@ -157,7 +157,7 @@ app.delete(`/blog/:id`,(req,res)=>{
   
 });
 
-
+/*update blog*/
 app.put(`/blog/:id`,(req,res)=>{
   const {id} =req.params;
   const parseID = parseInt(id);
@@ -172,11 +172,36 @@ app.put(`/blog/:id`,(req,res)=>{
     return res.status(404).json({ error: `Item with ID: ${id} not found` });
   }
   blogArt[index] = {
+    ...blogArt[index],
     ...req.body
   }
   console.log(`Request Method: ${req.method} ${req.url}`);
+  console.log(req.body);
   return res.json({message: `Item with id ${id} was successfully updated`});
 });
+
+
+/*get blog */
+
+
+app.get(`/blog/:id`,(req,res)=>{
+  const {id} =req.params;
+  const parseID = parseInt(id);
+
+  if(isNaN[parseID]){
+    return res.status(400).json({error: "Invalid ID fromat"})
+  }
+
+  const index = blogArt.findIndex(e=>e.id ===parseID);
+  console.log(index);
+  if (index === -1) {
+    return res.status(404).json({ error: `Item with ID: ${id} not found` });
+  }
+  console.log(`Request Method: ${req.method} ${req.url}`);
+  console.log(blogArt[index]);
+  return res.json(blogArt[index]);
+});
+
 
 app.listen(port,()=>{
     console.log(`App listening on port ${port}`);
