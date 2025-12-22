@@ -38,7 +38,6 @@ body{
       animation: gradientMove 10s ease infinite;
     font-family: "Outfit", sans-serif;
     font-size: 16px;
-    scrollbar-width: none;   
 }
 
 @keyframes gradientMove {
@@ -386,4 +385,18 @@ background: linear-gradient(90deg, #8326F0, #AE76F0, var(--title));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+}
+/*scrollbar */
+
+::-webkit-scrollbar{
+    width: .5rem;
+    border-radius: .5rem;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: var(--white);
+    border-radius: .5rem;
+}
+::-webkit-scrollbar-thumb:hover{
+    background-color: #696969;
 }
