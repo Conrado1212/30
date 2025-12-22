@@ -405,17 +405,47 @@ background: linear-gradient(90deg, #8326F0, #AE76F0, var(--title));
 
 footer{
  background: #d4d4e6;
- padding: 0 2rem;
+ padding: 2rem 4rem;
  display: flex;
  justify-content: space-between;
  align-items: flex-start;
+ gap: 2rem;
 }
-.logo-info{
-    /* flex:1; */
+footer .logo p{
+    max-width: 410px;
 }
+footer .logo{
+    margin-left: 0;
+    
+}
+footer .logo {
+    max-width: 30ch;
+}
+footer p{
+    max-width: 410px;
+    margin-top: 2rem;
+    color: #696969;
+    letter-spacing: 1px;
+}
+
 .links{
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    /* flex: 2; */
+    align-items: flex-start;
+    gap: 2rem;
+    width: 45%;
+    flex-wrap: wrap;
+}
+.links li{
+    list-style: none;
+    margin-top: .5rem;
+}
+.links h3{
+    margin-bottom: 2rem;
+}
+.links a{
+    text-decoration: none;
+    color: #696969;
+    letter-spacing: 1px;
+    
 }
