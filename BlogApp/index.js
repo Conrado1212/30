@@ -28,7 +28,17 @@ const links = [{
   title: "Follow Us",
   links:  ["Instagram", "Twitter", "Payment Methods", "Facebook", "YouTube"]
 }
-]
+];
+
+links.forEach(el=>{
+  console.log(el.id);
+  // el.links.forEach((link, i)=>{
+  //   console.log(link);
+  // })
+  for(let i=0;i<el.links.length;i++){
+    console.log(el.links[i]);
+  }
+})
 const blogArt = [{
   id: 1,
   title: "Step-by-step lifestyle management guide",

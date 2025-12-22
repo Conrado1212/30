@@ -75,35 +75,16 @@
             Rerum unde quaerat eveniet cumque accusamus atque qui error quo enim fugiat?</p>
        </div>
         <div class="links">
-            <div class="link">
-                <h3 class="link-title">Quick Links</h3>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Best Sellers</a></li>
-                    <li><a href="#">Offers & Deals</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">FAQs</a></li>
-                </ul>
-            </div>
-            <div class="link">
-                <h3 class="link-title">Need Help?</h3>
-                <ul>
-                    <li><a href="#">Delivery Information</a></li>
-                    <li><a href="#">Return & Refund Policy</a></li>
-                    <li><a href="#">Payment Methods</a></li>
-                    <li><a href="#">Track your Order</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                </ul>
-            </div>
-            <div class="link">
-                <h3 class="link-title">Follow Us</h3>
-                <ul>
-                    <li><a href="#">Instagram</a></li>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">Facebook</a></li>
-                    <li><a href="#">YouTube</a></li>
-                </ul>
-            </div>
+            <% for(let i=0;i<links.length;i++){%>
+                <div class="link">
+                    <h3 class="link-title"><%= links[i].title %></h3>
+                    <ul>
+                        <%   for(let j=0;j<links[i].links.length;j++){%>
+                            <li><a href="#"><%= links[i].links[j] %></a></li>
+                            <%  }%>
+                    </ul>
+                </div>
+                <%  }%>
         </div>
    </footer>
 </body>
