@@ -203,7 +203,20 @@ app.get(`/blog/:id`,(req,res)=>{
   return res.json(blogArt[index]);
 });
 
+/*add blog*/
 
+console.log(Math.max(...blogArt.map(blog=>blog.id)));
+app.post(`/new`,(req,res)=>{
+  const id = Math.max(...blogArt.map(blog=>blog.id))+1
+  const newBlog ={
+    id:id,
+    ...req.body
+  }
+  blogArt.push(newBlog);
+  console.log(`Request Method: ${req.method} ${req.url}`);
+  console.log("body:", req.body);
+  res.status(201).json(newBlog);
+})
 app.listen(port,()=>{
     console.log(`App listening on port ${port}`);
 })
