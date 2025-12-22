@@ -406,10 +406,15 @@ background: linear-gradient(90deg, #8326F0, #AE76F0, var(--title));
 footer{
  background: #d4d4e6;
  padding: 2rem 4rem;
- display: flex;
- justify-content: space-between;
- align-items: flex-start;
- gap: 2rem;
+ display:block;
+}
+.mainfooter{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #696969;
 }
 footer .logo p{
     max-width: 410px;
@@ -451,4 +456,11 @@ footer p{
 }
 .links a:hover{
     text-decoration: underline;
+}
+.copyright{
+    display: block;
+    text-align: center;
+    width: 100%;
+   margin: auto;
+    padding: 2rem 0 0 0;
 }

@@ -1,11 +1,12 @@
 <footer>
-    <div class="logo-info">
-     <div class="logo">
-         <i class="fa-regular fa-note-sticky"></i><h1 class="title-logo"><%-  data.logo %></h1>
-     </div>
-     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.<br>
+    <div class="mainfooter">
+        <div class="logo-info">
+            <div class="logo">
+                <i class="fa-regular fa-note-sticky"></i><h1 class="title-logo"><%-  data.logo %></h1>
+            </div>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.<br>
          Rerum unde quaerat eveniet cumque accusamus atque qui error quo enim fugiat?</p>
-    </div>
+        </div>
      <div class="links">
          <% for(let i=0;i<links.length;i++){%>
              <div class="link">
@@ -18,4 +19,6 @@
              </div>
              <%  }%>
      </div>
+    </div>
+    <p class="copyright">Copyright © <%= new Date().getFullYear() %> - All Right Reserved.</p>
 </footer>
