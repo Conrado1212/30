@@ -6,6 +6,7 @@ const app =express();
 const port  = 3000;
 
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.json());
 
 const data = {
   logo: "QuickBlog",
@@ -162,7 +163,7 @@ app.put(`/blog/:id`,(req,res)=>{
   const {id} = req.params;
   const parseID = parseInt(id);
 
-  if(isNaN[parseID]){
+  if(isNaN(parseID)){
     return res.status(400).json({error: "Invalid ID fromat"})
   }
 
@@ -188,7 +189,7 @@ app.get(`/blog/:id`,(req,res)=>{
   const {id} = req.params;
   const parseID = parseInt(id);
 
-  if(isNaN[parseID]){
+  if(isNaN(parseID)){
     return res.status(400).json({error: "Invalid ID fromat"})
   }
 
