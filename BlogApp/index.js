@@ -159,7 +159,7 @@ app.delete(`/blog/:id`,(req,res)=>{
 
 /*update blog*/
 app.put(`/blog/:id`,(req,res)=>{
-  const {id} =req.params;
+  const {id} = req.params;
   const parseID = parseInt(id);
 
   if(isNaN[parseID]){
@@ -185,7 +185,7 @@ app.put(`/blog/:id`,(req,res)=>{
 
 
 app.get(`/blog/:id`,(req,res)=>{
-  const {id} =req.params;
+  const {id} = req.params;
   const parseID = parseInt(id);
 
   if(isNaN[parseID]){
