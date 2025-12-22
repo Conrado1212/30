@@ -13,7 +13,22 @@ const data = {
   titleContent: "A place to express, create, and let your voice be heard.",
   newsContent: "Subscribe to get the latest blog, new tech, and exclusive news."
 }
-
+const links = [{
+  id:1,
+  title: "Quick Links",
+  links:  ["Home", "Best Sellers", "Offers & Deals", "Contact Us", "FAQs"]
+},
+{
+  id:2,
+  title: "Need Help?",
+  links:  ["Delivery Information", "Return & Refund Policy", "Payment Methods", "Track your Order", "Contact Us"]
+},
+{
+  id:3,
+  title: "Follow Us",
+  links:  ["Instagram", "Twitter", "Payment Methods", "Facebook", "YouTube"]
+}
+]
 const blogArt = [{
   id: 1,
   title: "Step-by-step lifestyle management guide",
@@ -104,7 +119,8 @@ app.get('/', (req,res)=>{
     
     res.render("index.ejs",{
       data: data,
-      blogArt: blogArt
+      blogArt: blogArt,
+      links: links
     });
 });
 
