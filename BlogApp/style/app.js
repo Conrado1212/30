@@ -65,6 +65,7 @@ bars.forEach(bar =>{
 article.forEach(art =>{
 art.addEventListener('mouseout',(e)=>{
   console.log(e.target, 'test');
+  if(art.contains(e.relatedTarget)) return;
   bars.forEach(bar => {
     bar.classList.remove('active')
     bar.querySelector('.menu').classList.remove('active');
