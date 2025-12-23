@@ -179,6 +179,7 @@ app.put(`/blog/:id`,(req,res)=>{
   console.log(`Request Method: ${req.method} ${req.url}`);
   console.log(req.body);
   return res.json({message: `Item with id ${id} was successfully updated`});
+  
 });
 
 
@@ -202,6 +203,33 @@ app.get(`/blog/:id`,(req,res)=>{
   console.log(blogArt[index]);
   return res.json(blogArt[index]);
 });
+
+
+
+
+/*blog page */
+
+app.get(`/blogPage/:id`,(req,res)=>{
+  const {id} = req.params;
+  const parseID = parseInt(id);
+
+  if(isNaN(parseID)){
+    return res.status(400).json({error: "Invalid ID fromat"})
+  }
+
+  const index = blogArt.findIndex(e=>e.id === parseID);
+  console.log(index);
+  if (index === -1) {
+    return res.status(404).json({ error: `BlogPage with ID: ${id} not found` });
+  }
+  
+  res.render("blog.ejs",{
+    data: data,
+    blogArt: blogArt[index]
+  });
+});
+
+
 
 /*add blog*/
 
