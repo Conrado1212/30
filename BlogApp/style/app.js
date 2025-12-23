@@ -3,7 +3,7 @@ const btns2 = [...btns].slice(0,-1);
 const article = document.querySelectorAll('.article-wrapper');
 const searchBlog = document.getElementById('searchBlog');
 const searchBtn = document.getElementById('searchBtn');
-
+const bars = document.querySelectorAll('.bars'); 
 
 console.log('article ',article);
 console.log(btns2);
@@ -51,7 +51,9 @@ searchBtn.addEventListener('click',(e)=>{
       })
 });
 
-const bars = document.querySelector('.bars'); 
-bars.addEventListener('click', () => { 
-  bars.classList.toggle('active'); 
+/*toggle menu on article*/
+bars.forEach(bar =>{
+  bar.addEventListener('click', () => { 
+    bar.classList.toggle('active'); 
+})
 });
