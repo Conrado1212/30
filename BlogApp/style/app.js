@@ -4,7 +4,6 @@ const article = document.querySelectorAll('.article-wrapper');
 const searchBlog = document.getElementById('searchBlog');
 const searchBtn = document.getElementById('searchBtn');
 const bars = document.querySelectorAll('.bars'); 
-const menu = document.querySelector('.menu');
 const menuS = document.querySelectorAll('.menu');
 console.log('article ',article);
 console.log(btns2);
@@ -56,16 +55,21 @@ searchBtn.addEventListener('click',(e)=>{
 bars.forEach(bar =>{
   bar.addEventListener('click', () => { 
     bar.classList.toggle('active'); 
-   menu.classList.toggle('active'); 
+  const menu = bar.querySelector('.menu');
+  menu.classList.toggle('active');
 })
 });
 
-/*dorobic mouse over i mouse cos tam aby x cos tma robil ladnie elo  */
+
 
 article.forEach(art =>{
 art.addEventListener('mouseout',(e)=>{
   console.log(e.target, 'test');
-  bars.forEach(bar => bar.classList.remove('active'));
+  bars.forEach(bar => {
+    bar.classList.remove('active')
+    bar.querySelector('.menu').classList.remove('active');
+  });
+  
 });
   
 });
