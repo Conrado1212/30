@@ -57,6 +57,10 @@ bars.forEach(bar =>{
     bar.classList.toggle('active'); 
   const menu = bar.querySelector('.menu');
   menu.classList.toggle('active');
+ const del = menu.querySelector('#del');
+ del.addEventListener('click',()=>{
+   
+ })
 })
 });
 
@@ -76,3 +80,16 @@ art.addEventListener('mouseout',(e)=>{
 });
 
 
+
+
+
+function deleteBlogPage(id){
+  axios.delete(`http://localhost:3000/blog/${id}`)
+  .then(response =>{
+    console.log(`${response}`);
+    //location.reload();
+  })
+  .catch(e =>{
+    console.error('Error', e);
+})
+}

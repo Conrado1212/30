@@ -154,7 +154,7 @@ app.delete(`/blog/:id`,(req,res)=>{
 
     blogArt.splice(index, 1);
     console.log(`Request Method: ${req.method} ${req.url}`);
-    return res.json({message: `Item with id ${id} was successfully deleted`});
+    return res.json({message: `BlogPage with id ${id} was successfully deleted`});
   
 });
 
