@@ -3,6 +3,8 @@ const btns2 = [...btns].slice(0,-1);
 const article = document.querySelectorAll('.article-wrapper');
 const searchBlog = document.getElementById('searchBlog');
 const searchBtn = document.getElementById('searchBtn');
+
+
 console.log('article ',article);
 console.log(btns2);
 btns2.forEach(btn =>{
@@ -49,3 +51,7 @@ searchBtn.addEventListener('click',(e)=>{
       })
 });
 
+const bars = document.querySelector('.bars'); 
+bars.addEventListener('click', () => { 
+  bars.classList.toggle('active'); 
+});
