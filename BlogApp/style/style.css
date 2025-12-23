@@ -527,3 +527,8 @@ align-items: center;
 display: flex;
 transition: .2s ease-out;
 }
+.menu button:hover{
+    color: var(--black);
+    scale: 1.1;
+    box-shadow: -2px -2px 5px rgba(24, 23, 23, 0.2), 2px 2px 5px rgba(0, 0, 0, 0.6), 0 0 12px rgba(8, 8, 8, 0.8);
+}
