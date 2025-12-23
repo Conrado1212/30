@@ -22,6 +22,11 @@
             <div class="articles">
                 <% for(let i=0;i<blogArt.length;i++){%>
                     <div class="article-wrapper" id="wrapper<%= blogArt[i].id %>" data-type="<%= blogArt[i].type %>">
+                        <div class="bars">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
                      <div class="article" id="<%= blogArt[i].id %>">
                         <img src="<%= blogArt[i].img %>" alt="life1" loading="lazy">
                         <span><%= blogArt[i].type %></span>
