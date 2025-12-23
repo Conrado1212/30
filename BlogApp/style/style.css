@@ -509,6 +509,7 @@ align-items: center;
     right: 0;
     top: 40px;
     z-index: 1;
+    transition: .2s ease-out;
 }
 .menu button{
     border: none;
@@ -521,4 +522,8 @@ align-items: center;
     padding: .5rem;
     font-weight: 600;
     font-size: 1rem;
+}
+.menu.active{
+display: flex;
+transition: .2s ease-out;
 }
