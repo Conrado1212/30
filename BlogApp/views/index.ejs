@@ -1,27 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oi&family=Outfit:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-<link href="css/fontello.css" rel="stylesheet" type="text/css" />
-<script src="https://kit.fontawesome.com/236e28bd84.js" crossorigin="anonymous"></script>
-<script src="../app.js" defer></script>
-<title>Blog app</title>
-</head>
-<body>
-   <header>
-        <div class="logo">
-            <i class="fa-regular fa-note-sticky"></i><h1 class="title-logo"><%-  data.logo %></h1>
-        </div>
-        <div class="login">
-            <button class="btn login">Admin login<i class="fa-solid fa-arrow-right-to-bracket"></i></button>
-        </div>
-   </header>
+<%- include("header.ejs") %>
    <main>
        <section class="title">
             <h1 class="title-value">Your own <span>blogging</span> <br>platform.</br></h1>
