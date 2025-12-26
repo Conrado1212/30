@@ -6,6 +6,7 @@ const searchBtn = document.getElementById('searchBtn');
 const bars = document.querySelectorAll('.bars'); 
 const menuS = document.querySelectorAll('.menu');
 const overlay = document.querySelector('.overlay');
+const add = document.querySelector('#add');
 console.log('article ',article);
 console.log(btns2);
 btns2.forEach(btn =>{
@@ -92,6 +93,7 @@ bars.forEach(bar =>{
 
 
 
+
 article.forEach(art =>{
 art.addEventListener('mouseout',(e)=>{
   //console.log(e.target, 'test');
@@ -129,3 +131,6 @@ function closeInfo(){
       }
   });
 }
+add.addEventListener('click',()=>{
+  
+})
