@@ -57,7 +57,11 @@
        <div class="modal">
            <button class="btns" id="close"><i class="fa-solid fa-x"></i></button>
            <h2 class="del-title"></h2>
-           <input type="text" placeholder="<%-  data.delContent %>">
+           <form>
+            <input type="text" id="valueDel" placeholder="<%-  data.delContent %>">
+            <button type="submit" class="btn" id="confirm"><i class="fa-regular fa-circle-check"></i>Delete</button>
+            </form>
+           
        </div>
    </div>
 </body>

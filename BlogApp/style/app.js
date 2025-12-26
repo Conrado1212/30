@@ -56,6 +56,7 @@ searchBtn.addEventListener('click',(e)=>{
 bars.forEach(bar =>{
   bar.addEventListener('click', () => { 
     const titleArt = bar.parentElement.querySelector('.article h5');
+    const id = bar.parentElement.querySelector('.article').getAttribute('id');
    // console.log(titleArt);
     bar.classList.toggle('active'); 
   const menu = bar.querySelector('.menu');
@@ -65,6 +66,18 @@ bars.forEach(bar =>{
    overlay.style.display ='flex';
    const title = document.querySelector('.del-title');
   title.textContent = titleArt.textContent;
+  const delBtn = document.querySelector('#confirm');
+  delBtn.addEventListener('click',(e)=>{
+    e.preventDefault()
+    const valueDel = document.querySelector('#valueDel').value.trim();
+    console.log(valueDel);
+    if(valueDel === 'confirm'){
+      deleteBlogPage(id);
+    }else{
+      title.textContent = 'Incorrect value bye 😂😂😂';
+      setTimeout(closeInfo,1000);
+    }
+  })
    const close = document.querySelector('#close');
    console.log(close);
    close.addEventListener('click',()=>{
@@ -102,4 +115,14 @@ function deleteBlogPage(id){
   .catch(e =>{
     console.error('Error', e);
 })
+}
+
+
+function closeInfo(){
+  ['.overlay','.overlay2','.duplikat'].forEach(e=>{
+      const modal = document.querySelector(e);
+      if(modal && modal.style.display !== 'none'){
+          modal.style.display = 'none';
+      }
+  });
 }
