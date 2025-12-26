@@ -606,6 +606,9 @@ transition: .2s ease-out;
     filter: blur(1.5rem);
     opacity: 0.5;
 }
+.modal h2{
+    color: #696969;
+}
 .modal button{
     margin-left: auto;
 }
