@@ -12,7 +12,8 @@ const data = {
   logo: "QuickBlog",
   items:  ["All", "Technology", "Startup", "Lifestyle", "Finance"],
   titleContent: "A place to express, create, and let your voice be heard.",
-  newsContent: "Subscribe to get the latest blog, new tech, and exclusive news."
+  newsContent: "Subscribe to get the latest blog, new tech, and exclusive news.",
+  delContent: "Are you sure want to delete this blog page?"
 }
 const links = [{
   id:1,

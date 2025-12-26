@@ -5,6 +5,7 @@ const searchBlog = document.getElementById('searchBlog');
 const searchBtn = document.getElementById('searchBtn');
 const bars = document.querySelectorAll('.bars'); 
 const menuS = document.querySelectorAll('.menu');
+const overlay = document.querySelector('.overlay');
 console.log('article ',article);
 console.log(btns2);
 btns2.forEach(btn =>{
@@ -59,7 +60,7 @@ bars.forEach(bar =>{
   menu.classList.toggle('active');
  const del = menu.querySelector('#del');
  del.addEventListener('click',()=>{
-   
+   overlay.style.display ='flex';
  })
 })
 });
