@@ -27,8 +27,8 @@
                             <span></span>
                             <span></span>
                             <div class="menu">
-                                <button class="del" id="del"><i class="fa-solid fa-x"></i></button>
-                                <button class="upd" id="upd"><i class="fa-regular fa-pen-to-square"></i></button>
+                                <button class="btns" id="del"><i class="fa-solid fa-x"></i></button>
+                                <button class="btns" id="upd"><i class="fa-regular fa-pen-to-square"></i></button>
                             </div>
                         </div>
                      <div class="article" id="<%= blogArt[i].id %>">
@@ -55,6 +55,7 @@
    <%- include("footer.ejs") %>
    <div class="overlay">
        <div class="modal">
+           <button class="btns" id="close"><i class="fa-solid fa-x"></i></button>
            <h2 class="del-title"></h2>
            <input type="text" placeholder="<%-  data.delContent %>">
        </div>

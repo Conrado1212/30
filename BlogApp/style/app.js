@@ -61,6 +61,11 @@ bars.forEach(bar =>{
  const del = menu.querySelector('#del');
  del.addEventListener('click',()=>{
    overlay.style.display ='flex';
+   const close = document.querySelector('#close');
+   console.log(close);
+   close.addEventListener('click',()=>{
+     overlay.style.display ='none';
+   });
  })
 })
 });
