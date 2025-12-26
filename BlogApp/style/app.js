@@ -56,7 +56,6 @@ searchBtn.addEventListener('click',(e)=>{
 bars.forEach(bar =>{
   bar.addEventListener('click', () => { 
     const titleArt = bar.parentElement.querySelector('.article h5');
-    const id = bar.parentElement.querySelector('.article').getAttribute('id');
    // console.log(titleArt);
     bar.classList.toggle('active'); 
   const menu = bar.querySelector('.menu');
@@ -68,11 +67,15 @@ bars.forEach(bar =>{
   title.textContent = titleArt.textContent;
   const delBtn = document.querySelector('#confirm');
   delBtn.addEventListener('click',(e)=>{
+    const id = bar.parentElement.querySelector('.article').getAttribute('id');
+    console.log('adadadad',id);
     e.preventDefault()
     const valueDel = document.querySelector('#valueDel').value.trim();
     console.log(valueDel);
-    if(valueDel === 'confirm'){
+    if(valueDel.toLowerCase() === 'confirm'){
       deleteBlogPage(id);
+      closeInfo();
+      window.location.reload();
     }else{
       title.textContent = 'Incorrect value bye 😂😂😂';
       setTimeout(closeInfo,1000);
