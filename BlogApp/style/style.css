@@ -567,6 +567,9 @@ transition: .2s ease-out;
     0 0 12px rgba(207, 210, 218, 0.8)!important;
     position: relative;
     padding: .5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 
@@ -602,4 +605,7 @@ transition: .2s ease-out;
 .modal::before{
     filter: blur(1.5rem);
     opacity: 0.5;
+}
+.modal button{
+    margin-left: auto;
 }

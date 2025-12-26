@@ -55,12 +55,16 @@ searchBtn.addEventListener('click',(e)=>{
 /*toggle menu on article*/
 bars.forEach(bar =>{
   bar.addEventListener('click', () => { 
+    const titleArt = bar.parentElement.querySelector('.article h5');
+   // console.log(titleArt);
     bar.classList.toggle('active'); 
   const menu = bar.querySelector('.menu');
   menu.classList.toggle('active');
  const del = menu.querySelector('#del');
  del.addEventListener('click',()=>{
    overlay.style.display ='flex';
+   const title = document.querySelector('.del-title');
+  title.textContent = titleArt.textContent;
    const close = document.querySelector('#close');
    console.log(close);
    close.addEventListener('click',()=>{
@@ -74,7 +78,7 @@ bars.forEach(bar =>{
 
 article.forEach(art =>{
 art.addEventListener('mouseout',(e)=>{
-  console.log(e.target, 'test');
+  //console.log(e.target, 'test');
   if(art.contains(e.relatedTarget)) return;
   bars.forEach(bar => {
     bar.classList.remove('active')
