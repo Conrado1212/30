@@ -62,6 +62,7 @@ bars.forEach(bar =>{
   const menu = bar.querySelector('.menu');
   menu.classList.toggle('active');
  const del = menu.querySelector('#del');
+ /*del blog page */
  del.addEventListener('click',()=>{
    overlay.style.display ='flex';
    const title = document.querySelector('.del-title');
@@ -81,13 +82,23 @@ bars.forEach(bar =>{
       title.textContent = 'Incorrect value bye 😂😂😂';
       setTimeout(closeInfo,1000);
     }
-  })
+  });
    const close = document.querySelector('#close');
-   console.log(close);
+  // console.log(close);
    close.addEventListener('click',()=>{
      overlay.style.display ='none';
    });
- })
+ });
+  /*update blog page */
+ const upd = menu.querySelector('#upd');
+ upd.addEventListener('click',(e)=>{
+   e.preventDefault();
+  overlay.style.display ='flex';
+  const close = document.querySelector('#close');
+  close.addEventListener('click',()=>{
+    overlay.style.display ='none';
+ });
+});
 })
 });
 
@@ -124,7 +135,7 @@ function deleteBlogPage(id){
 
 
 function closeInfo(){
-  ['.overlay','.overlay2','.duplikat'].forEach(e=>{
+  ['.overlay','.overlay2'].forEach(e=>{
       const modal = document.querySelector(e);
       if(modal && modal.style.display !== 'none'){
           modal.style.display = 'none';
