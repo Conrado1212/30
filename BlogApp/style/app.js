@@ -89,12 +89,23 @@ bars.forEach(bar =>{
      overlay.style.display ='none';
    });
  });
+
   /*update blog page */
  const upd = menu.querySelector('#upd');
  upd.addEventListener('click',(e)=>{
    e.preventDefault();
   overlay.style.display ='flex';
-  
+  const confirm = document.querySelector('#confirm');
+  const value = document.querySelector('#valueDel');
+  const title = document.querySelector('.del-title');
+  title.textContent = titleArt.textContent;
+  confirm.textContent = 'Confirm';
+  value.placeholder = 'Change title';
+  const newInput = document.createElement("textarea");
+  newInput.placeholder = "Change desc...";
+   newInput.rows = 4; 
+   newInput.cols = 30;
+   overlay.querySelector('form').appendChild(newInput);
   const close = document.querySelector('#close');
   close.addEventListener('click',()=>{
     overlay.style.display ='none';
