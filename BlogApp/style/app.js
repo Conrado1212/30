@@ -128,11 +128,17 @@ bars.forEach(bar =>{
      newInput.cols = 30;
 
      newInfomration.cols = 30;
-
+    let value = ['Lifestyle','Startup','Technology','Finance'];
      overlay.querySelector('form').appendChild(newInput);
      overlay.querySelector('form').appendChild(newInfomration);
      overlay.querySelector('form').appendChild(label);
      overlay.querySelector('form').appendChild(select);
+     for(let i =0;i<4;i++){
+      const option = document.createElement("option");
+      option.value = `${value[i]}`;
+      option.textContent = `${value[i]}`;
+      select.appendChild(option);
+    }
   }
   const close = document.querySelector('#close');
   close.addEventListener('click',()=>{
