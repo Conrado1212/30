@@ -102,6 +102,7 @@ bars.forEach(bar =>{
   title.textContent = titleArt.textContent;
   confirm.textContent = 'Confirm';
   value.placeholder = 'Change title';
+  const id = bar.parentElement.querySelector('.article').getAttribute('id');
   if(!document.querySelector('#descValue')){
 
     const newInput = document.createElement("textarea");
@@ -142,7 +143,30 @@ bars.forEach(bar =>{
     }
   }
   /*dodac type po kliknieciu */
-  document.querySelector('#type').value = type.textContent;
+  const selecType = document.querySelector('#type');
+  selecType.value = type.textContent;
+  /*nasluch na update*/
+  
+  confirm.addEventListener('click',(e)=>{
+    const dataUpd = {}
+
+  if (valueDel.value.trim() !== '') {
+    dataUpd.title = valueDel.value.trim(); 
+    }
+
+  if (descValue.value.trim() !== '') { 
+    dataUpd.desc = descValue.value.trim(); 
+  }
+  
+  dataUpd.type = selecType.value;
+  
+    console.table(dataUpd);
+    e.preventDefault();
+    updateBlogPage(id,dataUpd);
+    setTimeout(closeInfo,100);
+  })
+
+
   const close = document.querySelector('#close');
   close.addEventListener('click',()=>{
     overlay.style.display ='none';
@@ -182,6 +206,17 @@ function deleteBlogPage(id){
 })
 }
 
+function updateBlogPage(id,updatedData){
+  axios.put(`http://localhost:3000/blog/${id}`,updatedData)
+  .then(response =>{
+    console.log(`${response}`);
+    //location.reload();
+  })
+  .catch(e =>{
+    console.error('Error', e);
+})
+}
+
 
 function closeInfo(){
   ['.overlay','.overlay2'].forEach(e=>{
@@ -190,6 +225,7 @@ function closeInfo(){
           modal.style.display = 'none';
       }
   });
+  window.location.reload();
 }
 add.addEventListener('click',()=>{
   
