@@ -675,4 +675,5 @@ transition: .2s ease-out;
     border: none;
     outline: none;
     padding: .5rem;
+    border-radius: .25rem;
 }

@@ -125,7 +125,7 @@ bars.forEach(bar =>{
 
      newInput.rows = 4; 
 
-     newInfomration.rows = 4; 
+     newInfomration.rows = 8; 
 
      newInput.cols = 30;
 
