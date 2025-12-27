@@ -665,8 +665,14 @@ transition: .2s ease-out;
 .modal form input::placeholder{
     color: #8326F0;
 }
-.modal form label{
+.modal form label,select{
     color:#8326F0 ;
     font-weight: 600;
     font-size: 1.2rem;
+}
+.modal form select{
+    box-shadow:inset 5px 5px 10px #bebebe;
+    border: none;
+    outline: none;
+    padding: .5rem;
 }

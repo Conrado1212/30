@@ -57,6 +57,7 @@ searchBtn.addEventListener('click',(e)=>{
 bars.forEach(bar =>{
   bar.addEventListener('click', () => { 
     const titleArt = bar.parentElement.querySelector('.article h5');
+    const type = bar.parentElement.querySelector('.article span');
    // console.log(titleArt);
     bar.classList.toggle('active'); 
   const menu = bar.querySelector('.menu');
@@ -140,6 +141,8 @@ bars.forEach(bar =>{
       select.appendChild(option);
     }
   }
+  /*dodac type po kliknieciu */
+  document.querySelector('#type').value = type.textContent;
   const close = document.querySelector('#close');
   close.addEventListener('click',()=>{
     overlay.style.display ='none';
