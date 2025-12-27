@@ -101,11 +101,39 @@ bars.forEach(bar =>{
   title.textContent = titleArt.textContent;
   confirm.textContent = 'Confirm';
   value.placeholder = 'Change title';
-  const newInput = document.createElement("textarea");
-  newInput.placeholder = "Change desc...";
-   newInput.rows = 4; 
-   newInput.cols = 30;
-   overlay.querySelector('form').appendChild(newInput);
+  if(!document.querySelector('#descValue')){
+
+    const newInput = document.createElement("textarea");
+    const newInfomration = document.createElement("textarea");
+    const label = document.createElement("label");
+    const select = document.createElement("select");
+
+    label.setAttribute('for','type');
+    label.textContent = 'Change type';
+
+    select.setAttribute('name', 'type');
+    select.setAttribute('id', 'type');
+    newInput.setAttribute('id','descValue');
+
+    newInfomration.setAttribute('id','infoValue');
+
+    newInput.placeholder = "Change desc...";
+
+    newInfomration.placeholder = "Change information...";
+
+     newInput.rows = 4; 
+
+     newInfomration.rows = 4; 
+
+     newInput.cols = 30;
+
+     newInfomration.cols = 30;
+
+     overlay.querySelector('form').appendChild(newInput);
+     overlay.querySelector('form').appendChild(newInfomration);
+     overlay.querySelector('form').appendChild(label);
+     overlay.querySelector('form').appendChild(select);
+  }
   const close = document.querySelector('#close');
   close.addEventListener('click',()=>{
     overlay.style.display ='none';
