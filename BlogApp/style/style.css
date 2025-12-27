@@ -611,10 +611,16 @@ transition: .2s ease-out;
 }
 .modal button{
     margin-left: auto;
+   
 }
 .modal form button:hover{
     scale: 1.05;
     color: #5044e5;
+}
+.modal form button{
+    position: absolute;
+    bottom: 20px;
+    right: 10px;
 }
 .modal form{
     display: flex;
@@ -632,6 +638,7 @@ transition: .2s ease-out;
 .modal form input{
     border: none;
     outline: none;
+    height: 2rem;
     width: 100%;
     padding: 0 .5rem;
     font-size: 1rem;

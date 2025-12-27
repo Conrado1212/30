@@ -94,6 +94,7 @@ bars.forEach(bar =>{
  upd.addEventListener('click',(e)=>{
    e.preventDefault();
   overlay.style.display ='flex';
+  
   const close = document.querySelector('#close');
   close.addEventListener('click',()=>{
     overlay.style.display ='none';
