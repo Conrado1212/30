@@ -80,19 +80,24 @@ bars.forEach(bar =>{
    const title = document.querySelector('.del-title');
   title.textContent = titleArt.textContent;
   const delBtn = document.querySelector('#confirm');
-  delBtn.textContent = 'Delete';
+  console.log(delBtn.querySelector('span'));
+ delBtn.querySelector('span').textContent = 'Delete';
   const valueDel = document.querySelector('#valueDel');
   valueDel.placeholder = 'Are you sure want to delete this blog page?';
 
-  //valueDel
-//confirm
+/*del modal */
 const delmodal = ['valueDel','confirm'];
 const form = overlay.querySelector('form');
 
 [...form.querySelectorAll('*')].forEach(el =>{
-  if(!delmodal.includes(el.id)){
-    el.remove();
-  }
+
+  if (document.querySelector(`#${delmodal[1]}`).contains(el)) return;
+
+  if (delmodal.includes(el.id)) return;
+   
+  
+  el.remove();
+  
 });
 
   delBtn.addEventListener('click',(e)=>{
