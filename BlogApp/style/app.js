@@ -84,6 +84,7 @@ bars.forEach(bar =>{
       setTimeout(closeInfo,1000);
     }
   });
+  
    const close = document.querySelector('#close');
   // console.log(close);
    close.addEventListener('click',()=>{
@@ -108,10 +109,21 @@ bars.forEach(bar =>{
     const newInput = document.createElement("textarea");
     const newInfomration = document.createElement("textarea");
     const label = document.createElement("label");
+    const labelTitle = document.createElement("label");
+    const labelDescription = document.createElement("label");
+    const labelInformation = document.createElement("label");
     const select = document.createElement("select");
 
     label.setAttribute('for','type');
+    labelTitle.setAttribute('for','title');
+    labelDescription.setAttribute('for','desc');
+    labelInformation.setAttribute('for','information');
+
     label.textContent = 'Change type';
+    labelTitle.textContent = 'Title';
+    labelDescription.textContent = 'Description';
+    labelInformation.textContent = 'Description';
+  
 
     select.setAttribute('name', 'type');
     select.setAttribute('id', 'type');
@@ -130,7 +142,11 @@ bars.forEach(bar =>{
      newInput.cols = 30;
 
      newInfomration.cols = 30;
+
     let value = ['Lifestyle','Startup','Technology','Finance'];
+    
+     overlay.querySelector('form').insertBefore(labelTitle,document.querySelector('#valueDel'));
+     overlay.querySelector('form').appendChild(labelDescription);
      overlay.querySelector('form').appendChild(newInput);
      overlay.querySelector('form').appendChild(newInfomration);
      overlay.querySelector('form').appendChild(label);
@@ -172,7 +188,8 @@ bars.forEach(bar =>{
     overlay.style.display ='none';
  });
 });
-})
+
+});
 });
 
 
@@ -227,6 +244,8 @@ function closeInfo(){
   });
   window.location.reload();
 }
+
+/*add new blog page */
 add.addEventListener('click',()=>{
   
-})
+});
