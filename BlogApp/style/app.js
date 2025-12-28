@@ -250,6 +250,18 @@ function updateBlogPage(id,updatedData){
 }
 
 
+function deleteBlogPage(data){
+  axios.post(`http://localhost:3000/new`, data)
+  .then(response =>{
+    console.log(`${response}`);
+    //location.reload();
+  })
+  .catch(e =>{
+    console.error('Error', e);
+})
+}
+
+
 function closeInfo(){
   ['.overlay','.overlay2'].forEach(e=>{
       const modal = document.querySelector(e);
@@ -262,5 +274,30 @@ function closeInfo(){
 
 /*add new blog page */
 add.addEventListener('click',()=>{
-  
+  overlay.style.display ='flex';
+
+  const title = document.querySelector('.del-title');
+  const value = document.querySelector('#valueDel');
+
+  const select = document.createElement("select");
+  select.setAttribute('name', 'type');
+  select.setAttribute('id', 'type');
+
+  value.placeholder = 'Title';
+  title.textContent = 'Add new blog page';
+
+  const type = ['Lifestyle','Startup','Technology','Finance'];
+  overlay.querySelector('form').appendChild(select);
+     for(let i =0;i<type.length;i++){
+      const option = document.createElement("option");
+      option.value = `${type[i]}`;
+      option.textContent = `${type[i]}`;
+      select.appendChild(option);
+    }
+
+  /*close modal */
+  const close = document.querySelector('#close');
+ close.addEventListener('click',()=>{
+  overlay.style.display ='none';
+ });
 });
