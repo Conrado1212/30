@@ -219,7 +219,7 @@ function updateBlogPage(id,updatedData){
 }
 
 
-function deleteBlogPage(data){
+function addBlogPage(data){
   axios.post(`http://localhost:3000/new`, data)
   .then(response =>{
     console.log(`${response}`);
@@ -258,6 +258,24 @@ add.addEventListener('click',()=>{
   }else{
     changeForm('Add');
   }
+  confirm.addEventListener('click',()=>{
+    const data = {};
+    if (valueDel.value.trim() !== '') {
+      data.title = valueDel.value.trim(); 
+      }
+  
+    if (descValue.value.trim() !== '') { 
+      data.desc = descValue.value.trim(); 
+    }
+    
+    data.type = selecType.value;
+
+    e.preventDefault();
+    addBlogPage(data);
+    setTimeout(closeInfo,100);
+
+
+  })
   /*close modal */
   const close = document.querySelector('#close');
  close.addEventListener('click',()=>{
