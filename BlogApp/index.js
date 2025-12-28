@@ -46,70 +46,80 @@ const blogArt = [{
   title: "Step-by-step lifestyle management guide",
   desc: "His is a practical, human-first roadmap. Keep it realistic, iterate weekly, and measure progress with simple, visible signals.",
   img:"images/lif1.jpg",
-  type: "Lifestyle"
+  type: "Lifestyle",
+  information: ""
 },
 {
   id: 2,
   title: "Building a clear roadmap for your startup success",
   desc: "Creating an effective startup roadmap is about turning vision into structured, actionable steps. This guide walks you through.",
   img:"images/start.jpg",
-  type: "Startup"
+  type: "Startup",
+  information: ""
 },
 {
   id: 3,
   title: "Building a clear roadmap for your startup success",
   desc: "Creating an effective startup roadmap is about turning vision into structured, actionable steps. This guide walks you through.",
   img:"images/tech.jpg",
-  type: "Technology"
+  type: "Technology",
+  information: ""
 },
 {
   id: 4,
   title: "Unlocking the Full Potential of Your Apps",
   desc: "From customization to cloud sync — here’s how to transform everyday software into powerful productivity tools.",
   img:"images/tech1.jpg",
-  type: "Technology"
+  type: "Technology",
+  information: ""
 },
 {
   id: 5,
   title: "Skill Up & Capture Life",
   desc: "Boost your abilities with smart tools while preserving the milestones that matter most.",
   img:"images/lif2.jpg",
-  type: "Lifestyle"
+  type: "Lifestyle",
+  information: ""
 },
 {
   id: 6,
   title: "Efficiency First: Boosting Startup Returns",
   desc: "A guide to building a high‑impact startup by focusing on efficiency, validation, and smart resource use.",
   img:"images/start2.jpg",
-  type: "Startup"
+  type: "Startup",
+  information: ""
 },
 {
   id: 7,
   title: "Luxury Home Taxes: Market Shifts Explained",
   desc: "Explore how high‑value property taxation reshapes demand, investment strategies, and future housing trends.",
   img:"images/finance.jpg",
-  type: "Finance"
+  type: "Finance",
+  information: ""
 },
 {
   id: 8,
   title: "Learning Reinvented",
   desc: "Forget rote memorization — embrace a smarter, personalized, and engaging way to study.",
   img:"images/start3.jpg",
-  type: "Startup"
+  type: "Startup",
+  information: ""
 },
 {
   id: 9,
   title: "Tourism as a Global Game‑Changer",
   desc: "Explore how tourism drives economies, fosters innovation, and reshapes international relations.",
   img:"images/life3.jpg",
-  type: "Lifestyle"
+  type: "Lifestyle",
+  information: ""
 },
 {
   id: 10,
   title: "AI Everywhere",
   desc: "From smart assistants to predictive analytics — AI is transforming industries and shaping the future.”",
   img:"images/tech2.jpg",
-  type: "Technology"
+  type: "Technology",
+  information: ""
 }
 ]
 

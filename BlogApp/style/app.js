@@ -132,7 +132,7 @@ const form = overlay.querySelector('form');
   const value = document.querySelector('#valueDel');
   const title = document.querySelector('.del-title');
   title.textContent = titleArt.textContent;
-  confirm.textContent = 'Confirm';
+  confirm.querySelector('span').textContent = 'Confirm';
   value.placeholder = 'Change title';
   const id = bar.parentElement.querySelector('.article').getAttribute('id');
   if(!document.querySelector('#descValue')){
@@ -276,7 +276,7 @@ function createForm(data){
   label.textContent = `${data} type`;
   labelTitle.textContent = 'Title';
   labelDescription.textContent = 'Description';
-  labelInformation.textContent = 'Description';
+  labelInformation.textContent = 'Information';
 
   newInput.setAttribute('id','descValue');
 
@@ -297,6 +297,7 @@ function createForm(data){
    overlay.querySelector('form').insertBefore(labelTitle,document.querySelector('#valueDel'));
      overlay.querySelector('form').appendChild(labelDescription);
      overlay.querySelector('form').appendChild(newInput);
+     overlay.querySelector('form').appendChild(labelInformation);
      overlay.querySelector('form').appendChild(newInfomration);
      overlay.querySelector('form').appendChild(label);
      overlay.querySelector('form').appendChild(select);

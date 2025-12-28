@@ -635,7 +635,7 @@ transition: .2s ease-out;
     line-height: 1.4px;
     width: 100%;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 .modal form input{
     border: none;
@@ -644,7 +644,7 @@ transition: .2s ease-out;
     width: 100%;
     padding: .5rem .5rem;
     font-size: 1rem;
-    font-weight: 600;
+   // font-weight: 600;
     flex: 2;
     color: #8326F0;
     box-shadow:inset 5px 5px 10px #bebebe;
@@ -663,7 +663,7 @@ transition: .2s ease-out;
     padding: .5rem .5rem;
 }
 .modal form input::placeholder{
-    color: #8326F0;
+    color: #696969;
 }
 .modal form label,select{
     color:#8326F0 ;
@@ -676,4 +676,7 @@ transition: .2s ease-out;
     outline: none;
     padding: .5rem;
     border-radius: .25rem;
+}
+.modal form label{
+    text-align: left;
 }
