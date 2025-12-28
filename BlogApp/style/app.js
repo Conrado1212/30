@@ -69,12 +69,27 @@ bars.forEach(bar =>{
    const title = document.querySelector('.del-title');
   title.textContent = titleArt.textContent;
   const delBtn = document.querySelector('#confirm');
+  delBtn.textContent = 'Delete';
+  const valueDel = document.querySelector('#valueDel');
+  valueDel.placeholder = 'Are you sure want to delete this blog page?';
+
+  //valueDel
+//confirm
+const delmodal = ['valueDel','confirm'];
+const form = overlay.querySelector('form');
+
+[...form.querySelectorAll('*')].forEach(el =>{
+  if(!delmodal.includes(el.id)){
+    el.remove();
+  }
+})
+
   delBtn.addEventListener('click',(e)=>{
     const id = bar.parentElement.querySelector('.article').getAttribute('id');
     console.log('adadadad',id);
     e.preventDefault()
     const valueDel = document.querySelector('#valueDel').value.trim();
-    console.log(valueDel);
+   // console.log(valueDel);
     if(valueDel.toLowerCase() === 'confirm'){
       deleteBlogPage(id);
       closeInfo();
@@ -84,7 +99,7 @@ bars.forEach(bar =>{
       setTimeout(closeInfo,1000);
     }
   });
-  
+
    const close = document.querySelector('#close');
   // console.log(close);
    close.addEventListener('click',()=>{

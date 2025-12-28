@@ -630,7 +630,7 @@ transition: .2s ease-out;
     margin-bottom: 4rem;
     text-align: center;
     //border: solid .25px #9296a8;
-    overflow: hidden;
+    //overflow: hidden;
    // border-radius: .4rem;
     line-height: 1.4px;
     width: 100%;
