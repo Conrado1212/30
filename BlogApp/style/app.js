@@ -8,6 +8,7 @@ const menuS = document.querySelectorAll('.menu');
 const overlay = document.querySelector('.overlay');
 const add = document.querySelector('#add');
 const type = ['Lifestyle','Startup','Technology','Finance'];
+const labels = ['Type','Title','Desc','Information'];
 const newInput = document.createElement("textarea");
   const newInfomration = document.createElement("textarea");
 
@@ -15,6 +16,7 @@ const newInput = document.createElement("textarea");
   const labelTitle = document.createElement("label");
   const labelDescription = document.createElement("label");
   const labelInformation = document.createElement("label");
+  const file = document.createElement("input");
 
   const select = document.createElement("select");
   const confirm = document.querySelector("#confirm");
@@ -267,7 +269,10 @@ function createForm(data){
   
   select.setAttribute('name', 'type');
   select.setAttribute('id', 'type');
-
+// for(let i =0;i<4;i++){
+//   label.setAttribute('for',labels[i]);
+//   label.textContent = `${labels[i]}`;
+// }
   label.setAttribute('for','type');
   labelTitle.setAttribute('for','title');
   labelDescription.setAttribute('for','desc');
@@ -277,6 +282,8 @@ function createForm(data){
   labelTitle.textContent = 'Title';
   labelDescription.textContent = 'Description';
   labelInformation.textContent = 'Information';
+
+  file.setAttribute('id','fileValue');
 
   newInput.setAttribute('id','descValue');
 
