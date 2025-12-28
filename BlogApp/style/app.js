@@ -8,6 +8,16 @@ const menuS = document.querySelectorAll('.menu');
 const overlay = document.querySelector('.overlay');
 const add = document.querySelector('#add');
 const type = ['Lifestyle','Startup','Technology','Finance'];
+const newInput = document.createElement("textarea");
+  const newInfomration = document.createElement("textarea");
+
+  const label = document.createElement("label");
+  const labelTitle = document.createElement("label");
+  const labelDescription = document.createElement("label");
+  const labelInformation = document.createElement("label");
+
+  const select = document.createElement("select");
+  const confirm = document.querySelector("#confirm");
 console.log('article ',article);
 console.log(btns2);
 btns2.forEach(btn =>{
@@ -83,7 +93,7 @@ const form = overlay.querySelector('form');
   if(!delmodal.includes(el.id)){
     el.remove();
   }
-})
+});
 
   delBtn.addEventListener('click',(e)=>{
     const id = bar.parentElement.querySelector('.article').getAttribute('id');
@@ -121,7 +131,9 @@ const form = overlay.querySelector('form');
   value.placeholder = 'Change title';
   const id = bar.parentElement.querySelector('.article').getAttribute('id');
   if(!document.querySelector('#descValue')){
-    createForm();
+    createForm('Change');
+  }else{
+    changeForm('Change');
   }
   /*dodac type po kliknieciu */
   const selecType = document.querySelector('#type');
@@ -229,12 +241,16 @@ add.addEventListener('click',()=>{
   const title = document.querySelector('.del-title');
   const value = document.querySelector('#valueDel');
   
-
+  confirm.textContent = 'Add'
 
   value.placeholder = 'Title';
   title.textContent = 'Add new blog page';
 
-
+  if(!document.querySelector('#descValue')){
+    createForm('Add');
+  }else{
+    changeForm('Add');
+  }
   /*close modal */
   const close = document.querySelector('#close');
  close.addEventListener('click',()=>{
@@ -242,16 +258,8 @@ add.addEventListener('click',()=>{
  });
 });
 
-function createForm(){
-  const newInput = document.createElement("textarea");
-  const newInfomration = document.createElement("textarea");
-
-  const label = document.createElement("label");
-  const labelTitle = document.createElement("label");
-  const labelDescription = document.createElement("label");
-  const labelInformation = document.createElement("label");
-
-  const select = document.createElement("select");
+function createForm(data){
+  
   select.setAttribute('name', 'type');
   select.setAttribute('id', 'type');
 
@@ -260,7 +268,7 @@ function createForm(){
   labelDescription.setAttribute('for','desc');
   labelInformation.setAttribute('for','information');
 
-  label.textContent = 'Change type';
+  label.textContent = `${data} type`;
   labelTitle.textContent = 'Title';
   labelDescription.textContent = 'Description';
   labelInformation.textContent = 'Description';
@@ -269,9 +277,9 @@ function createForm(){
 
   newInfomration.setAttribute('id','infoValue');
 
-  newInput.placeholder = "Change desc...";
+  newInput.placeholder = `${data} desc...`;
 
-  newInfomration.placeholder = "Change information...";
+  newInfomration.placeholder = `${data} information...`;
 
    newInput.rows = 4; 
 
@@ -295,4 +303,12 @@ function createForm(){
    select.appendChild(option);
  }
 
+}
+
+function changeForm(data){
+
+  label.textContent = `${data} type`;
+  newInput.placeholder = `${data} desc...`;
+
+  newInfomration.placeholder = `${data} information...`;
 }
