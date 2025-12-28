@@ -7,6 +7,7 @@ const bars = document.querySelectorAll('.bars');
 const menuS = document.querySelectorAll('.menu');
 const overlay = document.querySelector('.overlay');
 const add = document.querySelector('#add');
+const type = ['Lifestyle','Startup','Technology','Finance'];
 console.log('article ',article);
 console.log(btns2);
 btns2.forEach(btn =>{
@@ -120,58 +121,7 @@ const form = overlay.querySelector('form');
   value.placeholder = 'Change title';
   const id = bar.parentElement.querySelector('.article').getAttribute('id');
   if(!document.querySelector('#descValue')){
-
-    const newInput = document.createElement("textarea");
-    const newInfomration = document.createElement("textarea");
-    const label = document.createElement("label");
-    const labelTitle = document.createElement("label");
-    const labelDescription = document.createElement("label");
-    const labelInformation = document.createElement("label");
-    const select = document.createElement("select");
-
-    label.setAttribute('for','type');
-    labelTitle.setAttribute('for','title');
-    labelDescription.setAttribute('for','desc');
-    labelInformation.setAttribute('for','information');
-
-    label.textContent = 'Change type';
-    labelTitle.textContent = 'Title';
-    labelDescription.textContent = 'Description';
-    labelInformation.textContent = 'Description';
-  
-
-    select.setAttribute('name', 'type');
-    select.setAttribute('id', 'type');
-    newInput.setAttribute('id','descValue');
-
-    newInfomration.setAttribute('id','infoValue');
-
-    newInput.placeholder = "Change desc...";
-
-    newInfomration.placeholder = "Change information...";
-
-     newInput.rows = 4; 
-
-     newInfomration.rows = 8; 
-
-     newInput.cols = 30;
-
-     newInfomration.cols = 30;
-
-    let value = ['Lifestyle','Startup','Technology','Finance'];
-    
-     overlay.querySelector('form').insertBefore(labelTitle,document.querySelector('#valueDel'));
-     overlay.querySelector('form').appendChild(labelDescription);
-     overlay.querySelector('form').appendChild(newInput);
-     overlay.querySelector('form').appendChild(newInfomration);
-     overlay.querySelector('form').appendChild(label);
-     overlay.querySelector('form').appendChild(select);
-     for(let i =0;i<4;i++){
-      const option = document.createElement("option");
-      option.value = `${value[i]}`;
-      option.textContent = `${value[i]}`;
-      select.appendChild(option);
-    }
+    createForm();
   }
   /*dodac type po kliknieciu */
   const selecType = document.querySelector('#type');
@@ -278,22 +228,12 @@ add.addEventListener('click',()=>{
 
   const title = document.querySelector('.del-title');
   const value = document.querySelector('#valueDel');
+  
 
-  const select = document.createElement("select");
-  select.setAttribute('name', 'type');
-  select.setAttribute('id', 'type');
 
   value.placeholder = 'Title';
   title.textContent = 'Add new blog page';
 
-  const type = ['Lifestyle','Startup','Technology','Finance'];
-  overlay.querySelector('form').appendChild(select);
-     for(let i =0;i<type.length;i++){
-      const option = document.createElement("option");
-      option.value = `${type[i]}`;
-      option.textContent = `${type[i]}`;
-      select.appendChild(option);
-    }
 
   /*close modal */
   const close = document.querySelector('#close');
@@ -301,3 +241,58 @@ add.addEventListener('click',()=>{
   overlay.style.display ='none';
  });
 });
+
+function createForm(){
+  const newInput = document.createElement("textarea");
+  const newInfomration = document.createElement("textarea");
+
+  const label = document.createElement("label");
+  const labelTitle = document.createElement("label");
+  const labelDescription = document.createElement("label");
+  const labelInformation = document.createElement("label");
+
+  const select = document.createElement("select");
+  select.setAttribute('name', 'type');
+  select.setAttribute('id', 'type');
+
+  label.setAttribute('for','type');
+  labelTitle.setAttribute('for','title');
+  labelDescription.setAttribute('for','desc');
+  labelInformation.setAttribute('for','information');
+
+  label.textContent = 'Change type';
+  labelTitle.textContent = 'Title';
+  labelDescription.textContent = 'Description';
+  labelInformation.textContent = 'Description';
+
+  newInput.setAttribute('id','descValue');
+
+  newInfomration.setAttribute('id','infoValue');
+
+  newInput.placeholder = "Change desc...";
+
+  newInfomration.placeholder = "Change information...";
+
+   newInput.rows = 4; 
+
+   newInfomration.rows = 8; 
+
+   newInput.cols = 30;
+
+   newInfomration.cols = 30;
+
+   overlay.querySelector('form').insertBefore(labelTitle,document.querySelector('#valueDel'));
+     overlay.querySelector('form').appendChild(labelDescription);
+     overlay.querySelector('form').appendChild(newInput);
+     overlay.querySelector('form').appendChild(newInfomration);
+     overlay.querySelector('form').appendChild(label);
+     overlay.querySelector('form').appendChild(select);
+
+  for(let i =0;i<type.length;i++){
+   const option = document.createElement("option");
+   option.value = `${type[i]}`;
+   option.textContent = `${type[i]}`;
+   select.appendChild(option);
+ }
+
+}
