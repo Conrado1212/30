@@ -246,9 +246,9 @@ add.addEventListener('click',()=>{
   const title = document.querySelector('.del-title');
   const value = document.querySelector('#valueDel');
   
-  confirm.textContent = 'Add'
+  confirm.querySelector('span').textContent = 'Add'
 
-  value.placeholder = 'Title';
+  value.placeholder = 'Add title...';
   title.textContent = 'Add new blog page';
 
   if(!document.querySelector('#descValue')){
@@ -273,7 +273,7 @@ function createForm(data){
   labelDescription.setAttribute('for','desc');
   labelInformation.setAttribute('for','information');
 
-  label.textContent = `${data} type`;
+  label.textContent = `Type`;
   labelTitle.textContent = 'Title';
   labelDescription.textContent = 'Description';
   labelInformation.textContent = 'Information';
@@ -312,9 +312,12 @@ function createForm(data){
 }
 
 function changeForm(data){
+   const newInput = document.querySelector('#descValue');
+   const valueDel = document.querySelector('#valueDel');
+   const newInfomration = document.querySelector('#infoValue');
+ 
+   valueDel.placeholder = `${data} title...`;
+   newInput.placeholder = `${data} desc...`;
 
-  label.textContent = `${data} type`;
-  newInput.placeholder = `${data} desc...`;
-
-  newInfomration.placeholder = `${data} information...`;
+   newInfomration.placeholder = `${data} information...`;
 }
