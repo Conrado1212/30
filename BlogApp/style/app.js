@@ -227,6 +227,7 @@ function addBlogPage(data){
   })
   .catch(e =>{
     console.error('Error', e);
+    alert(e)
 })
 }
 
@@ -238,7 +239,7 @@ function closeInfo(){
           modal.style.display = 'none';
       }
   });
-  window.location.reload();
+  setTimeout(() => { window.location.reload(); }, 100);
 }
 
 /*add new blog page */
@@ -258,22 +259,25 @@ add.addEventListener('click',()=>{
   }else{
     changeForm('Add');
   }
-  confirm.addEventListener('click',()=>{
+ 
+
+  confirm.addEventListener('click',(e)=>{
     const data = {};
     if (valueDel.value.trim() !== '') {
       data.title = valueDel.value.trim(); 
       }
   
-    if (descValue.value.trim() !== '') { 
-      data.desc = descValue.value.trim(); 
+    if (document.querySelector('#descValue').value.trim() !== '') { 
+      data.desc = document.querySelector('#descValue').value.trim(); 
     }
     
-    data.type = selecType.value;
+    data.type = document.querySelector('#type').value;
 
     e.preventDefault();
+    
+   // console.log(data);
     addBlogPage(data);
     setTimeout(closeInfo,100);
-
 
   })
   /*close modal */
