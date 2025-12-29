@@ -309,6 +309,13 @@ function createForm(data){
       textarea.cols = 30;
       overlay.querySelector("form").appendChild(textarea);
     }
+    if(labels[i] === "File") {
+      const input = document.createElement("input");
+       input.setAttribute('id','file');
+       input.setAttribute('class','file-input');
+       input.setAttribute('type','file');
+       overlay.querySelector("form").appendChild(input);
+    }
    
   }
      /*dropdown*/
