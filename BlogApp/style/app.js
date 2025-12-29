@@ -285,7 +285,7 @@ add.addEventListener('click',()=>{
 function createForm(data){
   
  
-  file.setAttribute('id','fileValue');
+  //file.setAttribute('id','fileValue');
 
   newInput.setAttribute('id','descValue');
 
@@ -303,15 +303,19 @@ function createForm(data){
 
    newInfomration.cols = 30;
 
-   overlay.querySelector('form').insertBefore(labelTitle,document.querySelector('#valueDel'));
 
    for(let i =0;i<labels.length;i++){
     const label = document.createElement("label");
     label.setAttribute('for',labels[i]);
     label.textContent = `${labels[i]}`;
-    overlay.querySelector('form').appendChild(label);
+    if(label.getAttribute('for') === 'Title'){
+      overlay.querySelector('form').insertBefore(label,document.querySelector('#valueDel'));
+    }else{
+      overlay.querySelector('form').appendChild(label);
+    }
+    
   }
-
+ 
      overlay.querySelector('form').appendChild(newInput);
   
      overlay.querySelector('form').appendChild(newInfomration);
