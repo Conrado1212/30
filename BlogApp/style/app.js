@@ -8,19 +8,14 @@ const menuS = document.querySelectorAll('.menu');
 const overlay = document.querySelector('.overlay');
 const add = document.querySelector('#add');
 const type = ['Lifestyle','Startup','Technology','Finance'];
-const labels = ['Type','Title','Desc','Information'];
+const labels = ['Title','Description','Information','File','Type'];
 const newInput = document.createElement("textarea");
   const newInfomration = document.createElement("textarea");
-
   const label = document.createElement("label");
-  const labelTitle = document.createElement("label");
-  const labelDescription = document.createElement("label");
-  const labelInformation = document.createElement("label");
-  const file = document.createElement("input");
-
   const select = document.createElement("select");
   const confirm = document.querySelector("#confirm");
-console.log('article ',article);
+//console.log('article ',article);
+
 console.log(btns2);
 btns2.forEach(btn =>{
     btn.addEventListener('click',()=>{
@@ -289,22 +284,7 @@ add.addEventListener('click',()=>{
 
 function createForm(data){
   
-  select.setAttribute('name', 'type');
-  select.setAttribute('id', 'type');
-// for(let i =0;i<4;i++){
-//   label.setAttribute('for',labels[i]);
-//   label.textContent = `${labels[i]}`;
-// }
-  label.setAttribute('for','type');
-  labelTitle.setAttribute('for','title');
-  labelDescription.setAttribute('for','desc');
-  labelInformation.setAttribute('for','information');
-
-  label.textContent = `Type`;
-  labelTitle.textContent = 'Title';
-  labelDescription.textContent = 'Description';
-  labelInformation.textContent = 'Information';
-
+ 
   file.setAttribute('id','fileValue');
 
   newInput.setAttribute('id','descValue');
@@ -324,11 +304,23 @@ function createForm(data){
    newInfomration.cols = 30;
 
    overlay.querySelector('form').insertBefore(labelTitle,document.querySelector('#valueDel'));
-     overlay.querySelector('form').appendChild(labelDescription);
+
+   for(let i =0;i<labels.length;i++){
+    const label = document.createElement("label");
+    label.setAttribute('for',labels[i]);
+    label.textContent = `${labels[i]}`;
+    overlay.querySelector('form').appendChild(label);
+  }
+
      overlay.querySelector('form').appendChild(newInput);
-     overlay.querySelector('form').appendChild(labelInformation);
+  
      overlay.querySelector('form').appendChild(newInfomration);
-     overlay.querySelector('form').appendChild(label);
+
+
+     /*dropdown*/
+     select.setAttribute('name', 'type');
+     select.setAttribute('id', 'type');
+   
      overlay.querySelector('form').appendChild(select);
 
   for(let i =0;i<type.length;i++){
