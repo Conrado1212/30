@@ -284,28 +284,10 @@ add.addEventListener('click',()=>{
 
 function createForm(data){
   
- 
-  //file.setAttribute('id','fileValue');
-
-  newInput.setAttribute('id','descValue');
-
-  newInfomration.setAttribute('id','infoValue');
-
-  newInput.placeholder = `${data} desc...`;
-
-  newInfomration.placeholder = `${data} information...`;
-
-   newInput.rows = 4; 
-
-   newInfomration.rows = 8; 
-
-   newInput.cols = 30;
-
-   newInfomration.cols = 30;
-
-
    for(let i =0;i<labels.length;i++){
     const label = document.createElement("label");
+    const textarea = document.createElement("textarea");
+
     label.setAttribute('for',labels[i]);
     label.textContent = `${labels[i]}`;
     if(label.getAttribute('for') === 'Title'){
@@ -313,14 +295,22 @@ function createForm(data){
     }else{
       overlay.querySelector('form').appendChild(label);
     }
-    
+    if(labels[i] === "Description") {
+      textarea.setAttribute('id','descValue');
+      textarea.placeholder = `${data} desc...`;
+      textarea.rows = 4;
+      textarea.cols = 30;
+      overlay.querySelector("form").appendChild(textarea);
+    }
+    if(labels[i] === "Information") {
+      textarea.setAttribute('id','infoValue');
+      textarea.placeholder = `${data} information...`;
+      textarea.rows = 8;
+      textarea.cols = 30;
+      overlay.querySelector("form").appendChild(textarea);
+    }
+   
   }
- 
-     overlay.querySelector('form').appendChild(newInput);
-  
-     overlay.querySelector('form').appendChild(newInfomration);
-
-
      /*dropdown*/
      select.setAttribute('name', 'type');
      select.setAttribute('id', 'type');
