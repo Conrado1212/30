@@ -19,7 +19,7 @@ function testFile(file){
     });
 }
 
-
+console.log(file);
 file.addEventListener('change',function(){
     const file = this.files[0];
 
