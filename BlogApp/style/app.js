@@ -15,6 +15,9 @@ const newInput = document.createElement("textarea");
   const label = document.createElement("label");
   const select = document.createElement("select");
   const confirm = document.querySelector("#confirm");
+
+
+  const cont = document.querySelector('.fileContainer');
 //console.log('article ',article);
 
 console.log(btns2);
@@ -370,24 +373,26 @@ function testFile(file){
   });
 }
 
+if(file){
+  file.addEventListener('change',function(){
+    const file = this.files[0];
+  
+    fileName.textContent = file ? this.files[0].name : 'no file';
+        if(file){
+            setTimeout(()=>{
+                testFile(file).then((data) => {
+                    //const  buffer   = new Uint8Array(data)
+                   
+                    console.log(base64(data),' adada');
+                }).catch((e)=>{
+                    console.error(e,' test');
+                })
+  
+            },2000)
+        }
+  })
+}
 
-file.addEventListener('change',function(){
-  const file = this.files[0];
-
-  fileName.textContent = file ? this.files[0].name : 'no file';
-      if(file){
-          setTimeout(()=>{
-              testFile(file).then((data) => {
-                  //const  buffer   = new Uint8Array(data)
-                 
-                  console.log(base64(data),' adada');
-              }).catch((e)=>{
-                  console.error(e,' test');
-              })
-
-          },2000)
-      }
-})
 function base64(data){
   let binary ='';
   const bytes = new Uint8Array(data)
@@ -397,23 +402,19 @@ function base64(data){
   return btoa(binary)
 }
 
-
-
-cont.addEventListener('dragenter',()=>{
-  cont.classList.add('alt-border');
-  cont.classList.add('test');
-})
-cont.addEventListener('dragleave',()=>{
-  cont.classList.remove('alt-border');
-  cont.classList.remove('test');
-})
-
-
-
-cont.addEventListener('dragover', (event) => {
-  event.preventDefault();
-});
-const reader = new FileReader();
+if(cont){
+  cont.addEventListener('dragenter',()=>{
+    cont.classList.add('alt-border');
+    cont.classList.add('test');
+  })
+  cont.addEventListener('dragleave',()=>{
+    cont.classList.remove('alt-border');
+    cont.classList.remove('test');
+  })
+  cont.addEventListener('dragover', (event) => {
+    event.preventDefault();
+  });
+  const reader = new FileReader();
 cont.addEventListener('drop',(e)=>{
     e.preventDefault();
     const data = e.dataTransfer.files[0];
@@ -428,14 +429,12 @@ cont.addEventListener('drop',(e)=>{
    cont.classList.remove('alt-border');
    cont.classList.remove('test');
 })
+}
 
 
 function drop(event){
   event.preventDefault();
-  //dane pliku
 const data = event.dataTransfer.files[0];
- // const reader = new FileReader();
-//  reader.onload = function(e){
       fileName.textContent = data.name;
-//  }
+
 }
