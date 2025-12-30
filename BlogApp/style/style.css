@@ -695,7 +695,7 @@ transition: .2s ease-out;
 }
 .modal form .fileContainer{
     width: 50%;
-    background: linear-gradient(to right, #8326F0, transparent 70%);
+   background: linear-gradient(to right, #8326F0, transparent 70%);
     border-radius: .25rem;
     padding: 1rem 0;
     margin: auto;
@@ -705,7 +705,7 @@ transition: .2s ease-out;
    0 0 12px rgba(207, 210, 218, 0.8);
    position: relative;
 }
-.modal form .fileContainer::before,.fileContainer::after{
+/* .modal form .fileContainer::before,.fileContainer::after{
     content: '';
     position: absolute;
     width: 100%;
@@ -718,8 +718,9 @@ transition: .2s ease-out;
     animation: 10s spin linear infinite;
     z-index: -1;
     border-radius: .25rem;
+    //inset:0;
 }
 .modal form .fileContainer::before{
-    opacity: 0.5;
+    opacity: 0.99;
     filter: blur(1.5rem);
-}
+} */

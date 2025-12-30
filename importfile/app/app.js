@@ -77,10 +77,6 @@ const reader = new FileReader();
   })
 
 
-
-
-
-
   function drop(event){
     event.preventDefault();
     //dane pliku
