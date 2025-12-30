@@ -287,11 +287,17 @@ function createForm(data){
    for(let i =0;i<labels.length;i++){
     const label = document.createElement("label");
     const textarea = document.createElement("textarea");
+    const div = document.createElement("div");
 
     label.setAttribute('for',labels[i]);
     label.textContent = `${labels[i]}`;
     if(label.getAttribute('for') === 'Title'){
       overlay.querySelector('form').insertBefore(label,document.querySelector('#valueDel'));
+    }else if(label.getAttribute('for') === 'File'){
+      div.setAttribute('class','fileContainer')
+      overlay.querySelector('form').appendChild(div);
+      div.appendChild(label);
+      label.innerHTML ='File <i class="fa-solid fa-file-arrow-up" aria-hidden="true"></i><span></span>';
     }else{
       overlay.querySelector('form').appendChild(label);
     }
@@ -314,7 +320,7 @@ function createForm(data){
        input.setAttribute('id','file');
        input.setAttribute('class','file-input');
        input.setAttribute('type','file');
-       overlay.querySelector("form").appendChild(input);
+       overlay.querySelector(`form label[for="${labels[i]}"`).appendChild(input);
     }
    
   }
