@@ -336,11 +336,14 @@ add.addEventListener('click',()=>{
   /*close modal */
   const close = document.querySelector('#close');
  close.addEventListener('click',()=>{
-  [...overlay.querySelectorAll('*')].forEach(el =>{
-    if(el.value)el.value = '';
-  });
+  //  [...overlay.querySelectorAll('*')].forEach(el =>{
+  //   if(el.value)el.value = '';
+  //  });
+  overlay.querySelector('form')?.reset();
+  overlay.querySelector('.fileContainer span').textContent =''
+  overlay.querySelector('.fileContainer span').style.display ="none";
   // setTimeout(()=>{
-  //   overlay.style.display ='none';
+    overlay.style.display ='none';
   // },10000);
  });
 });
