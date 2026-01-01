@@ -336,7 +336,12 @@ add.addEventListener('click',()=>{
   /*close modal */
   const close = document.querySelector('#close');
  close.addEventListener('click',()=>{
-  overlay.style.display ='none';
+  [...overlay.querySelectorAll('*')].forEach(el =>{
+    if(el.value)el.value = '';
+  });
+  // setTimeout(()=>{
+  //   overlay.style.display ='none';
+  // },10000);
  });
 });
 
