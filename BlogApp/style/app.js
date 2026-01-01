@@ -288,7 +288,8 @@ add.addEventListener('click',()=>{
       console.log('ddddd');
       const selectfile = this.files[0];
      console.log(selectfile);
-      document.querySelector('label[for="File"] span').textContent = selectfile ? this.files[0].name : 'No file';    
+      document.querySelector('.fileContainer span').textContent = selectfile ? this.files[0].name : 'No file';    
+      document.querySelector('.fileContainer span').style.display = "block";
           if(selectfile){
               setTimeout(()=>{
                   testFile(selectfile).then((data) => {
@@ -345,6 +346,7 @@ function createForm(data){
     const label = document.createElement("label");
     const textarea = document.createElement("textarea");
     const div = document.createElement("div");
+    const span = document.createElement("span");
 
     label.setAttribute('for',labels[i]);
     label.textContent = `${labels[i]}`;
@@ -354,7 +356,8 @@ function createForm(data){
       div.setAttribute('class','fileContainer')
       overlay.querySelector('form').appendChild(div);
       div.appendChild(label);
-      label.innerHTML ='File <i class="fa-solid fa-file-arrow-up" aria-hidden="true"></i><span></span>';
+      label.innerHTML ='File <i class="fa-solid fa-file-arrow-up" aria-hidden="true"></i>';
+      div.appendChild(span);
     }else{
       overlay.querySelector('form').appendChild(label);
     }

@@ -704,6 +704,14 @@ transition: .2s ease-out;
     2px 2px 5px rgba(0,0,0,0.6),
    0 0 12px rgba(207, 210, 218, 0.8);
    position: relative;
+   display: flex;
+   flex-direction: column;
+   gap: 1rem;
+}
+.fileContainer span{
+    display: none;
+    color: var(--white);
+    font-weight: 600;
 }
 /* .modal form .fileContainer::before,.fileContainer::after{
     content: '';
