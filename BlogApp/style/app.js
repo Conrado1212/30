@@ -267,27 +267,27 @@ add.addEventListener('click',()=>{
 
   confirm.addEventListener('click',(e)=>{
     e.preventDefault()
-    const data = {};
+    const data = new FormData();
     if (valueDel.value.trim() !== '') {
-      data.title = valueDel.value.trim(); 
+      data.append("title", valueDel.value.trim());
       }
   
     if (document.querySelector('#descValue').value.trim() !== '') { 
-      data.desc = document.querySelector('#descValue').value.trim(); 
+      data.append("desc",document.querySelector('#descValue').value.trim()); 
     }
     if (document.querySelector('#infoValue').value.trim() !== '') { 
-      data.information = document.querySelector('#infoValue').value.trim(); 
+      data.append("information",document.querySelector('#infoValue').value.trim()); 
     }
     if (document.querySelector('#File').value.trim() !== '') { 
-      data.img = document.querySelector('#File').files[0].name; 
+      data.append("image",document.querySelector('#File').files[0]); 
     }  
-    data.type = document.querySelector('#type').value;
+    data.append("type",document.querySelector('#type').value);
 
-    e.preventDefault();
+   // e.preventDefault();
     
-    console.table(data);
+   // console.table(data);
     addBlogPage(data);
-   // setTimeout(closeInfo,100);
+    setTimeout(closeInfo,100);
 
   });
 
