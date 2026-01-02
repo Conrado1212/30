@@ -17,7 +17,7 @@ const newInput = document.createElement("textarea");
   const confirm = document.querySelector("#confirm");
 
 
-  const cont = document.querySelector('.fileContainer');
+  
 //console.log('article ',article);
 
 console.log(btns2);
@@ -303,32 +303,35 @@ add.addEventListener('click',()=>{
               },1000)
           }
     });
-
-  //   cont.addEventListener('dragenter',()=>{
-  //     cont.classList.add('alt-border');
-  //     cont.classList.add('test');
-  //   })
-  //   cont.addEventListener('dragleave',()=>{
-  //     cont.classList.remove('alt-border');
-  //     cont.classList.remove('test');
-  //   })
-  //   cont.addEventListener('dragover', (event) => {
-  //     event.preventDefault();
-  //   });
+    const cont = document.querySelector('.fileContainer');
+    let counter = 0;
+    cont.addEventListener('dragenter',()=>{
+      console.log("enterrrrr");
+      counter++;
+      cont.classList.add('alt-border');
+     // cont.classList.add('test');
+    });
+     cont.addEventListener('dragleave',()=>{
+       counter--;
+       if(counter===0){
+        cont.classList.remove('alt-border');
+       } 
+       
+     })
+     cont.addEventListener('dragover', (event) => {
+       event.preventDefault();
+     });
   //   const reader = new FileReader();
   // cont.addEventListener('drop',(e)=>{
   //     e.preventDefault();
   //     const data = e.dataTransfer.files[0];
   //     fileName.textContent = data.name;
   //     reader.onload = function(e){
-  //         const div = document.createElement('div');
   //         div.textContent = e.target.result;
-  //           cont.appendChild(div);
   //     }
   //    // reader.readAsDataURL(data);
   //    reader.readAsText(data);
   //    cont.classList.remove('alt-border');
-  //    cont.classList.remove('test');
   // });
   }
 
