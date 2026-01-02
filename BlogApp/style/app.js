@@ -219,7 +219,11 @@ function updateBlogPage(id,updatedData){
 
 
 function addBlogPage(data){
-  axios.post(`http://localhost:3000/new`, data)
+  axios.post(`http://localhost:3000/new`, data,{
+    headers:{
+      "Content-Type": "multipart/form-data"
+    }
+  })
   .then(response =>{
     console.log(`${response}`);
     //location.reload();
@@ -262,6 +266,7 @@ add.addEventListener('click',()=>{
  
 
   confirm.addEventListener('click',(e)=>{
+    e.preventDefault()
     const data = {};
     if (valueDel.value.trim() !== '') {
       data.title = valueDel.value.trim(); 
@@ -274,15 +279,15 @@ add.addEventListener('click',()=>{
       data.information = document.querySelector('#infoValue').value.trim(); 
     }
     if (document.querySelector('#File').value.trim() !== '') { 
-      data.img = document.querySelector('#File').value.trim(); 
+      data.img = document.querySelector('#File').files[0].name; 
     }  
     data.type = document.querySelector('#type').value;
 
     e.preventDefault();
     
-   // console.log(data);
+    console.table(data);
     addBlogPage(data);
-    setTimeout(closeInfo,100);
+   // setTimeout(closeInfo,100);
 
   });
 

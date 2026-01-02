@@ -147,7 +147,7 @@ for(let i=0;i<blogArt.length;i++){
 }
 const index = blogArt.findIndex(e=>e.id ===1);
 console.log(blogArt[index]);
-app.use(express.static("style"));
+app.use( express.static("style"));
 
 app.get('/', (req,res)=>{
     
@@ -256,12 +256,20 @@ app.get(`/blogPage/:id`,(req,res)=>{
 
 /*add blog*/
 
-console.log(Math.max(...blogArt.map(blog=>blog.id)));
+//console.log(Math.max(...blogArt.map(blog=>blog.id)));
+
+
+
 app.post(`/new`, upload.single("image"),(req,res)=>{
   const id = Math.max(...blogArt.map(blog=>blog.id))+1
+  const {title, desc, information, type} = req.body;
   const newBlog ={
     id:id,
-    ...req.body
+    title,
+    desc,
+    information,
+    img: "/images/"+req.file.filename,
+    type
   }
   blogArt.push(newBlog);
   console.log(`Request Method: ${req.method} ${req.url}`);
