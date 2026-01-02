@@ -270,7 +270,12 @@ add.addEventListener('click',()=>{
     if (document.querySelector('#descValue').value.trim() !== '') { 
       data.desc = document.querySelector('#descValue').value.trim(); 
     }
-    
+    if (document.querySelector('#infoValue').value.trim() !== '') { 
+      data.information = document.querySelector('#infoValue').value.trim(); 
+    }
+    if (document.querySelector('#File').value.trim() !== '') { 
+      data.img = document.querySelector('#File').value.trim(); 
+    }  
     data.type = document.querySelector('#type').value;
 
     e.preventDefault();
@@ -321,18 +326,21 @@ add.addEventListener('click',()=>{
      cont.addEventListener('dragover', (event) => {
        event.preventDefault();
      });
-  //   const reader = new FileReader();
-  // cont.addEventListener('drop',(e)=>{
-  //     e.preventDefault();
-  //     const data = e.dataTransfer.files[0];
-  //     fileName.textContent = data.name;
-  //     reader.onload = function(e){
-  //         div.textContent = e.target.result;
-  //     }
-  //    // reader.readAsDataURL(data);
-  //    reader.readAsText(data);
-  //    cont.classList.remove('alt-border');
-  // });
+     const reader = new FileReader();
+   cont.addEventListener('drop',(e)=>{
+      e.preventDefault();
+       const data = e.dataTransfer.files[0];
+       testFile(data)
+       console.log('data test', data);
+       document.querySelector('.fileContainer span').textContent = data.name;
+       document.querySelector('.fileContainer span').style.display = "block";
+    //   reader.onload = function(e){
+     //   document.querySelector('.fileContainer span').textContent = e.target.result;
+    //  }
+      // reader.readAsDataURL(data);
+    //  reader.readAsText(data);
+      cont.classList.remove('alt-border');
+   });
   }
 
 
@@ -391,6 +399,8 @@ function createForm(data){
        input.setAttribute('id','File');
        input.setAttribute('class','file-input');
        input.setAttribute('type','file');
+       input.setAttribute('name','image');
+       input.setAttribute('accept','image/*');
        overlay.querySelector(`form label[for="${labels[i]}"`).appendChild(input);
     }
    
@@ -438,6 +448,7 @@ function testFile(file){
 
   //     reader.readAsArrayBuffer(file);
   // });
+  console.log('testfile', file.arrayBuffer());
   return file.arrayBuffer();
 }
 

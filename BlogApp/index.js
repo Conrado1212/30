@@ -1,12 +1,24 @@
 import express from "express"
 import bodyParser from "body-parser"
-
+import multer from "multer";
 
 const app =express();
 const port  = 3000;
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.json());
+
+
+const storage = multer.diskStorage({
+  destination :(req, file, cb)=>{
+    cb(null, "style/images");
+  },
+  filename: (req, file, cb)=>{
+    cb(null, file.originalname);
+  }
+});
+
+const upload = multer({storage})
 
 const data = {
   logo: "QuickBlog",
@@ -245,7 +257,7 @@ app.get(`/blogPage/:id`,(req,res)=>{
 /*add blog*/
 
 console.log(Math.max(...blogArt.map(blog=>blog.id)));
-app.post(`/new`,(req,res)=>{
+app.post(`/new`, upload.single("image"),(req,res)=>{
   const id = Math.max(...blogArt.map(blog=>blog.id))+1
   const newBlog ={
     id:id,
