@@ -2,10 +2,21 @@
 <main>
     <section class="title">
         <h1 class="title-value"><%- blogArt.title %></h1>
-        <h2><%-  data.titleContent %></h2>
+        <h2><%-  blogArt.desc %></h2>
    </section>
-   <section class="container">
-
+   <section class="container-blog">
+        <div class="article-blog" id="<%= blogArt.id %>">
+            <img src="/<%= blogArt.img %>" alt="life1" loading="lazy">
+            <div class="text">
+                <h1><%= blogArt.desc %></h1>
+                <p class="information"><%= blogArt.information %></p>
+            </div>
+        </div>
+    </section>
+    <section class="comments">
+        <div class="comment">
+            
+        </div>
     </section>
 </main>
 <%- include("footer.ejs") %>
