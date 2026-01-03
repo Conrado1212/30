@@ -147,21 +147,9 @@ const form = overlay.querySelector('form');
   /*nasluch na update*/
   
   confirm.addEventListener('click',(e)=>{
-    const dataUpd = {}
-
-  if (valueDel.value.trim() !== '') {
-    dataUpd.title = valueDel.value.trim(); 
-    }
-
-  if (descValue.value.trim() !== '') { 
-    dataUpd.desc = descValue.value.trim(); 
-  }
-  
-  dataUpd.type = selecType.value;
-  
-    console.table(dataUpd);
+    const data = buildFormData();
     e.preventDefault();
-    updateBlogPage(id,dataUpd);
+    updateBlogPage(id,data);
     setTimeout(closeInfo,100);
   })
 
@@ -251,7 +239,6 @@ add.addEventListener('click',()=>{
 
   const title = document.querySelector('.del-title');
   const value = document.querySelector('#valueDel');
-  const file = document.querySelector('#File');
   
   confirm.querySelector('span').textContent = 'Add'
 
@@ -267,25 +254,9 @@ add.addEventListener('click',()=>{
 
   confirm.addEventListener('click',(e)=>{
     e.preventDefault()
-    const data = new FormData();
-    if (valueDel.value.trim() !== '') {
-      data.append("title", valueDel.value.trim());
-      }
-  
-    if (document.querySelector('#descValue').value.trim() !== '') { 
-      data.append("desc",document.querySelector('#descValue').value.trim()); 
-    }
-    if (document.querySelector('#infoValue').value.trim() !== '') { 
-      data.append("information",document.querySelector('#infoValue').value.trim()); 
-    }
-    if (document.querySelector('#File').value.trim() !== '') { 
-      data.append("image",document.querySelector('#File').files[0]); 
-    }  
-    data.append("type",document.querySelector('#type').value);
+   const data = buildFormData();
 
-   // e.preventDefault();
-    
-   // console.table(data);
+   
     addBlogPage(data);
     setTimeout(closeInfo,100);
 
@@ -477,4 +448,26 @@ function drop(event){
 const data = event.dataTransfer.files[0];
       fileName.textContent = data.name;
 
+}
+//zmienic na funkcje aby bylo lepiej  const data = buildBlogFormData();
+
+function buildFormData(){
+  const data = new FormData();
+  if (valueDel.value.trim() !== '') {
+    data.append("title", valueDel.value.trim());
+    }
+
+  if (document.querySelector('#descValue').value.trim() !== '') { 
+    data.append("desc",document.querySelector('#descValue').value.trim()); 
+  }
+  if (document.querySelector('#infoValue').value.trim() !== '') { 
+    data.append("information",document.querySelector('#infoValue').value.trim()); 
+  }
+  if (document.querySelector('#File').value.trim() !== '') { 
+    data.append("image",document.querySelector('#File').files[0]); 
+  }  
+
+  data.append("type",document.querySelector('#type').value);
+
+  return data;
 }
