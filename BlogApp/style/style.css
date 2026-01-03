@@ -810,4 +810,13 @@ margin-bottom:2rem;
             margin-bottom: 2rem;
         }
     }
+    
+}
+.comments{
+    max-width: 48rem;
+    margin: auto;
+    display: block;
+    p{
+        font-weight: 600;
+    }
 }
