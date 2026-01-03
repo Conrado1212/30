@@ -248,11 +248,12 @@ app.get(`/blogPage/:id`,(req,res)=>{
   
   res.render("blog.ejs",{
     data: data,
-    blogArt: blogArt[index]
+    blogArt: blogArt[index],
+    links: links
   });
 });
 
-
+console.log('test blogggg',blogArt[0])
 
 /*add blog*/
 
