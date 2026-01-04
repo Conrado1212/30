@@ -224,7 +224,21 @@ function addBlogPage(data){
     alert(e)
 })
 }
-
+function addCommentToBlogPage(id,data){
+  axios.put(`http://localhost:3000/blog/${id}/comment`, data,{
+    headers:{
+      "Content-Type": "multipart/form-data"
+    }
+  })
+  .then(response =>{
+    console.log(`${response}`);
+    //location.reload();
+  })
+  .catch(e =>{
+    console.error('Error', e);
+    alert(e)
+})
+}
 
 function closeInfo(){
   ['.overlay','.overlay2'].forEach(e=>{
@@ -489,6 +503,10 @@ if(articles){
 if(commentAdd){
   const commentSubmit = document.querySelector('#commentSubmit');
   commentSubmit.addEventListener('click',()=>{
-
+    const id = document.querySelector('.article-blog').getAttribute('id');
+    const data = new FormData();
+    data.append("userName", commentAdd.querySelector('input').value.trim());
+    data.append("comment", commentAdd.querySelector('textarea').value.trim());
+    addCommentToBlogPage(id,data);
   })
 }
