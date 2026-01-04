@@ -16,6 +16,7 @@ const newInput = document.createElement("textarea");
   const select = document.createElement("select");
   const confirm = document.querySelector("#confirm");
 
+  const articles = document.querySelectorAll('.article');
 
   
 //console.log('article ',article);
@@ -473,4 +474,14 @@ function buildFormData(){
   data.append("type",document.querySelector('#type').value);
 
   return data;
+}
+
+
+
+if(articles){
+  articles.forEach(art =>{
+    art.addEventListener('click',()=>{
+      window.location.href =`http://localhost:3000/blogPage/${art.getAttribute('id')}`
+    })
+  })
 }
