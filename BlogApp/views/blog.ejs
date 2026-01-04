@@ -16,13 +16,32 @@
     <section class="comments">
         <p>Comments (<%= blogArt.comments.length %>)</p>
         <div class="flex-comment">
+            <% for(let i=0;i<blogArt.comments.length;i++){%>
             <div class="comment">
-                <i class="fa-solid fa-user-astronaut"></i>
-                <p class="name">Test test</p>
-                <div class="textcomment">adadadad</div>
-                <div class="date">adadad</div>
+                <div class="user">
+                    <i class="fa-solid fa-user-astronaut"></i>
+                    <p class="name"><%= blogArt.comments[i].userName %></p>
+                </div>
+                <div class="textcomment">
+                    <p><%= blogArt.comments[i].comment %></p>
+                </div>
+                <div class="date"><%= blogArt.comments[i].date %></div>
             </div>
+            <%  }%>
         </div>
+    </section>
+    <section class="addComment">
+        <p></p>
+        <form >
+            <input type="text" placeholder="Name" required>
+            <textarea name="comment" id="comment" cols="30" rows="10" placeholder="Comment" required>
+
+            </textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+    <section class="socials">
+
     </section>
 </main>
 <%- include("footer.ejs") %>
