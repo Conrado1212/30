@@ -62,11 +62,13 @@ const blogArt = [{
   information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pretium libero vitae sapien pharetra, imperdiet scelerisque mi rhoncus. Fusce eleifend, quam egestas consectetur auctor, sem tellus lacinia tortor, vel molestie tortor nunc in ipsum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi dictum, ipsum eu molestie faucibus, magna orci ullamcorper mi, non laoreet mauris dolor congue ligula. Nullam vulputate turpis sit amet placerat faucibus. Ut blandit gravida nulla, at luctus ligula vulputate a. Nam sollicitudin turpis eget pulvinar pharetra. Aliquam sit amet pellentesque magna. Mauris in tellus at magna molestie convallis. Pellentesque consectetur lorem a diam blandit ornare. Morbi lacinia lobortis lacus vel aliquam. Duis quis imperdiet massa. Mauris ut nisl quis tellus mattis tristique. Donec in quam vel justo consequat placerat. Proin auctor sodales felis, ultricies convallis nisl auctor non. Nam volutpat neque a justo fringilla porta. Phasellus quis est consequat, ornare leo in, rhoncus turpis. Duis tempor, enim nec pretium laoreet, justo lectus interdum augue, eu blandit odio sem at est. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus sit amet lectus in sapien tempor imperdiet vel eu ipsum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Praesent mattis libero sit amet risus efficitur fermentum. Vivamus vestibulum a tellus nec aliquam. Pellentesque iaculis mi dolor, et sodales libero convallis vitae. Donec porttitor imperdiet elit, in aliquam augue. Sed porttitor, nunc quis vestibulum eleifend, sem lectus lobortis felis, ac iaculis est est in leo. Aenean malesuada massa vitae nulla gravida, quis bibendum est consequat. Phasellus laoreet nibh vitae eleifend pulvinar. Aliquam in efficitur nunc. Curabitur auctor id tortor quis condimentum. Mauris rutrum ut felis aliquet interdum. Phasellus vel elit nec augue varius porta nec eget massa. Nam gravida pellentesque eleifend. Ut quis libero libero. Nulla vel mi sagittis lectus dignissim placerat. Curabitur sed condimentum sem. Maecenas auctor at tortor quis feugiat. Nam diam augue, scelerisque eget faucibus vitae, vestibulum ac diam. Sed faucibus varius risus, eu lacinia enim faucibus ut. Nullam sed bibendum augue, non congue justo. Duis commodo ornare luctus. Integer vel bibendum diam. Nunc aliquam volutpat risus, id malesuada metus condimentum vel. Quisque ut purus tincidunt, consequat nulla vel, mattis neque. Praesent ac ex eget nisi tristique posuere id ac est. Nullam pretium ipsum id volutpat facilisis. Aliquam dictum tristique risus, sed maximus dui aliquet auctor. Aenean gravida dictum mi eu suscipit. Vivamus sit amet tempor purus, in dignissim tortor. Morbi imperdiet auctor vehicula. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam efficitur rutrum est. Phasellus vitae nunc nulla. Vivamus vitae bibendum sapien. Duis purus ante, sodales ac commodo a, cursus quis orci. Cras non tempus massa. Donec odio ante, vulputate ac ullamcorper quis, euismod a lectus. Proin pretium dictum enim eget rhoncus. Nunc auctor tortor congue, tempor nibh at, sagittis lorem. Sed eu tincidunt quam. Aenean varius dui a erat pellentesque, sit amet tincidunt dui semper. Nullam in mi eget dui elementum bibendum. Suspendisse sit amet diam et massa laoreet feugiat at eu ligula. Phasellus sollicitudin a mi ut congue. Nulla malesuada justo sit amet metus luctus, eu fermentum dolor egestas. Nullam consectetur volutpat purus, malesuada scelerisque tortor luctus non. Proin eu sem lobortis, convallis urna et, finibus nunc. Suspendisse euismod tellus vitae lectus dictum, et blandit justo posuere. Mauris tellus sapien, vulputate et commodo sit amet, euismod vulputate odio. Donec eget ipsum vulputate, luctus nunc et, porta lacus.",
   comments:[
     {
+      id:1,
       userName: "UserTest",
       comment : "Lorem ipsum dolor sit amet, consectetur",
       date: "2025-12-12"
     },
     {
+      id:2,
       userName: "UserTest2",
       comment : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pretium libero vitae sapien pharetra, imperdiet scelerisque mi rhoncus.",
       date: "2025-12-12"
@@ -302,7 +304,7 @@ console.log('test blogggg',blogArt[0].comments.length)
 
 
 app.post(`/new`, upload.single("image"),(req,res)=>{
-  const id = Math.max(...blogArt.map(blog=>blog.id))+1
+  const id = (blogArt.length ? Math.max(...blogArt.map(blog=>blog.id)):0)+1;
   const {title, desc, information, type} = req.body;
   const newBlog ={
     id:id,
@@ -318,6 +320,42 @@ app.post(`/new`, upload.single("image"),(req,res)=>{
   console.log("body:", req.body);
   res.status(201).json(newBlog);
 })
+
+
+app.put(`/blog/:id/comment`,(req,res)=>{
+ 
+  const date = new Date();
+  
+  const {id} = req.params;
+  const {userName, comment} = req.body;
+  const parseID = parseInt(id);
+
+  if(isNaN(parseID)){
+    return res.status(400).json({error: "Invalid ID fromat"})
+  }
+
+  const index = blogArt.findIndex(e=>e.id ===parseID);
+  console.log(index);
+  if (index === -1) {
+    return res.status(404).json({ error: `Item with ID: ${id} not found` });
+  }
+  const max = (blogArt[1].comments.length ? Math.max(...blogArt[1].comments.id):0)+1;
+  blogArt[index] = {
+    ...blogArt[index],
+  comments:{
+    id: max,
+    userName,
+    comment,
+    date: date.toLocaleDateString()
+    }
+  }
+  console.log(`Request Method: ${req.method} ${req.url}`);
+  console.log(req.body);
+  return res.json({message: `Item with id ${id} was successfully updated`});
+  
+});
+
+
 app.listen(port,()=>{
     console.log(`App listening on port ${port}`);
 })

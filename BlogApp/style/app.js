@@ -18,7 +18,7 @@ const newInput = document.createElement("textarea");
 
   const articles = document.querySelectorAll('.article');
 
-  
+  const commentAdd = document.querySelector('#commentAdd');
 //console.log('article ',article);
 
 console.log(btns2);
@@ -306,7 +306,7 @@ add.addEventListener('click',()=>{
      cont.addEventListener('dragover', (event) => {
        event.preventDefault();
      });
-     const reader = new FileReader();
+    // const reader = new FileReader();
    cont.addEventListener('drop',(e)=>{
       e.preventDefault();
        const data = e.dataTransfer.files[0];
@@ -483,5 +483,12 @@ if(articles){
     art.addEventListener('click',()=>{
       window.location.href =`http://localhost:3000/blogPage/${art.getAttribute('id')}`
     })
+  })
+}
+
+if(commentAdd){
+  const commentSubmit = document.querySelector('#commentSubmit');
+  commentSubmit.addEventListener('click',()=>{
+
   })
 }
