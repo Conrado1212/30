@@ -898,3 +898,41 @@ color: transparent;
         }
     }
 }
+.socials{
+    max-width: 48rem;
+    margin:  3rem auto 3rem;
+    p{
+        font-weight: 600;
+        font-size: 1.25rem;
+        background: linear-gradient(90deg,#696969, #521ff7);
+        -webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+color: transparent;   
+padding: 2rem;
+    }
+    .socialMedia{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        max-width: 22rem;
+        padding: 1rem;
+        i{
+            font-size: 2rem;
+            color: #121212;
+           box-shadow: 0 -4px 4px #121212,
+           0 0px 4px #521ff7
+           ;
+           border-radius: .25rem;
+           padding: .25rem;
+        }
+        i:first-child{
+            color: #521ff7;
+       }
+       i:last-child{
+        color: var(--white);
+        background: #8378a5;
+       }
+    }
+}
