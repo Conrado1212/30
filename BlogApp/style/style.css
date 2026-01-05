@@ -937,3 +937,12 @@ padding: 2rem;
        }
     }
 }
+.buttons{
+    display: flex;
+    justify-content: space-between;
+   // align-items: center;
+   // margin: auto;
+   button:first-child{
+       margin-left: 0;
+   }
+}

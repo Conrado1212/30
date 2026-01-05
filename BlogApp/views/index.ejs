@@ -55,7 +55,10 @@
    <%- include("footer.ejs") %>
    <div class="overlay">
        <div class="modal">
-           <button class="btns" id="close"><i class="fa-solid fa-x"></i></button>
+           <div class="buttons">
+            <button class="btns" id="close"><i class="fa-solid fa-x"></i></button>
+            <button class="btns" id="preview"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+           </div>
            <h2 class="del-title"></h2>
            <form>
             <input type="text" id="valueDel" placeholder="<%-  data.delContent %>">
