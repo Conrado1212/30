@@ -227,7 +227,7 @@ function addBlogPage(data){
 function addCommentToBlogPage(id,data){
   axios.put(`http://localhost:3000/blog/${id}/comment`, data,{
     headers:{
-      "Content-Type": "multipart/form-data"
+      "Content-Type": "application/json"
     }
   })
   .then(response =>{
@@ -504,9 +504,13 @@ if(commentAdd){
   const commentSubmit = document.querySelector('#commentSubmit');
   commentSubmit.addEventListener('click',()=>{
     const id = document.querySelector('.article-blog').getAttribute('id');
-    const data = new FormData();
-    data.append("userName", commentAdd.querySelector('input').value.trim());
-    data.append("comment", commentAdd.querySelector('textarea').value.trim());
+  
+   const data = {};
+    data.userName = commentAdd.querySelector('input').value.trim();
+   
+    data.comment = commentAdd.querySelector('textarea').value.trim()
+   
+    console.log(data);
     addCommentToBlogPage(id,data);
   })
 }

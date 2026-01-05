@@ -339,22 +339,30 @@ app.put(`/blog/:id/comment`,(req,res)=>{
   if (index === -1) {
     return res.status(404).json({ error: `Item with ID: ${id} not found` });
   }
-  const max = (blogArt[1].comments.length ? Math.max(...blogArt[1].comments.id):0)+1;
-  blogArt[index] = {
-    ...blogArt[index],
-  comments:{
+  const max = (blogArt[index].comments.length ? Math.max(...blogArt[index].comments.map(c=>c.id)):0)+1;
+  const comments = blogArt[index].comments || [];
+  comments.push({
     id: max,
     userName,
     comment,
     date: date.toLocaleDateString()
-    }
-  }
+  })
+  // blogArt[index] = {
+  //   ...blogArt[index],
+  // comments:{
+  //   id: max,
+  //   userName,
+  //   comment,
+  //   date: date.toLocaleDateString()
+  //   }
+  //}
   console.log(`Request Method: ${req.method} ${req.url}`);
   console.log(req.body);
   return res.json({message: `Item with id ${id} was successfully updated`});
   
 });
-
+// const max = (blogArt[2].comments.length ? Math.max(...blogArt[2].comments.map(c=>c.id)):0)+1;
+// console.log(max);
 
 app.listen(port,()=>{
     console.log(`App listening on port ${port}`);
