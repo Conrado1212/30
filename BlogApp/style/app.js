@@ -514,3 +514,12 @@ if(commentAdd){
     addCommentToBlogPage(id,data);
   })
 }
+
+
+/*homepage*/
+const home = document.querySelector('.title-logo');
+if(home){
+  home.addEventListener('click',()=>{
+    window.location.href =`http://localhost:3000/`;
+  })
+}
