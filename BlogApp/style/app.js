@@ -150,7 +150,8 @@ const form = overlay.querySelector('form');
   const selecType = document.querySelector('#type');
   selecType.value = type.textContent;
  /*nasluch na preview */
-  preview.addEventListener('click',()=>{
+  preview.addEventListener('click',(e)=>{
+    //console.log(e.target);
     const view = document.querySelector('.preview');
     if(!view){
       previewView(id);
@@ -158,7 +159,7 @@ const form = overlay.querySelector('form');
       view.remove();
     }
    
-  })
+  });
    /*nasluch na update*/
   confirm.addEventListener('click',(e)=>{
     const data = buildFormData();
@@ -170,6 +171,10 @@ const form = overlay.querySelector('form');
 
   const close = document.querySelector('#close');
   close.addEventListener('click',()=>{
+    const view = document.querySelector('.preview');
+    if(view){
+      view.remove();
+    }
     overlay.style.display ='none';
  });
 });
@@ -536,10 +541,12 @@ if(home){
 }
 
 function previewView(id){
+  console.log('elo');
   const div = document.createElement('div');
     const iframe = document.createElement('iframe');
     div.setAttribute('class','preview');
     iframe.setAttribute('src',`http://localhost:3000/blogPage/${id}`);
+    console.log(div);
     overlay.appendChild(div);
     div.appendChild(iframe);
 }
