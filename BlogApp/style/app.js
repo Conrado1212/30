@@ -132,6 +132,7 @@ const form = overlay.querySelector('form');
  upd.addEventListener('click',(e)=>{
    e.preventDefault();
   overlay.style.display ='flex';
+  document.querySelector('#preview').style.display ='block';
   const confirm = document.querySelector('#confirm');
   const value = document.querySelector('#valueDel');
   const title = document.querySelector('.del-title');
@@ -254,7 +255,7 @@ function closeInfo(){
 if(add){
 add.addEventListener('click',()=>{
   overlay.style.display ='flex';
-
+  document.querySelector('#preview').style.display = 'none';
   const title = document.querySelector('.del-title');
   const value = document.querySelector('#valueDel');
   
