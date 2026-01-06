@@ -132,7 +132,8 @@ const form = overlay.querySelector('form');
  upd.addEventListener('click',(e)=>{
    e.preventDefault();
   overlay.style.display ='flex';
-  document.querySelector('#preview').style.display ='block';
+ const preview = document.querySelector('#preview');
+ preview.style.display = 'block';
   const confirm = document.querySelector('#confirm');
   const value = document.querySelector('#valueDel');
   const title = document.querySelector('.del-title');
@@ -148,8 +149,17 @@ const form = overlay.querySelector('form');
   /*dodac type po kliknieciu */
   const selecType = document.querySelector('#type');
   selecType.value = type.textContent;
-  /*nasluch na update*/
-  
+ /*nasluch na preview */
+  preview.addEventListener('click',()=>{
+    const view = document.querySelector('.preview');
+    if(!view){
+      previewView(id);
+    }else{
+      view.remove();
+    }
+   
+  })
+   /*nasluch na update*/
   confirm.addEventListener('click',(e)=>{
     const data = buildFormData();
     e.preventDefault();
@@ -523,4 +533,13 @@ if(home){
   home.addEventListener('click',()=>{
     window.location.href =`http://localhost:3000/`;
   })
+}
+
+function previewView(id){
+  const div = document.createElement('div');
+    const iframe = document.createElement('iframe');
+    div.setAttribute('class','preview');
+    iframe.setAttribute('src',`http://localhost:3000/blogPage/${id}`);
+    overlay.appendChild(div);
+    div.appendChild(iframe);
 }
