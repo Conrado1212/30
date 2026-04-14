@@ -456,3 +456,35 @@ const xd = document.getElementById('file');
 
 
 
+const jsontext = document.getElementById('json').textContent;
+const obj = JSON.parse(jsontext);
+console.log(obj);
+
+const matches = jsontext.match(/\b2\d{9}\b/g);
+console.log(matches);
+
+const regex =/^2\d{9}$/;
+
+function matchesTest(data){
+    let result = [];
+
+    if(typeof data === "string" && regex.test(data))
+{
+    result.push(data);
+}
+if(Array.isArray(data)){
+    for(const item of data){
+        result = result.concat(matchesTest(item));
+    }
+}
+
+if(typeof data ==="object" && data !== null){
+    for(const key in data){
+        result = result.concat(matchesTest(data[key]));
+    }
+}
+return result;
+}
+
+const found = matchesTest(obj);
+console.log(found);
