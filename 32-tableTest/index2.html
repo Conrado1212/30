@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pl">
+<body>
+  <button id="download">Pobierz DOCX z tabelą</button>
+
+  <script type="module">
+    import {
+      Document,
+      Packer,
+      Paragraph,
+      Table,
+      TableRow,
+      TableCell,
+      WidthType,
+      TextRun
+    } from "https://cdn.jsdelivr.net/npm/docx@8.0.0/+esm";
+
+    document.getElementById("download").onclick = async () => {
+      const table = new Table({
+        width: { size: 100, type: WidthType.PERCENTAGE },
+        rows: [
+          new TableRow({
+            children: [
+              new TableCell({
+                children: [new Paragraph({ children: [new TextRun({ text: "ID", bold: true })] })]
+              }),
+              new TableCell({
+                children: [new Paragraph({ children: [new TextRun({ text: "Nazwa", bold: true })] })]
+              }),
+              new TableCell({
+                children: [new Paragraph({ children: [new TextRun({ text: "Cena", bold: true })] })]
+              })
+            ]
+          }),
+          new TableRow({
+            children: [
+              new TableCell({ children: [new Paragraph("1")] }),
+              new TableCell({ children: [new Paragraph("Produkt A")] }),
+              new TableCell({ children: [new Paragraph("19.99 zł")] })
+            ]
+          }),
+          new TableRow({
+            children: [
+              new TableCell({ children: [new Paragraph("2")] }),
+              new TableCell({ children: [new Paragraph("Produkt B")] }),
+              new TableCell({ children: [new Paragraph("29.99 zł")] })
+            ]
+          })
+        ]
+      });
+
+      const doc = new Document({
+        sections: [
+          {
+            children: [
+              new Paragraph("Przykład tabeli w dokumencie DOCX:"),
+              table
+            ]
+          }
+        ]
+      });
+
+      const blob = await Packer.toBlob(doc);
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "tabela.docx";
+      a.click();
+
+      URL.revokeObjectURL(url);
+    };
+  </script>
+</body>
+</html>

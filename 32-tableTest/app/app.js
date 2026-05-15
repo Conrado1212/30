@@ -537,3 +537,121 @@ const favoriteSubjectSentence = "My favorite subject is " + favoriteSubject + ".
 console.log(favoriteSubjectSentence);
 
 console.log("Well, it was nice to talk to you. Have a nice day!")
+
+let test ="sdadada"
+console.log(typeof(test));
+
+console.log(typeof test);
+let hello = "Hello";
+hello += " world";
+console.log(hello);
+
+const str = "I am learning JavaScript.";
+str.indexOf("Javascript");
+console.log(str.indexOf("Javascript"));
+
+
+
+
+import {
+    Document,
+    Packer,
+    Paragraph,
+    Table,
+    TableRow,
+    TableCell,
+    WidthType,
+    TextRun
+  } from "https://cdn.jsdelivr.net/npm/docx@8.0.0/+esm";
+
+
+  const t1 = document.getElementById('table1').getElementsByTagName('tbody')[0];
+
+  console.log('tttttt ',t1);
+t1.querySelectorAll('tr').forEach(tr =>{
+    const td =  tr.querySelectorAll('td')[4];
+    console.log(td);
+})
+
+const t1head = document.getElementById('table1').getElementsByTagName('thead')[0];
+ 
+const ths = Array.from(t1head.querySelectorAll('th')).slice(3); 
+
+
+document.getElementById("word").onclick = async () => {
+
+    const headerCell = ths.map(th =>
+        new TableCell({
+            children: [
+                new Paragraph({
+                    children: [
+                        new TextRun({ text: th.textContent.trim(), bold: true })
+                    ]
+                })
+            ]
+        })
+    );
+    const body = Array.from(t1.querySelectorAll('tr')).map(tr => {
+        const tds = Array.from(tr.querySelectorAll('td')).slice(3);
+
+        const cells = tds.map(td =>
+            new TableCell({
+                children: [
+                    new Paragraph({
+                        children: [
+                            new TextRun({ text: td.textContent.trim() })
+                        ]
+                    })
+                ]
+            })
+        );
+        return new TableRow({ children: cells });
+    }).filter(row => row.options.children.length > 0);
+
+    const table = new Table({
+        width: { size: 100, type: WidthType.PERCENTAGE },
+        rows: [
+            new TableRow({ children: headerCell }),
+           ...body
+        ]
+    });
+    const doc = new Document({
+        sections: [{ children: [table] }]
+    });
+
+    const blob = await Packer.toBlob(doc);
+    const arrayBuffer = await blob.arrayBuffer()
+    console.log(arrayBuffer);
+
+    const uint8 = new Uint8Array(await blob.arrayBuffer());
+console.log(uint8);
+    const url = URL.createObjectURL(blob);
+
+    const hex = [...uint8]
+    .map(b => b.toString(16).padStart(2, "0"))
+    .join("");
+
+console.log("0x" + hex);
+
+   // const base64 = await blobToBase64(blob);
+
+    // function blobToBase64(blob) {
+    //   return new Promise((resolve, reject) => {
+    //     const reader = new FileReader();
+    //     reader.onloadend = () => resolve(reader.result.split(',')[1]);
+    //     reader.onerror = reject;
+    //     reader.readAsDataURL(blob);
+    //   });
+    // }
+    
+    //console.log(base64);
+
+
+//download
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "tabela.docx";
+    a.click();
+
+    URL.revokeObjectURL(url);
+};
