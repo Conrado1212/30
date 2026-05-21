@@ -16,6 +16,7 @@ body{
     align-items: center;
     font-size: 1rem;
     background: #f9fbff;
+    margin: 0;
 }
 #file{
     margin-bottom: 10px;
@@ -160,4 +161,19 @@ iframe{
     font-size: 14px;
     cursor: pointer;
    
+}
+.test{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #222425;
+    width: 300px;
+    height: 300px;
+}
+
+.circle{
+    width: 100px;
+    height: 100px;
+    background: red;
+    border-radius: 50%;
 }
