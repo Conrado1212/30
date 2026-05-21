@@ -30,7 +30,6 @@ body{
 }
 .circle::before{
     content: '';
-
     position: absolute;
     inset: -5px;
     filter: blur(1px);
@@ -51,7 +50,7 @@ body{
     content: '';
 
     position: absolute;
-    inset: 5px;
+    inset: 5px;   
     background: #808088;
     border-radius: 50%;
     
