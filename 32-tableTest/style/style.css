@@ -177,3 +177,160 @@ iframe{
     background: red;
     border-radius: 50%;
 }
+/* .test2{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    
+}
+#checkbox{
+    position: relative;
+}
+#checkbox:checked::before {
+    content: "TAK";
+    color: green;
+    position: absolute;
+    left: 20px;
+}
+#checkbox::before {
+    content: "Nie";
+    color: red;
+    position: absolute;
+    left: 20px;
+} */
+
+
+.test2{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+#checkbox {
+    appearance: none;
+    width: 50px;
+    height: 26px;
+    background: #ccc;
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+#checkbox::after {
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    background: white;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: 0.3s;
+}
+
+/* Po włączeniu */
+#checkbox:checked {
+    background: #4caf50;
+}
+
+#checkbox:checked::after {
+    left: 26px;
+}
+/* TEKST PRZY CHECKBOXIE */
+#checkbox::before {
+    content: "Nie";
+    color: red;
+    position: absolute;
+    left: 60px; /* obok toggle */
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: bold;
+}
+
+#checkbox:checked::before {
+    content: "TAK";
+    color: green;
+}
+
+
+
+
+
+html[lang="en"] #checkbox:checked::before {
+    content: "Yes";
+}
+html[lang="pl"] #checkbox:checked::before {
+    content: "Yes";
+}
+
+
+
+html[lang="pl"] .status::before {
+    content: "Nie";
+}
+
+html[lang="en"] .status::before {
+    content: "No";
+}
+.group{
+    width: 100%;
+    background: #121212;
+    padding: 1rem;
+    border-radius: .5rem;
+}
+
+/* ukrywamy checkbox */
+#check{
+    display: none;
+}
+
+.group_name{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    border: 1px solid #808080;
+    border-radius: .5rem;
+    padding: .5rem;
+    margin-bottom:1rem;
+}
+
+/* Twój przełącznik */
+.switch{
+    width: 50px;
+    height: 26px;
+    background: #ccc;
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.switch::after {
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    background: #434c50;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: 0.3s;
+}
+
+#check:checked + .group_name .switch::after {
+    left: 26px;
+}
+
+/* EXPAND */
+.content{
+    display: none;
+    overflow: hidden;
+    transition: display .3s ease;
+}
+
+#check:checked ~ .content{
+    display: block;
+}
