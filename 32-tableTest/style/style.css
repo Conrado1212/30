@@ -297,32 +297,49 @@ html[lang="en"] .status::before {
     margin-bottom:1rem;
 }
 
-.switch{
+.switch {
     width: 50px;
     height: 26px;
-    background: #ccc;
-    border-radius: 20px;
+    box-shadow: inset 5px 5px 10px #8e79a7;
+    border-radius: .5rem;
     position: relative;
     cursor: pointer;
-    transition: background 0.3s;
+    border-right: 1px solid #fff;
+    border-bottom: 1px solid #fff;
 }
 
 .switch::after {
     content: "";
     position: absolute;
-    width: 22px;
-    height: 22px;
-    background: #434c50;
-    border-radius: 50%;
-    top: 2px;
+    width: 20px;
+    height: 20px;
+    top: 3px;
     left: 2px;
-    transition: 0.3s;
+    border-radius: .55rem;
+
+    background: radial-gradient(circle at 30% 30%, 
+        #ffffff 0%, 
+        #f3f3f3 25%, 
+        #d0d5d8 55%, 
+        #b8bec2 100%
+    );
+
+    transition: 0.25s cubic-bezier(.25,.8,.25,1);
+
+    box-shadow:
+        inset 5px 5px 10px rgba(0,0,0,0.45),
+        inset -5px -5px 10px rgba(255,255,255,1);
+      
 }
+
 
 #check:checked + .group_name .switch::after {
     left: 26px;
+   
 }
-
+#check:checked + .group_name .switch {
+    box-shadow: inset 5px 5px 10px #fff !important;
+}
 /* EXPAND */
 .content{
     display: none;
